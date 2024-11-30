@@ -1,0 +1,462 @@
+![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/802f1b11d8b84b1fba735d40d32cd52b~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1733570260&x-orig-sign=FuyocnFwN0VpqQXUdE1v%2BalBh%2BU%3D)
+
+之前写过一系列功能安全的文章，感觉已经写的非常详细了，这里带大家**重温走读**一下。总目录如下：
+
+1.  [功能安全入门-1内功心法ISO26262介绍](http://mp.weixin.qq.com/s?__biz=MzUzMDMwNTg2Nw==\&mid=2247485280\&idx=1\&sn=7d40312fb1a10b2b2d3ef0df8d57653b\&chksm=fa528144cd250852d5a769832467199d8311e503583f94dcb4d23df6daded1ebb9976724441e\&scene=21#wechat_redirect)
+
+2.  [功能安全入门-2 ISO26262说人话版本GB\_T 34590](http://mp.weixin.qq.com/s?__biz=MzUzMDMwNTg2Nw==\&mid=2247485839\&idx=1\&sn=538c00e0d67c629c21306bf2417f17e5\&chksm=fa528fabcd2506bd75dec7f04d9f806a091aafe567abfb821e4897725b72bcb7ee9c7056e15d\&scene=21#wechat_redirect)
+
+3.  [功能安全的架构设计（七）\_ 芯片篇-上](http://mp.weixin.qq.com/s?__biz=MzUzMDMwNTg2Nw==\&mid=2247485353\&idx=1\&sn=c9024ebd53552148c77d6fd2392c7175\&chksm=fa52818dcd25089bfea2577157dca2a44f6af3c28a7411d2fc7902b29c3d23cccc14359cc25b\&scene=21#wechat_redirect)
+
+4.  [功能安全的架构设计（八）\_ 芯片篇-下](http://mp.weixin.qq.com/s?__biz=MzUzMDMwNTg2Nw==\&mid=2247485355\&idx=1\&sn=50b6ce87b89902c0f30fcf9a2877c3e6\&chksm=fa52818fcd250899f7c110ef87885b4a6eb0d44d69b0595e2a72dc81aa122bd8a0d9cb163b1c\&scene=21#wechat_redirect)
+
+5.  [英伟达系列芯片如何用于自动驾驶研发之架构及安全设计（一）](http://mp.weixin.qq.com/s?__biz=MzUzMDMwNTg2Nw==\&mid=2247485368\&idx=1\&sn=8ddae878ab86232466b0287b28778dd9\&chksm=fa52819ccd25088a20d993a18694caa994dbfd148b75c29a918933ecc7fa8f2556b0e9b81f58\&scene=21#wechat_redirect)
+
+6.  [功能安全入门-功能安全岛(FSI)](http://mp.weixin.qq.com/s?__biz=MzUzMDMwNTg2Nw==\&mid=2247485368\&idx=3\&sn=f4c5a61002ae2c8918d5d243f83b8e3b\&chksm=fa52819ccd25088a6a0623d2cae066e5a5a4bf236ab8e787be0346d0c098e3bd7ae55795b047\&scene=21#wechat_redirect)
+
+7.  [功能安全入门-再谈FSI](http://mp.weixin.qq.com/s?__biz=MzUzMDMwNTg2Nw==\&mid=2247485428\&idx=2\&sn=444510ef893ebad1cd92b6d3173c0400\&chksm=fa5281d0cd2508c695b00611b5f8b28e11c7794f76b95d59c14150ee7c261b7321eccb43e223\&scene=21#wechat_redirect)
+
+8.  [功能安全入门-SoC设计漫谈](http://mp.weixin.qq.com/s?__biz=MzUzMDMwNTg2Nw==\&mid=2247485428\&idx=1\&sn=c86b7fac74b3d4fab3a77bb519945c75\&chksm=fa5281d0cd2508c67d00354ebe83cf7b9889c4f9fada662f13ae6dbc121a42403321610b5596\&scene=21#wechat_redirect)
+
+9.  # SoC安全岛应用和未来演进（附直播回放）：<https://mp.weixin.qq.com/s/E9VNVvDbKvJWkf7t-cFxYg>
+
+# 1. ISO26262
+
+1.  [功能安全入门-1内功心法ISO26262介绍](http://mp.weixin.qq.com/s?__biz=MzUzMDMwNTg2Nw==\&mid=2247485280\&idx=1\&sn=7d40312fb1a10b2b2d3ef0df8d57653b\&chksm=fa528144cd250852d5a769832467199d8311e503583f94dcb4d23df6daded1ebb9976724441e\&scene=21#wechat_redirect)
+
+2.  [功能安全入门-2 ISO26262说人话版本GB\_T 34590](http://mp.weixin.qq.com/s?__biz=MzUzMDMwNTg2Nw==\&mid=2247485839\&idx=1\&sn=538c00e0d67c629c21306bf2417f17e5\&chksm=fa528fabcd2506bd75dec7f04d9f806a091aafe567abfb821e4897725b72bcb7ee9c7056e15d\&scene=21#wechat_redirect)
+
+![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/57bd9f2567e3430fb5ca60ff3d51556b~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1733570260&x-orig-sign=VLKZD7MH72Ru3g1e4BMSxv%2FL8Mk%3D)
+
+ISO26262就是这样一个规范，且**特定于汽车电子领域**，也就是说汽车上的电路软硬件，名为《**道路车辆功能安全**》，是功能安全的国际标准，是针对装设在量产道路车辆（非机动车除外）的**电子电气系统**，由国际标准化组织（ISO）在2011年发布第一版，在**2018年更版**。具体来说有ISO26262 有1-12共**12个Part**的pdf文件，链接：<https://pan.baidu.com/s/1qnUkGXmgoSr9PbhoptK6xA> 提取码：lk9m。
+
+![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/38c0559fdd9a4ccd92eb6e4ddf8543f5~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1733570260&x-orig-sign=kPwiya43BoLUiHUbBI5A1O3K%2F5E%3D)
+
+对于整车的复杂度，相应的软件也会更加的复杂，代码行数甚至过亿行，极其复杂，所以有必要对软件做系统基本的安全处理
+
+![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/6331dd364d8c46f4aa32f5670744c939~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1733570260&x-orig-sign=zD6t1E8MraMp%2BTPo0UxU16Kx8yc%3D)
+
+> 这个V字模型算是传统的软件开发模型，**周期还是比较长的**。国内则引入了互联网敏捷开发还有传统软件公司的各种流程，例如华为的IPD流程，**主打就是一个“快**”，甚至敢没怎么测试就上车，赶鸭子上架，就是**为了追赶超越**。可能按常规思路出牌，按照老外给铺的路走，可能永远赶不上人家，**冒险抄近路**也是逼不得已，后来者必经之路。
+
+![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/a013487cf3e44b4ab4b482327fe49a9f~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1733570260&x-orig-sign=mh%2B9vcbShXlsypyYwk24qP5bfZQ%3D)
+
+针对一个功能异常，分析出其风险等级，设计出合理的安全措施，实施并验证。
+
+![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/49e5a218e84448308ab0fa121d1158a2~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1733570260&x-orig-sign=37qQ%2F5mStOeiDHQEk6P9EFrVCmI%3D)
+
+*   ASIL等级越高，约束程度或者安全措施要求越高。
+*   *   一方面，从**设计的角度**出发，尽可能避免失效。
+    *   另一方面，如果发生了失效，**尽早发觉故障**，给驾驶员警示故障，让驾驶员可以进行有效干预，或控制车辆系统进入一个安全状态，防止伤害最终产生。
+
+![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/9d22e8f9d01746d8bb1b00662248863b~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1733570260&x-orig-sign=cVPKbx4TQOAB5GfxvQJ7vIrIPGs%3D)
+
+V字模型
+
+![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/0704a37d69d649dfa4c08f1b925a4826~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1733570260&x-orig-sign=KJc6zPl3co5P0vFq3rDA%2F8PQgtg%3D)
+
+澄清功能安全流程中对于需求的四层管理模型
+
+![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/47fc6a6ffd3d45ebaefa95ecb5d80ced~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1733570260&x-orig-sign=HenFUthubYxZ8ri%2FyqjvfCq9cdQ%3D)
+
+**危害分析与风险识别**（Hazard Analysis & Risk Assessment，缩写HA\&RA），根据相关项定义的功能，分析其功能异常表现，识别其可能的潜在危害（Hazard）及危害事件（Hazard Event），并对其风险进行量化（即确定ASIL等级），导出功能安全目标（Safety Goal）和ASIL等级，以此作为功能安全开发最初最顶层的安全需求。
+
+常见的安全机制:
+
+*   传感器
+*   *   传感器硬件冗余
+    *   独立供电
+    *   多通道冗余采集
+    *   信号质量检测
+*   控制单元
+*   *   在线诊断
+    *   比较器
+    *   多数投票器
+*   执行器
+*   *   执行器硬件冗余
+    *   执行器控制信号质量检测
+*   通讯
+*   *   冗余发送
+    *   信息冗余（CRC）
+    *   时间监控
+    *   问答机制
+
+![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/663dd0add80148939eb4fe3f3ef7cd88~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1733570260&x-orig-sign=7Xyw5bDR4O82qzw5EwhTyg2Znbs%3D)
+
+硬件相关的。
+
+![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/47ee9b2007784569a78ab57cea1e2ff0~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1733570260&x-orig-sign=x3zKHyj%2F2GHhrWoMuxr31H89TfA%3D)
+
+软件开发相关
+
+在功能监控层软件架构设计，主要是将和架构相关的**错误探测和错误处理**等安全机制，应用于**功能监控层架构设计**。虽然根据不同类型的控制器，其安全机制具体实施有所差别，但总体而言，主要包含以下安全机制：
+
+*   用于**错误探测**的**安全机制**包括：
+*   *   输入输出数据的范围检查；
+    *   合理性检查（例如，使用期望行为参考模型、断言检查、或不同来源信号比较）；
+    *   数据错误探测（例如，检错码和多重数据存储）；
+    *   外部要素监控程序执行，例如，通过专用集成电路（ASIC）或者其他软件要素来执行看门狗功能。监控可以是逻辑监控或时间监控，或者两者的结合；
+    *   程序执行的时间监控；
+    *   设计中的异构冗余；
+    *   —在软件或硬件中实施的访问冲突控制机制，与授权访问或拒绝访问安全相关共享资源有关。
+*   用于**错误处理**的**安全机制**可能包括：
+*   *   为了达到和维持安全状态的功能关闭；
+
+    *   静态恢复机制（例如，恢复块、后向恢复、前向恢复以及通过重试来恢复）；
+
+    *   通过划分功能优先级进行平稳降级，从而最小化潜在失效对功能安全的不利影响；
+
+    *   设计中同构冗余，主要侧重于控制运行相似软件的硬件中瞬态故障或随机故障的影响（例如，软件在时间上的冗余执行）；
+
+**避免软件要素间的相互干扰**，软件要素间干扰的形式主要有两类：
+
+*   时序干扰
+*   空间干扰
+
+**时序干扰**可能存在以下几种形式：
+
+*   执行阻塞 （blocking of execution）
+*   死锁 （deadlocks）
+*   活锁 （livelocks）
+*   执行时间的不正确分配 （incorrect allocation of execution time）
+*   软件要素间的不正确同步 （incorrect synchronization between software elements）
+
+**空间干扰**包括内存存储干扰以及信息交换干扰，常见的形式为：
+
+*   内容损坏 （corruption of content）
+
+*   对已分配给其他软件要素的内存进行读写访问 （read or write access to memory allocated to another software element）
+
+*   信息重复 （repetition of information）
+
+*   信息丢失 （loss of information）
+
+*   信息延迟 （delay of information）
+
+*   信息插入 （insertion of information）
+
+*   信息伪装或信息的不正确寻址 （masquerade or incorrect addressing of information）
+
+*   信息次序不正确 （incorrect sequence of information）
+
+*   信息损坏 （corruption of information）
+
+# 2. 功能安全的架构设计
+
+[3. 功能安全的架构设计（七）\_ 芯片篇-上](http://mp.weixin.qq.com/s?__biz=MzUzMDMwNTg2Nw==\&mid=2247485353\&idx=1\&sn=c9024ebd53552148c77d6fd2392c7175\&chksm=fa52818dcd25089bfea2577157dca2a44f6af3c28a7411d2fc7902b29c3d23cccc14359cc25b\&scene=21#wechat_redirect)
+
+[4. 功能安全的架构设计（八）\_ 芯片篇-下](http://mp.weixin.qq.com/s?__biz=MzUzMDMwNTg2Nw==\&mid=2247485355\&idx=1\&sn=50b6ce87b89902c0f30fcf9a2877c3e6\&chksm=fa52818fcd250899f7c110ef87885b4a6eb0d44d69b0595e2a72dc81aa122bd8a0d9cb163b1c\&scene=21#wechat_redirect)
+
+![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/9ce2cd0927364505bbdbdd3143762fb3~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1733570260&x-orig-sign=bKpHLLR7wVYidDeI%2BqnNjNhgMEw%3D)
+
+一般地，芯片上专门用于某个具有特定属性（如安全属性）的子系统或者内核，都可以用“Island”的概念来命名，主要强调局部设计的“独立性”和“特殊性”。而用于配套实现芯片专有安全功能的专属存储单元、供电模块、外设、通信总线等一系列IP的集合可以统称为“安全岛”。在“岛上”可以相对独立的执行安全相关的任务，安全岛就是这样一个给软件提供安全任务执行的一个物理环境。
+
+安全岛模块一般独立于芯片中的其他系统和内核，需要有单独的电源域供电，单独的计算单元，内部模块和内存需要有物理隔离机制，优先级较高的中断机制，甚至是单独的安全诊断单元，可以实时诊断出“岛上”出现的问题，并且进入相应的安全状态。
+
+# 3. FSI设计举例
+
+[5. 英伟达系列芯片如何用于自动驾驶研发之架构及安全设计（一）](http://mp.weixin.qq.com/s?__biz=MzUzMDMwNTg2Nw==\&mid=2247485368\&idx=1\&sn=8ddae878ab86232466b0287b28778dd9\&chksm=fa52819ccd25088a20d993a18694caa994dbfd148b75c29a918933ecc7fa8f2556b0e9b81f58\&scene=21#wechat_redirect)
+
+[6. 功能安全入门-功能安全岛(FSI)](http://mp.weixin.qq.com/s?__biz=MzUzMDMwNTg2Nw==\&mid=2247485368\&idx=3\&sn=f4c5a61002ae2c8918d5d243f83b8e3b\&chksm=fa52819ccd25088a6a0623d2cae066e5a5a4bf236ab8e787be0346d0c098e3bd7ae55795b047\&scene=21#wechat_redirect)
+
+[7. 功能安全入门-再谈FSI](http://mp.weixin.qq.com/s?__biz=MzUzMDMwNTg2Nw==\&mid=2247485428\&idx=2\&sn=444510ef893ebad1cd92b6d3173c0400\&chksm=fa5281d0cd2508c695b00611b5f8b28e11c7794f76b95d59c14150ee7c261b7321eccb43e223\&scene=21#wechat_redirect)
+
+英伟达系列芯片在功能安全设计上，Orin 系列通过制定目标实现 ASIL D 系统能力设计和ASIL B/D 随机错误管理能力设计。包括基于 SOC 芯片硬件的 ASIL 分解需求到各个核，确保核间设计一致性可以满足 ASIL D 需求，并应用标准的 ASIL D 开发流程到整个功能安全设计中，从底之上分别对安全流程、Drive AGX、操作系统 Drive OS、Drive Work、传感器、冗 余架构设计、安全策略几个方面分别进行相应的安全设计。
+
+![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/4325af34d8024b1f9d8e53441ea2f706~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1733570260&x-orig-sign=YMMubPQmtd0zCN2JC9pKEicl1KM%3D)
+
+如图显示了如何在英伟达系列芯片中加载 FSI 及底层相关模块驱动引导程序。
+
+英伟达系列芯片的功能安全岛（FSI）是一个包含 Cortex-R52 和 Cortex-R5F real 的处理器集群，并具有专用 I/O 控制器的时间处理器的核心。例如，Orin-X 中的 FSI 模块具有自己的电压轨、振荡器和PLL、SRAM，以确保与 SOC 内部的其他模块相互作用最小，并实现如上模块相互之间无干扰。\
+**Orin-x 系列 FSI 功能包括：**\
+Cortex-R52 处理器，也称为安全 CPU，具有 DCLS（双核锁步）模式下的 4 个内核（共 8 个物理内核），可运行经典 AUTOSAR 操作系统，实现错误处理、系统故障处理和其他客户工作负载，综合性能约为 10KDMIPs。\
+Cortex-R5F 处理器，也称为加密硬件安全模块（CHSM），用于通过 CAN 接口运行加密 和安全用例，如安全车载通信（SecOC）。
+
+FSI具有在汽车系统中作为ASIL D安全处理器所必需的硬件特性。它包括:
+
+*   Cortex-R52处理器----一个安全的CPU，在双核锁定步进(DCLS)模式下，有多达4个软件可见核，共多达8个物理核。它可以运行经典AUTOSAR操作系统，并可以实现Error处理和其他工作负载。这些处理器是公开供客户使用的。
+
+*   Cortex-R5F处理器----一个加密硬件安全模块(CHSM) CPU，用于运行加密和安全用例，如通过CAN接口的安全板上通信(SecOC)。该处理器由NVIDIA编程，通过api公开。
+
+*   紧密耦合的内存，指令和数据缓存的每个核心的安全和CHSM cpu。
+
+*   在岛内的片上专用RAM总计高达5.5 MB (3 MB SRAM, 2 MB Cortex-R52 TCM, 0.5 MB Cortex-R5 TCM)，以确保代码执行和数据存储可以保持在FSI内。
+
+*   总缓存高达320 KB: 32KB指令缓存，32KB数据缓存每个Cortex-R5和Cortex-R52 CPU。
+
+*   I/O接口，如CAN、SPI、SBSA UART和gpio，用于与外部组件通信。
+
+*   硬件安全机制，如DCLS, CRC, ECC，奇偶校验，超时等，所有的ip在FSI。
+
+*   专用的热，电压和频率监视器。与Soc其余部分的逻辑隔离。
+
+功能安全岛 (FSI) 是 Orin SoC 中的一个新硬件IP，其纳入的主要动机如下：
+
+*   可为任何安全功能（例如传感器融合、车辆控制等）提供约 10K ASIL D MIPS，您可以通过映射到 FSI 来使用，以减少外部 MCU 总体上较高的 MIPS 需求。
+*   FSI 硬件在系统学中被开发为 ASIL D，而 SoC 的其余部分则被开发为 ASIL-D Random，提供了更好的整体安全性 - 岛屿和水的类比。
+*   FSI 硬件/软件可以集中监控 SoC 中发生的安全错误。
+
+在Orin中实现了很多检测错误/故障和上报的机制，一般有两种方式检测错误：
+
+1.  通过专门用于检测硬件故障的诊断测试执行检测，例如ECC、奇偶校验和锁步实现等，该类错误软件无法处理，需要硬件自动去处理。
+2.  通过允许检测功能错误的其他方法执行检测，例如FIFO溢出、非法上电检测等，此类属于功能错误。
+
+Orin硬件检测到的错误，处理方法可以分为两类:
+
+1.  纠正错误(CEs)：由硬件纠正的错误
+2.  未修正的错误(UEs)：未被硬件纠正的硬件错误
+
+**纠正错误(CEs)** ：硬件会纠正错误并记录有关此纠正的信息。例如，使用SECDED ECC保护的SRAM中的单位错误，在大多数情况下，错误已经在硬件中得到了纠正，不需要在软件中进行额外的纠正操作。但是如果内存中的某个位置出现了永久性故障，则从该内存位置的每次读取都表示已纠正的ECC错误。虽然错误被纠正了，但最好是识别出我们有一个永久性故障，它可能在暂态错误的情况下变成双位故障。所以如果纠正的数量超过了预期的纠正率，则可能需要采取纠正措施。例如，系统级错误处理程序应该监视已纠正错误的频率，以便对Orin硬件的状态做出额外的决定。Orin SoC 实现了错误计数器和错误日志寄存器，以提供已纠正错误的附加信息，以支持任何SoC或平台级纠正措施。
+
+**未修正的错误(UEs)** ：硬件不能处理的错误，需要软件进行处理，则被报告为此种错误。例如SECDED ECC保护的SRAM中的多位错误。在大多数情况下，未纠正的错误会导致硬件中不可预测的行为。应分析硬件的故障，以确定纠正措施。大多数的硬件故障都期望通过软件处理。
+
+![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/9f7f8a30649e4a19a7827bdaa1a16b91~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1733570260&x-orig-sign=l4RuG0jDNZLrgGG9IDNycrC6VZE%3D)
+
+对于错误的监测主要有以下几个方面：
+
+1.  外部监视器：Orin SoC存在一个外部监视器来控制SoC，以防检测到某些故障。外部监视器可以通过SPI接口监控FSI，例如FSI定时给外部MCU发心跳信号，如果超时则任务FSI出问题死了，需要外部MCU进行功能安全处理。
+2.  HSM（Hardware Safety Manager）：SoC还使用基于硬件的错误管理器(硬件安全管理器(HSM))，监测到的故障通过SOC\_ERROR引脚触发HSM中断进行处理，然后HSM将错误通过软件通知到外部安全MCU监视器，再进行功能安全处理。
+3.  FSI：专用的内部安全处理器(FSI或SCE)来监视其错误状态
+
+## FSI硬件接口
+
+**外部I / O接口:**
+
+*   一个SPI接口，用于与外部安全MCU通信。安全单片机进行错误记录时，在此接口上发送心跳信号和错误信息。有关更多信息，请参阅串行外围接口(SPI)部分。
+*   四个gpio用于杂项控制。
+*   两个can向执行器发出命令。有关更多信息，请参阅控制器区域网络(CAN)部分。
+*   一个SOC\_ERROR信号到安全单片机。该信号与安全单片机通信，故障已经检测到。
+*   Coresight和调试接口。
+*   一个用于调试的SBSA UART。有关更多信息，请参阅SBSA UART部分。
+
+**与非** **FSI** **部分交互的内部接口:**
+
+*   到SoC数据结构的内存接口
+*   SoC控制Fabric的接口
+*   来自SoC HSPs的中断
+*   从SCE到HSM的错误中断信号
+*   从LIC到FSI的中断
+
+## FSI的错误上报和处理
+
+Orin错误上报处理架构包括以下主要组件:
+
+*   硬件/软件诊断以检测错误。如ECC等诊断也可以纠正某些错误。
+
+*   除FSI外，所有部分/模块的误差都在SCE\_HSM中进行整理。
+
+*   SCE\_HSM可以将从错误源收集的错误详细信息传递给FSI。
+
+*   FSI还可以直接从错误源(包括HSM中的错误源)收集错误信息，但从CCPLEX和İGPU中的错误源除外 **。**
+
+*   CCPLEX可以将LIC接收到的与错误相关的中断转发到SCE\_HSM或直接转发到FSI。
+
+*   FSI确定错误的严重性并采取适当的纠正措施。这还包括通过冗余方法(SOC\_ERROR信号和通过FSI SPI的心跳消息)将错误通信到外部MCU。
+
+上面是英伟达的Orin，下面介绍地平线的J5
+
+![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/b3650328d78745d1a8517651e09c998b~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1733570260&x-orig-sign=o2pAeg%2FLSm77B%2FKIooL0xwLPdHs%3D)
+
+地平线J5 SoC系列是根据ISO26262开发的，并且具有全面的安全方案，以达到较高的汽车安全完整性水平（ASIL），这对ADAS和自动驾驶应用至关重要。
+
+安全子系统是一个**中央错误收集和处理**系统。它由双核锁步MStar、FCHM模块和丰富的外设组成，包括以太网、CAN FD、UART、SPI、PVT、CMM、计时器、SPIN\_LOCK、WDT、I2C等。
+
+双核锁步Cortex MStar处理器有**指令TCM**和**数据TCM**，每个都有双字数据宽度。MStar处理器配置了64KB ITCM、32KB DTCM、16KB ICACHE和16KB DCACHE。S-AHB接口用于对内存映射的SRAM、外围组件和外部设备的指令获取和数据访问。双核锁步**DMAC**支持4个DMAC通道和16个硬件握手。
+
+**FCHM模块**提供了一种用于收集错误通知并引导设备进入安全状态的硬件机制。它主要收集三种类型的错误：
+
+1.  **软件错误**：由软件触发写FCHM配置寄存器，最大64错误源，必须是关键错误，可以设置是否重启，有使能位
+2.  **硬件错误**：512个硬件错误源，可以设置关键错误和非关键，可以设置是否重启，有使能位
+3.  **外部错误**：SoC外部设备错误，32个错误源，都是非关键错误，可以设置A核或者MSTAR处理，软件决定处理策略。
+
+每个硬件错误都可以配置为严重错误或非严重错误。如果断言一个关键错误或自检BIST错误，两个错误pad将以重复或反向模式输出错误，以便系统能够感知到SoC的错误。SPI/I2C可以与具有安全协议的系统进行通信。
+
+按错误检测的时机，错误分为两类：
+
+1.  **系统启动阶段**：Logic BIST、Memory BIST、Self-Test。
+2.  **系统运行阶段**：软件STL或者硬件IP内集成的方法
+
+对于错误需要定级别，并且需要考虑故障的处理策略方法、反应时间、监测时间等
+
+SoC有多个功能IP常用的**检查机制**，对IP进行功能失效分析及影响评估，进而进行处理。常用的功能安全监测和处理方法如下：
+
+*   寄存器parity校验
+*   存储的CRC校验
+*   存储的ECC校验
+*   功能IP的锁步
+*   APB总线超时检测
+*   设备内存和寄存器写后读回检查
+*   中断触发后读寄存器确认
+*   接口读检测
+*   IP硬件自检
+*   watchdog超时检查
+*   CPU STL
+
+# 4. SoC整体功能安全分析
+
+[8. 功能安全入门-SoC设计漫谈](http://mp.weixin.qq.com/s?__biz=MzUzMDMwNTg2Nw==\&mid=2247485428\&idx=1\&sn=c86b7fac74b3d4fab3a77bb519945c75\&chksm=fa5281d0cd2508c67d00354ebe83cf7b9889c4f9fada662f13ae6dbc121a42403321610b5596\&scene=21#wechat_redirect)
+
+**SoC设计** **中功能安全**的一个核心是：**发现故障并进行上报给一个安全处理单元**（**FSI或安全MCU**过ISO26262认证），然后这个安全单元进行决策怎么进行**挽救处理**。
+
+当然这个是从**系统提供的技术**来说，具体的功能安全分析要**根据业务去做**。按照**机制跟策略分离**的方法，我们从SoC设计角度出发，提供各种**安全机制**，就是本文讨论的内容。然后实际操作的时候由**专业功能安全人员**根据功能安全的需求从技术上有可用的接口，然后再**根据业务进行策略设计**。
+
+上报给安全MCU的故障分为两类：
+
+1.  **主动上报：** （FSI汇总SoC内部的故障信息通过**SPI、PIN**上报给安全MCU）
+2.  **被动上报：** （FSI的**心跳机制**给安全MCU上报，或者卡死时停止响应安全MCU，安全MCU去**做业务时发现**）
+
+发生故障时也可能通路故障了，例如SPI需要协议的这种，那就通过PIN（GPIO）来做兜底的上报。
+
+为了安全，FSI跟安全MCU的SPI通信也需要加强：
+
+1.  从**软件上**需要增加**数据包CRC校验**
+2.  从**硬件上**需要增加**GPIO**，发送SPI数据前需要拉GPIO，对方感知到要做SPI业务且对方准备好了才开始回复进行下一步通信。
+
+为了安全，PIN也需要一次使用**两根且电平相反连接**，因为PIN可能受到**电磁干扰或者开路短路故障**。
+
+故障的种类分为：
+
+1.  **软件故障**（通过**软件通路上报**，SoC内部的核间通信技术）
+2.  **硬件故障**（FSI中的**FCCU监测**到的硬件故障通过SOC\_ERROR引脚触发FCCU中断进行处理，然后FCCU将错误通过软件通知到外部安全MCU监视器，再进行功能安全处理。FCCU可以通过**NOC总线**跟其他IP通信）
+
+FCCU本来就是FSI的硬件，有些严重的故障例如电压异常/高温等，会**不经过FSI的软件处理直接上报给安全MCU**。大多数的硬件故障会先触发**FSI的中断**，然后由FSI的软件去进一步处理。
+
+对于FSI搜集的故障，要进行处理的时候，需要进行分类：
+
+1.  **普通故障**（**各种wdt超时、exception、assert、通信故障、存储故障、机制失效等**）
+2.  **致命故障**（**高温、高压、SoC损坏**）
+
+对于处理要**看业务那些重要就归为致命故障**，重点还是要保障业务，比如SoC主要做图像识别，那摄像头、信号传输及处理（NPU、ISP等）这一条通路上的IP的优先级都是非常高，必要的时候甚至可以按致命重启整个SoC来恢复。
+
+对于普通故障：
+
+1.  **FSI运行正常时**，**通过SPI上报给安全MCU**。举几个例子：A核硬件例如STL检查失败ECC故障等，这时A核的硬件已经损坏无法满足一些业务，例如在汽车上不能自动驾驶了，那么通过SPI上报给安全MCU，安全MCU进行**刹车限速提示**驾驶员接管方向盘自己开，对于SoC可以进行重启恢复。同理A核的软件异常，其他核的软硬件异常也是一样的。
+
+2.  **FSI的异常时**（硬件R核异常、软件exception或看门狗超时），这时候不能通过SPI协议上报了，只能通过**硬件的PIN进行上报安全MCU**。安全MCU还做出相关的业务措施来保证人员的安全。
+
+3.  FSI的**SPI控制器异常**时，这时也不能SPI通信了，也是通过**PIN**进行上报安全MCU
+
+4.  **各种IP的WDT看门狗触发的异常**，一般把**看门狗分为两级**，第一级的时候尝试自己恢复，自己恢复不了再触发第二级就需要上报了。
+
+# 5. SoC安全岛应用和未来演进
+
+本小节内容参考SASETECH社区的刘擎宇，文章链接：<https://mp.weixin.qq.com/s/E9VNVvDbKvJWkf7t-cFxYg，里面有视频，笔者还当场提过一个问题：SCP/PMU是否可以跟FSI合并，刘老师的回答很好，FSI可以把电源管理PMU吃掉。强烈推荐重听一下视频：>
+
+![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/7a72d6f5c2c24345842cfe67039e3f46~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1733570260&x-orig-sign=ajQeol9Z6ltGnjhwhDN1YmuaXv0%3D)
+
+**问题1：为什么需要安全岛：**
+
+早年在没有智能驾驶和智能座舱的应用场景出现的时候，汽车电子控制芯片主要还是一些规模不大的MCU产品，当时的MCU为了满足功能安全的需求，会在MCU内部设计一个故障收集处理模块，如英飞凌的SMU, NXP的FCCU等，模块的设计很简单，如下图所示，主要分为两大部分，第一部分为状态机（FSM），一部分为配置寄存器（reg file）， 对于这个模块它的主要功能就是通过配置寄存器的提前对芯片内部的故障进行处理的设置，然后当故障真实发生的时候通过状态机的设计对故障进行分级处理，如产生一个中断给到CPU, 或者对于一些严重程度较高的估值可以直接产生复位或者通过硬件信号送到芯片外部。
+
+![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/aec0163e4033424389b868ec23fa5386~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1733570260&x-orig-sign=L925CmOp9%2BxrYRvyrYa4pIhKjWY%3D)
+
+对于这样的故障处理模块它具有以下的几个优点：
+
+1.  因为是硬件状态机的处理，所以从故障被检测到故障处理的行为发生，整个处理的延迟可以控制在纳秒级；
+
+2.  因为是一个较简单的硬件状态机控制，模块的难度较低，硬件的稳定性较好；
+
+3.  支持寄存器配置，可以满足MCU这一规模较小芯片所需的各种处理方式的设定。
+
+但是等到智能驾驶和智能座舱的应用在汽车上普及和高速发展后，我们会发现芯片的规模在发生指数级的变化，下图为一个简单的智驾SoC的基本资源图，从图上可以发现在智能驾驶SoC中存在很多个不同功能的子系统，这些子系统的功能相对复杂，一个子系统的资源就基本上和之前三电MCU规模差不多，所以在芯片规模指数级变化的时候，对应的芯片内部的故障信号的数量也在指数级变化，举个简单的例子：对于传统的MCU芯片，如规模较大的英飞凌TC3XX的故障规模大概在300~~500个左右， 而对于一个典型的智驾SoC的故障规模则大概在1000~~1500的左右，对于一些超大规模的智驾SoC的故障规模甚至可以达到5000个左右的规模。如果这些故障规模庞大的SoC也使用传统MCU芯片使用的状态机管理的这种方案的话，整个SoC的故障处理设计会存在以下问题：
+
+![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/d103fda6a79b4e07a480eaa1368efab1~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1733570260&x-orig-sign=4kQFD%2F3bqlQpKQwzLSE5p5XsVco%3D)
+
+1.  因为故障数量较大，整个故障处理模块的设计会变得很复杂；
+
+2.  整个芯片的物理实现也会因为故障信号数量的增加带来routing  congestion等相关问题；
+
+3.  因为SoC中的处理器的架构相比于MCU的处理器架构会更关注performance，实时性上会比较差，整个芯片的故障处理的软件延迟会增加，无法做到快速，实时的故障处理。
+
+为了解决上述的三个问题，在SoC的的设计中我们逐渐衍生出了安全岛的设计，最早的安全岛架构是由ARM提出的，ARM基于市场上客户对故障处理实时性要求较大而ARM的A核无法满足的背景下，推出了高可靠&高实时的R核系列用于在SoC中进行单独的故障处理，最早使用安全岛架构设计的芯片为TI的TDA4，TDA4的整体框图如下, 在TDA4的架构中，TI使用了一对支持DCLS的ARM cortex-R5F， 这个R5F的核配合之前MCU中的故障处理的状态机模块和一些低速的外设构成了TI的安全岛，在这个架构下，TI将TDA4中的故障信号和故障处理的软件都迁移到了安全岛中，在故障处理的过程中因为使用了高可靠&高实时的R核，所以整体的软件处理比A核更快，更稳定，相比于A核ms级的故障处理，安全岛架构下可以将软件的处理控制在us级，整个架构看起来可以很好的解决上述的三个问题，所以后续的芯片厂商在SoC中也大多沿用了安全岛这套架构。
+
+**问题2：当前安全岛的典型应用**
+
+![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/aac8696e7ba943fc99271c5bbb05156b~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1733570260&x-orig-sign=rrhFQwuWMRU%2FX3lgPtuWpipnDnM%3D)
+
+当前智驾ADCU的安全岛使用的典型应用，硬件基本架构如上图所示：
+
+1.  安全岛与外部safety MCU通过 SPI等低速接口进行安全相关的通信；
+
+2.  外部safety MCU作为SoC与安全岛的 common cause failure detect机制，用于接收安全岛输出的error pin；
+
+3.  外部safety MCU与SoC通过以太网进行function相关的通信。
+
+在该场景下，SoC的安全岛主要负责SoC内部的故障诊断和处理，并通过SPI等低速接口向外部的safety MCU进行故障信息的上报。
+
+Safety MCU在当前应用下作为整个ADCU最后的安全防线，用于一些智驾实时性算法的运算和整个ADCU的故障诊断通过CAN总线将整个智驾ADCU的故障诊断信息上报到整车。
+
+软件基本架构如下图所示：
+
+1.内核诊断模块检测内核态的软件错误；
+
+2.诊断进程收集软件错误；
+
+3.安全岛诊断模块实时监控ADAS操作系统状态及诊断进程；
+
+4.安全岛持续监控整个SoC的hardware error和software error；
+
+安全岛对error进行故障处理并对外进行error上报。
+
+整个软件的基本框架被分为了两部分：
+
+一部分为AP相关的嵌套在kernel中的safety诊断服务，对于这部分的诊断服务主要用于处理ADAS相关与业务挂钩的safety error，这部分error的严重度一般，不会直接影响整个safety goal，同时kernel safety 诊断服务也会用于对linux进行safety enhance，对于safety enhance的设计则取决各家对linux的具体设计。
+
+第二部分则为safety island的safety handle service，这部分业务主要布置在 safety island 的实时 core 上搭配的为 RTOS，主要用于 critical error的处理，包含硬件故障和AP侧的 critical software error。
+
+![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/571df02c9e0f4fbab1f8c6004a93ecd6~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1733570260&x-orig-sign=0uLeIMiCDT41yFxJEubIlFFRvhM%3D)
+
+两部分软件的通信当前比较主流的是使用mailbox的机制，当前的SoC场景也基本上会提供一套封装号的高可靠的mailbox软件接口用于双方通信和握手。
+
+**问题3：未来安全岛的架构演进**\*\*\*\*
+
+基于Topic2当前的安全到应用，当前架构下的安全岛应用在量产过程中仍然遇到了一下待解决的问题：
+
+**1. 缺失业务信息，导致故障处理分段化**
+
+当前安全岛作为独立故障处理模块，缺失Performance Core的实时业务信息，导致与业务相关的故障无法处理，无法形成归一化的故障处理策略。
+
+**2. 故障处理颗粒度过大**
+
+当前安全岛因为无法感知业务的状态，无法进行较小颗粒度的故障处理，更多的处理方式还是较为粗暴的reset。
+
+**3. 日益增大的SoC，安全岛的统一管理带来的硬件成本的增加**
+
+当前随着SoC的功能不断扩展，SoC的故障数量增加，安全岛的统一管理带来的是整体SoC的布局困难，导致面积成本的增加。
+
+**4. 日益增大的SoC，安全岛软件复杂度的增加和对硬件性能的增加**
+
+当前安全岛主要功能还是故障的处理，对于ADAS域的高安全，高实时的算法主要还是在外部MCU，受限于通信的带宽，导致部分高实时的应用受到时间的妥协，安全岛软件面临着日益增加的功能需求，对安全岛软件开发复杂度日益增加，同时对安全岛性能需求越来越大。
+
+基于上述的几个问题和下一代智驾SoC正在向着多域融合的方向发展，整个安全岛的架构的也会随着多域融合逐从为集中式演变成分布式，整个安全岛的功能也会从简单的故障处理演变出多域时钟处理，多域电源管理，多域隔离管理等功能用于解决多域融合导致的新增的相关性失效的控制。
+
+![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/fca7b7446756411fbe211d908331752a~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1733570260&x-orig-sign=iBw8Q4XqB3kyJpSi%2Fj%2F1HWd4IAE%3D)
+
+同时ADCU的产品形态上安全岛也会逐渐演进替换掉当前典型应用上ADCU部署的外置safety MCU,如下图所示，对于该产品模式可以带来以下的收益：
+
+1.  整体ADCU BOM成本降低；
+
+2.  减少供应链依赖，无需适配不同类型的safety MCU；
+
+3.  Safety MCU由安全岛完全替代，内部总线替代以太网通信，带宽更富裕，通信延迟更小，对于高实时的应用如AEB，可以大大减少算法时间。
+
+![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/d6134a5728fe47ba8804031b9027a4e8~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1733570260&x-orig-sign=XUGZJWntmm0MB9kzFebcZhOxeQE%3D)
+
+但是该产品模式下因为将所有的安全业务和功能都放到了一颗芯片中，所以物理上带来了更多的相关性失效，如：**共用内部总线，共用封装，热传导**等，后续的SoC安全岛难点也就是如何在架构上去控制这些相关性失效并如何与ADCU的成本进行一个合理的trade-off，因为上述相关性失效控制各家都还在专利布局阶段，本文在此不做深度探讨。
+
+“啥都懂一点，啥都不精通，
+
+干啥都能干，干啥啥不是，
+
+专业入门劝退，堪称程序员杂家”。
+
+欢迎各位有自己公众号的留言：**申请转载**！
+
+纯干货持续更新，欢迎**分享给朋友**、**点赞、收藏、在看、划线和评论交流**！
+
+彩蛋：
+
+1.  本公众号提供微信技术交流群，一起探讨汽车软件技术（先加微信：thatway1989，备注感兴趣的技术方向）。
+
+2.  有需要**投放广告、商业合作**的也可以联系博主。
+
+3.  赞赏1元钱交个朋友
