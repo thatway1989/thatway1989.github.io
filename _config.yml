@@ -16,6 +16,8 @@ addons_commit: true
 
 theme: null
 
+encoding="UTF-8"
+
 # sort
 readme_index:
   with_frontmatter: true

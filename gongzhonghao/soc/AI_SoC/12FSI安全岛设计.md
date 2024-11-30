@@ -1,3 +1,9 @@
+---
+layout: page
+title: AI SoC入门-12 FSI安全岛设计
+permalink: /chinese-title/
+---
+
 ![](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/802f1b11d8b84b1fba735d40d32cd52b~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1733570260&x-orig-sign=FuyocnFwN0VpqQXUdE1v%2BalBh%2BU%3D)
 
 之前写过一系列功能安全的文章，感觉已经写的非常详细了，这里带大家**重温走读**一下。总目录如下：
