@@ -4,4 +4,4 @@ sort: 1
 
 # 芯片SoC
 
-{{ page.path }}
+{% include list.liquid all=true %}
