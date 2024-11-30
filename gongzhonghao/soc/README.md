@@ -2,6 +2,6 @@
 sort: 1
 ---
 
-# 那路谈OS与SoC嵌入式软件
+# 芯片SoC
 
 {% include list.liquid %}
