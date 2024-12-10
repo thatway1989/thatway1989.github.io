@@ -1,33 +1,17 @@
-title: Thatway1989的博客
-lang: en-US
-description: Just another documentation theme compatible with GitHub Pages, based on sphinx_rtd_theme
+title: Read The Docs Jekyll Theme
+description: Port of the Read the Docs theme to Jekyll to use with GitHub Pages.
 
-edit: true
+# Development server config, needed to load some of the content
+webrick:
+  headers:
+    Access-Control-Allow-Origin: "*"
 
-copyright:
-  revision: true
-
-addons:
-  - github
-  - gems
-  - analytics
-
-addons_commit: true
-
-theme: null
-
-# sort
-readme_index:
-  with_frontmatter: true
-
-sass:
-  style: compressed
-
-exclude:
-  - Makefile
-  - Gemfile
-  - Gemfile.lock
-  - ci.sh
-  - CODE_OF_CONDUCT.md
-  - LICENSE
-  - jekyll-rtd-theme.gemspec
+# Theme settings
+site_author: Carlos Pereira Atencio
+repo_url: 'https://github.com/carlosperate/jekyll-theme-rtd'
+edit_on_github: true
+github_docs_folder: false
+sticky_navigation: true
+prev_next_buttons_location: both
+search_enabled: true
+hljs_style: github-gist
