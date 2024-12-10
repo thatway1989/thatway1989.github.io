@@ -1,7 +1,7 @@
 ---
-sort: 2
+sort: 3
 ---
 
-# Theme Documentation
+# Test Documentation
 
 {% include list.liquid all=true %}
