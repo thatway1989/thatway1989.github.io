@@ -13,8 +13,6 @@ This is a port of the
 You are previewing the theme right now, as you navigate
 [this documentation](https://carlosperate.github.io/jekyll-theme-rtd):
 
-![screenshot](assets/img/screenshot.png)
-
 The original [Read The Docs](https://readthedocs.org)
 [theme]((https://sphinx-rtd-theme.readthedocs.io)) was created for the
 [Sphinx](https://www.sphinx-doc.org/) documentation generator, and so it is
@@ -36,10 +34,5 @@ way to document your projects!
 
 This theme is currently a **Work-In-Progress** but, while some things might be
 broken, it should be already usable.
-
-Missing features are listed in the GitHub issues with the
-[to-do label](https://github.com/carlosperate/jekyll-theme-rtd/issues?q=is%3Aissue+is%3Aopen+label%3Ato-do),
-and any known issues are listed with the
-[bug label](https://github.com/carlosperate/jekyll-theme-rtd/issues?q=is%3Aissue+is%3Aopen+label%3Abug).
 
 Contributions are very welcomed!

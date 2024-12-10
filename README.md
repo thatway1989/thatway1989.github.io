@@ -1,11 +1,11 @@
-# Read The Docs Theme for Jekyll and GitHub Pages
+# Read The Docs Theme for Jekyll and GitHub Pages1
 
 Port of the Read the Docs theme to Jekyll that can be used with GitHub Pages.
 
 You can preview it in the
 [user documentation](https://carlosperate.github.io/jekyll-theme-rtd):
 
-![theme screenshot](docs/assets/img/screenshot.png)
+
 
 The original [Read The Docs](https://sphinx-rtd-theme.readthedocs.io)
 theme was created for [Sphinx](https://www.sphinx-doc.org/), and so it is
@@ -15,18 +15,6 @@ Combined with [GitHub Pages](https://pages.github.com) it's a great and easy
 way to document your projects!
 
 Check out the [quick start guide]() to see how easy it is to 
-
-### 🚧 Warning!
-
-This theme is currently a **Work-In-Progress** but, while some things might be
-broken, it should be already usable.
-
-Missing features are listed in the GitHub issues with the
-[to-do label](https://github.com/carlosperate/jekyll-theme-rtd/issues?q=is%3Aissue+is%3Aopen+label%3Ato-do),
-and any known issues are listed with the
-[bug label](https://github.com/carlosperate/jekyll-theme-rtd/issues?q=is%3Aissue+is%3Aopen+label%3Abug).
-
-Contributions are very welcomed!
 
 
 ## 🗂️ Readme Contents
@@ -154,17 +142,6 @@ $ cd _site_mkdocs
 $ pipenv run python -m http.server 8080
 ```
 
-
-## 👨‍👩‍👧‍👦 Contributing
-
-Bug reports and pull requests are welcome on GitHub at
-https://github.com/carlosperate/jekyll-theme-rtd.
-
-This project is intended to be a safe, welcoming space for collaboration, and
-contributors are expected to adhere to the
-[Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-
 ## ⚖️ License
 
 The original theme is from
@@ -177,7 +154,5 @@ This theme is based on the [MkDocs](https://github.com/mkdocs/mkdocs)
 Copyright © 2014, Tom Christie, all rights reserved, and released under the
 [BSD 2-Clause "Simplified" License](LICENSE-mkdocs).
 
-The theme modifications to port it Jekyll can be seen
-[here](https://github.com/carlosperate/jekyll-theme-rtd/compare/dddce9f13fde24c03aee4533158c43091120d47e...master).
 This and all new features are released under the
 [BSD 2-Clause "Simplified" License](LICENSE).
