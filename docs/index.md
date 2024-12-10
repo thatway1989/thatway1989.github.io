@@ -1,10 +1,10 @@
 ---
 layout: default
-title: 那路谈OS与SoC嵌入式软件3
+title: Index
 nav_exclude: true
 ---
 
-# 2Read The Docs Theme for Jekyll and GitHub Pages
+# Read The Docs Theme for Jekyll and GitHub Pages
 
 This is a port of the
 [Read The Docs](https://sphinx-rtd-theme.readthedocs.io) theme to
