@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Index-doc
+title: 那路谈OS与SoC嵌入式软件3
 nav_exclude: true
 ---
 
