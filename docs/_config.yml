@@ -3,7 +3,7 @@ description: Port of the Read the Docs theme to Jekyll to use with GitHub Pages.
 remote_theme: thatway1989/thatway1989.github.io
 
 # Theme settings:
-site_author: Carlos Pereira Atencio
+site_author: Thatway1989
 repo_url: "https://github.com/thatway1989/thatway1989.github.io"
 edit_on_github: true
 github_docs_folder: true

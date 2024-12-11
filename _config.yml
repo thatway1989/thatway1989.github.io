@@ -7,10 +7,10 @@ webrick:
     Access-Control-Allow-Origin: "*"
 
 # Theme settings
-site_author: Carlos Pereira Atencio
+site_author: Thatway1989
 repo_url: 'https://github.com/thatway1989/thatway1989.github.io'
 edit_on_github: true
-github_docs_folder: false
+github_docs_folder: true
 sticky_navigation: true
 prev_next_buttons_location: both
 search_enabled: true
