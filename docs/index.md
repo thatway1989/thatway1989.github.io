@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Index
+title: 博主介绍
 nav_exclude: true
 ---
 
 # Read The Docs Theme for Jekyll and GitHub Pages
-
+![logo](assets/img/logo-gongzhonghao.png)
 This is a port of the
 [Read The Docs](https://sphinx-rtd-theme.readthedocs.io) theme to
 [Jekyll](https://jekyllrb.com/), so that it can be used with GitHub Pages.
