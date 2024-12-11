@@ -1,4 +1,4 @@
-title: Read The Docs Jekyll Theme2
+title: Thatway1989的博客
 description: Port of the Read the Docs theme to Jekyll to use with GitHub Pages.
 remote_theme: thatway1989/thatway1989.github.io
 
@@ -8,6 +8,6 @@ repo_url: "https://github.com/thatway1989/thatway1989.github.io"
 edit_on_github: true
 github_docs_folder: true
 sticky_navigation: true
-prev_next_buttons_location: bottom
+prev_next_buttons_location: both
 search_enabled: true
 hljs_style: github-gist
