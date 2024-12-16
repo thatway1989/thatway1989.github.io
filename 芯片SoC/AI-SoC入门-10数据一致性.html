@@ -1,0 +1,2457 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>AI SoC入门-10数据一致性 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="AI-SoC入门-11HSM加解密子系统.html" />
+    
+    
+    <link rel="prev" href="AI-SoC入门-9访存接口.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    芯片SoC
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="SoC入门-1芯片研究框架（上）.html">
+            
+                <a href="SoC入门-1芯片研究框架（上）.html">
+            
+                    
+                    SoC入门-1芯片研究框架（上）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="SoC入门-2芯片研究框架（下）.html">
+            
+                <a href="SoC入门-2芯片研究框架（下）.html">
+            
+                    
+                    SoC入门-2芯片研究框架（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="SoC入门-3自动驾驶AI芯片框架.html">
+            
+                <a href="SoC入门-3自动驾驶AI芯片框架.html">
+            
+                    
+                    SoC入门-3自动驾驶AI芯片框架
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="SoC入门-4自动驾驶AI-SoC芯片趋势.html">
+            
+                <a href="SoC入门-4自动驾驶AI-SoC芯片趋势.html">
+            
+                    
+                    SoC入门-4自动驾驶AI SoC芯片趋势
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="AI-SoC入门-5NoC总线.html">
+            
+                <a href="AI-SoC入门-5NoC总线.html">
+            
+                    
+                    AI SoC入门-5NoC总线
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="AI-SoC入门-6CPU子系统.html">
+            
+                <a href="AI-SoC入门-6CPU子系统.html">
+            
+                    
+                    AI SoC入门-6CPU子系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="AI-SoC入门-7低速外设.html">
+            
+                <a href="AI-SoC入门-7低速外设.html">
+            
+                    
+                    AI SoC入门-7低速外设
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="AI-SoC入门-8高速外设USB、ETH.html">
+            
+                <a href="AI-SoC入门-8高速外设USB、ETH.html">
+            
+                    
+                    AI SoC入门-8高速外设USB、ETH
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="AI-SoC入门-9访存接口.html">
+            
+                <a href="AI-SoC入门-9访存接口.html">
+            
+                    
+                    AI SoC入门-9访存接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.10" data-path="AI-SoC入门-10数据一致性.html">
+            
+                <a href="AI-SoC入门-10数据一致性.html">
+            
+                    
+                    AI SoC入门-10数据一致性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="AI-SoC入门-11HSM加解密子系统.html">
+            
+                <a href="AI-SoC入门-11HSM加解密子系统.html">
+            
+                    
+                    AI SoC入门-11HSM加解密子系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="AI-SoC入门-12FSI安全岛设计.html">
+            
+                <a href="AI-SoC入门-12FSI安全岛设计.html">
+            
+                    
+                    AI SoC入门-12FSI安全岛设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="AI-SoC入门-13PMU电源管理子系统.html">
+            
+                <a href="AI-SoC入门-13PMU电源管理子系统.html">
+            
+                    
+                    AI SoC入门-13PMU电源管理子系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.14" data-path="AI-SoC入门：14从Transformer大模型到端到端自动驾驶算法.html">
+            
+                <a href="AI-SoC入门：14从Transformer大模型到端到端自动驾驶算法.html">
+            
+                    
+                    AI SoC入门：14从Transformer大模型到端到端自动驾驶算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.15" data-path="芯片-设计流程入门.html">
+            
+                <a href="芯片-设计流程入门.html">
+            
+                    
+                    芯片-设计流程入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.16" data-path="自动驾驶芯片入门-国内外主流厂商介绍.html">
+            
+                <a href="自动驾驶芯片入门-国内外主流厂商介绍.html">
+            
+                    
+                    自动驾驶芯片入门-国内外主流厂商介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.17" data-path="自动驾驶芯片入门-基础概念和架构.html">
+            
+                <a href="自动驾驶芯片入门-基础概念和架构.html">
+            
+                    
+                    自动驾驶芯片入门-基础概念和架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.18" data-path="SoC软件技术--核间通信.html">
+            
+                <a href="SoC软件技术--核间通信.html">
+            
+                    
+                    SoC软件技术--核间通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.19" data-path="SoC入门-1芯片研究框架（上）.html">
+            
+                <a href="SoC入门-1芯片研究框架（上）.html">
+            
+                    
+                    SoC入门-1芯片研究框架（上）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.20" data-path="SoC入门-2芯片研究框架（下）.html">
+            
+                <a href="SoC入门-2芯片研究框架（下）.html">
+            
+                    
+                    SoC入门-2芯片研究框架（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../电源管理/">
+            
+                <a href="../电源管理/">
+            
+                    
+                    电源管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../电源管理/电源管理入门-开篇即巅峰.html">
+            
+                <a href="../电源管理/电源管理入门-开篇即巅峰.html">
+            
+                    
+                    电源管理入门-开篇即巅峰
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../电源管理/电源管理入门-1关机重启详解.html">
+            
+                <a href="../电源管理/电源管理入门-1关机重启详解.html">
+            
+                    
+                    电源管理入门-1关机重启详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../电源管理/电源管理入门-2开机详解.html">
+            
+                <a href="../电源管理/电源管理入门-2开机详解.html">
+            
+                    
+                    电源管理入门-2开机详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../电源管理/电源管理入门-3CPU热插拔hotplug.html">
+            
+                <a href="../电源管理/电源管理入门-3CPU热插拔hotplug.html">
+            
+                    
+                    电源管理入门-3CPU热插拔hotplug
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../电源管理/电源管理入门-4子系统reset.html">
+            
+                <a href="../电源管理/电源管理入门-4子系统reset.html">
+            
+                    
+                    电源管理入门-4子系统reset
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../电源管理/电源管理入门-5arm-scmi和mailbox核间通信.html">
+            
+                <a href="../电源管理/电源管理入门-5arm-scmi和mailbox核间通信.html">
+            
+                    
+                    电源管理入门-5 arm-scmi和mailbox核间通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../电源管理/电源管理入门-6CPUFreq.html">
+            
+                <a href="../电源管理/电源管理入门-6CPUFreq.html">
+            
+                    
+                    电源管理入门-6 CPUFreq
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="../电源管理/电源管理入门-7DevFreq.html">
+            
+                <a href="../电源管理/电源管理入门-7DevFreq.html">
+            
+                    
+                    电源管理入门-7 DevFreq
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" data-path="../电源管理/电源管理入门-8休眠唤醒.html">
+            
+                <a href="../电源管理/电源管理入门-8休眠唤醒.html">
+            
+                    
+                    电源管理入门-8 休眠唤醒
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10" data-path="../电源管理/电源管理入门-9CPU-Idle.html">
+            
+                <a href="../电源管理/电源管理入门-9CPU-Idle.html">
+            
+                    
+                    电源管理入门-9 CPU Idle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.11" data-path="../电源管理/电源管理入门-10OPP介绍.html">
+            
+                <a href="../电源管理/电源管理入门-10OPP介绍.html">
+            
+                    
+                    电源管理入门-10 OPP介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.12" data-path="../电源管理/电源管理入门-11Regulator驱动.html">
+            
+                <a href="../电源管理/电源管理入门-11Regulator驱动.html">
+            
+                    
+                    电源管理入门-11Regulator驱动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.13" data-path="../电源管理/电源管理入门-12clock驱动.html">
+            
+                <a href="../电源管理/电源管理入门-12clock驱动.html">
+            
+                    
+                    电源管理入门-12 clock驱动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.14" data-path="../电源管理/电源管理入门-13Thermal热管理.html">
+            
+                <a href="../电源管理/电源管理入门-13Thermal热管理.html">
+            
+                    
+                    电源管理入门-13Thermal 热管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.15" data-path="../电源管理/电源管理入门-14Watchdog.html">
+            
+                <a href="../电源管理/电源管理入门-14Watchdog.html">
+            
+                    
+                    电源管理入门-14 Watchdog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.16" data-path="../电源管理/电源管理入门-15PM-QoS.html">
+            
+                <a href="../电源管理/电源管理入门-15PM-QoS.html">
+            
+                    
+                    电源管理入门-15 PM QoS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.17" data-path="../电源管理/电源管理入门-16驱动Runtime-PM管理.html">
+            
+                <a href="../电源管理/电源管理入门-16驱动Runtime-PM管理.html">
+            
+                    
+                    电源管理入门-16 驱动Runtime PM管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.18" data-path="../电源管理/电源管理入门-17Power-supply子系统.html">
+            
+                <a href="../电源管理/电源管理入门-17Power-supply子系统.html">
+            
+                    
+                    电源管理入门-17 Power supply子系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.19" data-path="../电源管理/电源管理入门-18Power-Domain管理.html">
+            
+                <a href="../电源管理/电源管理入门-18Power-Domain管理.html">
+            
+                    
+                    电源管理入门-18 Power Domain管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.20" data-path="../电源管理/电源管理入门-19微内核中的电源管理.html">
+            
+                <a href="../电源管理/电源管理入门-19微内核中的电源管理.html">
+            
+                    
+                    电源管理入门-19 微内核中的电源管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.21" data-path="../电源管理/电源管理入门-20Hypervisor中的电源管理.html">
+            
+                <a href="../电源管理/电源管理入门-20Hypervisor中的电源管理.html">
+            
+                    
+                    电源管理入门-20 Hypervisor中的电源管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.22" data-path="../电源管理/电源管理入门-21芯片设计中的电源管理.html">
+            
+                <a href="../电源管理/电源管理入门-21芯片设计中的电源管理.html">
+            
+                    
+                    电源管理入门-21 芯片设计中的电源管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.23" data-path="../电源管理/电源管理入门-汇总篇.html">
+            
+                <a href="../电源管理/电源管理入门-汇总篇.html">
+            
+                    
+                    电源管理入门-汇总篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.24" data-path="../电源管理/英伟达系列芯片如何用于自动驾驶开发之（二）：硬件电源设计.html">
+            
+                <a href="../电源管理/英伟达系列芯片如何用于自动驾驶开发之（二）：硬件电源设计.html">
+            
+                    
+                    英伟达系列芯片如何用于自动驾驶开发之（二）：硬件电源设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../ATF等底层固件/">
+            
+                <a href="../ATF等底层固件/">
+            
+                    
+                    ATF等底层固件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../ATF等底层固件/ARM-ATF入门-安全固件软件介绍和代码运行.html">
+            
+                <a href="../ATF等底层固件/ARM-ATF入门-安全固件软件介绍和代码运行.html">
+            
+                    
+                    ARM ATF入门-安全固件软件介绍和代码运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../ATF等底层固件/ATF入门-1qmeu搭建ARM全套源码学习环境.html">
+            
+                <a href="../ATF等底层固件/ATF入门-1qmeu搭建ARM全套源码学习环境.html">
+            
+                    
+                    ATF入门-1qmeu搭建ARM全套源码学习环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../ATF等底层固件/ATF入门-2大软件模型和代码编译运行探究.html">
+            
+                <a href="../ATF等底层固件/ATF入门-2大软件模型和代码编译运行探究.html">
+            
+                    
+                    ATF入门-2大软件模型和代码编译运行探究
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../ATF等底层固件/ATF入门-3BL2启动流程分析.html">
+            
+                <a href="../ATF等底层固件/ATF入门-3BL2启动流程分析.html">
+            
+                    
+                    ATF入门-3BL2启动流程分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../ATF等底层固件/ATF入门-4BL31启动流程分析.html">
+            
+                <a href="../ATF等底层固件/ATF入门-4BL31启动流程分析.html">
+            
+                    
+                    ATF入门-4BL31启动流程分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../ATF等底层固件/Secure-boot入门-1基本概念和框架.html">
+            
+                <a href="../ATF等底层固件/Secure-boot入门-1基本概念和框架.html">
+            
+                    
+                    Secure boot入门-1基本概念和框架
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../ATF等底层固件/Secure-boot入门-2fip包加载image流程.html">
+            
+                <a href="../ATF等底层固件/Secure-boot入门-2fip包加载image流程.html">
+            
+                    
+                    Secure boot入门-2fip包加载image流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../ATF等底层固件/Secure-boot入门-3镜像验签基础及代码初探.html">
+            
+                <a href="../ATF等底层固件/Secure-boot入门-3镜像验签基础及代码初探.html">
+            
+                    
+                    Secure boot入门-3镜像验签基础及代码初探
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../ATF等底层固件/Secure-boot入门-4镜像验签代码分析.html">
+            
+                <a href="../ATF等底层固件/Secure-boot入门-4镜像验签代码分析.html">
+            
+                    
+                    Secure boot入门-4镜像验签代码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="../ATF等底层固件/secureboot入门-5镜像加密-签名-打包.html">
+            
+                <a href="../ATF等底层固件/secureboot入门-5镜像加密-签名-打包.html">
+            
+                    
+                    secureboot入门-5镜像加密-签名-打包
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="../ATF等底层固件/secureboot入门-6安卓AVB安全启动基础.html">
+            
+                <a href="../ATF等底层固件/secureboot入门-6安卓AVB安全启动基础.html">
+            
+                    
+                    secureboot入门-6安卓AVB安全启动基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.12" data-path="../ATF等底层固件/secureboot入门-7安卓AVB校验代码分析.html">
+            
+                <a href="../ATF等底层固件/secureboot入门-7安卓AVB校验代码分析.html">
+            
+                    
+                    secureboot入门-7安卓AVB校验代码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.13" data-path="../ATF等底层固件/secureboot入门-8硬件杂谈和汇总.html">
+            
+                <a href="../ATF等底层固件/secureboot入门-8硬件杂谈和汇总.html">
+            
+                    
+                    secureboot入门-8硬件杂谈和汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.14" data-path="../ATF等底层固件/uboot入门-1简介和运行.html">
+            
+                <a href="../ATF等底层固件/uboot入门-1简介和运行.html">
+            
+                    
+                    uboot入门-1简介和运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.15" data-path="../ATF等底层固件/uboot入门-2Makefile和编译.html">
+            
+                <a href="../ATF等底层固件/uboot入门-2Makefile和编译.html">
+            
+                    
+                    uboot入门-2Makefile和编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.16" data-path="../ATF等底层固件/uboot-3链接脚本和第一阶段启动.html">
+            
+                <a href="../ATF等底层固件/uboot-3链接脚本和第一阶段启动.html">
+            
+                    
+                    uboot-3链接脚本和第一阶段启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.17" data-path="../ATF等底层固件/uboot入门-4命令行和驱动管理.html">
+            
+                <a href="../ATF等底层固件/uboot入门-4命令行和驱动管理.html">
+            
+                    
+                    uboot入门-4命令行和驱动管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.18" data-path="../ATF等底层固件/uboot入门-5linux启动前夜.html">
+            
+                <a href="../ATF等底层固件/uboot入门-5linux启动前夜.html">
+            
+                    
+                    uboot入门-5linux启动前夜
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.19" data-path="../ATF等底层固件/uboot入门-6移植要点.html">
+            
+                <a href="../ATF等底层固件/uboot入门-6移植要点.html">
+            
+                    
+                    uboot入门-6移植要点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.20" data-path="../ATF等底层固件/ARM-SCP入门-简介和代码下载编译.html">
+            
+                <a href="../ATF等底层固件/ARM-SCP入门-简介和代码下载编译.html">
+            
+                    
+                    ARM SCP入门-简介和代码下载编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.21" data-path="../ATF等底层固件/ARM-SCP入门-framework框架代码分析.html">
+            
+                <a href="../ATF等底层固件/ARM-SCP入门-framework框架代码分析.html">
+            
+                    
+                    ARM SCP入门-framework框架代码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.22" data-path="../ATF等底层固件/ARM-SCP入门-AP与SCP通信.html">
+            
+                <a href="../ATF等底层固件/ARM-SCP入门-AP与SCP通信.html">
+            
+                    
+                    ARM SCP入门-AP与SCP通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.23" data-path="../ATF等底层固件/功能安全入门-1内功心法ISO26262介绍.html">
+            
+                <a href="../ATF等底层固件/功能安全入门-1内功心法ISO26262介绍.html">
+            
+                    
+                    功能安全入门-1内功心法ISO26262介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.24" data-path="../ATF等底层固件/功能安全入门-2ISO26262说人话版本GB_T34590.html">
+            
+                <a href="../ATF等底层固件/功能安全入门-2ISO26262说人话版本GB_T34590.html">
+            
+                    
+                    功能安全入门-2 ISO26262说人话版本GB_T 34590
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.25" data-path="../ATF等底层固件/功能安全的架构设计（七）_芯片篇-上.html">
+            
+                <a href="../ATF等底层固件/功能安全的架构设计（七）_芯片篇-上.html">
+            
+                    
+                    功能安全的架构设计（七）_ 芯片篇-上
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.26" data-path="../ATF等底层固件/功能安全的架构设计（八）_芯片篇-下.html">
+            
+                <a href="../ATF等底层固件/功能安全的架构设计（八）_芯片篇-下.html">
+            
+                    
+                    功能安全的架构设计（八）_ 芯片篇-下
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.27" data-path="../ATF等底层固件/功能安全入门-功能安全岛FSI.html">
+            
+                <a href="../ATF等底层固件/功能安全入门-功能安全岛FSI.html">
+            
+                    
+                    功能安全入门-功能安全岛(FSI)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.28" data-path="../ATF等底层固件/功能安全入门-再谈FSI.html">
+            
+                <a href="../ATF等底层固件/功能安全入门-再谈FSI.html">
+            
+                    
+                    功能安全入门-再谈FSI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.29" data-path="../ATF等底层固件/功能安全入门-SoC设计漫谈.html">
+            
+                <a href="../ATF等底层固件/功能安全入门-SoC设计漫谈.html">
+            
+                    
+                    功能安全入门-SoC设计漫谈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.30" data-path="../ATF等底层固件/英伟达系列芯片如何用于自动驾驶研发之架构及安全设计（一）.html">
+            
+                <a href="../ATF等底层固件/英伟达系列芯片如何用于自动驾驶研发之架构及安全设计（一）.html">
+            
+                    
+                    英伟达系列芯片如何用于自动驾驶研发之架构及安全设计（一）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../操作系统OS/">
+            
+                <a href="../操作系统OS/">
+            
+                    
+                    操作系统OS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../操作系统OS/汽车操作系统-现状及演进.html">
+            
+                <a href="../操作系统OS/汽车操作系统-现状及演进.html">
+            
+                    
+                    汽车操作系统-现状及演进
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../操作系统OS/闲聊-小米首席架构师崔宝秋的开源故事.html">
+            
+                <a href="../操作系统OS/闲聊-小米首席架构师崔宝秋的开源故事.html">
+            
+                    
+                    闲聊-小米首席架构师崔宝秋的开源故事
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../操作系统OS/小米澎湃OS-白皮书介绍.html">
+            
+                <a href="../操作系统OS/小米澎湃OS-白皮书介绍.html">
+            
+                    
+                    小米澎湃OS-白皮书介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../操作系统OS/FreeRTOS入门-概念介绍.html">
+            
+                <a href="../操作系统OS/FreeRTOS入门-概念介绍.html">
+            
+                    
+                    FreeRTOS入门-概念介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../操作系统OS/FreeRTOS入门-qemu运行及资料.html">
+            
+                <a href="../操作系统OS/FreeRTOS入门-qemu运行及资料.html">
+            
+                    
+                    FreeRTOS入门-qemu运行及资料
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../操作系统OS/Fuchsia入门-简介和代码介绍.html">
+            
+                <a href="../操作系统OS/Fuchsia入门-简介和代码介绍.html">
+            
+                    
+                    Fuchsia入门-简介和代码介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../操作系统OS/Fuchsia入门-zircon微内核单独编译启动.html">
+            
+                <a href="../操作系统OS/Fuchsia入门-zircon微内核单独编译启动.html">
+            
+                    
+                    Fuchsia入门-zircon微内核单独编译启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../操作系统OS/Fuchsia入门-zircon微内核启动代码分析.html">
+            
+                <a href="../操作系统OS/Fuchsia入门-zircon微内核启动代码分析.html">
+            
+                    
+                    Fuchsia入门-zircon微内核启动代码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../操作系统OS/zCore入门-面向对象的Rust微内核.html">
+            
+                <a href="../操作系统OS/zCore入门-面向对象的Rust微内核.html">
+            
+                    
+                    zCore入门-面向对象的Rust微内核
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="../操作系统OS/HarmonyOS入门-简介和代码编译.html">
+            
+                <a href="../操作系统OS/HarmonyOS入门-简介和代码编译.html">
+            
+                    
+                    HarmonyOS入门-简介和代码编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="../操作系统OS/KataOS入门-简介和代码编译.html">
+            
+                <a href="../操作系统OS/KataOS入门-简介和代码编译.html">
+            
+                    
+                    KataOS入门-简介和代码编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" data-path="../操作系统OS/MINIX3入门-简介及代码编译运行.html">
+            
+                <a href="../操作系统OS/MINIX3入门-简介及代码编译运行.html">
+            
+                    
+                    MINIX3入门-简介及代码编译运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.13" data-path="../操作系统OS/Nuttx-RTOS入门-简介及开源代码运行.html">
+            
+                <a href="../操作系统OS/Nuttx-RTOS入门-简介及开源代码运行.html">
+            
+                    
+                    Nuttx RTOS入门-简介及开源代码运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.14" data-path="../操作系统OS/OS前沿-vivo-BlueOS技术分析.html">
+            
+                <a href="../操作系统OS/OS前沿-vivo-BlueOS技术分析.html">
+            
+                    
+                    OS前沿-vivo BlueOS技术分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15" data-path="../操作系统OS/QNX入门-简介、开源代码、框架文档.html">
+            
+                <a href="../操作系统OS/QNX入门-简介、开源代码、框架文档.html">
+            
+                    
+                    QNX入门-简介、开源代码、框架文档
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.16" data-path="../操作系统OS/rCore入门-来自清华的OS前沿教程.html">
+            
+                <a href="../操作系统OS/rCore入门-来自清华的OS前沿教程.html">
+            
+                    
+                    rCore入门-来自清华的OS前沿教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.17" data-path="../操作系统OS/seL4微内核入门-代码下载运行及资料.html">
+            
+                <a href="../操作系统OS/seL4微内核入门-代码下载运行及资料.html">
+            
+                    
+                    seL4微内核入门-代码下载运行及资料
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.18" data-path="../操作系统OS/seL4微内核入门-微内核介绍.html">
+            
+                <a href="../操作系统OS/seL4微内核入门-微内核介绍.html">
+            
+                    
+                    seL4微内核入门-微内核介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.19" data-path="../操作系统OS/Zephyr-RTOS入门-简介及代码下载编译运行.html">
+            
+                <a href="../操作系统OS/Zephyr-RTOS入门-简介及代码下载编译运行.html">
+            
+                    
+                    Zephyr RTOS入门-简介及代码下载编译运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.20" data-path="../操作系统OS/os内核入门-linux0.11编译介绍.html">
+            
+                <a href="../操作系统OS/os内核入门-linux0.11编译介绍.html">
+            
+                    
+                    os内核入门-linux0.11编译介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.21" data-path="../操作系统OS/os内核入门-linux0.11诞生的故事和源码初探.html">
+            
+                <a href="../操作系统OS/os内核入门-linux0.11诞生的故事和源码初探.html">
+            
+                    
+                    os内核入门-linux0.11诞生的故事和源码初探
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.22" data-path="../操作系统OS/os内核入门-linux0.11运行环境搭建.html">
+            
+                <a href="../操作系统OS/os内核入门-linux0.11运行环境搭建.html">
+            
+                    
+                    os内核入门-linux0.11运行环境搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../AUTOSAR入门/">
+            
+                <a href="../AUTOSAR入门/">
+            
+                    
+                    AUTOSAR入门
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../AUTOSAR入门/AUTOSAR入门-江湖.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-江湖.html">
+            
+                    
+                    AUTOSAR入门-江湖
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../AUTOSAR入门/AUTOSAR入门-AS开源代码运行环境搭建.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-AS开源代码运行环境搭建.html">
+            
+                    
+                    AUTOSAR入门-AS开源代码运行环境搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../AUTOSAR入门/AUTOSAR入门-AS开源代码编译过程详解.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-AS开源代码编译过程详解.html">
+            
+                    
+                    AUTOSAR入门-AS开源代码编译过程详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../AUTOSAR入门/AUTOSAR入门-AS平台工具命令和目录介绍.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-AS平台工具命令和目录介绍.html">
+            
+                    
+                    AUTOSAR入门-AS平台工具命令和目录介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../AUTOSAR入门/AUTOSAR入门-基于以太网诊断.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-基于以太网诊断.html">
+            
+                    
+                    AUTOSAR入门-基于以太网诊断
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../AUTOSAR入门/AUTOSAR入门-Dcm模块.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-Dcm模块.html">
+            
+                    
+                    AUTOSAR入门-Dcm模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../AUTOSAR入门/AUTOSAR入门-PduR模块.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-PduR模块.html">
+            
+                    
+                    AUTOSAR入门-PduR模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../AUTOSAR入门/AUTOSAR入门-DoIP模块.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-DoIP模块.html">
+            
+                    
+                    AUTOSAR入门-DoIP模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../AUTOSAR入门/AUTOSAR入门-AS代码运行补充知识1.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-AS代码运行补充知识1.html">
+            
+                    
+                    AUTOSAR入门-AS代码运行补充知识1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../AUTOSAR入门/AUTOSAR入门-AS代码运行补充知识2.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-AS代码运行补充知识2.html">
+            
+                    
+                    AUTOSAR入门-AS代码运行补充知识2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../AUTOSAR入门/AUTOSAR入门-SoAd模块和TcpIp模块.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-SoAd模块和TcpIp模块.html">
+            
+                    
+                    AUTOSAR入门-SoAd模块和TcpIp模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../AUTOSAR入门/AUTOSAR入门-EcuM模块与系统启动.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-EcuM模块与系统启动.html">
+            
+                    
+                    AUTOSAR入门-EcuM模块与系统启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="../AUTOSAR入门/AUTOSAR入门-工具链与方法论.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-工具链与方法论.html">
+            
+                    
+                    AUTOSAR入门-工具链与方法论
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="../AUTOSAR入门/AUTOSAR入门-前情回顾和仪表盘asone.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-前情回顾和仪表盘asone.html">
+            
+                    
+                    AUTOSAR入门-前情回顾和仪表盘asone
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="../AUTOSAR入门/AUTOSAR入门-汽车电子架构演进（一）ECU和域控制器.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-汽车电子架构演进（一）ECU和域控制器.html">
+            
+                    
+                    AUTOSAR入门-汽车电子架构演进（一）ECU和域控制器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.16" data-path="../AUTOSAR入门/汽车电子构架演进（二）AUTOSAR的组成和演进.html">
+            
+                <a href="../AUTOSAR入门/汽车电子构架演进（二）AUTOSAR的组成和演进.html">
+            
+                    
+                    汽车电子构架演进（二）AUTOSAR的组成和演进
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="../AUTOSAR入门/AUTOSAR入门-汽车电子构架演进（三）通向未来.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-汽车电子构架演进（三）通向未来.html">
+            
+                    
+                    AUTOSAR入门-汽车电子构架演进（三）通向未来
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../AUTOSAR入门/AUTOSAR入门-汽车电子构架演进四未来已来.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-汽车电子构架演进四未来已来.html">
+            
+                    
+                    AUTOSAR入门-汽车电子构架演进(四) 未来已来
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../工具使用技巧/">
+            
+                <a href="../工具使用技巧/">
+            
+                    
+                    工具使用技巧
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../工具使用技巧/编程技巧：怎样快速学习一门新编程语言.html">
+            
+                <a href="../工具使用技巧/编程技巧：怎样快速学习一门新编程语言.html">
+            
+                    
+                    编程技巧：怎样快速学习一门新编程语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../工具使用技巧/编程入门-Hello算法网站.html">
+            
+                <a href="../工具使用技巧/编程入门-Hello算法网站.html">
+            
+                    
+                    编程入门-Hello算法网站
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../工具使用技巧/编程杂谈-代码review.html">
+            
+                <a href="../工具使用技巧/编程杂谈-代码review.html">
+            
+                    
+                    编程杂谈-代码review
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../工具使用技巧/编程知识：GPL、BSD等开源协议简介.html">
+            
+                <a href="../工具使用技巧/编程知识：GPL、BSD等开源协议简介.html">
+            
+                    
+                    编程知识：GPL、BSD等开源协议简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../工具使用技巧/工具技巧-github上开源软件搜索技巧.html">
+            
+                <a href="../工具使用技巧/工具技巧-github上开源软件搜索技巧.html">
+            
+                    
+                    工具技巧-github上开源软件搜索技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../工具使用技巧/工具使用-Markdown入门.html">
+            
+                <a href="../工具使用技巧/工具使用-Markdown入门.html">
+            
+                    
+                    工具使用-Markdown入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../杂谈/">
+            
+                <a href="../杂谈/">
+            
+                    
+                    杂谈
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../杂谈/闲聊-关于公众号改名《那路谈OS与SoC嵌入式软件》.html">
+            
+                <a href="../杂谈/闲聊-关于公众号改名《那路谈OS与SoC嵌入式软件》.html">
+            
+                    
+                    闲聊-关于公众号改名《那路谈OS与SoC嵌入式软件》
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../杂谈/闲聊-互联网“坏人多”？.html">
+            
+                <a href="../杂谈/闲聊-互联网“坏人多”？.html">
+            
+                    
+                    闲聊-互联网“坏人多”？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../杂谈/闲聊-互联网黑话.html">
+            
+                <a href="../杂谈/闲聊-互联网黑话.html">
+            
+                    
+                    闲聊-互联网黑话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../杂谈/闲聊-互联网职场PUA.html">
+            
+                <a href="../杂谈/闲聊-互联网职场PUA.html">
+            
+                    
+                    闲聊-互联网职场PUA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../杂谈/闲聊-另类视角看岗位JD.html">
+            
+                <a href="../杂谈/闲聊-另类视角看岗位JD.html">
+            
+                    
+                    闲聊-另类视角看岗位JD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../杂谈/闲聊-天涯神贴.html">
+            
+                <a href="../杂谈/闲聊-天涯神贴.html">
+            
+                    
+                    闲聊-天涯神贴
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../杂谈/闲聊-务虚和形式是种病？.html">
+            
+                <a href="../杂谈/闲聊-务虚和形式是种病？.html">
+            
+                    
+                    闲聊-务虚和形式是种病？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="../杂谈/闲聊-细思极恐的职场信息差.html">
+            
+                <a href="../杂谈/闲聊-细思极恐的职场信息差.html">
+            
+                    
+                    闲聊-细思极恐的职场信息差
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.9" data-path="../杂谈/职场向上管理（工作汇报）-程序员版.html">
+            
+                <a href="../杂谈/职场向上管理（工作汇报）-程序员版.html">
+            
+                    
+                    职场向上管理（工作汇报）-程序员版
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.10" data-path="../杂谈/闲聊-北上广地域差异和造车新势力底色.html">
+            
+                <a href="../杂谈/闲聊-北上广地域差异和造车新势力底色.html">
+            
+                    
+                    闲聊-北上广地域差异和造车新势力底色
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.11" data-path="../杂谈/通俗国学-克制“习惯性反驳”，才能赢得他人尊重.html">
+            
+                <a href="../杂谈/通俗国学-克制“习惯性反驳”，才能赢得他人尊重.html">
+            
+                    
+                    通俗国学-克制“习惯性反驳”，才能赢得他人尊重
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.12" data-path="../杂谈/通俗国学-静坐养生.html">
+            
+                <a href="../杂谈/通俗国学-静坐养生.html">
+            
+                    
+                    通俗国学-静坐养生
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.13" data-path="../杂谈/程序员内功之架构图.html">
+            
+                <a href="../杂谈/程序员内功之架构图.html">
+            
+                    
+                    程序员内功之架构图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.14" data-path="../杂谈/程序员内功-学术思维能力.html">
+            
+                <a href="../杂谈/程序员内功-学术思维能力.html">
+            
+                    
+                    程序员内功-学术思维能力
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.15" data-path="../杂谈/通俗国学-少年经不得顺境，中年经不得闲境，晚年经不得逆境.html">
+            
+                <a href="../杂谈/通俗国学-少年经不得顺境，中年经不得闲境，晚年经不得逆境.html">
+            
+                    
+                    通俗国学-少年经不得顺境，中年经不得闲境，晚年经不得逆境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.16" data-path="../杂谈/NO03制造大国的源泉.html">
+            
+                <a href="../杂谈/NO03制造大国的源泉.html">
+            
+                    
+                    NO03制造大国的源泉
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.17" data-path="../杂谈/NO2达到沟通目的才算有效沟通.html">
+            
+                <a href="../杂谈/NO2达到沟通目的才算有效沟通.html">
+            
+                    
+                    NO2达到沟通目的才算有效沟通
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.18" data-path="../杂谈/懒惰无聊是一种产业NO1.html">
+            
+                <a href="../杂谈/懒惰无聊是一种产业NO1.html">
+            
+                    
+                    懒惰无聊是一种产业 NO1
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >AI SoC入门-10数据一致性</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/a0d756a63a334e689661f50aaaea03d4~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936505&amp;x-orig-sign=fxuABTDaFJhBJKIi5%2BOCcjLgCgo%3D" alt="image.png"></p>
+<p>&#x4E0A;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;&#x8BB2;&#x4E86;&#x5404;&#x79CD;&#x5B58;&#x50A8;&#xFF0C;&#x4F46;&#x662F;Core&#x8BBF;&#x95EE;&#x6570;&#x636E;&#x7684;&#x65F6;&#x5019;&#x90FD;&#x4F1A;&#x9047;&#x5230;&#x6570;&#x636E;&#x4E00;&#x81F4;&#x6027;&#x95EE;&#x9898;&#xFF0C;&#x5176;&#x5DF2;&#x7ECF;&#x6210;&#x529F;&#x8F6F;&#x4EF6;&#x4E2D;&#x5E38;&#x89C1;&#x7684;&#x9519;&#x8BEF;&#x6839;&#x6E90;&#xFF0C;&#x7279;&#x522B;&#x662F;&#x5F02;&#x6784;&#x6838;&#x4E4B;&#x95F4;&#x770B;&#x5230;&#x7684;&#x6570;&#x636E;&#x4E0D;&#x4E00;&#x81F4;&#xFF0C;&#x591A;&#x6838;&#x770B;&#x5230;&#x7684;&#x6570;&#x636E;&#x4E0D;&#x4E00;&#x81F4;&#x7B49;&#xFF0C;&#x76F4;&#x63A5;&#x628A;OS&#x641E;&#x5D29;&#x3002;</p>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/6c83ffad3c794c59adf649d40e6b89cc~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936505&amp;x-orig-sign=FM0UquJAepw3e0c3S2gMlPGQRBQ%3D" alt="image.png"></p>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/1aaf366364f2426fbdc9f531377eda4d~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936505&amp;x-orig-sign=gFhXcm7z7yY3OhEAUtm1Rtwcc7s%3D" alt="image.png">
+&#x4E0A;&#x56FE;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4ECE;CPU&#x5F00;&#x59CB;&#xFF0C;&#x4E00;&#x7EA7;&#x4E00;&#x7EA7;&#x7684;&#x53BB;&#x83B7;&#x53D6;&#x4FE1;&#x606F;&#xFF0C;&#x4E14;&#x901F;&#x5EA6;&#x8D8A;&#x6765;&#x8D8A;&#x5FEB;&#xFF0C;&#x8FD9;&#x4E48;&#x591A;&#x7EA7;&#x522B;&#x4E2D;&#x6709;&#x5F88;&#x591A;&#x7F13;&#x5B58;&#xFF0C;&#x5C31;&#x5B58;&#x5728;&#x4E00;&#x81F4;&#x6027;&#x95EE;&#x9898;&#x3002;&#x6570;&#x636E;&#x4E00;&#x81F4;&#x6027;&#x95EE;&#x9898;&#x5C31;&#x662F;&#x5728;&#x540C;&#x4E00;&#x65F6;&#x523B;&#xFF0C;&#x4E0D;&#x540C;&#x7684;&#x4E3B;&#x4F53;&#x770B;&#x5230;&#x7684;&#x6570;&#x636E;&#x4E0D;&#x4E00;&#x81F4;&#xFF0C;&#x5BFC;&#x81F4;&#x903B;&#x8F91;&#x9519;&#x8BEF;&#x3002;&#x5BFC;&#x81F4;&#x6570;&#x636E;&#x4E0D;&#x4E00;&#x81F4;&#x7684;&#x4E3B;&#x8981;&#x539F;&#x56E0;&#x5C31;&#x662F;&#x5404;&#x79CD;cache&#x548C;&#x65F6;&#x5E8F;&#x9519;&#x4E71;&#x7B49;&#x3002;</p>
+<h1 id="1-&#x591A;&#x6838;cache&#x4E00;&#x81F4;&#x6027;">1. &#x591A;&#x6838;cache&#x4E00;&#x81F4;&#x6027;</h1>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/59a6da2322014cb38d89d1c3820ec25e~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936505&amp;x-orig-sign=XOiqli2bhIuoPYEJTKMqPkBdi6k%3D" alt="image.png"></p>
+<p>&#x63D0;&#x9AD8;CPU&#x7684;&#x8FD0;&#x7B97;&#x80FD;&#x529B;&#xFF0C;&#x4E00;&#x65B9;&#x9762;&#x63D0;&#x9AD8;CPU&#x7684;&#x9891;&#x7387;&#xFF0C;&#x53E6;&#x4E00;&#x65B9;&#x9762;&#x5BF9;&#x8FD0;&#x7B97;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x74F6;&#x9888;&#xFF1A;DDR&#x8DDF;CPU&#x7684;&#x6570;&#x636E;&#x4EA4;&#x6362;&#x8017;&#x65F6;&#x8FDB;&#x884C;&#x4F18;&#x5316;&#x3002;&#x8FD9;&#x65F6;&#x5C31;&#x9700;&#x8981;&#x5728;CPU&#x548C;DDR&#x4E4B;&#x95F4;&#x6DFB;&#x52A0;cache&#xFF0C;&#x51CF;&#x5C11;CPU&#x7684;&#x76F2;&#x7B49;&#x65F6;&#x95F4;&#x3002;</p>
+<p>CPU Cache &#x901A;&#x5E38;&#x5206;&#x4E3A;&#x4E09;&#x7EA7;&#x7F13;&#x5B58;&#xFF1A;L1 Cache&#x3001;L2 Cache&#x3001;L3 Cache&#xFF0C;&#x7EA7;&#x522B;&#x8D8A;&#x4F4E;&#x7684;&#x79BB; CPU &#x6838;&#x5FC3;&#x8D8A;&#x8FD1;&#xFF0C;&#x8BBF;&#x95EE;&#x901F;&#x5EA6;&#x4E5F;&#x5FEB;&#xFF0C;&#x4F46;&#x662F;&#x5B58;&#x50A8;&#x5BB9;&#x91CF;&#x76F8;&#x5BF9;&#x5C31;&#x4F1A;&#x8D8A;&#x5C0F;&#x3002;&#x5176;&#x4E2D;&#xFF0C;&#x5728;&#x591A;&#x6838;&#x5FC3;&#x7684; CPU &#x91CC;&#xFF0C;&#x6BCF;&#x4E2A;&#x6838;&#x5FC3;&#x90FD;&#x6709;&#x5404;&#x81EA;&#x7684; L1/L2 Cache&#xFF0C;&#x800C; L3 Cache &#x662F;&#x6240;&#x6709;&#x6838;&#x5FC3;&#x5171;&#x4EAB;&#x4F7F;&#x7528;&#x7684;&#x3002;</p>
+<h2 id="11-&#x4E3A;&#x4EC0;&#x4E48;cache&#x4E0D;&#x4E00;&#x81F4;">1.1 &#x4E3A;&#x4EC0;&#x4E48;cache&#x4E0D;&#x4E00;&#x81F4;</h2>
+<blockquote>
+<p>&#x4E3A;&#x4EC0;&#x4E48;cache&#x4E0D;&#x4E00;&#x81F4;&#xFF1F;</p>
+<p>&#x6570;&#x636E;&#x4E0D;&#x5149;&#x662F;&#x53EA;&#x6709;&#x8BFB;&#x64CD;&#x4F5C;&#xFF0C;&#x8FD8;&#x6709;&#x5199;&#x64CD;&#x4F5C;&#xFF0C;&#x90A3;&#x4E48;&#x5982;&#x679C;&#x6570;&#x636E;&#x5199;&#x5165; Cache &#x4E4B;&#x540E;&#xFF0C;&#x5185;&#x5B58;&#x4E0E; Cache &#x76F8;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x636E;&#x5C06;&#x4F1A;&#x4E0D;&#x540C;&#xFF0C;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B; Cache &#x548C;&#x5185;&#x5B58;&#x6570;&#x636E;&#x90FD;&#x4E0D;&#x4E00;&#x81F4;&#x4E86;&#xFF0C;&#x4E8E;&#x662F;&#x6211;&#x4EEC;&#x80AF;&#x5B9A;&#x662F;&#x8981;&#x628A; Cache &#x4E2D;&#x7684;&#x6570;&#x636E;&#x540C;&#x6B65;&#x5230;&#x5185;&#x5B58;&#x91CC;&#x7684;&#x3002;</p>
+</blockquote>
+<p>&#x600E;&#x4E48;&#x89E3;&#x51B3;&#x4E24;&#x4E2A;&#x6838;&#x7684;cache&#x4E0D;&#x4E00;&#x81F4;&#xFF1F;&#x4E0B;&#x9762;&#x4ECB;&#x7ECD;&#x51E0;&#x79CD;&#x903B;&#x8F91;&#xFF1A;</p>
+<ol>
+<li>&#x5199;&#x76F4;&#x8FBE;</li>
+<li>cache&#x66FF;&#x6362;&#x65F6;&#x5199;&#x56DE;</li>
+</ol>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/71f7bcfa6dd940f0bf77cad91773a4db~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936505&amp;x-orig-sign=GJO4M%2BP5ca37oXP%2B3Yx0SSJp%2BRk%3D" alt="image.png">
+&#x5199;&#x76F4;&#x8FBE;&#xFF1A;&#x5199;&#x6570;&#x636E;&#x65F6;&#x540C;&#x65F6;&#x66F4;&#x65B0;cache&#x548C;&#x5185;&#x5B58;&#xFF0C;&#x8FD9;&#x79CD;&#x6CA1;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x662F;&#x6548;&#x7387;&#x4E0D;&#x884C;&#x3002;</p>
+<p>cache&#x66FF;&#x6362;&#x65F6;&#x5199;&#x56DE;&#xFF1A;</p>
+<ol>
+<li><p>&#x5982;&#x679C;&#x5F53;&#x53D1;&#x751F;&#x5199;&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x6570;&#x636E;&#x5DF2;&#x7ECF;&#x5728; CPU Cache &#x91CC;&#x7684;&#x8BDD;&#xFF0C;&#x5219;&#x628A;&#x6570;&#x636E;&#x66F4;&#x65B0;&#x5230; CPU Cache &#x91CC;&#xFF0C;&#x540C;&#x65F6;&#x6807;&#x8BB0; CPU Cache &#x91CC;&#x7684;&#x8FD9;&#x4E2A; Cache Block &#x4E3A;&#x810F;&#xFF08;Dirty&#xFF09;&#x7684;&#xFF0C;&#x8FD9;&#x4E2A;&#x810F;&#x7684;&#x6807;&#x8BB0;&#x4EE3;&#x8868;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC; CPU Cache &#x91CC;&#x9762;&#x7684;&#x8FD9;&#x4E2A; Cache Block &#x7684;&#x6570;&#x636E;&#x548C;&#x5185;&#x5B58;&#x662F;&#x4E0D;&#x4E00;&#x81F4;&#x7684;&#xFF0C;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x662F;&#x4E0D;&#x7528;&#x628A;&#x6570;&#x636E;&#x5199;&#x5230;&#x5185;&#x5B58;&#x91CC;&#x7684;&#xFF1B;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x5F53;&#x53D1;&#x751F;&#x5199;&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x6570;&#x636E;&#x4E0D;&#x5B58;&#x5728; CPU Cache &#x91CC;&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x8981;&#x68C0;&#x67E5;&#x8FD9;&#x4E2A; Cache Block &#x91CC;&#x7684;&#x6570;&#x636E;&#x6709;&#x6CA1;&#x6709;&#x88AB;&#x6807;&#x8BB0;&#x4E3A;&#x810F;&#x7684;&#xFF1A;</p>
+<p>a. &#x5982;&#x679C;&#x662F;&#x810F;&#x7684;&#x8BDD;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x8981;&#x628A;&#x8FD9;&#x4E2A; Cache Block &#x91CC;&#x7684;&#x6570;&#x636E;&#x5199;&#x56DE;&#x5230;&#x5185;&#x5B58;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x628A;&#x5F53;&#x524D;&#x8981;&#x5199;&#x5165;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5148;&#x4ECE;&#x5185;&#x5B58;&#x8BFB;&#x5165;&#x5230; Cache Block &#x91CC;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x628A;&#x5F53;&#x524D;&#x8981;&#x5199;&#x5165;&#x7684;&#x6570;&#x636E;&#x5199;&#x5165;&#x5230; Cache Block&#xFF0C;&#x6700;&#x540E;&#x4E5F;&#x628A;&#x5B83;&#x6807;&#x8BB0;&#x4E3A;&#x810F;&#x7684;&#xFF1B;</p>
+<p>b. &#x5982;&#x679C;&#x4E0D;&#x662F;&#x810F;&#x7684;&#x8BDD;&#xFF0C;&#x628A;&#x5F53;&#x524D;&#x8981;&#x5199;&#x5165;&#x7684;&#x6570;&#x636E;&#x5148;&#x4ECE;&#x5185;&#x5B58;&#x8BFB;&#x5165;&#x5230; Cache Block &#x91CC;&#xFF0C;&#x63A5;&#x7740;&#x5C06;&#x6570;&#x636E;&#x5199;&#x5165;&#x5230;&#x8FD9;&#x4E2A; Cache Block &#x91CC;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x628A;&#x8FD9;&#x4E2A; Cache Block &#x6807;&#x8BB0;&#x4E3A;&#x810F;&#x7684;&#x5C31;&#x597D;&#x4E86;</p>
+</li>
+</ol>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/5adcc493fa6e4655bd805d704a67e34f~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936505&amp;x-orig-sign=0xt%2FhR0zrpvwSxdPbE%2BFIp1OpCs%3D" alt="image.png"></p>
+<p>cache&#x66FF;&#x6362;&#x65F6;&#x5199;&#x56DE;&#x662F;&#x6709;&#x95EE;&#x9898;&#x7684;&#xFF0C;</p>
+<ul>
+<li>&#x53EA;&#x6709;&#x5728; A &#x53F7;&#x6838;&#x5FC3;&#x4E2D;&#x7684;&#x8FD9;&#x4E2A; Cache Block &#x8981;&#x88AB;&#x66FF;&#x6362;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6570;&#x636E;&#x624D;&#x4F1A;&#x5199;&#x5165;&#x5230;&#x5185;&#x5B58;&#x91CC;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x8FD9;&#x65F6;&#x65C1;&#x8FB9;&#x7684; B &#x53F7;&#x6838;&#x5FC3;&#x5C1D;&#x8BD5;&#x4ECE;&#x5185;&#x5B58;&#x8BFB;&#x53D6; i &#x53D8;&#x91CF;&#x7684;&#x503C;&#xFF0C;&#x5219;&#x8BFB;&#x5230;&#x7684;&#x5C06;&#x4F1A;&#x662F;&#x9519;&#x8BEF;&#x7684;&#x503C;&#xFF0C;&#x56E0;&#x4E3A;&#x521A;&#x624D; A &#x53F7;&#x6838;&#x5FC3;&#x66F4;&#x65B0; i &#x503C;&#x8FD8;&#x6CA1;&#x5199;&#x5165;&#x5230;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x503C;&#x8FD8;&#x4F9D;&#x7136;&#x662F; 0&#x3002;&#x8FD9;&#x4E2A;&#x5C31;&#x662F;&#x6240;&#x8C13;&#x7684;&#x7F13;&#x5B58;&#x4E00;&#x81F4;&#x6027;&#x95EE;&#x9898;&#xFF0C;A &#x53F7;&#x6838;&#x5FC3;&#x548C; B &#x53F7;&#x6838;&#x5FC3;&#x7684;&#x7F13;&#x5B58;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x662F;&#x4E0D;&#x4E00;&#x81F4;&#xFF0C;&#x4ECE;&#x800C;&#x4F1A;&#x5BFC;&#x81F4;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x7684;&#x9519;&#x8BEF;&#x3002;</li>
+</ul>
+<h2 id="12-&#x600E;&#x4E48;&#x89E3;&#x51B3;&#x591A;&#x6838;cache&#x4E0D;&#x4E00;&#x81F4;">1.2 &#x600E;&#x4E48;&#x89E3;&#x51B3;&#x591A;&#x6838;Cache&#x4E0D;&#x4E00;&#x81F4;</h2>
+<p>&#x8981;&#x89E3;&#x51B3;&#x8FD9;&#x4E00;&#x95EE;&#x9898;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x4E00;&#x79CD;&#x673A;&#x5236;&#xFF0C;&#x6765;&#x540C;&#x6B65;&#x4E24;&#x4E2A;&#x4E0D;&#x540C;&#x6838;&#x5FC3;&#x91CC;&#x9762;&#x7684;&#x7F13;&#x5B58;&#x6570;&#x636E;&#x3002;&#x8981;&#x5B9E;&#x73B0;&#x7684;&#x8FD9;&#x4E2A;&#x673A;&#x5236;&#x7684;&#x8BDD;&#xFF0C;&#x8981;&#x4FDD;&#x8BC1;&#x505A;&#x5230;&#x4E0B;&#x9762;&#x8FD9; 2 &#x70B9;&#xFF1A;</p>
+<ol>
+<li>&#x67D0;&#x4E2A; CPU &#x6838;&#x5FC3;&#x91CC;&#x7684; Cache &#x6570;&#x636E;&#x66F4;&#x65B0;&#x65F6;&#xFF0C;&#x5FC5;&#x987B;&#x8981;&#x4F20;&#x64AD;&#x5230;&#x5176;&#x4ED6;&#x6838;&#x5FC3;&#x7684; Cache&#xFF0C;&#x8FD9;&#x4E2A;&#x79F0;&#x4E3A;<strong>&#x5199;&#x4F20;&#x64AD;</strong>&#xFF1B;</li>
+<li>&#x67D0;&#x4E2A; CPU &#x6838;&#x5FC3;&#x91CC;&#x5BF9;&#x6570;&#x636E;&#x7684;&#x64CD;&#x4F5C;&#x987A;&#x5E8F;&#xFF0C;&#x5FC5;&#x987B;&#x5728;&#x5176;&#x4ED6;&#x6838;&#x5FC3;&#x770B;&#x8D77;&#x6765;&#x987A;&#x5E8F;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x8FD9;&#x4E2A;&#x79F0;&#x4E3A;<strong>&#x4E8B;&#x52A1;&#x7684;&#x4E32;&#x884C;&#x5316;</strong>&#x3002;&#x7B80;&#x5355;&#x7684;&#x8BF4;&#x5C31;&#x662F;&#x5BF9;&#x8BE5;&#x6570;&#x636E;&#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x5728;&#x6BCF;&#x4E2A;&#x6838;&#x5FC3;&#x4E2D;&#x7684;&#x64CD;&#x4F5C;&#x90FD;&#x8981;&#x6C42;&#x505A;&#x5230;FIFO&#xFF0C;&#x4E0D;&#x80FD;&#x5148;&#x540E;&#x9762;&#x7684;&#x4FEE;&#x6539;&#x518D;&#x524D;&#x9762;&#x7684;&#x4FEE;&#x6539;</li>
+</ol>
+<p>&#x4E8E;&#x662F;&#x5C31;&#x6709;&#x4E86;<strong>&#x603B;&#x7EBF;&#x55C5;&#x63A2;&#x6CD5;</strong>&#xFF1A;&#x5F53; A &#x53F7; CPU &#x6838;&#x5FC3;&#x4FEE;&#x6539;&#x4E86; L1 Cache &#x4E2D; i &#x53D8;&#x91CF;&#x7684;&#x503C;&#xFF0C;&#x901A;&#x8FC7;&#x603B;&#x7EBF;&#x628A;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x5E7F;&#x64AD;&#x901A;&#x77E5;&#x7ED9;&#x5176;&#x4ED6;&#x6240;&#x6709;&#x7684;&#x6838;&#x5FC3;&#xFF0C;&#x7136;&#x540E;&#x6BCF;&#x4E2A; CPU &#x6838;&#x5FC3;&#x90FD;&#x4F1A;&#x76D1;&#x542C;&#x603B;&#x7EBF;&#x4E0A;&#x7684;&#x5E7F;&#x64AD;&#x4E8B;&#x4EF6;&#xFF0C;&#x5E76;&#x68C0;&#x67E5;&#x662F;&#x5426;&#x6709;&#x76F8;&#x540C;&#x7684;&#x6570;&#x636E;&#x5728;&#x81EA;&#x5DF1;&#x7684; L1 Cache &#x91CC;&#x9762;&#xFF0C;&#x5982;&#x679C; B &#x53F7; CPU &#x6838;&#x5FC3;&#x7684; L1 Cache &#x4E2D;&#x6709;&#x8BE5;&#x6570;&#x636E;&#xFF0C;&#x90A3;&#x4E48;&#x4E5F;&#x9700;&#x8981;&#x628A;&#x8BE5;&#x6570;&#x636E;&#x66F4;&#x65B0;&#x5230;&#x81EA;&#x5DF1;&#x7684; L1 Cache&#x3002;&#x8FD9;&#x6837;&#x7684;&#x603B;&#x7EBF;&#x5C31;&#x662F;&#xFF1A;&#x4E00;&#x81F4;&#x6027;&#x603B;&#x7EBF;&#xFF08;Coherent Bus&#xFF09;&#xFF0C;&#x603B;&#x7EBF;&#x5728;&#x7EF4;&#x62A4;cache&#x4E00;&#x81F4;&#x6027;&#x65F6;&#xFF0C;&#x901A;&#x77E5;&#x76F8;&#x5173;cache&#x7684;&#x64CD;&#x4F5C;&#x79F0;&#x4E3A;snoop&#x3002;</p>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/cfbdfab5e667476ead779cfc0d83051a~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936505&amp;x-orig-sign=VMP9q4SYE9iGn%2F3yYKp8p93ej6A%3D" alt="image.png"></p>
+<p>&#x95EE;&#x9898;&#xFF1A;</p>
+<ul>
+<li><p>CPU &#x8981;&#x6BCF;&#x65F6;&#x6BCF;&#x523B;&#x76D1;&#x542C;&#x603B;&#x7EBF;&#x4E0A;&#x7684;&#x4E00;&#x5207;&#x6D3B;&#x52A8;&#xFF0C;&#x4E0D;&#x7BA1;&#x522B;&#x7684;&#x6838;&#x5FC3;&#x7684; Cache &#x662F;&#x5426;&#x7F13;&#x5B58;&#x76F8;&#x540C;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x90FD;&#x9700;&#x8981;&#x53D1;&#x51FA;&#x5E7F;&#x64AD;&#x4E8B;&#x4EF6;&#xFF0C;&#x4F1A;&#x52A0;&#x91CD;&#x603B;&#x7EBF;&#x7684;&#x8D1F;&#x8F7D;&#x3002;</p>
+</li>
+<li><p>&#x603B;&#x7EBF;&#x55C5;&#x63A2;&#x53EA;&#x662F;&#x4FDD;&#x8BC1;&#x4E86;&#x67D0;&#x4E2A; CPU &#x6838;&#x5FC3;&#x7684; Cache &#x66F4;&#x65B0;&#x6570;&#x636E;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x80FD;&#x88AB;&#x5176;&#x4ED6; CPU &#x6838;&#x5FC3;&#x77E5;&#x9053;&#xFF0C;&#x4F46;&#x662F;&#x5E76;&#x4E0D;&#x80FD;&#x4FDD;&#x8BC1;&#x4E8B;&#x52A1;&#x4E32;&#x884C;&#x5316;&#x3002;</p>
+</li>
+</ul>
+<p>&#x6709;&#x4E00;&#x4E2A;&#x534F;&#x8BAE;&#x57FA;&#x4E8E;&#x603B;&#x7EBF;&#x55C5;&#x63A2;&#x673A;&#x5236;&#x5B9E;&#x73B0;&#x4E86;&#x4E8B;&#x52A1;&#x4E32;&#x884C;&#x5316;&#xFF0C;&#x4E5F;&#x7528;&#x72B6;&#x6001;&#x673A;&#x673A;&#x5236;&#x964D;&#x4F4E;&#x4E86;&#x603B;&#x7EBF;&#x5E26;&#x5BBD;&#x538B;&#x529B;&#xFF0C;&#x8FD9;&#x4E2A;&#x534F;&#x8BAE;&#x5C31;&#x662F; MESI &#x534F;&#x8BAE;&#xFF0C;&#x8FD9;&#x4E2A;&#x534F;&#x8BAE;&#x5C31;&#x505A;&#x5230;&#x4E86; CPU &#x7F13;&#x5B58;&#x4E00;&#x81F4;&#x6027;&#x3002;</p>
+<p>MESI &#x534F;&#x8BAE;&#x5176;&#x5B9E;&#x662F;4&#x4E2A;&#x72B6;&#x6001;&#x5355;&#x8BCD;&#x7684;&#x5F00;&#x5934;&#x5B57;&#x6BCD;&#x7F29;&#x5199;&#xFF0C;&#x5206;&#x522B;&#x662F;&#xFF1A;</p>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/6fb10a225f8a49f1a6f0c83e3b8c631f~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936505&amp;x-orig-sign=3Ejs4Y85mEYQAivGZ3KBIip%2BmJk%3D" alt="image.png"></p>
+<p>MESI&#x534F;&#x8BAE;&#x7684;&#x4F18;&#x70B9;&#xFF1A;</p>
+<ol>
+<li>&#x53EF;&#x4EE5;&#x53D1;&#x73B0;&#x5F53; Cache Line &#x72B6;&#x6001;&#x662F;&#x300C;&#x5DF2;&#x4FEE;&#x6539;&#x300D;&#x6216;&#x8005;&#x300C;&#x72EC;&#x5360;&#x300D;&#x72B6;&#x6001;&#x65F6;&#xFF0C;&#x4FEE;&#x6539;&#x66F4;&#x65B0;&#x5176;&#x6570;&#x636E;&#x4E0D;&#x9700;&#x8981;&#x53D1;&#x9001;&#x5E7F;&#x64AD;&#x7ED9;&#x5176;&#x4ED6; CPU &#x6838;&#x5FC3;&#xFF0C;&#x8FD9;&#x5728;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x4E0A;&#x51CF;&#x5C11;&#x4E86;&#x603B;&#x7EBF;&#x5E26;&#x5BBD;&#x538B;&#x529B;&#x3002;</li>
+<li>&#x5F53;&#x4E00;&#x4E2A;&#x5904;&#x7406;&#x5668;&#x8981;&#x8BFB;&#x53D6;&#x6216;&#x4FEE;&#x6539;&#x4E00;&#x4E2A;&#x7F13;&#x5B58;&#x884C;&#x65F6;&#xFF0C;MESI&#x534F;&#x8BAE;&#x4F1A;&#x6839;&#x636E;&#x5F53;&#x524D;&#x7F13;&#x5B58;&#x884C;&#x7684;&#x72B6;&#x6001;&#x4EE5;&#x53CA;&#x5176;&#x4ED6;&#x5904;&#x7406;&#x5668;&#x7684;&#x7F13;&#x5B58;&#x884C;&#x72B6;&#x6001;&#x8FDB;&#x884C;&#x534F;&#x8C03;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x5904;&#x7406;&#x5668;&#x8981;&#x4FEE;&#x6539;&#x4E00;&#x4E2A;&#x5904;&#x4E8E;Shared&#x72B6;&#x6001;&#x7684;&#x7F13;&#x5B58;&#x884C;&#x65F6;&#xFF0C;&#x534F;&#x8BAE;&#x4F1A;&#x5148;&#x5C06;&#x8BE5;&#x7F13;&#x5B58;&#x884C;&#x7684;&#x72B6;&#x6001;&#x8BBE;&#x7F6E;&#x4E3A;Modified&#xFF0C;&#x5E76;&#x901A;&#x8FC7;&#x76F8;&#x5E94;&#x7684;&#x64CD;&#x4F5C;&#x5C06;&#x5176;&#x4ED6;&#x5904;&#x7406;&#x5668;&#x7684;&#x7F13;&#x5B58;&#x884C;&#x7F6E;&#x4E3A;Invalid&#x72B6;&#x6001;&#xFF0C;&#x786E;&#x4FDD;&#x4E86;&#x8BE5;&#x7F13;&#x5B58;&#x884C;&#x53EA;&#x80FD;&#x88AB;&#x5F53;&#x524D;&#x5904;&#x7406;&#x5668;&#x8BBF;&#x95EE;&#xFF0C;&#x4ECE;&#x800C;&#x5B9E;&#x73B0;&#x4E86;&#x4E8B;&#x52A1;&#x7684;&#x4E32;&#x884C;&#x5316;&#x6267;&#x884C;&#x3002;</li>
+</ol>
+<h2 id="13-chi&#x534F;&#x8BAE;">1.3 CHI&#x534F;&#x8BAE;</h2>
+<p>&#x4E00;&#x81F4;&#x6027;&#x603B;&#x7EBF;&#x901A;&#x8FC7;<strong><strong>snoop filter</strong></strong>&#x6765;&#x8BB0;&#x5F55;&#x5404;&#x4E2A;cache&#x4E2D;&#x7684;cache line&#x72B6;&#x6001;&#xFF0C;&#x5728;&#x603B;&#x7EBF;&#x7684;&#x89C6;&#x89D2;&#x4E2D;&#xFF0C;cache&#x4E2D;&#x6BCF;&#x4E2A;cache line&#x7684;&#x72B6;&#x6001;&#x90FD;&#x5728;&#x638C;&#x63E1;&#x4E4B;&#x4E2D;&#x3002;&#x800C;&#x5E38;&#x7528;&#x7684;cache&#x4E00;&#x81F4;&#x6027;&#x534F;&#x8BAE;&#x5305;&#x542B;&#x4E24;&#x79CD;&#xFF1A;MESI&#x548C;MOESI&#x3002;</p>
+<p>MESI&#x534F;&#x8BAE;&#x7684;&#x4E0D;&#x4FBF;&#x4E4B;&#x5904;&#x5728;&#x4E8E;&#xFF1A;&#x5047;&#x8BBE;CPU A&#x6709;&#x4E2A;&#x4E00;&#x4E2A;M&#x6001;&#x7684;cache line&#xFF0C;&#x800C;&#x6B64;&#x65F6;CPU B&#x60F3;&#x83B7;&#x53D6;&#x6B64;cache line&#xFF0C;&#x90A3;&#x4E48;&#x603B;&#x7EBF;&#x5FC5;&#x987B;&#x901A;&#x77E5;CPU A&#x5C06;cache line&#x540C;&#x6B65;&#x5230;&#x4E3B;&#x5B58;&#x4E2D;&#x3002;&#x5728;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x4E2D;,&#x603B;&#x7EBF;&#x4E0E;&#x4E3B;&#x5B58;&#x7684;&#x4EA4;&#x4E92;&#x4F1A;&#x6D88;&#x8017;&#x8F83;&#x957F;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x5982;&#x679C;&#x53EF;&#x4EE5;&#x5728;&#x4E0D;&#x5C06;&#x6570;&#x636E;&#x540C;&#x6B65;&#x56DE;&#x4E3B;&#x5B58;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x5C06;CPU A&#x7684;&#x6570;&#x636E;&#x901A;&#x8FC7;&#x603B;&#x7EBF;&#x53D1;&#x9001;&#x7ED9;CPU B&#xFF0C;&#x5C06;&#x4F1A;&#x8282;&#x7701;&#x65F6;&#x95F4;&#xFF0C;&#x63D0;&#x9AD8;&#x6548;&#x7387;&#x3002;</p>
+<p> MOESI&#x534F;&#x8BAE;&#x5C31;&#x4F18;&#x5316;&#x4E86;&#x8FD9;&#x4E00;&#x4E0D;&#x4FBF;&#x4E4B;&#x5904;&#x3002;MOESI&#x534F;&#x8BAE;&#x5141;&#x8BB8;<strong>cache&#x4E4B;&#x95F4;&#x5171;&#x4EAB;dirty cache line</strong>&#x3002;Dirty&#x662F;&#x6307;cache line&#x76F8;&#x5BF9;&#x4E8E;&#x4E3B;&#x5B58;&#x800C;&#x8A00;&#x5DF2;&#x7ECF;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x8282;&#x7701;&#x4E0E;&#x4E3B;&#x5B58;&#x4EA4;&#x4E92;&#x7684;&#x65F6;&#x95F4;&#x6210;&#x672C;&#xFF0C;&#x5728;cache line&#x4E0D;&#x9700;&#x8981;&#x5199;&#x56DE;&#x4E3B;&#x5B58;&#x4E4B;&#x524D;&#xFF0C;&#x4E00;&#x76F4;&#x5728;cache&#x4E4B;&#x95F4;&#x4F20;&#x8F93;&#x3002;</p>
+<p>MOESI&#x76F8;&#x8F83;&#x4E8E;MESI&#x591A;&#x4E00;&#x4E2A;O&#x6001;&#xFF0C;O&#x6001;&#x4EE3;&#x8868;&#x8BE5;cache line&#x4E0E;&#x4E3B;&#x5B58;&#x4E2D;&#x7684;&#x503C;&#x4E0D;&#x540C;&#xFF0C;&#x81F3;&#x5C11;&#x5B58;&#x5728;&#x4E8E;&#x4E24;&#x4E2A;cache&#x4E2D;&#xFF0C;&#x5E76;&#x7531;&#x8BE5;cache&#x5728;&#x9700;&#x8981;&#x7684;&#x65F6;&#x523B;&#x5C06;cache line&#x5237;&#x65B0;&#x5230;&#x4E3B;&#x5B58;&#x4E2D;&#x3002;&#x6B64;&#x5916;MESI&#x548C;MOESI&#x7684;S&#x6001;&#x6709;&#x6240;&#x4E0D;&#x540C;&#xFF0C;MESI&#x7684;S&#x6001;&#x4E2D;&#x7684;cache line&#x4E0E;&#x4E3B;&#x5B58;&#x4FDD;&#x6301;&#x4E00;&#x81F4;&#xFF1B;&#x800C;MOESI&#x7684;S&#x6001;&#x4E2D;&#x7684;cache line&#x4E0D;&#x4E00;&#x5B9A;&#x4E0E;&#x4E3B;&#x5B58;&#x4FDD;&#x6301;&#x4E00;&#x81F4;&#xFF0C;&#x53EF;&#x80FD;&#x662F;&#x5171;&#x4EAB;&#x4E86;dirty cache line&#xFF0C;&#x4F46;&#x662F;&#x6CA1;&#x6709;&#x5411;&#x4E3B;&#x5B58;&#x5237;&#x65B0;cache line&#x7684;&#x4E49;&#x52A1;&#x3002;</p>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/c096f41867884305a4c35f64cdacd63d~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936505&amp;x-orig-sign=sui5NTf77gzSwI2lpmTwdYTJeyk%3D" alt="image.png"></p>
+<p>&#x76EE;&#x524D;&#x5E38;&#x91C7;&#x7528;CHI&#x534F;&#x8BAE;&#x6765;&#x5B9E;&#x73B0;&#x4E00;&#x81F4;&#x6027;&#x603B;&#x7EBF;&#x4E0A;&#x5404;&#x4E2A;&#x7EC4;&#x4EF6;&#x7684;&#x901A;&#x4FE1;&#xFF0C;&#x8BE5;&#x534F;&#x8BAE;&#x5C31;&#x662F;&#x91C7;&#x7528;&#x4E86;MOESI&#x6765;&#x7BA1;&#x7406;&#x76F8;&#x5E94;&#x7684;cache line &#x72B6;&#x6001;&#x3002;CHI&#x7075;&#x6D3B;&#x7528;&#x4E8E;&#x8BBE;&#x8BA1;&#x57FA;&#x4E8E;&#x4E00;&#x81F4;&#x6027;&#x603B;&#x7EBF;&#x7684;&#x82AF;&#x7247;&#x7CFB;&#x7EDF;&#xFF0C;&#x652F;&#x6301;&#x6784;&#x5EFA;&#x5C0F;&#x578B;&#x3001;&#x4E2D;&#x578B;&#x6216;&#x5927;&#x578B;&#x82AF;&#x7247;&#x7CFB;&#x7EDF;&#x3002;&#x7CFB;&#x7EDF;&#x5305;&#x542B;&#x591A;&#x4E2A;&#x7EC4;&#x4EF6;&#xFF0C;&#x4ECE;CPU&#x3001;GPU&#x3001;DDR&#x5230;&#x5916;&#x8BBE;&#x63A5;&#x53E3;&#xFF0C;&#x4EE5;&#x53CA;&#x4E92;&#x8FDE;&#x672C;&#x8EAB;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x63D0;&#x9AD8;CPU&#x5B58;&#x53D6;&#x6570;&#x636E;&#x7684;&#x901F;&#x7387;&#xFF0C;&#x901A;&#x5E38;&#x4F1A;&#x5728;&#x4E00;&#x81F4;&#x6027;&#x603B;&#x7EBF;&#x4E0A;&#x52A0;&#x5165;&#x4E00;&#x7EA7;cache&#xFF0C;&#x4E5F;&#x5C31;&#x662F;LLC(Last Level Cache)&#x3002;LLC&#x662F;&#x4E00;&#x4E2A;&#x72EC;&#x5360;cache&#xFF0C;&#x662F;&#x4F4E;&#x4E8E;CPU cache&#x7684;&#x4E00;&#x7EA7;cache&#xFF0C;&#x7528;&#x4E8E;&#x7F13;&#x5B58;&#x4ECE;&#x603B;&#x7EBF;&#x4E2D;&#x7ECF;&#x8FC7;&#x7684;cache line&#xFF0C;&#x5B83;&#x589E;&#x52A0;&#x4E86;&#x82AF;&#x7247;&#x4E0A;&#x603B;cache&#x5BB9;&#x91CF;&#x3002;&#x5F53;&#x603B;&#x7EBF;&#x65E0;&#x6CD5;&#x4ECE;CPU&#x7684;cache&#x4E2D;&#x83B7;&#x53D6;&#x9700;&#x8981;&#x7684;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x5148;&#x67E5;&#x8BE2;LLC&#x662F;&#x5426;&#x542B;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5982;&#x679C;&#x547D;&#x4E2D;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5728;&#x4E0D;&#x8BBF;&#x95EE;&#x4E3B;&#x5B58;&#x6216;&#x5916;&#x8BBE;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E3A;CPU&#x63D0;&#x4F9B;&#x6570;&#x636E;&#x3002;&#x8FD9;&#x79CD;&#x591A;&#x7EA7;cache&#x7ED3;&#x6784;&#x6709;&#x6548;&#x51CF;&#x5C11;&#x4E86;&#x82AF;&#x7247;&#x8BBF;&#x95EE;&#x4E3B;&#x5B58;&#x6216;&#x5916;&#x8BBE;&#x7684;&#x6B21;&#x6570;&#xFF0C;&#x4E3A;&#x9AD8;&#x6027;&#x80FD;CPU&#x63D0;&#x4F9B;&#x4E86;&#x76F8;&#x5E94;&#x6570;&#x636E;&#x642C;&#x8FD0;&#x80FD;&#x529B;&#x3002;</p>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/cd91e78629bd44b291aaf9e9a2e2503a~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936505&amp;x-orig-sign=Vw43znwbL2WjVXa7YI9I5n5bhqQ%3D" alt="image.png"></p>
+<p><strong>CHI&#x534F;&#x8BAE;</strong> CHI &#x7684;&#x5168;&#x79F0;&#x662F; <strong>Coherent Hub Interface</strong>&#x3002;CHI &#x534F;&#x8BAE;&#x662F; AMBA&#x7684;&#x7B2C;&#x4E94;&#x4EE3;&#x534F;&#x8BAE;&#xFF0C;&#x53EF;&#x4EE5;&#x8BF4;&#x662F; ACE &#x534F;&#x8BAE;&#x7684;&#x8FDB;&#x5316;&#x7248;&#xFF0C;&#x5C06;&#x6240;&#x6709;&#x7684;&#x4FE1;&#x606F;&#x4F20;&#x8F93;&#x91C7;&#x7528;&#x5305;&#xFF08;packet&#xFF09;&#x7684;&#x5F62;&#x5F0F;&#x6765;&#x5B8C;&#x6210;&#x3002;&#x4F46;&#x662F;&#x4ECE;&#x63A5;&#x53E3;&#x7684;&#x89D2;&#x5EA6;&#x770B;&#xFF0C;CHI &#x548C; ACE&#xFF0C;AXI &#x8FD9;&#x4E9B;&#x534F;&#x8BAE;&#x5B8C;&#x5168;&#x4E0D;&#x4E00;&#x6837;&#x4E86;</p>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/a40aef10ed2d43beb3b0a67c06277b45~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936505&amp;x-orig-sign=%2FT7CE8KoJaI3HEo3T18ff8mIjpg%3D" alt="image.png"></p>
+<p>AMBA CHI&#x534F;&#x8BAE;&#x6F14;&#x8FDB;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ol>
+<li><p>AMBA 1&#x53EA;&#x6709;ASB&#x548C;APB&#x534F;&#x8BAE;&#xFF1B;</p>
+</li>
+<li><p>&#x5230;&#x4E86;AMBA 2&#x5F15;&#x5165;AHB&#x534F;&#x8BAE;&#x7528;&#x4E8E;&#x9AD8;&#x901F;&#x6570;&#x636E;&#x4F20;&#x8F93;&#xFF1B;</p>
+</li>
+<li><p>&#x53D1;&#x5C55;&#x5230;AMBA 3&#xFF0C;&#x4E3A;&#x9002;&#x5E94;&#x9AD8;&#x541E;&#x5410;&#x91CF;&#x4F20;&#x8F93;&#x548C;&#x8C03;&#x8BD5;&#x5F15;&#x5165;AXI&#x548C;ATB&#xFF0C;&#x800C;AHB&#x534F;&#x8BAE;&#x7F29;&#x51CF;&#x4E3A;AHB-lite&#xFF0C;APB&#x534F;&#x8BAE;&#x589E;&#x52A0;&#x4E86;PREADY&#x548C;PSLVERR&#xFF0C;ASB&#x7531;&#x4E8E;&#x8BBE;&#x8BA1;&#x590D;&#x6742;&#x800C;&#x4E0D;&#x518D;&#x4F7F;&#x7528;&#xFF1B;</p>
+</li>
+<li><p>&#x5230;&#x4E86;AMBA 4&#xFF0C;AXI&#x5F97;&#x5230;&#x4E86;&#x589E;&#x5F3A;&#xFF0C;&#x5F15;&#x5165;QOS&#x548C;long burst&#x7684;&#x652F;&#x6301;&#xFF0C;&#x6839;&#x636E;&#x5E94;&#x7528;&#x4E0D;&#x540C;&#x53EF;&#x9009;AXI4&#xFF0C;AXI4-lite&#xFF0C;AXI4-stream&#xFF0C;&#x540C;&#x65F6;&#x4E3A;&#x6EE1;&#x8DB3;&#x590D;&#x6742;SOC&#x7684;&#x64CD;&#x4F5C;&#x4E00;&#x81F4;&#x6027;&#x5F15;&#x5165;ACE&#x548C;ACE-lite&#x534F;&#x8BAE;&#xFF0C;APB&#x548C;ATB&#x4E5F;&#x540C;&#x65F6;&#x5F97;&#x5230;&#x589E;&#x5F3A;&#xFF0C;&#x6BD4;&#x5982;APB&#x52A0;&#x5165;&#x4E86;PPROT&#x548C;PSTRB&#xFF0C;&#x53E6;&#x5916;&#x4E3A;&#x6539;&#x5584;&#x603B;&#x7EBF;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x5F15;&#x5165;QVN&#x534F;&#x8BAE;&#xFF1B;</p>
+</li>
+<li><p>&#x6700;&#x8FD1;&#xFF0C;&#x4E3A;&#x4E86;&#x9002;&#x5E94;&#x66F4;&#x52A0;&#x590D;&#x6742;&#x7684;&#x9AD8;&#x901F;NOC&#x8BBE;&#x8BA1;&#xFF0C;&#x5F15;&#x5165;&#x73AF;&#x5F62;&#x603B;&#x7EBF;&#x534F;&#x8BAE;&#xFF0C;&#x63A8;&#x51FA;&#x7684;AMBA CHI&#x534F;&#x8BAE;&#x3002;</p>
+</li>
+</ol>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/8cfdd1de40054999a85eff58e9f14542~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936505&amp;x-orig-sign=kf7kvdt6mfhXcYotzHW2UebZqeE%3D" alt="&#x56FE;&#x7247;"></p>
+<p>&#x4E3B;&#x8981;&#x6709;&#x4E09;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x8282;&#x70B9;&#xFF1A;&#x8BF7;&#x6C42;&#x8282;&#x70B9;&#xFF08;RN&#xFF09;&#x3001;home&#x8282;&#x70B9;&#xFF08;HN&#xFF09;&#x548C;&#x4ECE;&#x8282;&#x70B9;&#xFF08;SN&#xFF09;&#x3002;&#x6B64;&#x5916;&#x8FD8;&#x6709;&#x6742;&#x9879;&#x8282;&#x70B9;&#xFF08;MN&#xFF09;&#x3002;</p>
+<p><strong>RN&#x751F;&#x6210;&#x4E8B;&#x52A1;&#xFF0C;&#x5982;&#x8BFB;&#x548C;&#x5199;&#x8BF7;&#x6C42;&#xFF0C;&#x8FD9;&#x4E9B;&#x4E8B;&#x52A1;&#x53D1;&#x9001;&#x5230;HN&#x3002;HN&#x8D1F;&#x8D23;&#x5BF9;&#x8BF7;&#x6C42;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#xFF0C;&#x5411;SN&#x751F;&#x6210;&#x4E8B;&#x52A1;&#xFF0C;&#x5E76;&#x53EF;&#x4EE5;&#x53D1;&#x51FA;&#x76D1;&#x542C;&#x6216;&#x5904;&#x7406;DVM&#x64CD;&#x4F5C;&#x3002;</strong></p>
+<p>&#x8FD9;&#x4E9B;&#x8282;&#x70B9;&#x7C7B;&#x578B;&#x53EF;&#x4EE5;&#x8FDB;&#x4E00;&#x6B65;&#x5206;&#x4E3A;&#x4EE5;&#x4E0B;&#x51E0;&#x7C7B;&#xFF1A;</p>
+<p>RN&#x8282;&#x70B9;&#x662F;&#x5B8C;&#x5168;&#x4E00;&#x81F4;&#x7684;&#x3001;I/O&#x4E00;&#x81F4;&#x7684;&#x6216;&#x5177;&#x6709;DVM&#x652F;&#x6301;&#x7684;I/O&#x4E00;&#x81F4;&#x7684;&#xFF1A;</p>
+<ul>
+<li>&#x5B8C;&#x5168;&#x4E00;&#x81F4;&#x7684;&#x8BF7;&#x6C42;&#x8282;&#x70B9;&#xFF08;RN-F&#xFF09;&#xFF0C;&#x5305;&#x542B;&#x4E00;&#x81F4;&#x7684;&#x7F13;&#x5B58;&#x5E76;&#x5C06;&#x63A5;&#x53D7;&#x548C;&#x54CD;&#x5E94;&#x76D1;&#x542C;&#xFF1B;</li>
+<li>I/O&#x4E00;&#x81F4;&#x7684;&#x8BF7;&#x6C42;&#x8282;&#x70B9;&#xFF08;RN-I&#xFF09;&#xFF0C;&#x6CA1;&#x6709;&#x4E00;&#x81F4;&#x7684;&#x7F13;&#x5B58;&#xFF0C;&#x4E0D;&#x80FD;&#x63A5;&#x53D7;&#x76D1;&#x542C;</li>
+<li>&#x5177;&#x6709;DVM&#x652F;&#x6301;&#x7684;I/O&#x4E00;&#x81F4;&#x8BF7;&#x6C42;&#x8282;&#x70B9;&#xFF08;RN-D&#xFF09;&#xFF0C;&#x5177;&#x6709;&#x4E0E;RN-I&#x76F8;&#x540C;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;DVM&#x6D88;&#x606F;</li>
+</ul>
+<p>home&#x8282;&#x70B9;&#x53EF;&#x4EE5;&#x662F;&#x5B8C;&#x5168;&#x4E00;&#x81F4;&#x7684;&#x3001;&#x975E;&#x4E00;&#x81F4;&#x7684;&#x6216;&#x6742;&#x9879;&#x7684;&#xFF1A;</p>
+<ul>
+<li>&#x5B8C;&#x5168;&#x4E00;&#x81F4;&#x7684;home&#x8282;&#x70B9;&#xFF08;HN-F&#xFF09;&#x5BF9;&#x4E00;&#x81F4;&#x5185;&#x5B58;&#x7684;&#x6240;&#x6709;&#x8BF7;&#x6C42;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#x5E76;&#x5411;RN-F&#x53D1;&#x51FA;&#x76D1;&#x542C;</li>
+<li>&#x975E;&#x4E00;&#x81F4;&#x7684;home&#x8282;&#x70B9;&#xFF08;HN-I&#xFF09;&#x5BF9;I/O&#x5B50;&#x7CFB;&#x7EDF;&#x7684;&#x8BF7;&#x6C42;&#x8FDB;&#x884C;&#x6392;&#x5E8F;</li>
+<li>&#x6742;&#x9879;&#x8282;&#x70B9;&#xFF08;MN&#xFF09;&#x5904;&#x7406;&#x8BF7;&#x6C42;&#x8282;&#x70B9;&#x53D1;&#x9001;&#x7684;DVM&#x4E8B;&#x52A1;&#x3002;&#x8FD9;&#x4E9B;&#x6709;&#x65F6;&#x4F5C;&#x4E3A;HN-D&#x8282;&#x70B9;&#x5B9E;&#x73B0;</li>
+</ul>
+<p>&#x9002;&#x7528;&#x4E8E;&#x666E;&#x901A;&#x5185;&#x5B58;&#x6216;&#x5916;&#x8BBE;&#x548C;&#x666E;&#x901A;&#x5185;&#x5B58;&#x7684;&#x4ECE;&#x5C5E;&#x8282;&#x70B9;&#xFF08;SN-F&#xFF09;&#xFF1A;</p>
+<ul>
+<li>SN-F&#x8FDE;&#x63A5;&#x5230;&#x652F;&#x6301;&#x4E00;&#x81F4;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x7684;&#x5B58;&#x50A8;&#x5668;&#x8BBE;&#x5907;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5185;&#x5B58;&#x63A7;&#x5236;&#x5668;&#x5C06;&#x8FDE;&#x63A5;&#x5230;SN-F&#x8282;&#x70B9;&#x3002;</li>
+<li>&#x9002;&#x7528;&#x4E8E;&#x5916;&#x8BBE;&#x6216;&#x666E;&#x901A;&#x5185;&#x5B58;&#x7684;SN-F&#x8FDE;&#x63A5;&#x5230;I/O&#x5916;&#x8BBE;&#x6216;&#x975E;&#x4E00;&#x81F4;&#x5185;&#x5B58;</li>
+</ul>
+<p>&#x53C2;&#x8003;&#xFF1A;
+<a href="https://blog.csdn.net/dajiao_zi/article/details/138194334" target="_blank">https://blog.csdn.net/dajiao_zi/article/details/138194334</a></p>
+<h2 id="14-dsu">1.4 DSU</h2>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/a4863ce438c847debbdad717644154f1~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936505&amp;x-orig-sign=vOcV9vu0u2iqd%2BI2GHMYWa2oupg%3D" alt="image.png"></p>
+<p>&#x9996;&#x5148;&#x4ECB;&#x7ECD;&#x90E8;&#x5206;&#x6838;&#x4E4B;&#x95F4;&#x6309;&#x7C07;&#x8FDB;&#x884C;cache&#x4E00;&#x81F4;&#x6027;&#x7684;IP&#xFF1A;DSU&#xFF0C;&#x540C;&#x65F6;&#x8D77;&#x63D0;&#x4F9B;&#x6309;&#x7C07;&#x7684;L3 cache&#xFF0C;&#x4E4B;&#x524D;&#x7684;&#x6587;&#x7AE0;XXX&#x4E2D;2.2&#x7AE0;&#x8282;&#x4E2D;&#x6709;&#x4ECB;&#x7ECD;&#x3002;</p>
+<ol>
+<li><strong>&#x6210;&#x7C07;&#x7ED1;&#x5B9A;&#x4F7F;&#x7528;</strong>&#xFF1A;&#x6838;&#x5FC3;&#x529F;&#x80FD;&#x662F;&#x63A7;&#x5236;CPU&#x5185;&#x6838;&#xFF0C;&#x4F7F;&#x5176;&#x6210;&#x7C07;Cluster&#x4F7F;&#x7528;&#xFF0C;&#x7C07;&#x5185;&#x6BCF;&#x4E00;&#x4E2A;&#x6838;&#x5FC3;&#x53EF;&#x4EE5;&#x5355;&#x72EC;&#x5F00;&#x5173;&#x3001;&#x8C03;&#x6574;&#x9891;&#x7387;/&#x7535;&#x538B;&#xFF0C;&#x80FD;&#x6548;&#x8868;&#x73B0;&#x66F4;&#x4F73;&#xFF0C;&#x751A;&#x81F3;&#x5236;&#x9020;&#x5546;&#x662F;&#x53EF;&#x4EE5;&#x5C06;&#x4E0D;&#x540C;&#x6838;&#x5FC3;&#x4EE5;&#x4E0D;&#x5BF9;&#x7B49;&#x7684;&#x6570;&#x91CF;&#x653E;&#x5230;&#x4E00;&#x4E2A;&#x7C07;&#x5185;&#xFF0C;&#x517C;&#x987E;&#x6210;&#x672C;&#x4E0E;&#x6027;&#x80FD;&#x3002;</li>
+<li><strong>L3&#x7F13;&#x5B58;&#x7684;&#x5171;</strong> <strong>&#x4EAB;</strong>&#xFF1A;DSU&#x80FD;&#x591F;&#x4F7F;&#x7528;CCI&#x3001;CCN&#x6216;&#x662F;CMN&#x4E0D;&#x540C;&#x603B;&#x7EBF;&#x6280;&#x672F;&#xFF0C;&#x628A;CPU&#x4E0E;SoC&#x91CC;&#x5176;&#x5B83;&#x5355;&#x5143;&#xFF08;GPU&#x3001;Modem&#x3001;&#x5185;&#x5B58;&#xFF09;&#x9AD8;&#x901F;&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#xFF1B;&#x5047;&#x5982;&#x5B83;&#x62E5;&#x6709;4MB&#x4E09;&#x7EA7;&#x7F13;&#x5B58;&#xFF0C;&#x80FD;&#x4EE5;&#x52A8;&#x6001;&#x65B9;&#x5F0F;&#x5206;&#x914D;&#x7F13;&#x5B58;&#x7ED9;&#x6BCF;&#x4E2A;&#x6838;&#x5FC3;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;Cortex-A75&#xD7;1+ Cortex-A55&#xD7;7&#x4E0B;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;3MB&#x7F13;&#x5B58;&#x5206;&#x914D;&#x7ED9;A75&#x6838;&#x5FC3;&#xFF0C;&#x5269;&#x4E0B;7&#x4E2A;A55&#x6838;&#x5FC3;&#x5171;&#x4EAB;1MB&#x7F13;&#x5B58;&#xFF0C;&#x751A;&#x81F3;&#x53EF;&#x5C06;&#x4E09;&#x7EA7;&#x7F13;&#x5B58;&#x4EA4;&#x7ED9;GPU&#x7B49;&#x5355;&#x5143;&#x4F7F;&#x7528;&#xFF0C;&#x7075;&#x6D3B;&#x6027;&#x975E;&#x5E38;&#x9AD8;&#xFF1B;</li>
+<li><strong>&#x5197;&#x4F59;&#x8BBE;&#x8BA1;</strong>&#xFF1A;&#x8BBE;&#x8BA1;DynamIQ&#x4E4B;&#x65F6;ARM&#x8FD8;&#x8003;&#x8651;&#x5230;&#x5197;&#x4F59;&#x9700;&#x6C42;&#xFF0C;&#x6BD4;&#x5982;&#x76F8;&#x6BD4;&#x667A;&#x80FD;&#x624B;&#x673A;&#xFF0C;&#x6C7D;&#x8F66;&#x5BF9;&#x53EF;&#x9760;&#x6027;&#x3001;&#x5197;&#x4F59;&#x5EA6;&#x8981;&#x6C42;&#x9AD8;&#x51FA;&#x4E0D;&#x5C11;&#xFF0C;DynamIQ&#x5141;&#x8BB8;&#x591A;&#x4E2A;&#x7C07;&#x901A;&#x8FC7;CCIX&#x8FDE;&#x63A5;&#x5728;&#x4E00;&#x8D77;&#xFF0C;&#x8FD9;&#x6837;&#x5904;&#x7406;&#x5668;&#x5C31;&#x53EF;&#x4EE5;&#x5206;&#x5E03;&#x4E8E;&#x6C7D;&#x8F66;&#x4E0D;&#x540C;&#x4F4D;&#x7F6E;&#xFF0C;&#x5F53;&#x53D1;&#x751F;&#x4EA4;&#x901A;&#x610F;&#x5916;&#x4E00;&#x4E2A;&#x7C07;&#x53D7;&#x635F;&#x65F6;&#xFF0C;DynamIQ&#x6280;&#x672F;&#x53EF;&#x4EE5;&#x8C03;&#x7528;&#x51FA;&#x5907;&#x7528;&#x5904;&#x7406;&#x5668;&#xFF0C;&#x4FDD;&#x8BC1;&#x6C7D;&#x8F66;&#x6B63;&#x5E38;&#x8FD0;&#x8F6C;&#x3002;</li>
+</ol>
+<p>DynamIQ&#x2122;&#x5171;&#x4EAB;&#x5355;&#x5143;&#xFF08;DSU&#xFF09;&#x5305;&#x62EC;<strong>L3&#x5185;&#x5B58;&#x7CFB;&#x7EDF;</strong>&#x3001;&#x63A7;&#x5236;&#x903B;&#x8F91;&#x548C;&#x5916;&#x90E8;&#x63A5;&#x53E3;&#xFF0C;&#x4EE5;&#x652F;&#x6301;DynamIQ&#x2122;&#x96C6;&#x7FA4;&#x3002;DynamIQ&#x2122;&#x96C6;&#x7FA4;&#x5FAE;&#x4F53;&#x7CFB;&#x7ED3;&#x6784;&#x6574;&#x5408;&#x4E86;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x6838;&#x5FC3;&#x4E0E; DSU&#xFF0C;&#x5F62;&#x6210;&#x4E00;&#x4E2A;&#x6309;&#x6307;&#x5B9A;&#x914D;&#x7F6E;&#x5B9E;&#x73B0;&#x7684;&#x96C6;&#x7FA4;&#x3002;&#x5728;&#x5B8F;&#x5355;&#x5143;&#x5B9E;&#x65BD;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x548C;&#x914D;&#x7F6E;core&#x3002;</p>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/321beb0640644cbab2e13ee831bbbe1f~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936505&amp;x-orig-sign=zVsyKIt0re1CywuAO4xX2UrJgRI%3D" alt="image.png"></p>
+<p>&#x53EF;&#x89C1;&#x5176;&#x4E5F;&#x4F7F;&#x7528;&#x4E86;ACE&#x6216;CHI&#x534F;&#x8BAE;&#xFF0C;&#x5305;&#x542B;MOESI&#x673A;&#x5236;&#x3002;DSU&#x4E2D;&#x7684;SCU&#xFF08;Snoop Control Unit&#xFF09;&#x6765;&#x7EF4;&#x6301;&#x5904;&#x7406;&#x6838;&#x5FC3;&#x548C;L3&#x7F13;&#x5B58;&#x4E4B;&#x95F4;&#x7684;&#x4E00;&#x81F4;&#x6027;&#x3002;&#x8FD9;&#x786E;&#x4FDD;&#x4E86;&#x6240;&#x6709;&#x6838;&#x5FC3;&#x5BF9;&#x5171;&#x4EAB;&#x6570;&#x636E;&#x7684;&#x8BBF;&#x95EE;&#x662F;&#x540C;&#x6B65;&#x548C;&#x4E00;&#x81F4;&#x7684;&#xFF0C;&#x9632;&#x6B62;&#x6570;&#x636E;&#x4E0D;&#x4E00;&#x81F4;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<p><strong>Snoop Control Unit&#xFF08;SCU</strong>&#xFF09;&#x662F;<strong>&#x591A;&#x5904;&#x7406;&#x5668;</strong>&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x5173;&#x952E;&#x7EC4;&#x4EF6;&#xFF0C;&#x7279;&#x522B;&#x662F;&#x5728;&#x5305;&#x542B;<strong>&#x7F13;&#x5B58;&#x4E00;&#x81F4;&#x6027;</strong>&#x8BBE;&#x8BA1;&#x4E2D;&#xFF0C;&#x5982;&#x5BF9;&#x79F0;&#x591A;&#x5904;&#x7406;&#x673A;&#x7FA4;&#x96C6;&#xFF08;<strong>SMP</strong>&#xFF09;&#x6216;&#x7247;&#x4E0A;&#x7CFB;&#x7EDF;&#xFF08;SoC&#xFF09;&#x4E2D;&#x3002;&#x5176;&#x4E3B;&#x8981;&#x4F5C;&#x7528;&#x662F;<strong>&#x7EF4;&#x62A4;&#x7F13;&#x5B58;&#x4E00;&#x81F4;&#x6027;</strong>&#xFF0C;&#x786E;&#x4FDD;&#x6240;&#x6709;&#x5904;&#x7406;&#x5668;&#x6838;&#x5FC3;&#x5BF9;<strong>&#x5171;&#x4EAB;&#x7F13;&#x5B58;</strong>&#x7684;&#x5185;&#x5BB9;&#x6709;&#x7EDF;&#x4E00;&#x7684;&#x89C6;&#x56FE;&#x666F;&#xFF0C;&#x4ECE;&#x800C;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x7684;&#x4E00;&#x81F4;&#x6027;&#x548C;&#x6B63;&#x786E;&#x6027;&#x3002;SCU&#x7684;&#x5DE5;&#x4F5C;&#x673A;&#x5236;&#x901A;&#x5E38;&#x5305;&#x62EC;&#x4EE5;&#x4E0B;&#x65B9;&#x9762;&#xFF1A;</p>
+<ol>
+<li><strong>&#x76D1;&#x542C;&#xFF08;Snooping&#xFF09;</strong> : SCU&#x76D1;&#x542C;&#x6240;&#x6709;&#x5904;&#x7406;&#x5668;&#x6838;&#x5FC3;&#x5BF9;&#x5171;&#x4EAB;&#x7F13;&#x5B58;&#x7684;&#x8BBF;&#x95EE;&#x8BF7;&#x6C42;&#xFF0C;&#x5305;&#x62EC;&#x8BFB;&#x53D6;&#x548C;&#x5199;&#x5165;&#x64CD;&#x4F5C;&#x3002;&#x5F53;&#x4E00;&#x4E2A;&#x6838;&#x5FC3;&#x8BD5;&#x56FE;&#x4FEE;&#x6539;&#x7F13;&#x5B58;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x65F6;&#xFF0C;SCU&#x4ECB;&#x5165;&#x4EE5;&#x786E;&#x4FDD;&#x5176;&#x4ED6;&#x6838;&#x5FC3;&#x5BF9;&#x8BE5;&#x6570;&#x636E;&#x7684;&#x7F13;&#x5B58;&#x526F;&#x672C;&#x4E0D;&#x4F1A;&#x53D8;&#x5F97;&#x9648;&#x65E7;&#x3002;</li>
+<li><strong>&#x7F13;&#x5B58;&#x66F4;&#x65B0;</strong>: &#x5982;&#x679C;&#x4E00;&#x4E2A;&#x6838;&#x5FC3;&#x8BF7;&#x6C42;&#x7684;&#x6570;&#x636E;&#x5728;&#x53E6;&#x4E00;&#x4E2A;&#x6838;&#x5FC3;&#x7684;&#x7F13;&#x5B58;&#x4E2D;&#x662F;&#x810F;&#xFF08;&#x5DF2;&#x4FEE;&#x6539;&#x4F46;&#x672A;&#x56DE;&#x5199;&#x56DE;&#x4E3B;&#x5B58;&#xFF09;&#xFF0C;SCU&#x4F1A;&#x4FC3;&#x4F7F;&#x6301;&#x6709;&#x8BE5;&#x810F;&#x6570;&#x636E;&#x7684;&#x6838;&#x5FC3;&#x5C06;&#x5176;&#x5199;&#x56DE;&#x5230;&#x5171;&#x4EAB;&#x7F13;&#x5B58;&#x6216;&#x4E3B;&#x5B58;&#xFF0C;&#x7136;&#x540E;&#x66F4;&#x65B0;&#x8BF7;&#x6C42;&#x6838;&#x5FC3;&#x7684;&#x7F13;&#x5B58;&#xFF0C;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x6700;&#x65B0;&#x3002;</li>
+<li><strong>&#x4E00;&#x81F4;&#x6027;&#x534F;&#x8BAE;</strong>: SCU&#x9075;&#x5FAA;&#x4E00;&#x5B9A;&#x7684;&#x7F13;&#x5B58;&#x4E00;&#x81F4;&#x6027;&#x534F;&#x8BAE;&#xFF0C;&#x5982;MESI&#xFF08;Modified, Exclusive, Shared, Invalid&#xFF09;&#x3001;MOESI&#xFF08;Modified, Owner, Exclusive, Shared, Invalid&#xFF09;&#x6216;&#x5176;&#x4ED6;&#x534F;&#x8BAE;&#xFF0C;&#x6765;&#x51B3;&#x5B9A;&#x5982;&#x4F55;&#x54CD;&#x5E94;&#x7F13;&#x5B58;&#x8BBF;&#x95EE;&#x5E76;&#x7EF4;&#x62A4;&#x4E00;&#x81F4;&#x6027;&#x3002;</li>
+<li><strong>&#x5E7F;&#x64AD;&#x4E0E;&#x4EF2;&#x88C1;</strong>: &#x5728;&#x591A;&#x6838;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;SCU&#x53EF;&#x80FD;&#x9700;&#x8981;&#x5E7F;&#x64AD;&#x67D0;&#x4E9B;&#x7F13;&#x5B58;&#x64CD;&#x4F5C;&#xFF0C;&#x6BD4;&#x5982;&#x5199;&#x64CD;&#x4F5C;&#xFF0C;&#x7ED9;&#x6240;&#x6709;&#x6838;&#x5FC3;&#xFF0C;&#x6216;&#x4EF2;&#x88C1;&#x7F13;&#x5B58;&#x8BBF;&#x95EE;&#x51B2;&#x7A81;&#xFF0C;&#x51B3;&#x5B9A;&#x54EA;&#x4E2A;&#x6838;&#x5FC3;&#x4F18;&#x5148;&#x7EA7;&#x6B21;&#x5E8F;&#x3002;</li>
+<li><strong>&#x76EE;&#x5F55;&#x7BA1;&#x7406;</strong>: &#x5728;&#x5927;&#x578B;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;SCU&#x53EF;&#x80FD;&#x914D;&#x5408;&#x7F13;&#x5B58;&#x76EE;&#x5F55;&#x4F7F;&#x7528;&#xFF0C;&#x76EE;&#x5F55;&#x5B58;&#x50A8;&#x54EA;&#x4E2A;&#x7F13;&#x5B58;&#x884C;&#x4F4D;&#x4E8E;&#x54EA;&#x4E9B;&#x5730;&#x65B9;&#xFF0C;&#x5176;&#x72B6;&#x6001;&#xFF0C;&#x51CF;&#x5C11;&#x5E7F;&#x64AD;&#x8303;&#x56F4;&#x548C;&#x63D0;&#x9AD8;&#x6548;&#x7387;&#x3002;</li>
+</ol>
+<p>&#x7EFC;&#x4E0A;&#x6240;&#x8FF0;&#xFF0C;Snoop Control Unit&#x662F;&#x591A;&#x5904;&#x7406;&#x5668;&#x7F13;&#x5B58;&#x4E00;&#x81F4;&#x6027;&#x673A;&#x5236;&#x4E2D;&#x7684;&#x91CD;&#x8981;&#x4E00;&#x73AF;&#xFF0C;&#x901A;&#x8FC7;<strong>&#x76D1;&#x542C;&#x548C;&#x534F;&#x8C03;&#x5904;&#x7406;&#x5668;&#x95F4;&#x7684;&#x7F13;&#x5B58;&#x64CD;&#x4F5C;&#xFF0C;&#x786E;&#x4FDD;&#x6570;&#x636E;&#x7684;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x4ECE;&#x800C;&#x652F;&#x6301;&#x9AD8;&#x6548;&#x3001;&#x53EF;&#x9760;&#x5E76;&#x884C;&#x8BA1;&#x7B97;</strong>&#x3002;</p>
+<h2 id="15-cmn600ae&#x4E00;&#x81F4;&#x6027;&#x603B;&#x7EBF;">1.5 CMN600ae&#x4E00;&#x81F4;&#x6027;&#x603B;&#x7EBF;</h2>
+<p>&#x4E4B;&#x524D;&#x7684;&#x6587;&#x7AE0;XXX&#x4E2D;2.7&#x7AE0;&#x6709;&#x5BF9;CMN600ae&#x7684;&#x4ECB;&#x7ECD;&#x3002;&#x8FD9;&#x91CC;&#x518D;&#x8BF4;&#x660E;&#x4E0B;&#x3002;</p>
+<p>ARM&#x53D1;&#x5C55;&#x4E86;&#x4E00;&#x79CD;&#x4ECB;&#x4E8E;<strong>&#x603B;&#x7EBF;&#x548C;NoC&#x4E4B;&#x95F4;</strong>&#x7684;&#x8FDE;&#x63A5;&#x7CFB;&#x7EDF;&#xFF0C;&#x79F0;&#x4E4B;&#x4E3A;<strong>CMN&#xFF08;Coherent Mesh Network&#xFF09;</strong> &#xFF0C;&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x8FDE;&#x63A5;CPU&#x5185;&#x6838;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;CPU&#x5185;&#x6838;&#x548C;&#x52A0;&#x901F;&#x5668;&#x4E4B;&#x95F4;&#x7684;&#x8FDE;&#x63A5;&#x3002;&#x91C7;&#x7528;<strong>MESH&#x7F51;&#x683C;&#x7ED3;&#x6784;&#xFF0C;&#x4F46;&#x6CA1;&#x6709;&#x8DEF;&#x7531;&#x529F;&#x80FD;&#xFF0C;&#x672C;&#x8D28;&#x4E0A;&#x8FD8;&#x662F;&#x603B;&#x7EBF;</strong>&#xFF0C;&#x4F46;MESH&#x7F51;&#x683C;&#x652F;&#x6301;&#x7684;&#x5355;&#x5143;&#x5F88;&#x591A;&#xFF0C;&#x8FDC;&#x6BD4;&#x4E00;&#x822C;&#x603B;&#x7EBF;&#x8981;&#x591A;&#xFF0C;&#x6700;&#x9AD8;&#x53EF;&#x652F;&#x6301;512&#x6838;&#xFF0C;&#x652F;&#x6301;512MB&#x7684;L3&#x7F13;&#x5B58;&#x3002;</p>
+<p>CoreLink <strong>CMN600AE</strong>&#xFF0C;&#x4E00;&#x79CD;&#x652F;&#x6301;<strong>&#x8F66;&#x89C4;&#x7EA7;&#x5B89;&#x5168;&#x529F;&#x80FD;</strong>&#x7684;CoherentMeshNetwork&#xFF0C;&#x5F3A;&#x8C03;&#x5176;&#x529F;&#x80FD;&#x5B89;&#x5168;&#x5408;&#x89C4;&#x6027;&#x3001;&#x9AD8;&#x6027;&#x80FD;&#x3001;&#x53EF;&#x9760;&#x6027;&#x4EE5;&#x53CA;&#x4F4E;&#x529F;&#x8017;&#x7279;&#x6027;&#x3002;&#x5BF9;&#x5916;&#x652F;&#x6301;AMBA CHI/ACE-LITE&#x7B49;&#x63A5;&#x53E3;&#xFF0C;&#x5185;&#x90E8;&#x6539;&#x7528;&#x8DEF;&#x7531;&#x7ED3;&#x6784;&#x8F6C;&#x53D1;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x63D0;&#x4F9B;<strong>&#x786C;&#x4EF6;&#x4E00;&#x81F4;&#x6027;&#x548C;&#x7CFB;&#x7EDF;&#x7F13;&#x5B58;&#xFF0C;&#x8FD8;&#x652F;&#x6301;&#x591A;&#x82AF;&#x7247;&#x4E92;&#x8054;</strong>&#x3002;</p>
+<p>&#x4E0B;&#x56FE;&#x5C55;&#x793A;&#x4E86;&#x4E00;&#x4E2A;3*4&#x7684;&#x4E92;&#x8054;Mesh&#xFF0C;&#x7528;&#x4E8E;&#x5177;&#x6709;&#x591A;&#x4E2A;RNF&#x5B9E;&#x4F8B;&#x7684;&#x5927;&#x578B;&#x7CFB;&#x7EDF;&#x914D;&#x7F6E;&#xFF0C;&#x5305;&#x542B;&#x7684;Node&#x6709;HN-F&#x3001;RN-D&#x3001;SN-F&#x548C;HN-D&#x3002;&#x6BCF;&#x4E2A;&#x4E92;&#x8054;&#x7684;Mesh&#xFF0C;&#x4EE5;&#x5DE6;&#x4E0B;&#x89D2;&#x7684;XP&#x4E3A;&#x5750;&#x6807;&#x539F;&#x70B9;&#xFF0C;&#x5EFA;&#x7ACB;&#x4E8C;&#x5143;&#x5750;&#x6807;&#x7CFB;&#xFF08;X&#xFF0C;Y&#xFF09;&#xFF1B;&#x6BCF;&#x4E2A;XP&#x6709;&#x82E5;&#x5E72;&#x4E2A;Port&#xFF0C;&#x7528;&#x6765;&#x8FDE;&#x63A5;&#x5177;&#x4F53;&#x7684;&#x8BBE;&#x5907;&#xFF1B;&#x57FA;&#x4E8E;&#x6B64;&#xFF0C;&#x8BBE;&#x5907;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;4&#x5143;&#x7EC4;&#xFF08;X&#xFF0C; Y&#xFF0C; Port&#xFF0C; DeviceID&#xFF09; &#xFF0C;&#x552F;&#x4E00;&#x6807;&#x793A;&#xFF0C;&#x5206;&#x522B;&#x4EE3;&#x8868;&#x8BBE;&#x5907;&#x6240;&#x5728;XP&#x7684;&#x5750;&#x6807;&#xFF0C;Port&#xFF0C;&#x4EE5;&#x53CA;&#x8BBE;&#x5907;ID&#x3002;
+<img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/06bef15bb9c049c58088d7fbdc28254e~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936505&amp;x-orig-sign=U7j%2BVR%2BBahJhka5%2Bt3olmP7WE38%3D" alt="image.png"></p>
+<p>&#x5728;mesh&#x7684;&#x67B6;&#x6784;&#x4E2D;CMN600&#x7F51;&#x7EDC;&#x63D0;&#x9AD8;&#x6027;&#x80FD;&#x7684;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<p>1&#x3001;mesh&#x7684;&#x67B6;&#x6784;&#x5C42;&#xFF0C;&#x901A;&#x8FC7;<strong>&#x591A;&#x7EA7;&#x7684;cache</strong>&#xFF0C;&#x4EE5;&#x53CA;&#x8BBE;&#x8BA1;HNF node&#x53EF;&#x4EE5;&#x53BB;snoop cluster&#x4E2D;&#x7684;cache&#xFF0C;&#x63D0;&#x9AD8;&#x6027;&#x80FD; </p>
+<p>2&#x3001;&#x534F;&#x8BAE;&#x5C42;&#xFF0C;CHI&#x534F;&#x8BAE;&#x4E2D;&#x652F;&#x6301;<strong>DMT&#x3001;DCT&#x3001;&#x548C;prefetch</strong>&#x529F;&#x80FD;&#x63D0;&#x9AD8;&#x6027;&#x80FD; </p>
+<p>3&#x3001;soc&#x5C42;&#xFF0C;&#x652F;&#x6301;<strong>qos&#x673A;&#x5236;</strong>&#x6765;&#x63D0;&#x9AD8;&#x6027;&#x80FD;&#xFF0C;qos&#x7684;value&#x4E00;&#x5171;&#x6709;4bit&#xFF0C;&#x503C;&#x4E3A;0-15&#xFF0C;&#x503C;&#x8D8A;&#x9AD8;&#x4F18;&#x5148;&#x7EA7;&#x8D8A;&#x9AD8;</p>
+<p>CMN600AE&#x7684;&#x53CC;chip&#x65B9;&#x6848;&#x5982;&#x4E0B;&#xFF1A;
+<img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/2ef6c32e456b496cb04680d643f1dd54~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936505&amp;x-orig-sign=A5PSnaGeVn5ZucmwNKXsmjzX%2FAc%3D" alt="image.png">
+&#x53C2;&#x8003;&#xFF1A;</p>
+<ol>
+<li><a href="https://blog.csdn.net/weixin_73077810/article/details/135979534" target="_blank">https://blog.csdn.net/weixin_73077810/article/details/135979534</a></li>
+<li><a href="https://blog.csdn.net/m0_52840978/article/details/128824794" target="_blank">https://blog.csdn.net/m0_52840978/article/details/128824794</a></li>
+<li><a href="https://blog.csdn.net/tujiuguo3994/article/details/134676977" target="_blank">https://blog.csdn.net/tujiuguo3994/article/details/134676977</a></li>
+</ol>
+<h1 id="2-noc&#x4E00;&#x81F4;&#x6027;">2. Noc&#x4E00;&#x81F4;&#x6027;</h1>
+<p>&#x4E0A;&#x9762;CMN&#x5904;&#x7406;ARM A&#x6838;&#x7684;&#x591A;&#x6838;&#x4E00;&#x81F4;&#x6027;&#x95EE;&#x9898;&#xFF0C;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x5404;&#x79CD;&#x5F02;&#x6784;&#x6838;&#xFF0C;&#x4F8B;&#x5982;RISC-V&#xFF0C;R&#xFF0C;M&#x7B49;&#x5F02;&#x6784;&#x6838;&#x4E4B;&#x95F4;&#x7684;&#x4E00;&#x81F4;&#x6027;&#x95EE;&#x9898;&#x7684;&#x5904;&#x7406;&#xFF0C;&#x5C31;&#x9700;&#x8981;NoC&#x53BB;&#x7EF4;&#x62A4;&#x3002;</p>
+<h2 id="21-&#x7B80;&#x4ECB;">2.1 &#x7B80;&#x4ECB;</h2>
+<p>&#x7247;&#x4E0A;&#x7F51;&#x7EDC;&#xFF08;NoC&#xFF09;&#x4E92;&#x8FDE;&#x7528;&#x4E8E;&#x6709;&#x6548;&#x7BA1;&#x7406;&#x7EC4;&#x4EF6;&#x4E4B;&#x95F4;&#x7684;&#x6570;&#x636E;&#x6D41;&#xFF0C;&#x63D0;&#x4F9B;&#x53EF;&#x6269;&#x5C55;&#x7684;&#x4F4E;&#x5EF6;&#x8FDF;&#x548C;&#x9AD8;&#x80FD;&#x6548;&#x901A;&#x4FE1;&#xFF0C;&#x4ECE;&#x800C;&#x5B9E;&#x73B0; CPU&#x3001;GPU&#x3001;NPU &#x548C;&#x5176;&#x4ED6;&#x52A0;&#x901F;&#x5668;&#x7B49;&#x529F;&#x80FD;&#x7684;&#x65E0;&#x7F1D;&#x96C6;&#x6210;&#x3002;NoC &#x53EF;&#x51CF;&#x5C11;&#x6570;&#x636E;&#x74F6;&#x9888;&#xFF0C;&#x63D0;&#x9AD8;&#x7CFB;&#x7EDF;&#x6027;&#x80FD;&#xFF0C;&#x5E76;&#x9002;&#x5E94; SoC &#x8BBE;&#x8BA1;&#x4E2D;&#x65E5;&#x76CA;&#x589E;&#x52A0;&#x7684;&#x590D;&#x6742;&#x6027;&#x3002;</p>
+<p>&#x7F13;&#x5B58;&#x4E00;&#x81F4;&#x6027;&#x662F; SoC &#x4E2D;&#x5404;&#x7EC4;&#x4EF6;&#x4E4B;&#x95F4;&#x9AD8;&#x6548;&#x6570;&#x636E;&#x5171;&#x4EAB;&#x7684;&#x6838;&#x5FC3;&#x3002;&#x5B83;&#x662F;&#x4E00;&#x79CD;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x4E00;&#x81F4;&#x6027;&#x7684;&#x673A;&#x5236;&#xFF0C;&#x53EF;&#x9632;&#x6B62;&#x74F6;&#x9888;&#x548C;&#x6570;&#x636E;&#x4E0D;&#x4E00;&#x81F4;&#xFF0C;&#x5E76;&#x6700;&#x7EC8;&#x7EF4;&#x6301;&#x6574;&#x4F53;&#x7CFB;&#x7EDF;&#x6027;&#x80FD;&#x3002;&#x5B83;&#x786E;&#x4FDD;&#x7CFB;&#x7EDF;&#x5728;&#x540E;&#x53F0;&#x65E0;&#x7F1D;&#x8FD0;&#x884C;&#x3002;&#x6DF1;&#x5165;&#x7814;&#x7A76;&#x7F13;&#x5B58;&#x4E00;&#x81F4;&#x6027;&#x7684;&#x5DE5;&#x7A0B;&#x5E08;&#x4F1A;&#x53D1;&#x73B0;&#x81EA;&#x5DF1;&#x5904;&#x4E8E;&#x786C;&#x4EF6;&#x548C;&#x8F6F;&#x4EF6;&#x7684;&#x4EA4;&#x53C9;&#x70B9;&#x3002;</p>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/b5b0e5a52b794eabafe22c576f65ffed~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936505&amp;x-orig-sign=qxvuhSRSXvMQIqVKv3393WZZ4Zo%3D" alt="image.png"></p>
+<p>&#x4E00;&#x81F4;&#x6027;&#x4E92;&#x8FDE;&#x53EF;&#x786E;&#x4FDD;&#x7CFB;&#x7EDF;&#x5185;&#x7684;&#x6240;&#x6709;&#x8FDB;&#x7A0B;&#x5177;&#x6709;&#x7EDF;&#x4E00;&#x4E00;&#x81F4;&#x7684;&#x5185;&#x5B58;&#x89C6;&#x56FE;&#x3002;&#x8BF7;&#x8003;&#x8651;&#x4E00;&#x4E2A;&#x5E26;&#x6709;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x5B50;&#x7CFB;&#x7EDF;&#x7684;&#x7CFB;&#x7EDF;&#x3002;&#x5728;&#x8FD9;&#x6837;&#x7684;&#x8BBE;&#x7F6E;&#x4E2D;&#xFF0C;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x5904;&#x7406;&#x5668;&#x72EC;&#x7ACB;&#x7BA1;&#x7406;&#x6570;&#x636E;&#x6D41;&#xFF0C;&#x5F3A;&#x52A0;&#x7F13;&#x5B58;&#x4E00;&#x81F4;&#x6027;&#x53EF;&#x80FD;&#x4F1A;&#x5E26;&#x6765;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x5F00;&#x9500;&#x3002;&#x6240;&#x4EE5;&#x5BF9;&#x72EC;&#x6709;&#x8D44;&#x6E90;&#x7684;&#x9694;&#x79BB;&#xFF0C;&#x800C;&#x4E0D;&#x4E00;&#x5B9A;&#x9700;&#x8981;&#x4FDD;&#x8BC1;&#x4E00;&#x81F4;&#x6027;&#x4E92;&#x8FDE;&#x3002;</p>
+<p>Arteris&#x4EA7;&#x54C1;&#x7EBF;&#x53EF;&#x5206;&#x4E3A;Ncore&#x548C;FlexNoC&#x4E24;&#x7C7B;&#xFF1A;</p>
+<ol>
+<li><strong>Ncore</strong>&#x662F;&#x7F13;&#x5B58;&#x4E00;&#x81F4;&#x6027;&#x4E92;&#x8FDE;IP&#xFF0C;&#x8FDE;&#x63A5;CPUs&#x3001;&#x52A0;&#x901F;&#x5668;&#x548C;&#x5185;&#x5B58;&#x5B50;&#x7CFB;&#x7EDF;&#xFF0C;&#x662F;&#x5728;2016&#x5E74;&#x63A8;&#x51FA;&#x7684;&#x9488;&#x5BF9;&#x5F02;&#x6784;&#x8BA1;&#x7B97;&#x82AF;&#x7247;&#x7684;IP&#xFF1B;</li>
+<li><strong>FlexNoC</strong>&#x5219;&#x7528;&#x4E8E;&#x8FDE;&#x63A5;&#x5916;&#x56F4;&#x6A21;&#x5757;&#xFF0C;&#x5305;&#x62EC;D2D&#x6216;C2C&#x7684;&#x5E76;&#x884C;&#x63A5;&#x53E3;&#x4EE5;&#x53CA;&#x4E00;&#x4E9B;&#x6269;&#x5C55;&#x529F;&#x80FD;&#xFF08;&#x5982;&#x9488;&#x5BF9;&#x8F66;&#x89C4;&#x7684;&#x5B89;&#x5168;&#x6269;&#x5C55;&#xFF09;</li>
+</ol>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/b277ea2da4fd432fbf0654053ca40898~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936505&amp;x-orig-sign=dqihc6XUfGIImvvszHiK19BFNX0%3D" alt="image.png"></p>
+<p>Ncore &#x7684;&#x591A;&#x79CD;&#x53EF;&#x914D;&#x7F6E;&#x76D1;&#x89C6;&#x8FC7;&#x6EE4;&#x5668;&#x80FD;&#x5B9E;&#x73B0;&#x66F4;&#x6709;&#x9488;&#x5BF9;&#x6027;&#x548C;&#x66F4;&#x7B80;&#x5316;&#x7684;&#x4E00;&#x81F4;&#x6027;&#x7BA1;&#x7406;&#xFF0C;&#x4ECE;&#x800C;&#x964D;&#x4F4E;&#x4E86;&#x8BBE;&#x8BA1;&#x7684;&#x6574;&#x4F53;&#x590D;&#x6742;&#x6027;&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x786E;&#x4FDD;&#x4E86;&#x9AD8;&#x6548;&#x548C;&#x91CF;&#x8EAB;&#x5B9A;&#x5236;&#x7684;&#x4E00;&#x81F4;&#x6027;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x6709;&#x52A9;&#x4E8E;&#x63D0;&#x9AD8;&#x6574;&#x4F53;&#x6548;&#x7387;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ol>
+<li><a href="https://cn.design-reuse.com/articles/55488/optimizing-communication-and-data-sharing-in-multi-core-soc-designs.html" target="_blank">https://cn.design-reuse.com/articles/55488/optimizing-communication-and-data-sharing-in-multi-core-soc-designs.html</a></li>
+</ol>
+<h2 id="22-chi&#x534F;&#x8BAE;&#x5B9A;&#x4E49;&#x7684;noc&#x7EC4;&#x4EF6;">2.2 CHI&#x534F;&#x8BAE;&#x5B9A;&#x4E49;&#x7684;NOC&#x7EC4;&#x4EF6;</h2>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/e1e1033b62f14ea28c49f0352144bf3c~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936505&amp;x-orig-sign=dPPP%2BVPaQH5Trt73KKEcJDLah44%3D" alt="image.png"></p>
+<p>&#x8BF7;&#x6C42;&#x7ED3;&#x70B9;RN
+&#x53EF;&#x4EE5;&#x5411;NOC&#x53D1;&#x9001;&#x8BFB;/&#x5199;&#x7B49;&#x8BF7;&#x6C42;&#x4E8B;&#x52A1;&#xFF0C;&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#x7C7B;&#x578B;&#x7684;RN&#xFF1A;</p>
+<p>RN-F        &#x4E00;&#x822C;&#x662F;&#x5904;&#x7406;&#x5668;&#x6838;&#x6216;&#x8005;&#x6838;&#x7C07;&#x7ED3;&#x70B9;&#xFF0C;&#x5305;&#x542B;&#x4E86;&#x5C40;&#x90E8;cache&#x548C;&#x4E00;&#x81F4;&#x6027;&#x90E8;&#x4EF6;snoopee&#x3002;&#x4E0E;NOC&#x4E0A;&#x7684;&#x4E00;&#x81F4;&#x6027;&#x90E8;&#x4EF6;&#x4E00;&#x8D77;&#xFF0C;&#x7EF4;&#x62A4;&#x201C;&#x53EF;&#x7F13;&#x5B58;&#x201D;&#x6570;&#x636E;&#x7684;&#x4E00;&#x81F4;&#x6027;&#xFF08;&#x8FD9;&#x79CD;&#x53EF;&#x7F13;&#x5B58;&#x6570;&#x636E;&#x7684;&#x5730;&#x5740;&#x4E00;&#x822C;&#x662F;normal&#x5C5E;&#x6027;&#xFF09;&#xFF1B;RN-F&#x53EF;&#x4EE5;&#x53D1;&#x9001;&#x6240;&#x6709;&#x8BF7;&#x6C42;&#x4E8B;&#x52A1;&#x7C7B;&#x578B;&#xFF1B;&#x652F;&#x6301;&#x6240;&#x6709;&#x7684;snoop&#x7C7B;&#x578B;&#x4E8B;&#x52A1;&#xFF08;&#x8FD9;&#x91CC;&#x4E0D;&#x4EC5;&#x4EC5;&#x662F;&#x6307;&#x53D1;&#x9001;snoop&#x7C7B;&#x578B;&#x4E8B;&#x52A1;&#xFF0C;&#x4E5F;&#x5305;&#x62EC;&#x4E86;&#x54CD;&#x5E94;&#x6765;&#x81EA;NOC&#x7684;snoop&#x7C7B;&#x578B;&#x4E8B;&#x52A1;&#xFF09;&#x3002;
+RN-D       &#x4E00;&#x822C;&#x662F;&#x652F;&#x6301;SMMU&#x7684;IO DMA&#x8BF7;&#x6C42;&#x70B9;&#xFF0C;&#x4E0D;&#x5305;&#x542B;&#x5C40;&#x90E8;cache&#xFF0C;&#x4E5F;&#x6CA1;&#x6709;snoopee&#x3002;&#x80FD;&#x63A5;&#x6536;&#x5E76;&#x54CD;&#x5E94;&#x6765;&#x81EA;RN-F&#x7684;DVM&#x7C7B;&#x578B;&#x4E8B;&#x52A1;&#xFF08;&#x7528;&#x4E8E;&#x64CD;&#x4F5C;SMMU&#xFF09;&#xFF1B;&#x4E3B;&#x8981;&#x8D1F;&#x8D23;&#x53D1;&#x9001;DMA&#x8BFB;/&#x5199;&#x4E3B;&#x5B58;&#x65F6;&#x7684;&#x6570;&#x636E;&#x4E00;&#x81F4;&#x6027;&#x76F8;&#x5173;&#x4E8B;&#x52A1;&#x3002;
+RN-I         &#x4E0E;RN-D&#x7C7B;&#x578B;&#xFF0C;&#x4F46;&#x4E0D;&#x652F;&#x6301;SMMU&#x3002;
+&#x4E00;&#x81F4;&#x6027;&#x7ED3;&#x70B9;HN
+&#x96B6;&#x5C5E;&#x4E8E;NOC&#x7684;&#x529F;&#x80FD;&#x90E8;&#x4EF6;&#xFF0C;&#x63A5;&#x6536;&#x6765;&#x81EA;RN&#x7684;&#x4E8B;&#x52A1;&#x8BF7;&#x6C42;&#xFF0C;&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#x7C7B;&#x578B;&#x7684;HN&#xFF1A;</p>
+<p>HN-F        &#x5305;&#x542B;&#x4E86;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;&#x6216;&#x8005;snoop filter&#x6765;&#x652F;&#x6301;&#x6240;&#x6709;&#x7C7B;&#x578B;&#x7684;&#x4E8B;&#x52A1;&#x8BF7;&#x6C42;&#xFF0C;&#x4F46;&#x4E0D;&#x652F;&#x6301;DVM&#x7C7B;&#x578B;&#x7684;&#x4E8B;&#x52A1;&#x8BF7;&#x6C42;&#x3002;HN-F&#x7BA1;&#x7406;&#x6240;&#x6709;RN-F&#x7684;cache&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x4F8B;&#x5982;&#x4E00;&#x4E2A;&#x5730;&#x5740;&#x7684;&#x6700;&#x65B0;&#x6570;&#x636E;&#x7A76;&#x7ADF;&#x5728;&#x54EA;&#x51E0;&#x4E2A;RN-F&#x7684;cache&#x4E2D;&#xFF0C;&#x8FD8;&#x662F;&#x5728;NOC&#x7684;L3 cache&#x4E2D;&#xFF1B;&#x4F8B;&#x5982;&#x4E00;&#x4E2A;RN-F&#x8981;&#x5199;&#x6570;&#x636E;&#x4E4B;&#x524D;&#xFF0C;&#x9996;&#x5148;&#x5C31;&#x9700;&#x8981;&#x5411;HN-F&#x62FF;&#x5230;&#x8BE5;&#x5730;&#x5740;&#x7684;&#x72EC;&#x5360;&#x6743;&#xFF08;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;HN-F&#x534F;&#x52A9;RN-F&#x83B7;&#x5F97;&#x5730;&#x5740;&#x7684;&#x72EC;&#x5360;&#x6743;&#xFF09;&#xFF1B;HN-F&#x8FD8;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x7BA1;&#x7406;&#x5185;&#x5B58;&#x8BF7;&#x6C42;&#x4E4B;&#x95F4;&#x7684;&#x5E8F;&#xFF0C;&#x5373;HN-F&#x662F;&#x5185;&#x5B58;&#x64CD;&#x4F5C;&#x7684;&#x4FDD;&#x5E8F;&#x70B9;&#x3002;&#x6211;&#x7684;&#x7406;&#x89E3;&#xFF1A;HN-F&#x7528;&#x4E8E;&#x53EF;&#x7F13;&#x5B58;&#x7684;normal&#x5C5E;&#x6027;&#x5730;&#x5740;&#x8303;&#x56F4;&#x3002;
+HN-I        &#x652F;&#x6301;&#x90E8;&#x5206;&#x7C7B;&#x578B;&#x7684;&#x4E8B;&#x52A1;&#x8BF7;&#x6C42;&#xFF0C;&#x4E0D;&#x7BA1;&#x7406;RN&#x7684;&#x6570;&#x636E;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x7528;&#x4E8E;&#x9488;&#x5BF9;&#x5916;&#x8BBE;&#x7684;PIO&#x64CD;&#x4F5C;&#x7684;&#x4FDD;&#x5E8F;&#x529F;&#x80FD;&#x3002;&#x6211;&#x7684;&#x7406;&#x89E3;&#xFF1A;HN-I&#x7528;&#x4E8E;&#x4E0D;&#x53EF;&#x7F13;&#x5B58;&#x7684;device&#x5C5E;&#x6027;&#x5730;&#x5740;&#x8303;&#x56F4;&#x3002;
+MN          &#x4E13;&#x95E8;&#x7528;&#x4E8E;&#x63A5;&#x6536;DVM&#x64CD;&#x4F5C;&#x3002;
+&#x4ECE;&#x7ED3;&#x70B9;SN
+&#x53EA;&#x80FD;&#x63A5;&#x6536;&#x6765;&#x81EA;HN&#x7684;&#x8BF7;&#x6C42;&#xFF0C;&#x5B8C;&#x6210;&#x76F8;&#x5173;&#x64CD;&#x4F5C;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x54CD;&#x5E94;&#x6D88;&#x606F;&#x3002;</p>
+<p>SN-F      &#x7528;&#x4E8E;Normal&#x5C5E;&#x6027;&#x5185;&#x5B58;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5904;&#x7406;&#x975E;snoopable&#x7684;&#x8BFB;/&#x5199;&#x3001;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#x8BF7;&#x6C42;&#x548C;&#x72EC;&#x5360;&#x8BFB;&#x5199;&#x8BF7;&#x6C42;&#x3002;
+SN-I       &#x7528;&#x4E8E;device&#x5C5E;&#x6027;&#x7684;&#x5916;&#x8BBE;&#xFF08;&#x6216;&#x8005;Normal&#x5C5E;&#x6027;&#x7684;&#x5185;&#x5B58;&#xFF09;&#xFF0C;&#x4E5F;&#x53EF;&#x5904;&#x7406;&#x975E;snoopable&#x7684;&#x8BFB;/&#x5199;&#xFF0C;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#x8BF7;&#x6C42;&#x548C;&#x72EC;&#x5360;&#x8BFB;&#x5199;&#x8BF7;&#x6C42;&#x3002;</p>
+<blockquote>
+<p>&#x6CE8;&#x610F;&#xFF1A;</p>
+<p>&#x8FD9;&#x4E9B;&#x8282;&#x70B9;&#x90FD;&#x662F;&#x53EF;&#x4EE5;&#x914D;&#x7F6E;&#x7684;&#xFF0C;&#x5728;NoC&#x4E2D;&#x662F;&#x786C;&#x4EF6;&#x4E2D;&#x914D;&#x7F6E;&#xFF0C;CMN&#x53EF;&#x4EE5;&#x5728;&#x8F6F;&#x4EF6;&#x4E2D;&#x8FDB;&#x884C;&#x914D;&#x7F6E;&#x3002;&#x4F8B;&#x5982;-F&#x6709;cache&#x53EF;&#x4EE5;&#x4FDD;&#x8BC1;&#x4E00;&#x81F4;&#x6027;&#xFF0C;-D&#x6CA1;cache&#x4E5F;&#x4E0D;&#x4FDD;&#x8BC1;&#x4E00;&#x81F4;&#x6027;&#x3002;</p>
+</blockquote>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://blog.csdn.net/lsshao/article/details/128969914" target="_blank">https://blog.csdn.net/lsshao/article/details/128969914</a></p>
+<h1 id="3-&#x8F6F;&#x4EF6;&#x89D2;&#x5EA6;">3. &#x8F6F;&#x4EF6;&#x89D2;&#x5EA6;</h1>
+<h2 id="31-arm&#x5185;&#x5B58;&#x4E00;&#x81F4;&#x6027;">3.1 ARM&#x5185;&#x5B58;&#x4E00;&#x81F4;&#x6027;</h2>
+<p>&#x9996;&#x5148;&#x5C31;&#x662F;ARM&#x53EF;&#x4EE5;&#x914D;&#x7F6E;&#x7684;&#x5185;&#x5B58;&#x5C5E;&#x6027;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;ARM&#x624B;&#x518C;&#x91CC;&#x9762;&#x7684;&#x63CF;&#x8FF0;&#x3002;</p>
+<p>Normal Memory
+Normal memory&#x7C7B;&#x578B;&#x5C5E;&#x6027;&#x9002;&#x7528;&#x4E8E;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x5927;&#x591A;&#x6570;&#x5185;&#x5B58;&#x3002;&#x5B83;&#x8868;&#x793A;&#x67B6;&#x6784;&#x5141;&#x8BB8;&#x786C;&#x4EF6;&#x5BF9;&#x8FD9;&#x4E9B;&#x4F4D;&#x7F6E;&#x6267;&#x884C;&#x63A8;&#x6D4B;&#x6570;&#x636E;&#x8BFB;&#x53D6;&#x8BBF;&#x95EE;(Speculative data read accesses)&#xFF0C;&#x800C;&#x4E0D;&#x7BA1;&#x8FD9;&#x4E9B;&#x4F4D;&#x7F6E;&#x7684;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x5982;&#x4F55;&#x3002;&#x4E3A;&#x4E86;&#x786E;&#x4FDD;&#x8BBF;&#x95EE;Normal memory&#x662F;&#x7684;&#x987A;&#x5E8F;&#x6027;&#xFF0C;&#x6709;&#x5FC5;&#x8981;&#x4F7F;&#x7528;&#x5185;&#x5B58;&#x5C4F;&#x969C;&#x6307;&#x4EE4;&#xFF1A;DMB &#x3002;</p>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/6abe1b83bfc64c15a2297596569e1876~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936505&amp;x-orig-sign=TLJq83JGPPkNrBU9CW3YAo%2FMFgo%3D" alt="image.png"></p>
+<ul>
+<li>&#x6BCF;&#x4E2A;Inner&#x5171;&#x4EAB;&#x57DF;&#x5305;&#x542B;&#x4E00;&#x7EC4;&#x89C2;&#x5BDF;&#x8005;&#xFF08;observers&#xFF09;&#xFF0C;&#x8FD9;&#x4E9B;&#x89C2;&#x5BDF;&#x8005;&#x5BF9;&#x4E8E;&#x8BE5;&#x7EC4;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x6210;&#x5458;&#x90FD;&#x662F;&#x6570;&#x636E;&#x4E00;&#x81F4;&#x7684;&#xFF0C;&#x7528;&#x4E8E;&#x4F7F;&#x7528;&#x8BE5;&#x7EC4;&#x4E2D;&#x7684;&#x4EFB;&#x4F55;&#x6210;&#x5458;&#x6240;&#x521B;&#x5EFA;&#x7684;&#x5185;&#x90E8;&#x5171;&#x4EAB;&#x5C5E;&#x6027;&#xFF08;Inner Shareable attribute&#xFF09;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x3002;</li>
+<li>&#x6BCF;&#x4E2A;Outer&#x5171;&#x4EAB;&#x57DF;&#x5305;&#x542B;&#x4E00;&#x7EC4;&#x89C2;&#x5BDF;&#x8005;&#xFF0C;&#x8FD9;&#x4E9B;&#x89C2;&#x5BDF;&#x8005;&#x5BF9;&#x4E8E;&#x8BE5;&#x7EC4;&#x7684;&#x6BCF;&#x4E2A;&#x6210;&#x5458;&#x90FD;&#x662F;&#x6570;&#x636E;&#x4E00;&#x81F4;&#x7684;&#xFF0C;&#x7528;&#x4E8E;&#x4F7F;&#x7528;&#x8BE5;&#x7EC4;&#x7684;&#x4EFB;&#x4F55;&#x6210;&#x5458;&#x6240;&#x521B;&#x5EFA;&#x7684;&#x5916;&#x90E8;&#x5171;&#x4EAB;&#x5C5E;&#x6027;&#xFF08;Outer Shareable attribute&#xFF09;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x3002;</li>
+<li>Non-shareable Normal memory&#xFF1A;&#x4E0D;&#x53EF;&#x5171;&#x4EAB;&#x7684;normal&#x5185;&#x5B58;&#x662F;<strong>&#x4E00;&#x5757;&#x53EA;&#x80FD;&#x88AB;&#x5355;&#x4E2A;CPU&#x8BBF;&#x95EE;&#x7684;Normal&#x5185;&#x5B58;</strong></li>
+</ul>
+<p>&#x6BCF;&#x4E2A;Normal &#x5185;&#x5B58;&#x8FD8;&#x88AB;&#x5206;&#x914D;&#x4E86;&#x4E00;&#x4E2A;&#x7F13;&#x5B58;&#x5C5E;&#x6027;&#xFF1A;</p>
+<ul>
+<li>Write-Through Cacheable.</li>
+<li>Write-Back Cacheable.</li>
+<li>Non-cacheable.</li>
+</ul>
+<p>Device&#x5185;&#x5B58;&#x7C7B;&#x578B;&#x5C5E;&#x6027;&#x5B9A;&#x4E49;&#x4E86;&#x5185;&#x5B58;&#x4F4D;&#x7F6E;&#xFF0C;&#x5176;&#x4E2D;&#x5BF9;&#x8BE5;&#x4F4D;&#x7F6E;&#x7684;&#x8BBF;&#x95EE;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x526F;&#x4F5C;&#x7528;&#xFF0C;&#x6216;&#x8005;&#x52A0;&#x8F7D;&#x8FD4;&#x56DE;&#x7684;&#x503C;&#x53EF;&#x80FD;&#x6839;&#x636E;&#x6267;&#x884C;&#x7684;&#x52A0;&#x8F7D;&#x6570;&#x91CF;&#x800C;&#x53D8;&#x5316;&#x3002;&#x901A;&#x5E38;&#xFF0C;Device&#x5185;&#x5B58;&#x5C5E;&#x6027;&#x7528;&#x4E8E;&#x5185;&#x5B58;&#x6620;&#x5C04;&#x7684;&#x5916;&#x8BBE;&#xFF08;memory-mapped peripherals&#xFF09;&#x548C;&#x7C7B;&#x4F3C;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
+<ul>
+<li>&#x4E0D;&#x5141;&#x8BB8;&#x5BF9;&#x5177;&#x6709;&#x4EFB;&#x4F55;Device memory&#x5C5E;&#x6027;&#x7684;&#x4EFB;&#x4F55;&#x5185;&#x5B58;&#x4F4D;&#x7F6E;&#x8FDB;&#x884C;&#x63A8;&#x6D4B;&#x6027;&#x6570;&#x636E;&#x8BBF;&#x95EE;&#xFF08;Speculative data accesses&#xFF09;&#x3002;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x5BF9;&#x4EFB;&#x4F55;Device&#x5185;&#x5B58;&#x7C7B;&#x578B;&#x7684;&#x6BCF;&#x4E2A;&#x5185;&#x5B58;&#x8BBF;&#x95EE;&#x90FD;&#x5FC5;&#x987B;&#x662F;&#x7531;&#x7A0B;&#x5E8F;&#x7684;&#x7B80;&#x5355;&#x987A;&#x5E8F;&#x6267;&#x884C;&#x751F;&#x6210;&#x7684;&#x3002;</li>
+<li>&#x5BF9;&#x4EFB;&#x4F55;Device memory&#x7C7B;&#x578B;&#x7684;&#x5185;&#x5B58;&#x4F4D;&#x7F6E;&#x7684;&#x5199;&#x5165;&#x5728;&#x6709;&#x9650;&#x65F6;&#x95F4;&#x5185;&#x5B8C;&#x6210;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x4ECE;Device memory&#x7C7B;&#x578B;&#x7684;&#x5185;&#x5B58;&#x4F4D;&#x7F6E;&#x8BFB;&#x53D6;&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x53D1;&#x751F;&#x4E86;&#x53D8;&#x5316;&#xFF0C;&#x800C;&#x89C2;&#x5BDF;&#x8005;&#x6CA1;&#x6709;&#x663E;&#x5F0F;&#x7684;&#x5185;&#x5B58;&#x5199;&#x5165;&#x5F71;&#x54CD;&#xFF0C;&#x5219;&#x8BE5;&#x53D8;&#x5316;&#x4E5F;&#x5FC5;&#x987B;&#x5728;&#x6709;&#x9650;&#x65F6;&#x95F4;&#x5185;&#x5BF9;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x89C2;&#x5BDF;&#x8005;&#x8FDB;&#x884C;&#x5168;&#x5C40;&#x89C2;&#x5BDF;&#x3002;&#x8FD9;&#x6837;&#x7684;&#x66F4;&#x6539;&#x53EF;&#x80FD;&#x53D1;&#x751F;&#x5728;&#x4FDD;&#x5B58;&#x72B6;&#x6001;&#x4FE1;&#x606F;&#x7684;&#x5916;&#x8BBE;&#xFF08;peripheral location that holds status
+information&#xFF09;&#x3002;</li>
+<li>&#x5BF9;&#x4E8E;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x89C2;&#x5BDF;&#x8005;&#x6765;&#x8BF4;&#xFF0C;&#x5BF9;Device memory&#x4F4D;&#x7F6E;&#x7684;&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x90FD;&#x662F;&#x4E00;&#x81F4;&#x7684;&#xFF0C;&#x5E76;&#x76F8;&#x5E94;&#x5730;&#x88AB;&#x89C6;&#x4E3A;&#x53EF;&#x5916;&#x90E8;&#x5171;&#x4EAB;&#x7684;&#xFF08;Outer Shareable&#xFF09;&#x3002;</li>
+<li>&#x5177;&#x6709;&#x4EFB;&#x4F55;Device memory&#x5C5E;&#x6027;&#x7684;&#x5185;&#x5B58;&#x4F4D;&#x7F6E;&#x90FD;&#x4E0D;&#x80FD;&#x5206;&#x914D;&#x5230;&#x7F13;&#x5B58;&#x4E2D;&#x3002;</li>
+<li>&#x5BF9;&#x4E8E;&#x4EFB;&#x4F55;Device memory&#x7C7B;&#x578B;&#x7684;&#x8BBF;&#x95EE;&#xFF0C;&#x4F7F;&#x7528;DMB&#x6307;&#x4EE4;&#xFF0C;&#x5728;&#x5BF9;&#x5355;&#x4E2A;&#x5916;&#x8BBE;&#x6216;&#x6307;&#x5B9A;&#x5927;&#x5C0F;&#x7684;&#x5185;&#x5B58;&#x5757;&#x7684;&#x6240;&#x6709;&#x8BBF;&#x95EE;&#x4E0A;&#x5F15;&#x5165;&#x4E00;&#x4E2A;Barrier-ordered-before&#x5173;&#x7CFB;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x5185;&#x5B58;&#x4F4D;&#x7F6E;&#x4E0D;&#x80FD;&#x652F;&#x6301;&#x672A;&#x5BF9;&#x9F50;&#x7684;&#x5185;&#x5B58;&#x8BBF;&#x95EE;&#xFF08;unaligned memory accesses&#xFF09;&#xFF0C;&#x90A3;&#x4E48;&#x5BF9;&#x8BE5;&#x5185;&#x5B58;&#x4F4D;&#x7F6E;&#x7684;&#x672A;&#x5BF9;&#x9F50;&#x8BBF;&#x95EE;&#x5C06;&#x5728;&#x8F6C;&#x6362;&#x7684;&#x7B2C;&#x4E00;&#x9636;&#x6BB5;&#x751F;&#x6210;&#x5BF9;&#x9F50;&#x9519;&#x8BEF;&#xFF08;Alignment fault&#xFF09;&#xFF0C;&#x8BE5;&#x8F6C;&#x6362;&#x5C06;&#x8BE5;&#x4F4D;&#x7F6E;&#x5B9A;&#x4E49;&#x4E3A;Device&#x3002;</li>
+<li>&#x786C;&#x4EF6;&#x4E0D;&#x4F1A;&#x963B;&#x6B62;&#x4ECE;&#x5177;&#x6709;&#x4EFB;&#x4F55;Device memory&#x5C5E;&#x6027;&#x7684;&#x5185;&#x5B58;&#x4F4D;&#x7F6E;&#x8FDB;&#x884C;&#x63A8;&#x6D4B;&#x6027;&#x7684;&#x6307;&#x4EE4;&#x83B7;&#x53D6;&#xFF0C;&#x9664;&#x975E;&#x8BE5;&#x5185;&#x5B58;&#x4F4D;&#x7F6E;&#x4E5F;&#x88AB;&#x6807;&#x8BB0;&#x4E3A;&#x6240;&#x6709;&#x5F02;&#x5E38;&#x7EA7;&#x522B;&#x7684;execute-never&#x3002;</li>
+</ul>
+<p>Device type&#x6709;&#x56DB;&#x79CD;&#x5B50;&#x7C7B;&#x578B;&#xFF0C;&#x5206;&#x522B;&#x5BF9;&#x5E94;&#x4E0D;&#x540C;&#x7684;&#x9650;&#x5236;&#x7EA7;&#x522B;&#x3002;&#x4EE5;&#x4E0B;&#x662F;&#x6700;&#x5BBD;&#x677E;&#x7684;&#x51E0;&#x79CD;&#x5B50;&#x7C7B;&#x578B;&#xFF1A;</p>
+<ul>
+<li>Device-GRE</li>
+<li>Device-nGRE</li>
+<li>Device-nGnRE</li>
+</ul>
+<p>&#x8BE5;&#x5B50;&#x7C7B;&#x578B;&#x662F;&#x6700;&#x4E25;&#x683C;&#x7684;&#xFF1A;</p>
+<ul>
+<li>Device-nGnRnE</li>
+</ul>
+<p>Device&#x540E;&#x9762;&#x7684;&#x5B57;&#x6BCD;&#x8868;&#x8FBE;&#x7684;&#x662F;&#x5C5E;&#x6027;&#x7684;&#x7EC4;&#x5408;&#xFF1A;</p>
+<p>&#xFF08;1&#xFF09;Gathering(G&#xFF0C;nG)&#x3002;&#x8868;&#x793A;&#x8BBF;&#x95EE;&#x53EF;&#x4EE5;&#x88AB;&#x5408;&#x5E76;&#xFF08;G&#xFF09;&#x6216;&#x4E0D;&#x53EF;&#x4EE5;&#x88AB;&#x5408;&#x5E76;&#xFF08;nG&#xFF09;&#x3002;&#x610F;&#x601D;&#x662F;&#x53EF;&#x80FD;&#x4F1A;&#x5C06;&#x5BF9;&#x540C;&#x4E00;&#x5730;&#x5740;&#x7684;&#x591A;&#x4E2A;&#x8BBF;&#x95EE;&#x5408;&#x5E76;&#x4E3A;&#x4E00;&#x4E2A;&#x8BBF;&#x95EE;&#xFF0C;&#x6216;&#x5C06;&#x591A;&#x4E2A;&#x5C0F;&#x7684;&#x8BBF;&#x95EE;&#x5408;&#x5E76;&#x4E3A;&#x4E00;&#x4E2A;&#x5927;&#x7684;&#x8BBF;&#x95EE;&#x3002;</p>
+<p>&#xFF08;2&#xFF09;Re-ordering(R&#xFF0C;nR)&#x3002;&#x8868;&#x793A;&#x5BF9;&#x540C;&#x4E00;&#x5916;&#x8BBE;&#x7684;&#x8BBF;&#x95EE;&#x53EF;&#x4EE5;&#x88AB;&#x4E71;&#x5E8F;&#xFF08;R&#xFF09;&#x6216;&#x4E0D;&#x53EF;&#x4EE5;&#x88AB;&#x4E71;&#x5E8F;&#xFF08;nR&#xFF09;</p>
+<p>&#xFF08;&#x8BD1;&#x8005;&#xFF1A;&#x6211;&#x89C9;&#x5F97;&#x7FFB;&#x8BD1;&#x6210;&#x201C;&#x4E71;&#x5E8F;&#x201D;&#x6216;&#x201C;&#x91CD;&#x6392;&#x201D;&#x90FD;&#x884C;&#xFF09;&#x3002;&#x5F53;&#x5141;&#x8BB8;&#x4E71;&#x5E8F;&#x65F6;&#xFF0C;&#x5176;&#x4E71;&#x5E8F;&#x89C4;&#x5219;&#x4E0E;Normal type&#x4E00;&#x81F4;&#x3002;</p>
+<p>&#xFF08;3&#xFF09;Early Write Acknowledgement(E&#xFF0C;nE)&#x3002;&#x6B64;&#x5C5E;&#x6027;&#x51B3;&#x5B9A;&#x4E00;&#x4E2A; write &#x64CD;&#x4F5C;&#x4F55;&#x65F6;&#x53EF;&#x4EE5;&#x88AB;&#x8BA4;&#x4E3A;&#x662F;&#x201C;&#x5DF2;&#x5B8C;&#x6210;&#x201D;&#x7684;&#x3002;&#x5982;&#x679C;&#x5141;&#x8BB8;Early Write Acknowledge(E)</p>
+<p>&#xFF08;&#x8BD1;&#x8005;&#xFF1A;early&#x53EF;&#x4EE5;&#x7B80;&#x5355;&#x7406;&#x89E3;&#x4E3A;&#x201C;&#x63D0;&#x524D;&#x201D;&#xFF0C;&#x5728;&#x4E8B;&#x5B9E;&#x751F;&#x6548;&#x4E4B;&#x524D;&#xFF0C;&#x5177;&#x4F53;&#x8BA8;&#x8BBA;&#x89C1;&#x201C;9. &#x4E00;&#x6B21;&#x8BBF;&#x95EE;&#x4F55;&#x65F6;&#x88AB;&#x8BA4;&#x4E3A;&#x662F;&apos;&#x5DF2;&#x5B8C;&#x6210;&apos;&#x201D;&#xFF09;&#xFF0C;&#x5219;&#x4E00;&#x65E6;&#x4E00;&#x4E2A;write&#x64CD;&#x4F5C;&#x5BF9;&#x5176;&#x4ED6;&#x89C2;&#x5BDF;&#x8005;&#x53EF;&#x89C1;&#xFF0C;&#x5373;&#x4F7F;&#x8BE5;&#x8BBF;&#x95EE;&#x5E76;&#x672A;&#x771F;&#x6B63;&#x5230;&#x8FBE;&#x5176;&#x76EE;&#x7684;&#x5730;&#xFF0C;&#x8BE5;&#x8BBF;&#x95EE;&#x4F9D;&#x7136;&#x4F1A;&#x88AB;&#x89C6;&#x4E3A;&#x201C;&#x5DF2;&#x5B8C;&#x6210;&#x201D;&#x3002;</p>
+<p>Data Memory Barrier(DMB)&#x7528;&#x4E8E;&#x9632;&#x6B62;&#x6307;&#x5B9A;&#x7684;explicit&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x4F1A;&#x8DE8;&#x8D8A;&#x5C4F;&#x969C;&#x6307;&#x4EE4;&#x4E71;&#x5E8F;&#x3002;program order&#x4E0A;&#x5728;DMB&#x4E4B;&#x524D;&#x7684;&#x6240;&#x6709;explicit&#x6570;&#x636E;load&#x6216;store&#x6307;&#x4EE4;&#xFF0C;&#x4F1A;&#x5728;program order&#x4E0A;&#x8BE5;DMB&#x4E4B;&#x540E;&#x7684;&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x4E4B;&#x524D;&#x88AB;&#x6307;&#x5B9A;Shareability domain&#x4E2D;&#x7684;&#x6240;&#x6709;Observers&#x89C2;&#x5BDF;&#x5230;&#x3002;</p>
+<p>DSB&#x5185;&#x5B58;&#x5C4F;&#x969C;&#x7528;&#x4E8E;&#x786E;&#x4FDD;&#x5728;&#x6B64;DSB&#x4E4B;&#x524D;&#x7684;&#x5185;&#x5B58;&#x8BBF;&#x95EE;&#xFF0C;&#x5FC5;&#x987B;&#x5728;DSB&#x6307;&#x4EE4;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x4E4B;&#x524D;&#x5B8C;&#x6210;&#x3002;&#x6B63;&#x56E0;&#x5982;&#x6B64;&#xFF0C;&#x5176;&#x662F;&#x4E00;&#x4E2A;&#x6BD4;DMB&#x7EA6;&#x675F;&#x66F4;&#x5F3A;&#x7684;&#x5185;&#x5B58;&#x5C4F;&#x969C;&#x3002;&#x7531;&#x6307;&#x5B9A;&#x53C2;&#x6570;&#x7684;DMB&#x6240;&#x5E26;&#x6765;&#x7684;&#x4FDD;&#x5E8F;&#xFF0C;&#x76F8;&#x540C;&#x53C2;&#x6570;&#x7684;DSB&#x4E5F;&#x53EF;&#x4EE5;&#x505A;&#x5230;&#x3002;</p>
+<ol>
+<li>DMB&#xFF1A;&#x53EA;&#x80FD;&#x8FBE;&#x5230;&#x4FDD;&#x5E8F;&#xFF0C;&#x4E0D;&#x80FD;&#x843D;&#x76D8;</li>
+<li>DSB&#xFF1A;&#x53EF;&#x4EE5;&#x843D;&#x76D8;</li>
+<li>ISB&#xFF1A;&#x6307;&#x4EE4;&#x5C42;&#x9762;&#x987A;&#x5E8F;&#x4FDD;&#x969C;</li>
+</ol>
+<p>&#x5176;&#x4ED6;&#x7684;&#x4E00;&#x4E9B;&#x5185;&#x5B58;&#x7C7B;&#x578B;&#xFF1A;</p>
+<ul>
+<li>M&#x6838;&#x4E2D;&#x6709;strongly-ordered&#xFF1A;&#x548C;device&#x57FA;&#x672C;&#x4E00;&#x6837;&#x4F46;&#x4FDD;&#x5E8F;&#x3002;A&#x6838;&#x4E2D;&#x4E00;&#x822C;device&#x5C5E;&#x6027;&#x4E2D;&#x6709;GRE&#x6765;&#x8FBE;&#x5230;&#x7C7B;&#x4F3C;&#x7684;&#x6548;&#x679C;&#x3002;</li>
+</ul>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ol>
+<li><a href="https://blog.csdn.net/luolaihua2018/article/details/128986147" target="_blank">https://blog.csdn.net/luolaihua2018/article/details/128986147</a></li>
+<li><a href="https://vxworks.net/arm/1127-arm-architecture-memory-systems-ordering-and-barriers" target="_blank">https://vxworks.net/arm/1127-arm-architecture-memory-systems-ordering-and-barriers</a></li>
+</ol>
+<h2 id="32-mpu&#x4FDD;&#x969C;&#x4E00;&#x81F4;&#x6027;">3.2 MPU&#x4FDD;&#x969C;&#x4E00;&#x81F4;&#x6027;</h2>
+<p>&#x4E00;&#x822C;&#x7684;ARM M&#x6838;&#x4F1A;&#x9009;&#x7528;MPU&#x3002;</p>
+<p>MPU(Memory Protection Unit) &#x5185;&#x5B58;&#x4FDD;&#x62A4;&#x5355;&#x5143;&#x3002; armv7-m &#x67B6;&#x6784;&#x4E0B;&#x662F;&#x9009;&#x914D;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x8212;&#x9A6C;&#x8D6B;&#x7684;M4F&#x662F;&#x652F;&#x6301;&#x7684;&#x3002;armv7-m &#x901A;&#x5E38;&#x652F;&#x6301;8&#x4E2A;region&#x3002;&#x4E00;&#x4E2A;region &#x5C31;&#x4EE3;&#x8868;&#x4E00;&#x6BB5;&#x8FDE;&#x7EED;&#x7684;&#x533A;&#x57DF;&#x3002;</p>
+<p>MPU&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5B9A;&#x4E49;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x6BD4;&#x5982;&#x7279;&#x6743;&#x6307;&#x4EE4;&#x548C;&#x975E;&#x7279;&#x6743;&#x6307;&#x4EE4;&#x4EE5;&#x53CA; cache &#x662F;&#x5426;&#x53EF;&#x8BBF;&#x95EE;&#x3002;&#x589E;&#x52A0;&#x7CFB;&#x7EDF;&#x7684;&#x5065;&#x58EE;&#x6027;&#xFF1A;</p>
+<ul>
+<li>&#x53EF;&#x4EE5;&#x963B;&#x6B62;&#x7528;&#x6237;&#x53BB;&#x7834;&#x574F;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x6570;&#x636E;</li>
+<li>&#x53EF;&#x4EE5;&#x9632;&#x6B62;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x53BB;&#x975E;&#x6CD5;&#x8BBF;&#x95EE;&#x5176;&#x4ED6;&#x4EFB;&#x52A1;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5C06;&#x4EFB;&#x52A1;&#x5B8C;&#x5168;&#x9694;&#x79BB;&#x5F00;</li>
+<li>&#x53EF;&#x4EE5;&#x628A;&#x5173;&#x952E;&#x6570;&#x636E;&#x533A;&#x8BBE;&#x4E3A;&#x53EA;&#x8BFB;&#xFF0C;&#x4ECE;&#x800C;&#x4E0D;&#x88AB;&#x7834;&#x574F;&#x3002;</li>
+<li>&#x68C0;&#x6D4B;&#x5176;&#x4ED6;&#x610F;&#x5916;&#x8BBF;&#x95EE;&#xFF0C;&#x6BD4;&#x5982;&#xFF0C;&#x5806;&#x6808;&#x6EA2;&#x51FA;&#xFF0C;&#x6570;&#x7EC4;&#x8D8A;&#x754C;&#x7B49;&#x3002;</li>
+<li>MPU &#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x67D0;&#x4E9B;&#x7279;&#x5B9A;&#x7684;&#x5730;&#x5740;&#x533A;&#x57DF;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x6210;&#x5F88;&#x591A;&#x7C7B;&#x578B;&#xFF0C;&#x6BD4;&#x5982;&#x5B9A;&#x4E49;&#x6210;&#x975E;&#x7279;&#x6743;&#x72B6;&#x6001;&#x4E0B;&#x4E0D;&#x53EF;&#x4EE5;&#x8D4B;&#x503C;</li>
+<li>&#x5982;&#x679C;&#x975E;&#x7279;&#x6743;&#x6307;&#x9488;&#x4E0D;&#x5C0F;&#x5FC3;&#x8BBF;&#x95EE;&#x5230;&#x8FD9;&#x4E2A;&#x5730;&#x5740;&#x533A;&#x57DF;&#x5E76;&#x4E14;&#x5C1D;&#x8BD5;&#x7ED9;&#x8BE5;&#x533A;&#x57DF;&#x8D4B;&#x503C;&#x4FEE;&#x6539;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x4F1A;&#x89E6;&#x53D1; MemManage fault &#x6216;&#x8005; hardfault &#x4E2D;&#x65AD;&#xFF0C;&#x4EE3;&#x8868;&#x4F60;&#x7684;&#x7A0B;&#x5E8F;&#x4E0D;&#x88AB;&#x5141;&#x8BB8;&#x4FEE;&#x6539;&#x8BE5;&#x533A;&#x57DF;&#x3002;</li>
+</ul>
+<p>&#x5176;&#x5BC4;&#x5B58;&#x5668;TEX&#x3001;C&#x3001;B&#x53EF;&#x4EE5;&#x51B3;&#x5B9A;&#x5185;&#x5B58;&#x7C7B;&#x578B;&#xFF0C;&#x7EC4;&#x5408;&#x5982;&#x4E0B;&#xFF1A;
+<img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/ff44ae100ceb4e2e80a670dd9636b33f~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936505&amp;x-orig-sign=Jjp5ojuin4NCyriS6eB2cjYC8SA%3D" alt="image.png"></p>
+<h2 id="33-&#x8BBE;&#x5907;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x4E00;&#x81F4;&#x6027;&#x95EE;&#x9898;">3.3 &#x8BBE;&#x5907;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x4E00;&#x81F4;&#x6027;&#x95EE;&#x9898;</h2>
+<p>&#x6709;&#x4E00;&#x4E9B;&#x8BBE;&#x5907;&#x662F;&#x6302;&#x5728;NoC&#x603B;&#x7EBF;&#x91CC;&#x9762;&#x7684;&#xFF0C;&#x90A3;&#x4E48;CPU&#x8981;&#x53BB;&#x8BBF;&#x95EE;&#x8FD9;&#x4E9B;&#x8BBE;&#x5907;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x5176;&#x5B9E;&#x662F;&#x9700;&#x8981;DSU-&#x300B;CMN-&#x300B;NoC&#x63A7;&#x5236;&#x6570;&#x636E;&#x624D;&#x80FD;&#x5230;&#x8BBE;&#x5907;&#x53BB;&#x8BBE;&#x7F6E;&#x7684;&#x3002;&#x5982;&#x679C;&#x8FD9;&#x4E2D;&#x95F4;&#x51FA;&#x73B0;&#x4E86;cache&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x90A3;&#x4E48;&#x5BF9;&#x8BBE;&#x5907;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x63A7;&#x5236;&#x5176;&#x5B9E;&#x5E76;&#x672A;&#x751F;&#x6548;&#x3002;</p>
+<p>&#x4F8B;&#x5982;CPU&#x53BB;&#x8BBF;&#x95EE;UFS&#x7684;&#x4E00;&#x81F4;&#x6027;&#x95EE;&#x9898;&#xFF0C;&#x4E00;&#x822C;&#x51FA;&#x73B0;&#x5728;UFS&#x63A7;&#x5236;&#x5668;&#x548C;CPU&#x7684;&#x914D;&#x5408;&#x4E0A;&#x9762;&#x3002;&#x4F8B;&#x5982;CPU&#x53BB;&#x64CD;&#x4F5C;&#x4E86;UFS&#x7684;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x7136;&#x540E;UFS&#x63A7;&#x5236;&#x5668;&#x53BB;&#x5DE5;&#x4F5C;&#x7684;&#x65F6;&#x5019;&#x53D1;&#x73B0;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x8BBE;&#x7F6E;&#x4E0D;&#x5BF9;&#xFF0C;&#x4ECE;&#x800C;&#x62A5;&#x9519;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;CPU&#x53BB;&#x64CD;&#x4F5C;UFS&#x5BC4;&#x5B58;&#x5668;&#x5E76;&#x6CA1;&#x6709;&#x64CD;&#x4F5C;&#x6210;&#x529F;&#x3002;</p>
+<p>&#x4E00;&#x822C;&#x8BBE;&#x5907;&#x5185;&#x5B58;&#x6620;&#x5C04;&#x88AB;ARM&#x914D;&#x7F6E;&#x4E3A;Device&#x5C5E;&#x6027;&#x3002;&#x4F46;&#x662F;&#x5176;&#x4E5F;&#x4E0D;&#x662F;&#x5F3A;&#x4FDD;&#x5E8F;&#x843D;&#x76D8;&#x7684;&#xFF0C;&#x9700;&#x8981;&#x8FDB;&#x4E00;&#x6B65;&#x914D;&#x7F6E;Device-nGnRnE&#x6216;&#x4F7F;&#x7528;strongly-ordered&#x3002;&#x53E6;&#x5916;non-cacheable&#x7684;&#x5C5E;&#x6027;&#x4E5F;&#x6709;&#x5C40;&#x9650;&#x6027;&#xFF0C;&#x53EA;&#x662F;&#x9650;&#x5236;&#x4E86;A&#x6838;&#xFF0C;&#x4F46;&#x662F;CMN&#x3001;NoC&#x4E5F;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x914D;&#x7F6E;&#x3002;</p>
+<p>&#x5728;CMN&#x548C;NoC&#x4E2D;&#xFF0C;&#x8FD9;&#x4E9B;&#x603B;&#x7EBF;&#x52A0;&#x901F;&#x6709;&#x63D0;&#x524D;&#x56DE;&#x590D;&#x7684;&#x673A;&#x5236;&#xFF0C;&#x5982;&#x679C;&#x5BF9;&#x4E00;&#x81F4;&#x6027;&#x9AD8;&#x7684;&#x7CFB;&#x7EDF;&#xFF0C;&#x9700;&#x8981;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x5173;&#x95ED;&#x624D;&#x53EF;&#x4EE5;&#x3002;&#x5177;&#x4F53;&#x7684;&#x7EC6;&#x8282;&#x5C31;&#x662F;&#x5404;&#x79CD;&#x603B;&#x7EBF;&#x6839;&#x636E;&#x534F;&#x8BAE;ACE/CHI&#x7B49;&#x53BB;&#x540C;&#x6B65;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x7684;&#x72B6;&#x6001;&#x3002;&#x5E38;&#x7528;&#x7684;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li>&#x8BBE;&#x7F6E;CMN&#x6216;&#x8005;NoC&#x5173;&#x95ED;&#x63D0;&#x524D;&#x56DE;&#x590D;</li>
+<li>&#x8BBE;&#x7F6E;&#x5185;&#x5B58;&#x5C5E;&#x6027;Device-nGnRnE&#x6216;&#x4F7F;&#x7528;strongly-ordered</li>
+</ul>
+<p>&#x5173;&#x4E8E;CMN600&#x7684;&#x5728;ARM&#x5B98;&#x7F51;&#x7684;&#x624B;&#x518C;&#x91CC;&#x9762;&#x6709;&#x8BBE;&#x7F6E;&#xFF1A;</p>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/25db7fb7d827437688c698e076f21e79~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936505&amp;x-orig-sign=VpFdE6rSiLjiOKT9lGdGMhlX0Og%3D" alt="image.png"></p>
+<p>bit8&#xFF1A;ncdevcmo_mc_comp&#x8BBE;&#x7F6E;&#x540E;&#x5C31;&#x4F1A;&#x5173;&#x95ED;&#x63D0;&#x524D;&#x56DE;&#x590D;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x6837;&#x4F1A;&#x964D;&#x4F4E;&#x4E00;&#x90E8;&#x5206;&#x7684;&#x6548;&#x7387;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x63D0;&#x524D;&#x56DE;&#x590D;&#xFF0C;&#x5176;&#x5B9E;&#x662F;&#x4E00;&#x4E2A;order&#x7684;&#x9519;&#x4E71;&#xFF0C;&#x63D0;&#x524D;&#x56DE;&#x590D;&#x4E86;&#xFF0C;&#x5982;&#x679C;&#x4E3B;&#x4F53;&#x901F;&#x5EA6;&#x6162;&#x7684;&#x53BB;&#x7528;&#xFF0C;&#x6CA1;&#x95EE;&#x9898;&#x3002;&#x5982;&#x679C;&#x4E3B;&#x4F53;&#x901F;&#x5EA6;&#x6BD4;&#x8F83;&#x5FEB;&#x91CC;&#x9762;&#x5C31;&#x53BB;&#x7528;&#xFF0C;&#x90A3;&#x4E48;&#x672B;&#x7AEF;&#x8FD8;&#x6CA1;&#x751F;&#x6548;&#xFF0C;&#x5C31;&#x5BFC;&#x81F4;&#x65F6;&#x5E8F;&#x7684;&#x9519;&#x4E71;&#x3002;</p>
+<h2 id="34-sram&#x4E00;&#x81F4;&#x6027;&#x95EE;&#x9898;">3.4 SRAM&#x4E00;&#x81F4;&#x6027;&#x95EE;&#x9898;</h2>
+<p>SoC&#x4E2D;&#x4F1A;&#x5B58;&#x5728;&#x4E00;&#x4E9B;&#x7CFB;&#x7EDF;&#x7EA7;&#x522B;&#x7684;SRAM&#xFF0C;&#x5404;&#x4E2A;&#x6838;&#x90FD;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#xFF0C;&#x6709;&#x65F6;&#x4E5F;&#x4F5C;&#x4E3A;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#xFF0C;&#x6216;&#x8005;&#x56FA;&#x4EF6;&#x8FD0;&#x884C;&#x7684;&#x5B58;&#x50A8;&#x3002;&#x4F46;&#x662F;&#x6D89;&#x53CA;&#x5230;&#x5F02;&#x6784;&#x591A;&#x6838;&#x8BBF;&#x95EE;SRAM&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x5B58;&#x5728;&#x4E00;&#x81F4;&#x6027;&#x95EE;&#x9898;&#x3002;</p>
+<ul>
+<li>&#x9996;&#x5148;&#x5C31;&#x662F;&#x521D;&#x59CB;&#x5316;&#x7684;&#x65F6;&#x5019;SRAM&#x786C;&#x4EF6;&#x4E00;&#x5B9A;&#x8981;&#x4E0A;&#x7535;&#x5B8C;&#x6210;&#x540E;&#x624D;&#x4F7F;&#x7528;&#xFF0C;&#x5426;&#x5219;&#x5199;&#x5165;&#x7684;&#x6570;&#x636E;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x8BFB;&#x51FA;&#x6765;&#x5168;&#x662F;0&#xFF0C;&#x65E0;&#x6548;&#x3002;&#x786C;&#x4EF6;&#x6709;&#x76F8;&#x5173;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x53EF;&#x4EE5;&#x786E;&#x4FDD;SRMA ready&#x3002;</li>
+<li>&#x5F02;&#x6784;&#x6838;&#x4E4B;&#x95F4;&#x8BBF;&#x95EE;&#xFF0C;&#x5199;&#x5165;&#x7CFB;&#x7EDF;SRAM&#x7684;&#x5185;&#x5BB9;&#x540E;&#x9700;&#x8981;flash&#x4E0B;&#x3002;</li>
+<li>&#x5728;MCN&#x548C;NoC&#x4E2D;&#x7684;&#x7AEF;&#x53E3;&#x4F8B;&#x5982;HN-F&#x548C;HN-I&#x7B49;&#x5C5E;&#x6027;&#x662F;&#x5426;&#x914D;&#x7F6E;&#x6B63;&#x786E;</li>
+</ul>
+<p>&#x5176;&#x4ED6;DDR&#x548C;UFS&#x3001;ramdisk&#x7B49;&#x7684;&#x4E00;&#x81F4;&#x6027;&#x95EE;&#x9898;&#x4E5F;&#x662F;&#x4E0A;&#x9762;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#xFF0C;&#x53E6;&#x5916;&#x9047;&#x5230;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#x4ECE;&#x4E09;&#x4E2A;&#x65B9;&#x9762;&#x8FDB;&#x884C;&#x6392;&#x67E5;&#xFF1A;</p>
+<ol>
+<li>&#x5185;&#x5B58;&#x7C7B;&#x578B;&#x914D;&#x7F6E;&#x662F;&#x5426;&#x6B63;&#x786E;&#xFF08;core&#x3001;MPU&#x3001;CMN&#x3001;NoC&#x7B49;&#x4E2D;&#x7684;&#x914D;&#x7F6E;&#xFF09;&#xFF0C;&#x5185;&#x5B58;&#x7C7B;&#x578B;&#x7684;&#x914D;&#x7F6E;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x534F;&#x8BAE;&#x4F20;&#x64AD;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x9010;&#x4E2A;&#x5C1D;&#x8BD5;&#x53BB;&#x914D;</li>
+<li>&#x63D0;&#x524D;&#x56DE;&#x590D;&#x3001;&#x4E71;&#x5E8F;&#x6267;&#x884C;&#x7B49;&#x5BFC;&#x81F4;&#x7684;order&#x9519;&#x4E71;</li>
+<li>cache&#x4E00;&#x81F4;&#x6027;&#xFF0C;dsb&#x5237;cache&#x7B49;</li>
+</ol>
+<p>&#x53E6;&#x5916;&#x9047;&#x5230;&#x4E00;&#x4E9B;&#x6027;&#x80FD;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4ECE;&#x4E00;&#x81F4;&#x6027;&#x5165;&#x624B;&#xFF0C;&#x4F8B;&#x5982;&#x4FDD;&#x969C;&#x4E00;&#x81F4;&#x6027;&#x6709;n&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x4F7F;&#x7528;&#x67D0;&#x4E2A;&#x65B9;&#x6CD5;&#x6027;&#x80FD;&#x6700;&#x4F73;&#x3002;&#x751A;&#x81F3;&#x53EF;&#x4EE5;&#x4E0D;&#x4FDD;&#x8BC1;&#x5B8C;&#x5168;&#x7684;&#x4E00;&#x81F4;&#x6027;&#xFF0C;&#x8F6F;&#x4EF6;&#x4E0A;&#x505A;&#x4E00;&#x4E9B;&#x6821;&#x9A8C;&#x6765;&#x5BB9;&#x9519;&#x4E5F;&#x53EF;&#x4EE5;&#x3002;</p>
+<blockquote>
+<p>&#x540E;&#x8BB0;&#xFF1A;</p>
+<p>&#x4E00;&#x81F4;&#x6027;&#x95EE;&#x9898;&#x4ECE;&#x8F6F;&#x786C;&#x4EF6;&#x89D2;&#x5EA6;&#x5305;&#x542B;&#x7684;&#x4E1C;&#x897F;&#x6BD4;&#x8F83;&#x591A;&#xFF0C;&#x672C;&#x6587;&#x7B97;&#x4E00;&#x4E2A;&#x7EB2;&#x9886;&#x8FDB;&#x884C;&#x4E86;&#x5927;&#x81F4;&#x603B;&#x7ED3;&#xFF0C;&#x5177;&#x4F53;&#x7EC6;&#x8282;&#x9700;&#x8981;&#x5206;&#x6790;&#x8F6F;&#x4EF6;&#x4EE3;&#x7801;&#x548C;&#x786C;&#x4EF6;&#x7684;&#x624B;&#x518C;&#xFF0C;&#x5341;&#x5206;&#x5E9E;&#x6742;&#x3002;&#x800C;&#x4E14;&#x8981;&#x5229;&#x7528;trace32&#x7B49;dump&#x624B;&#x6BB5;&#x53BB;&#x770B;&#x67D0;&#x65F6;&#x523B;&#x5185;&#x5B58;&#x503C;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x8FD8;&#x6709;&#x8FDB;&#x884C;&#x5BF9;&#x6BD4;&#x3002;</p>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="AI-SoC入门-9访存接口.html" class="navigation navigation-prev " aria-label="Previous page: AI SoC入门-9访存接口">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="AI-SoC入门-11HSM加解密子系统.html" class="navigation navigation-next " aria-label="Next page: AI SoC入门-11HSM加解密子系统">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"AI SoC入门-10数据一致性","level":"1.2.10","depth":2,"next":{"title":"AI SoC入门-11HSM加解密子系统","level":"1.2.11","depth":2,"path":"芯片SoC/AI-SoC入门-11HSM加解密子系统.md","ref":"芯片SoC/AI-SoC入门-11HSM加解密子系统.md","articles":[]},"previous":{"title":"AI SoC入门-9访存接口","level":"1.2.9","depth":2,"path":"芯片SoC/AI-SoC入门-9访存接口.md","ref":"芯片SoC/AI-SoC入门-9访存接口.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters-small","livereload"],"pluginsConfig":{"expandable-chapters-small":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"芯片SoC/AI-SoC入门-10数据一致性.md","mtime":"2024-12-16T06:48:31.675Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-12-16T09:46:56.214Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

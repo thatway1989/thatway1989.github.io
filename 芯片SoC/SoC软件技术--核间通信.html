@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>芯片SoC · GitBook</title>
+        <title>SoC软件技术--核间通信 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -64,7 +64,7 @@
     <link rel="next" href="SoC入门-1芯片研究框架（上）.html" />
     
     
-    <link rel="prev" href="../" />
+    <link rel="prev" href="自动驾驶芯片入门-基础概念和架构.html" />
     
 
     </head>
@@ -106,7 +106,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="./">
+        <li class="chapter " data-level="1.2" data-path="./">
             
                 <a href="./">
             
@@ -341,7 +341,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.18" data-path="SoC软件技术--核间通信.html">
+        <li class="chapter active" data-level="1.2.18" data-path="SoC软件技术--核间通信.html">
             
                 <a href="SoC软件技术--核间通信.html">
             
@@ -2063,7 +2063,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >芯片SoC</a>
+        <a href=".." >SoC软件技术--核间通信</a>
     </h1>
 </div>
 
@@ -2078,30 +2078,345 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x82AF;&#x7247;soc">&#x82AF;&#x7247;SoC</h1>
-<p>&#x76EE;&#x5F55;&#xFF1A;</p>
+                                <p align="center"><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b367d9fe5d184965b97106f80924f0cf~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=336&amp;h=200&amp;s=191053&amp;e=png&amp;b=6b8582" alt="image.png"></p>
+
+<p>SoC&#x5C31;&#x662F;System on Chip&#xFF0C;&#x4E00;&#x4E2A;&#x82AF;&#x7247;&#x4E0A;&#x96C6;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#xFF0C;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x5F80;&#x5F80;&#x6709;&#x5F88;&#x591A;&#x6838;&#xFF0C;&#x4F8B;&#x5982;M&#x6838;&#x3001;A&#x6838;&#x3001;R&#x6838;&#xFF0C;&#x4EE5;&#x53CA;&#x5F02;&#x6784;&#x7684;RISC-V&#x6838;&#x7B49;&#xFF0C;&#x96C6;&#x6210;&#x5230;&#x4E00;&#x4E2A;&#x82AF;&#x7247;&#x4E0A;&#x7684;&#x597D;&#x5904;&#x5C31;&#x662F;&#x8282;&#x7701;&#x6210;&#x672C;&#x5E76;&#x4E14;&#x4F53;&#x79EF;&#x66F4;&#x5C0F;&#xFF0C;&#x80FD;&#x8017;&#x4E5F;&#x66F4;&#x4F4E;&#xFF0C;&#x53EF;&#x8C13;&#x662F;&#x4E00;&#x4E3E;&#x591A;&#x5F97;&#x3002;&#x4F46;&#x662F;&#x591A;&#x4E2A;&#x6838;&#x4E0A;&#x7684;&#x5404;&#x79CD;OS&#x4E4B;&#x95F4;&#x5C31;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#xFF0C;&#x8FD9;&#x4E5F;&#x5C31;&#x662F;&#x672C;&#x6587;&#x7684;&#x4E3B;&#x9898;&#xFF1A;&#x6838;&#x95F4;&#x901A;&#x4FE1;&#x3002;</p>
+<p>&#x5176;&#x5B9E;&#x6838;&#x95F4;&#x901A;&#x4FE1;&#x4E4B;&#x524D;&#x7535;&#x6E90;&#x7BA1;&#x7406;&#x76F8;&#x5173;&#x7684;XX&#x548C;XX&#x6587;&#x7AE0;&#x91CC;&#x9762;&#x90FD;&#x6709;&#x63D0;&#x5230;&#x8FC7;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x5F15;&#x7528;ARM&#x89C4;&#x8303;&#x300A;DEN0056E_System_Control_and_Management_Interface&#x300B;&#x7684;&#x4E00;&#x5F20;&#x56FE;
+<img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1b4f979ef55c40618bc3b39d0adcc42e~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=893&amp;h=638&amp;s=194367&amp;e=png&amp;b=fbfafa" alt="image.png"></p>
+<p>Linux&#x548C;BL31&#x90FD;&#x662F;&#x8FD0;&#x884C;&#x5728;A&#x6838;&#x4E0A;&#x7684;&#xFF0C;SCP&#x4E00;&#x822C;&#x662F;M&#x6838;&#xFF0C;&#x8FD9;&#x5176;&#x4E2D;&#x5C31;&#x662F;&#x6838;&#x95F4;&#x901A;&#x4FE1;&#x3002;&#x6838;&#x95F4;&#x901A;&#x4FE1;&#x4E5F;&#x79F0;&#x4E3A;Mailbox&#xFF0C;Mailbox&#x6280;&#x672F;&#x662F;&#x7531;&#x8F6F;&#x786C;&#x4EF6;&#x534F;&#x540C;&#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
+<blockquote>
+<p>&#x6838;&#x95F4;&#x901A;&#x4FE1;&#x9700;&#x8981;&#x89E3;&#x51B3;&#x4E09;&#x4E2A;&#x4E3B;&#x8981;&#x95EE;&#x9898;&#xFF1A;</p>
 <ol>
-<li><a href="SoC&#x5165;&#x95E8;-1&#x82AF;&#x7247;&#x7814;&#x7A76;&#x6846;&#x67B6;&#xFF08;&#x4E0A;&#xFF09;.html">SoC&#x5165;&#x95E8;-1&#x82AF;&#x7247;&#x7814;&#x7A76;&#x6846;&#x67B6;&#xFF08;&#x4E0A;&#xFF09;</a></li>
-<li><a href="SoC&#x5165;&#x95E8;-2&#x82AF;&#x7247;&#x7814;&#x7A76;&#x6846;&#x67B6;&#xFF08;&#x4E0B;&#xFF09;.html">SoC&#x5165;&#x95E8;-2&#x82AF;&#x7247;&#x7814;&#x7A76;&#x6846;&#x67B6;&#xFF08;&#x4E0B;&#xFF09;</a></li>
-<li><a href="SoC&#x5165;&#x95E8;-3&#x81EA;&#x52A8;&#x9A7E;&#x9A76;AI&#x82AF;&#x7247;&#x6846;&#x67B6;.html">SoC&#x5165;&#x95E8;-3&#x81EA;&#x52A8;&#x9A7E;&#x9A76;AI&#x82AF;&#x7247;&#x6846;&#x67B6;</a></li>
-<li><a href="SoC&#x5165;&#x95E8;-4&#x81EA;&#x52A8;&#x9A7E;&#x9A76;AI-SoC&#x82AF;&#x7247;&#x8D8B;&#x52BF;.html">SoC&#x5165;&#x95E8;-4&#x81EA;&#x52A8;&#x9A7E;&#x9A76;AI SoC&#x82AF;&#x7247;&#x8D8B;&#x52BF;</a></li>
-<li><a href="AI-SoC&#x5165;&#x95E8;-5NoC&#x603B;&#x7EBF;.html">AI SoC&#x5165;&#x95E8;-5NoC&#x603B;&#x7EBF;</a></li>
-<li><a href="AI-SoC&#x5165;&#x95E8;-6CPU&#x5B50;&#x7CFB;&#x7EDF;.html">AI SoC&#x5165;&#x95E8;-6CPU&#x5B50;&#x7CFB;&#x7EDF;</a></li>
-<li><a href="AI-SoC&#x5165;&#x95E8;-7&#x4F4E;&#x901F;&#x5916;&#x8BBE;.html">AI SoC&#x5165;&#x95E8;-7&#x4F4E;&#x901F;&#x5916;&#x8BBE;</a></li>
-<li><a href="AI-SoC&#x5165;&#x95E8;-8&#x9AD8;&#x901F;&#x5916;&#x8BBE;USB&#x3001;ETH.html">AI SoC&#x5165;&#x95E8;-8&#x9AD8;&#x901F;&#x5916;&#x8BBE;USB&#x3001;ETH</a></li>
-<li><a href="AI-SoC&#x5165;&#x95E8;-9&#x8BBF;&#x5B58;&#x63A5;&#x53E3;.html">AI SoC&#x5165;&#x95E8;-9&#x8BBF;&#x5B58;&#x63A5;&#x53E3;</a></li>
-<li><a href="AI-SoC&#x5165;&#x95E8;-10&#x6570;&#x636E;&#x4E00;&#x81F4;&#x6027;.html">AI SoC&#x5165;&#x95E8;-10&#x6570;&#x636E;&#x4E00;&#x81F4;&#x6027;</a></li>
-<li><a href="AI-SoC&#x5165;&#x95E8;-11HSM&#x52A0;&#x89E3;&#x5BC6;&#x5B50;&#x7CFB;&#x7EDF;.html">AI SoC&#x5165;&#x95E8;-11HSM&#x52A0;&#x89E3;&#x5BC6;&#x5B50;&#x7CFB;&#x7EDF;</a></li>
-<li><a href="AI-SoC&#x5165;&#x95E8;-12FSI&#x5B89;&#x5168;&#x5C9B;&#x8BBE;&#x8BA1;.html">AI SoC&#x5165;&#x95E8;-12FSI&#x5B89;&#x5168;&#x5C9B;&#x8BBE;&#x8BA1;</a></li>
-<li><a href="AI-SoC&#x5165;&#x95E8;-13PMU&#x7535;&#x6E90;&#x7BA1;&#x7406;&#x5B50;&#x7CFB;&#x7EDF;.html">AI SoC&#x5165;&#x95E8;-13PMU&#x7535;&#x6E90;&#x7BA1;&#x7406;&#x5B50;&#x7CFB;&#x7EDF;</a></li>
-<li><a href="AI-SoC&#x5165;&#x95E8;&#xFF1A;14&#x4ECE;Transformer&#x5927;&#x6A21;&#x578B;&#x5230;&#x7AEF;&#x5230;&#x7AEF;&#x81EA;&#x52A8;&#x9A7E;&#x9A76;&#x7B97;&#x6CD5;.html">AI SoC&#x5165;&#x95E8;&#xFF1A;14&#x4ECE;Transformer&#x5927;&#x6A21;&#x578B;&#x5230;&#x7AEF;&#x5230;&#x7AEF;&#x81EA;&#x52A8;&#x9A7E;&#x9A76;&#x7B97;&#x6CD5;</a></li>
-<li><a href="&#x82AF;&#x7247;-&#x8BBE;&#x8BA1;&#x6D41;&#x7A0B;&#x5165;&#x95E8;.html">&#x82AF;&#x7247;-&#x8BBE;&#x8BA1;&#x6D41;&#x7A0B;&#x5165;&#x95E8;</a></li>
-<li><a href="&#x81EA;&#x52A8;&#x9A7E;&#x9A76;&#x82AF;&#x7247;&#x5165;&#x95E8;-&#x56FD;&#x5185;&#x5916;&#x4E3B;&#x6D41;&#x5382;&#x5546;&#x4ECB;&#x7ECD;.html">&#x81EA;&#x52A8;&#x9A7E;&#x9A76;&#x82AF;&#x7247;&#x5165;&#x95E8;-&#x56FD;&#x5185;&#x5916;&#x4E3B;&#x6D41;&#x5382;&#x5546;&#x4ECB;&#x7ECD;</a></li>
-<li><a href="&#x81EA;&#x52A8;&#x9A7E;&#x9A76;&#x82AF;&#x7247;&#x5165;&#x95E8;-&#x57FA;&#x7840;&#x6982;&#x5FF5;&#x548C;&#x67B6;&#x6784;.html">&#x81EA;&#x52A8;&#x9A7E;&#x9A76;&#x82AF;&#x7247;&#x5165;&#x95E8;-&#x57FA;&#x7840;&#x6982;&#x5FF5;&#x548C;&#x67B6;&#x6784;</a></li>
-<li><a href="SoC&#x8F6F;&#x4EF6;&#x6280;&#x672F;--&#x6838;&#x95F4;&#x901A;&#x4FE1;.html">SoC&#x8F6F;&#x4EF6;&#x6280;&#x672F;--&#x6838;&#x95F4;&#x901A;&#x4FE1;</a></li>
-<li><a href="SoC&#x5165;&#x95E8;-1&#x82AF;&#x7247;&#x7814;&#x7A76;&#x6846;&#x67B6;&#xFF08;&#x4E0A;&#xFF09;.html">SoC&#x5165;&#x95E8;-1&#x82AF;&#x7247;&#x7814;&#x7A76;&#x6846;&#x67B6;&#xFF08;&#x4E0A;&#xFF09;</a></li>
-<li><a href="SoC&#x5165;&#x95E8;-2&#x82AF;&#x7247;&#x7814;&#x7A76;&#x6846;&#x67B6;&#xFF08;&#x4E0B;&#xFF09;.html">SoC&#x5165;&#x95E8;-2&#x82AF;&#x7247;&#x7814;&#x7A76;&#x6846;&#x67B6;&#xFF08;&#x4E0B;&#xFF09;</a></li>
+<li>&#x544A;&#x8BC9;&#x5BF9;&#x65B9;&#x6570;&#x636E;&#x653E;&#x54EA;&#x91CC;&#xFF08;mailbox&#x786C;&#x4EF6;&#x6216;&#x8005;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x5B9E;&#x73B0;&#xFF09;</li>
+<li>&#x600E;&#x4E48;&#x53BB;&#x901A;&#x77E5;&#x5BF9;&#x65B9;&#x53D6;&#x6570;&#x636E;&#xFF08;&#x4E2D;&#x65AD;&#xFF0C;&#x4FD7;&#x79F0;doorbell&#xFF09;</li>
+<li>&#x6570;&#x636E;&#x7684;&#x8F6F;&#x4EF6;&#x534F;&#x8BAE;&#x683C;&#x5F0F;&#x662F;&#x4EC0;&#x4E48;</li>
 </ol>
+</blockquote>
+<p>&#x672C;&#x7BC7;&#x6587;&#x7AE0;&#x5C31;&#x8FFD;&#x672C;&#x6EAF;&#x6E90;&#xFF0C;&#x4ECE;&#x4E00;&#x624B;&#x8D44;&#x6599;&#x7684;&#x89D2;&#x5EA6;&#x53BB;&#x770B;&#x4E0B;&#x4EC0;&#x4E48;&#x662F;&#x6838;&#x95F4;&#x901A;&#x4FE1;&#xFF0C;&#x91CD;&#x70B9;&#x4ECE;&#x5E95;&#x5C42;&#x8F6F;&#x786C;&#x4EF6;&#x7684;&#x89D2;&#x5EA6;&#x53BB;&#x5206;&#x6790;&#x3002;</p>
+<h1 id="1-&#x6570;&#x636E;&#x653E;mailbox&#x786C;&#x4EF6;&#x5B9E;&#x73B0;">1. &#x6570;&#x636E;&#x653E;mailbox&#x786C;&#x4EF6;&#x5B9E;&#x73B0;</h1>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f0e65f9093364cabac940f4ba3787769~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1055&amp;h=509&amp;s=157102&amp;e=png&amp;b=fcfcfc" alt="image.png"></p>
+<p>&#x5B8C;&#x5168;&#x7528;&#x786C;&#x4EF6;&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x4E0D;&#x4F7F;&#x7528;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#xFF0C;&#x90A3;&#x4E48;&#x6570;&#x636E;&#x5C31;&#x9700;&#x8981;&#x653E;&#x5165;&#x786C;&#x4EF6;&#x7684;data&#x5BC4;&#x5B58;&#x5668;&#x91CC;&#x9762;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;&#x7136;&#x540E;&#x89E6;&#x53D1;&#x5BF9;&#x65B9;&#x7684;&#x4E2D;&#x65AD;&#x53BB;&#x63A5;&#x6536;&#x5904;&#x7406;&#x3002;</p>
+<p>&#x6BD4;&#x8F83;&#x7ECF;&#x5178;&#x7684;&#x4E24;&#x4E2A;ARM&#x81EA;&#x5DF1;&#x7684;mailbox IP&#x5C31;&#x662F;PL320&#x548C;MHU&#x3002;&#x5E76;&#x4E14;&#x4EE3;&#x8868;&#x4E86;&#x4E24;&#x79CD;&#x6280;&#x672F;&#x8DEF;&#x7EBF;&#xFF1A;</p>
+<ol>
+<li>PL320&#x8001;&#x4E00;&#x4E9B;&#xFF0C;&#x4E24;&#x4E2A;&#x6838;&#x90FD;&#x8FDE;&#x5728;PL320&#x4E0A;&#x7684;&#x4E24;&#x4E2A;&#x901A;&#x9053;&#x4E0A;&#xFF0C;PL320&#x652F;&#x6301;&#x5F88;&#x591A;&#x901A;&#x9053;&#xFF0C;&#x4E00;&#x5BF9;&#x591A;&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x6210;&#x672C;&#x9AD8;</li>
+<li>MHU&#x66F4;&#x52A0;&#x7075;&#x6D3B;&#xFF0C;&#x53EA;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x901A;&#x9053;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x6838;&#x4E00;&#x4E2A;MHU&#x8DDF;&#x5BF9;&#x65B9;&#x8FDE;&#xFF0C;&#x8FD9;&#x6837;&#x5C0F;&#x5DE7;&#x7075;&#x6D3B;&#xFF0C;&#x907F;&#x514D;&#x6D6A;&#x8D39;&#x3002;&#x53E6;&#x5916;MHU&#x7684;DATA&#x6570;&#x636E;&#x5BC4;&#x5B58;&#x5668;&#x4F20;&#x8F93;&#x80FD;&#x529B;&#x66F4;&#x5F3A;&#xFF0C;&#x57FA;&#x672C;&#x4E0D;&#x7528;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x53C2;&#x4E0E;&#xFF0C;&#x4E14;&#x53EF;&#x4EE5;&#x4E0E;&#x8F6F;&#x4EF6;&#x6DF1;&#x5EA6;&#x878D;&#x5408;&#x5B9A;&#x5236;&#xFF0C;&#x6548;&#x7387;&#x66F4;&#x9AD8;&#x3002;</li>
+</ol>
+<h2 id="11-pl320&#x786C;&#x4EF6;&#x624B;&#x518C;">1.1 PL320&#x786C;&#x4EF6;&#x624B;&#x518C;</h2>
+<p>&#x8FD9;&#x91CC;&#x4EE5;ARM&#x4E00;&#x4E2A;&#x7ECF;&#x5178;&#x7684;Mailbox&#x786C;&#x4EF6;PL320&#x4E3A;&#x4F8B;&#x8FDB;&#x884C;&#x8BF4;&#x660E;&#xFF0C;&#x600E;&#x4E48;&#x6837;&#x53BB;&#x62FF;&#x5230;&#x4E00;&#x624B;&#x8D44;&#x6599;&#xFF0C;&#x90A3;&#x5FC5;&#x987B;&#x662F;ARM&#x5B98;&#x7F51;&#x3002;</p>
+<p>&#x9996;&#x5148;&#x8FDB;&#x5165;ARM&#x5B98;&#x7F51;<a href="https://developer.arm.com" target="_blank">https://developer.arm.com</a> &#x641C;&#x7D22;PL320&#xFF1A;</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a60fbbf2dcd94bcfb97276ecd9e16ec0~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1194&amp;h=415&amp;s=44348&amp;e=png&amp;b=1f2023" alt="image.png"></p>
+<p>&#x70B9;&#x51FB;&#x4E0B;&#x8F7D;pdf&#x5373;&#x53EF;&#xFF0C;&#x4E0B;&#x9762;&#x7684;&#x5185;&#x5BB9;&#x90FD;&#x662F;&#x6458;&#x81EA;&#x82F1;&#x6587;pdf&#x7684;&#x7FFB;&#x8BD1;&#xFF1A;</p>
+<p>IPCM&#x662F;&#x4E00;&#x4E2A;&#x9AD8;&#x5EA6;&#x53EF;&#x914D;&#x7F6E;&#x548C;&#x53EF;&#x7F16;&#x7A0B;&#x7684;&#x6A21;&#x5757;&#x3002;&#x5B83;&#x6709;&#x4E09;&#x4E2A;&#x53EF;&#x914D;&#x7F6E;&#x7684;&#x53C2;&#x6570;&#xFF1A;</p>
+<ol>
+<li>1-32&#x4E2A;&#x90AE;&#x7BB1;</li>
+<li>0-7&#x4E2A;&#x6570;&#x636E;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;</li>
+<li>1-32&#x4E2A;&#x4E2D;&#x65AD;&#x3002;</li>
+</ol>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/13c5d01bfd314d6088abda999e28f7a0~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=757&amp;h=414&amp;s=25124&amp;e=png&amp;b=ffffff" alt="image.png"></p>
+<p><strong>&#x6838;&#x5FC3;0&#x6709;&#x4E00;&#x6761;&#x6D88;&#x606F;&#x8981;&#x53D1;&#x9001;&#x5230;&#x6838;&#x5FC3;1&#xFF1A;</strong></p>
+<ul>
+<li>&#x6838;&#x5FC3;0&#x901A;&#x8FC7;&#x5728;&#x90AE;&#x7BB1;&#x6E90;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x8BBE;&#x7F6E;&#x4F4D;0&#x6765;&#x58F0;&#x660E;&#x90AE;&#x7BB1;&#x3002;</li>
+<li>&#x7136;&#x540E;&#xFF0C;Core0&#x5728;&#x90AE;&#x7BB1;&#x76EE;&#x6807;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x8BBE;&#x7F6E;&#x4F4D;1&#xFF0C;&#x542F;&#x7528;&#x4E2D;&#x65AD;&#xFF0C;&#x5E76;&#x5C06;&#x6D88;&#x606F;&#x7F16;&#x7A0B;&#x5230;&#x90AE;&#x7BB1;&#x6570;&#x636E;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x3002;</li>
+<li>&#x6700;&#x540E;&#xFF0C;&#x6838;&#x5FC3;0&#x901A;&#x8FC7;&#x5199;&#x5165;01&#x5411;&#x90AE;&#x7BB1;&#x53D1;&#x9001;&#x5BC4;&#x5B58;&#x5668;&#x53D1;&#x9001;&#x6D88;&#x606F;&#x3002;&#x8FD9;&#x5C31;&#x751F;&#x6548;&#x4E86;&#x5BF9;&#x6838;&#x5FC3;1&#x7684;&#x4E2D;&#x65AD;&#x3002;</li>
+</ul>
+<p><strong>&#x5F53;Core1&#x88AB;&#x4E2D;&#x65AD;&#x65F6;&#xFF1A;</strong></p>
+<ul>
+<li>&#x5B83;&#x4F1A;&#x8BFB;&#x53D6;IPCMINT[1]&#x7684;&#x5C4F;&#x853D;&#x4E2D;&#x65AD;&#x72B6;&#x6001;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x4EE5;&#x786E;&#x5B9A;&#x54EA;&#x4E2A;&#x90AE;&#x7BB1;&#x5305;&#x542B;&#x8BE5;&#x90AE;&#x4EF6;&#x3002;</li>
+<li>Core1&#x8BFB;&#x53D6;&#x8BE5;&#x90AE;&#x7BB1;&#x4E2D;&#x7684;&#x6D88;&#x606F;&#xFF0C;&#x7136;&#x540E;&#x6E05;&#x9664;&#x8BE5;&#x4E2D;&#x65AD;&#xFF0C;&#x5E76;&#x901A;&#x8FC7;&#x5411;&#x90AE;&#x7BB1;&#x53D1;&#x9001;&#x5BC4;&#x5B58;&#x5668;&#x5199;&#x5165;10&#x6765;&#x65AD;&#x8A00;&#x786E;&#x8BA4;&#x4E2D;&#x65AD;&#x3002;</li>
+<li>&#x6838;&#x5FC3;0&#x88AB;&#x786E;&#x8BA4;&#x6D88;&#x606F;&#x4E2D;&#x65AD;&#xFF0C;&#x4ECE;&#x800C;&#x5B8C;&#x6210;&#x64CD;&#x4F5C;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x6838;&#x5FC3;0&#x51B3;&#x5B9A;&#x662F;&#x4FDD;&#x7559;&#x90AE;&#x7BB1;&#x4EE5;&#x53D1;&#x9001;&#x53E6;&#x4E00;&#x6761;&#x90AE;&#x4EF6;&#x8FD8;&#x662F;&#x91CA;&#x653E;&#x90AE;&#x7BB1;&#xFF0C;&#x5E76;&#x5C06;&#x5176;&#x91CA;&#x653E;&#x7ED9;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x5176;&#x4ED6;&#x6838;&#x5FC3;&#x4F7F;&#x7528;&#x5B83;&#x3002;</li>
+</ul>
+<p>IPCM&#x7684;&#x96C6;&#x6210;&#xFF1A;</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/59116c12dccb4ebdb40cbb6b9e557a30~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=899&amp;h=592&amp;s=74468&amp;e=png&amp;b=ffffff" alt="image.png"></p>
+<ul>
+<li>AHB&#x63A5;&#x53E3;&#xFF1A;AHB&#x63A5;&#x53E3;&#x5141;&#x8BB8;&#x4ECE;&#x7CFB;&#x7EDF;&#x603B;&#x7EBF;&#x8BBF;&#x95EE;&#x5230;IPCM&#x5BC4;&#x5B58;&#x5668;&#x3002;</li>
+<li>&#x90AE;&#x7BB1;&#x548C;&#x63A7;&#x5236;&#x903B;&#x8F91;&#xFF1A;&#x90AE;&#x7BB1;&#x548C;&#x63A7;&#x5236;&#x903B;&#x8F91;&#x5757;&#x5305;&#x542B;&#x6240;&#x6709;&#x7684;&#x90AE;&#x7BB1;&#x5BC4;&#x5B58;&#x5668;&#x548C;&#x63A7;&#x5236;&#x903B;&#x8F91;&#x3002;</li>
+<li>&#x4E2D;&#x65AD;&#x751F;&#x6210;&#x903B;&#x8F91;&#xFF1A;&#x4E2D;&#x65AD;&#x751F;&#x6210;&#x903B;&#x8F91;&#x5757;&#x4ECE;&#x6240;&#x6709;IPCM&#x90AE;&#x7BB1;&#x7684;&#x5F53;&#x524D;&#x72B6;&#x6001;&#x751F;&#x6210;IPCM&#x4E2D;&#x65AD;&#x8F93;&#x51FA;&#x3002;</li>
+</ul>
+<p>AHB&#xFF08;Advanced High-performance Bus&#xFF09;&#x63A5;&#x53E3;&#x662F;&#x4E00;&#x79CD;&#x5728;ARM&#x5904;&#x7406;&#x5668;&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x603B;&#x7EBF;&#x63A5;&#x53E3;&#x3002;&#x5B83;&#x662F;&#x4E00;&#x79CD;&#x9AD8;&#x6027;&#x80FD;&#x3001;&#x4F4E;&#x529F;&#x8017;&#x7684;&#x603B;&#x7EBF;&#x67B6;&#x6784;&#xFF0C;&#x7528;&#x4E8E;&#x8FDE;&#x63A5;&#x5904;&#x7406;&#x5668;&#x6838;&#x5FC3;&#x3001;&#x5185;&#x5B58;&#x3001;&#x5916;&#x8BBE;&#x548C;&#x5176;&#x4ED6;&#x7CFB;&#x7EDF;&#x7EC4;&#x4EF6;&#x3002;AHB&#x63A5;&#x53E3;&#x652F;&#x6301;&#x9AD8;&#x5E26;&#x5BBD;&#x3001;&#x4F4E;&#x5EF6;&#x8FDF;&#x7684;&#x6570;&#x636E;&#x4F20;&#x8F93;&#xFF0C;&#x80FD;&#x591F;&#x6EE1;&#x8DB3;&#x591A;&#x79CD;&#x5E94;&#x7528;&#x573A;&#x666F;&#x7684;&#x9700;&#x6C42;&#x3002;&#x5728;ARM&#x4F53;&#x7CFB;&#x7ED3;&#x6784;&#x4E2D;&#xFF0C;AHB&#x63A5;&#x53E3;&#x88AB;&#x5E7F;&#x6CDB;&#x5E94;&#x7528;&#x4E8E;&#x7CFB;&#x7EDF;&#x7EA7;&#x603B;&#x7EBF;&#x8FDE;&#x63A5;&#x548C;&#x6570;&#x636E;&#x4EA4;&#x6362;&#x3002;</p>
+<p>&#x4F7F;&#x7528;&#x4E3E;&#x4F8B;&#xFF1A;</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/38b7f8eae6af4c22bacacaf13d1c4e08~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=697&amp;h=383&amp;s=36323&amp;e=png&amp;b=fefefe" alt="image.png"></p>
+<p>&#x4E24;&#x4E2A;&#x6838;&#x3001;&#x56DB;&#x4E2A;&#x90AE;&#x7BB1;&#xFF0C;</p>
+<ul>
+<li>Core0&#x662F;&#x6E90;&#xFF0C;&#x4F7F;&#x7528;channel 1&#xFF0C;&#x4F7F;&#x7528;&#x90AE;&#x7BB1;0&#x53D1;&#x6D88;&#x606F;</li>
+<li>Core1&#x662F;&#x76EE;&#x6807;&#xFF0C;&#x4F7F;&#x7528;channel 2</li>
+</ul>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a0cdb8a7f168453cbc7ea670ea5ece0d~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1014&amp;h=402&amp;s=70558&amp;e=png&amp;b=ffffff" alt="image.png"></p>
+<p>&#x65F6;&#x5E8F;&#x56FE;&#x5982;&#x4E0A;&#x9762;&#x6240;&#x793A;&#xFF0C;&#x5177;&#x4F53;&#x4E3A;&#xFF1A;</p>
+<p>1.Core0&#x83B7;&#x5F97;&#x5BF9;&#x90AE;&#x7BB1;0&#x7684;&#x63A7;&#x5236;&#xFF0C;&#x5E76;&#x901A;&#x8FC7;&#x5728;IPCM0SOURCE&#x6CE8;&#x518C;&#x5668;&#x4E2D;&#x8BBE;&#x7F6E;&#x4F4D;0&#x6765;&#x5C06;&#x81EA;&#x5DF1;&#x6807;&#x8BC6;&#x4E3A;&#x6E90;&#x6838;&#x5FC3;&#x3002;</p>
+<p>2.Core0&#x901A;&#x8FC7;&#x5728;IPCM0MSTATUS&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x8BBE;&#x7F6E;&#x4F4D;0&#x548C;1&#x6765;&#x5B9E;&#x73B0;&#x5BF9;&#x6838;&#x5FC3;0&#x548C;&#x6838;&#x5FC3;1&#x7684;&#x4E2D;&#x65AD;&#x3002;</p>
+<p>3.Core0&#x901A;&#x8FC7;&#x5728;IPCM0DSTATUS&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x8BBE;&#x7F6E;&#x4F4D;1&#x6765;&#x5B9A;&#x4E49;&#x76EE;&#x6807;&#x6838;&#x5FC3;&#x3002;</p>
+<p>4.Core0&#x7A0B;&#x5E8F;&#x7684;&#x6570;&#x636E;&#x6709;&#x6548;&#x8D1F;&#x8F7D;&#xFF0C;&#x8BBE;&#x7F6E;&#x5BC4;&#x5B58;&#x5668;IPCM0DR0&#x4E3A;DA7A0000&#x3002;</p>
+<p>5.Core0&#x8BBE;&#x7F6E;&#x90AE;&#x7BB1;&#x53D1;&#x9001;&#x5BC4;&#x5B58;&#x5668;IPCM0SEND&#x4F4D;0&#xFF08;&#x5C31;&#x662F;0x01&#xFF09;&#xFF0C;&#x4EE5;&#x89E6;&#x53D1;&#x90AE;&#x7BB1;0&#x4E2D;&#x65AD;&#x5230;&#x6838;&#x5FC3;1&#x3002;</p>
+<hr>
+<p>6.Core1&#x8BFB;&#x53D6;IPCMRIS1&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x4EE5;&#x786E;&#x5B9A;&#x662F;&#x54EA;&#x4E2A;&#x90AE;&#x7BB1;&#x5BFC;&#x81F4;&#x4E86;&#x4E2D;&#x65AD;&#x3002;&#x5728;&#x672C;&#x4F8B;&#x4E2D;&#xFF0C;&#x53EA;&#x6307;&#x793A;&#x90AE;&#x7BB1;0&#x3002;</p>
+<p>7.Core1&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x6709;&#x6548;&#x8D1F;&#x8F7D;IPCM0DR0&#x3002;</p>
+<p>8.Core1&#x53EF;&#x9009;&#x62E9;&#x4F7F;&#x7528;&#x786E;&#x8BA4;&#x6570;&#x636E;DA7A1111&#x66F4;&#x65B0;&#x6570;&#x636E;&#x6709;&#x6548;&#x8D1F;&#x8F7D;IPCM0DR0&#x3002;</p>
+<p>9.Core1&#x6E05;&#x9664;&#x4F4D;0&#xFF0C;&#x5E76;&#x5728;IPCM0SEND&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x8BBE;&#x7F6E;&#x4F4D;1&#xFF0C;&#x4EE5;&#x6E05;&#x9664;&#x5176;&#x4E2D;&#x65AD;&#xFF0C;&#x5E76;&#x5C06;&#x624B;&#x52A8;&#x786E;&#x8BA4;&#x4E2D;&#x65AD;&#x63D0;&#x4F9B;&#x56DE;&#x6838;&#x5FC3;0&#x3002;</p>
+<hr>
+<p>10.Core0&#x8BFB;&#x53D6;IPCMRIS0&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x4EE5;&#x786E;&#x5B9A;&#x662F;&#x54EA;&#x4E2A;&#x90AE;&#x7BB1;&#x5BFC;&#x81F4;&#x4E86;&#x4E2D;&#x65AD;&#x3002;&#x540C;&#x6837;&#xFF0C;&#x53EA;&#x6307;&#x793A;&#x90AE;&#x7BB1;0&#x3002;</p>
+<p>11.Core0&#x8BFB;&#x53D6;&#x786E;&#x8BA4;&#x6709;&#x6548;&#x8D1F;&#x8F7D;&#x6570;&#x636E;IPCM0DR0&#x3002;</p>
+<p>12.Core0&#x6E05;&#x9664;&#x90AE;&#x7BB1;&#x53D1;&#x9001;&#x5BC4;&#x5B58;&#x5668;IPCM0SEND&#x4E2D;&#x7684;&#x4F4D;1&#xFF0C;&#x4EE5;&#x6E05;&#x9664;&#x5176;&#x4E2D;&#x65AD;&#x3002;</p>
+<p>13.Core0&#x901A;&#x8FC7;&#x6E05;&#x9664;IPCM0SOURCE&#x5BC4;&#x5B58;&#x5668;&#x6765;&#x91CA;&#x653E;&#x90AE;&#x7BB1;&#x7684;&#x6240;&#x6709;&#x6743;&#xFF0C;&#x8FDB;&#x800C;&#x6E05;&#x9664;IPCM0DSTATUS&#x3001;IPCM0MSTATUS&#x548C;IPCM0DR0&#x5BC4;&#x5B58;&#x5668;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x5728;&#x6B65;&#x9AA4;13&#x4E2D;&#xFF0C;&#x901A;&#x8FC7;&#x4E0D;&#x6E05;&#x9664;IPCM0&#x6E90;&#x6CE8;&#x518C;&#x5668;&#xFF0C;&#x6838;&#x5FC3;0&#x53EF;&#x4EE5;&#x4FDD;&#x7559;&#x90AE;&#x7BB1;&#x4EE5;&#x53D1;&#x9001;&#x53E6;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x6D88;&#x606F;&#x3002;</p>
+<p>&#x5BC4;&#x5B58;&#x5668;&#x7A7A;&#x95F4;&#xFF1A;</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bf785c47d56d4a27a707622cf5508a70~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=902&amp;h=719&amp;s=164888&amp;e=png&amp;b=fffefe" alt="image.png"></p>
+<h2 id="12-pl320&#x9A71;&#x52A8;&#xFF08;linux&#x4E3A;&#x4F8B;&#xFF09;">1.2 PL320&#x9A71;&#x52A8;&#xFF08;linux&#x4E3A;&#x4F8B;&#xFF09;</h2>
+<p>&#x76F4;&#x63A5;&#x4E0A;github&#x4EE3;&#x7801;&#x94FE;&#x63A5;&#xFF1A;<a href="https://github.com/torvalds/linux/blob/master/drivers/mailbox/pl320-ipc.c" target="_blank">https://github.com/torvalds/linux/blob/master/drivers/mailbox/pl320-ipc.c</a></p>
+<pre><code>static int pl320_probe(struct amba_device *adev, const struct amba_id *id)
+{
+    int ret;
+
+    ipc_base = ioremap(adev-&gt;res.start, resource_size(&amp;adev-&gt;res));
+    if (ipc_base == NULL)
+        return -ENOMEM;
+
+    writel_relaxed(0, ipc_base + IPCMxSEND(IPC_TX_MBOX));
+
+    ipc_irq = adev-&gt;irq[0];
+    ret = request_irq(ipc_irq, ipc_handler, 0, dev_name(&amp;adev-&gt;dev), NULL);
+    if (ret &lt; 0)
+        goto err;
+
+    /* Init slow mailbox */
+    writel_relaxed(CHAN_MASK(A9_SOURCE),
+               ipc_base + IPCMxSOURCE(IPC_TX_MBOX));
+    writel_relaxed(CHAN_MASK(M3_SOURCE),
+               ipc_base + IPCMxDSET(IPC_TX_MBOX));
+    writel_relaxed(CHAN_MASK(M3_SOURCE) | CHAN_MASK(A9_SOURCE),
+               ipc_base + IPCMxMSET(IPC_TX_MBOX));
+
+    /* Init receive mailbox */
+    writel_relaxed(CHAN_MASK(M3_SOURCE),
+               ipc_base + IPCMxSOURCE(IPC_RX_MBOX));
+    writel_relaxed(CHAN_MASK(A9_SOURCE),
+               ipc_base + IPCMxDSET(IPC_RX_MBOX));
+    writel_relaxed(CHAN_MASK(M3_SOURCE) | CHAN_MASK(A9_SOURCE),
+               ipc_base + IPCMxMSET(IPC_RX_MBOX));
+
+    return 0;
+err:
+    iounmap(ipc_base);
+    return ret;
+}
+</code></pre><p>request_irq(ipc_irq, ipc_handler &#x8BBE;&#x7F6E;&#x4E86;&#x4E2D;&#x65AD;&#xFF0C;&#x8FD9;&#x8DDF;&#x786C;&#x4EF6;&#x7684;&#x8FDE;&#x63A5;&#x6709;&#x5173;&#x7CFB;&#xFF0C;PL320&#x786C;&#x4EF6;&#x8DDF;A&#x6838;&#x8FDE;&#x63A5;&#x4E0A;&#x4E86;&#x90A3;&#x4E2A;&#x4E2D;&#x65AD;&#x5F15;&#x811A;&#x5C31;&#x662F;&#x54EA;&#x4E2A;&#xFF0C;&#x662F;&#x786C;&#x4EF6;&#x51B3;&#x5B9A;&#x7684;&#x3002;</p>
+<p>&#x521D;&#x59CB;&#x5316;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x6267;&#x884C;pl320_probe&#xFF0C;&#x8981;&#x6839;&#x636E;&#x5177;&#x4F53;&#x786C;&#x4EF6;&#x7684;&#x8FDE;&#x63A5;&#x65B9;&#x6848;&#xFF0C;&#x8F6F;&#x4EF6;&#x662F;&#x9700;&#x8981;&#x6709;&#x6539;&#x52A8;&#x7684;&#xFF0C;linux&#x7684;&#x9A71;&#x52A8;&#x4E5F;&#x4E0D;&#x662F;&#x4E07;&#x80FD;&#x7684;&#xFF0C;&#x53EA;&#x662F;&#x63D0;&#x4F9B;&#x4E86;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x5177;&#x4F53;&#x600E;&#x4E48;&#x7528;&#x8FD8;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x53BB;&#x914D;&#x7F6E;&#xFF0C;&#x6240;&#x4EE5;&#x9A71;&#x52A8;&#x5DE5;&#x7A0B;&#x5E08;&#x6BCF;&#x4E2A;&#x516C;&#x53F8;&#x90FD;&#x4F1A;&#x517B;&#x51E0;&#x4E2A;&#x3002;</p>
+<p>&#x53D1;&#x6570;&#x636E;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x8C03;&#x7528;pl320_probe&#xFF1A;</p>
+<pre><code>int pl320_ipc_transmit(u32 *data)
+{
+    int ret;
+
+    mutex_lock(&amp;ipc_m1_lock);
+
+    init_completion(&amp;ipc_completion);
+    __ipc_send(IPC_TX_MBOX, data);
+    ret = wait_for_completion_timeout(&amp;ipc_completion,
+                      msecs_to_jiffies(1000));
+    if (ret == 0) {
+        ret = -ETIMEDOUT;
+        goto out;
+    }
+
+    ret = __ipc_rcv(IPC_TX_MBOX, data);
+out:
+    mutex_unlock(&amp;ipc_m1_lock);
+    return ret;
+}
+</code></pre><p>&#x53D1;&#x751F;&#x4E2D;&#x65AD;&#x5728;</p>
+<pre><code>#define IPCMxDR(m, dr)        (((m) * 0x40) + ((dr) * 4) + 0x024)
+#define IPCMxSEND(m)        (((m) * 0x40) + 0x020)
+
+static void __ipc_send(int mbox, u32 *data)
+{
+    int i;
+    for (i = 0; i &lt; 7; i++)
+        writel_relaxed(data[i], ipc_base + IPCMxDR(mbox, i));
+    writel_relaxed(0x1, ipc_base + IPCMxSEND(mbox));
+}
+</code></pre><ul>
+<li>m&#x662F;channel&#x6570;&#xFF0C;&#x4E00;&#x4E2A;channel&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x504F;&#x79FB;&#x5360;0x40&#x7684;&#x504F;&#x79FB;&#x5927;&#x5C0F;</li>
+<li>&#x6570;&#x636E;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x504F;&#x79FB;&#x5C31;&#x662F;0x024&#x3002;</li>
+<li>dr&#x5C31;&#x662F;8&#x4E2A;32bit&#x7684;&#x6570;&#x636E;&#x7684;&#x90A3;&#x4E00;&#x4E2A;&#xFF0C;&#x4E00;&#x4E2A;&#x5B57;&#x8282;8bit&#xFF0C;32bit&#x5C31;&#x662F;4&#x4E2A;&#x5B57;&#x8282;</li>
+<li>0x20 IPCMxSEND&#x5C31;&#x662F;&#x89E6;&#x53D1;&#x4E86;&#x5BF9;&#x65B9;&#x7684;&#x4E2D;&#x65AD;</li>
+</ul>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b02006bba01e4bb29eda4705cd7ddf91~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=869&amp;h=296&amp;s=154025&amp;e=png&amp;b=fdfcfc" alt="image.png"></p>
+<p>&#x6536;&#x6570;&#x636E;&#x7684;&#x8FC7;&#x7A0B;&#x5C31;&#x662F;&#x5BF9;&#x65B9;&#x7ED9;&#x81EA;&#x5DF1;&#x4E00;&#x4E2A;&#x4E2D;&#x65AD;&#xFF0C;&#x8FDB;&#x5165;&#x4E2D;&#x65AD;&#x5904;&#x7406;&#x51FD;&#x6570;ipc_handler</p>
+<pre><code>#define IPCMMIS(irq)        (((irq) * 8) + 0x800)
+
+static irqreturn_t ipc_handler(int irq, void *dev)
+{
+    u32 irq_stat;
+    u32 data[7];
+
+    irq_stat = readl_relaxed(ipc_base + IPCMMIS(1));
+    if (irq_stat &amp; MBOX_MASK(IPC_TX_MBOX)) {
+        writel_relaxed(0, ipc_base + IPCMxSEND(IPC_TX_MBOX));
+        complete(&amp;ipc_completion);
+    }
+    if (irq_stat &amp; MBOX_MASK(IPC_RX_MBOX)) {
+        __ipc_rcv(IPC_RX_MBOX, data);
+        atomic_notifier_call_chain(&amp;ipc_notifier, data[0], data + 1);
+        writel_relaxed(2, ipc_base + IPCMxSEND(IPC_RX_MBOX));
+    }
+
+    return IRQ_HANDLED;
+}
+</code></pre><p>&#x6309;&#x7167;&#x4E0A;&#x9762;&#x786C;&#x4EF6;&#x624B;&#x518C;&#x4E2D;&#x7684;&#x6D41;&#x7A0B;&#xFF1A;</p>
+<p>10.Core0&#x8BFB;&#x53D6;IPCMRIS0&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x4EE5;&#x786E;&#x5B9A;&#x662F;&#x54EA;&#x4E2A;&#x90AE;&#x7BB1;&#x5BFC;&#x81F4;&#x4E86;&#x4E2D;&#x65AD;&#x3002;&#x540C;&#x6837;&#xFF0C;&#x53EA;&#x6307;&#x793A;&#x90AE;&#x7BB1;0&#x3002;</p>
+<p>&#x5BF9;&#x5E94;&#xFF1A;readl_relaxed(ipc_base + IPCMMIS(1));</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a004fe60d9e740d5960ff770994f9c8b~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=398&amp;h=145&amp;s=15725&amp;e=png&amp;b=fffefe" alt="image.png"></p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/67e8b2604b2943f2812821b9a5f7d1e2~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=380&amp;h=176&amp;s=28988&amp;e=png&amp;b=fffefe" alt="image.png"></p>
+<p>11.Core0&#x8BFB;&#x53D6;&#x786E;&#x8BA4;&#x6709;&#x6548;&#x8D1F;&#x8F7D;&#x6570;&#x636E;IPCM0DR0&#x3002;</p>
+<p>&#x5BF9;&#x5E94;&#xFF1A;__ipc_rcv</p>
+<pre><code>static u32 __ipc_rcv(int mbox, u32 *data)
+{
+    int i;
+    for (i = 0; i &lt; 7; i++)
+        data[i] = readl_relaxed(ipc_base + IPCMxDR(mbox, i));
+    return data[1];
+}
+</code></pre><p>12.Core0&#x6E05;&#x9664;&#x90AE;&#x7BB1;&#x53D1;&#x9001;&#x5BC4;&#x5B58;&#x5668;IPCM0SEND&#x4E2D;&#x7684;&#x4F4D;1&#xFF0C;&#x4EE5;&#x6E05;&#x9664;&#x5176;&#x4E2D;&#x65AD;&#x3002;</p>
+<p>&#x5BF9;&#x5E94;&#x4EE3;&#x7801;&#xFF1A;writel_relaxed(2, ipc_base + IPCMxSEND(IPC_RX_MBOX));</p>
+<p>13.Core0&#x901A;&#x8FC7;&#x6E05;&#x9664;IPCM0SOURCE&#x5BC4;&#x5B58;&#x5668;&#x6765;&#x91CA;&#x653E;&#x90AE;&#x7BB1;&#x7684;&#x6240;&#x6709;&#x6743;&#xFF0C;&#x8FDB;&#x800C;&#x6E05;&#x9664;IPCM0DSTATUS&#x3001;IPCM0MSTATUS&#x548C;IPCM0DR0&#x5BC4;&#x5B58;&#x5668;&#x3002;</p>
+<h1 id="2--&#x6570;&#x636E;&#x653E;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x5B9E;&#x73B0;">2.  &#x6570;&#x636E;&#x653E;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x5B9E;&#x73B0;</h1>
+<p>&#x53C2;&#x8003;&#x4E4B;&#x524D;&#x7684;&#x6587;&#x7AE0;&#xFF1A;XXX</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f14d6c6dc45e459aaa43fd12953b0186~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=863&amp;h=416&amp;s=118346&amp;e=png&amp;b=fefefe" alt="image.png"></p>
+<ol>
+<li>A&#x6838;&#x5148;&#x5F80;&#x67D0;&#x4E2A;&#x6307;&#x5B9A;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x7A7A;&#x95F4;buffer&#x5199;&#x6570;&#x636E;&#xFF0C;&#x7136;&#x540E;&#x5199;&#x5165;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x7684;&#x5730;&#x5740;&#x4FE1;&#x606F;&#x5230;&#x76F8;&#x5E94;&#x901A;&#x9053;&#x6570;&#x636E;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;mailbox&#x89E6;&#x53D1;&#x4E2D;&#x65AD;&#x7ED9;R&#x6838;;</li>
+<li>M&#x6838;&#xFF08;SCP&#xFF09;&#x901A;&#x8FC7;&#x5F97;&#x5230;mailbox&#x4E2D;&#x65AD;&#xFF0C;&#x83B7;&#x53D6;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x76F8;&#x5E94;offset&#xFF0C;&#x8BFB;&#x53D6;buffer&#x6570;&#x636E;&#xFF1B;</li>
+<li>M&#x6838;&#xFF08;SCP&#xFF09;&#x901A;&#x8FC7;mailbox&#x89E6;&#x53D1;&#x4E2D;&#x65AD;&#x901A;&#x77E5;A&#x6838;&#x63A5;&#x6536;&#x6D88;&#x606F;&#x5B8C;&#x6BD5;&#x3002;</li>
+</ol>
+<p>&#x8FD9;&#x91CC;&#x7684;Mailbox&#x786C;&#x4EF6;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x7684;PL320&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x53EA;&#x4F7F;&#x7528;&#x4E86;&#x5176;&#x4E2D;&#x65AD;&#x529F;&#x80FD;&#xFF0C;DR&#x6570;&#x636E;&#x5BC4;&#x5B58;&#x5668;&#x5C31;&#x95F2;&#x7F6E;&#x4E86;&#x3002;&#x4E00;&#x822C;&#x662F;&#x9700;&#x8981;&#x4F20;&#x8F93;&#x7684;&#x6570;&#x636E;&#x91CF;&#x6BD4;&#x8F83;&#x5927;&#x7684;&#x65F6;&#x5019;,DR&#x5BC4;&#x5B58;&#x4E0D;&#x591F;&#x7528;&#x4E86;&#xFF0C;&#x5C31;&#x5FC5;&#x987B;&#x4F7F;&#x7528;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x4E86;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x4F7F;&#x7528;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53CC;&#x65B9;&#x8981;&#x7EA6;&#x5B9A;&#x597D;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x7684;&#x533A;&#x57DF;&#xFF0C;&#x6216;&#x8005;&#x52A8;&#x6001;&#x7684;&#x4F7F;&#x7528;DR&#x5BC4;&#x5B58;&#x5668;&#x4F20;&#x8F93;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x5730;&#x5740;&#x3002;</p>
+<p>&#x5728;drivers/mailbox/mailbox.c&#x4E2D;&#xFF0C;mailbox_send_message&#x53D1;&#x6D88;&#x606F;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x8C03;&#x7528;mbox_send_message</p>
+<pre><code>mailbox_send_message
+--&#x300B;mbox_send_message
+  --&#x300B;msg_submit
+
+static void msg_submit(struct mbox_chan *chan)
+{
+        data = chan-&gt;msg_data[idx];
+        if (chan-&gt;cl-&gt;tx_prepare)
+                chan-&gt;cl-&gt;tx_prepare(chan-&gt;cl, data);
+        err = chan-&gt;mbox-&gt;ops-&gt;send_data(chan, data);
+}
+</code></pre><p>tx_prepare-&#x300B;shmem_tx_prepare&#x4F1A;&#x5F80;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x91CC;&#x9762;&#x5B58;&#x5165;&#x6570;&#x636E;&#xFF0C;&#x5728;drivers/firmware/arm_scmi/shmem.c&#x4E2D;</p>
+<pre><code>void shmem_tx_prepare(struct scmi_shared_mem __iomem *shmem,
+                      struct scmi_xfer *xfer)
+{
+        spin_until_cond(ioread32(&amp;shmem-&gt;channel_status) &amp;
+                        SCMI_SHMEM_CHAN_STAT_CHANNEL_FREE);
+        iowrite32(0x0, &amp;shmem-&gt;channel_status);
+        iowrite32(xfer-&gt;hdr.poll_completion ? 0 : SCMI_SHMEM_FLAG_INTR_ENABLED,
+                  &amp;shmem-&gt;flags);
+        iowrite32(sizeof(shmem-&gt;msg_header) + xfer-&gt;tx.len, &amp;shmem-&gt;length);
+        iowrite32(pack_scmi_header(&amp;xfer-&gt;hdr), &amp;shmem-&gt;msg_header);
+        pr_info(&quot;#### shmem_tx_prepare shmem-&gt;msg_header=0x%x\n&quot;, shmem-&gt;msg_header);
+        if (xfer-&gt;tx.buf){
+                memcpy_toio(shmem-&gt;msg_payload, xfer-&gt;tx.buf, xfer-&gt;tx.len);
+        pr_info(&quot;#### shmem_tx_prepare shmem-&gt;msg_payload[0]=0x%x\n&quot;, (int)shmem-&gt;msg_payload[0]);
+        }
+}
+</code></pre><p>&#x53D1;&#x6D88;&#x606F;drivers/mailbox/pl320-ipc.c&#x4E2D;pl320_mbox_send_data&#x51FD;&#x6570;</p>
+<pre><code>static const struct mbox_chan_ops pl320_mbox_ops = {
+        .send_data        = pl320_mbox_send_data,
+};
+</code></pre><p>ops-&gt;send_data-&#x300B;pl320_mbox_send_data-&#x300B;__ipc_send(pl320_id, ch, buf);&#x4F1A;&#x89E6;&#x53D1;&#x4E2D;&#x65AD;</p>
+<pre><code>static void __ipc_send(int pl320_id, int mbox, u32 *data)
+{
+        ipc_base = get_ipc_base(pl320_id);
+
+        for (i = 0; i &lt; MBOX_MSG_LEN; i++)
+                writel_relaxed(data[i], ipc_base + IPCMxDR(mbox, i));
+
+        if (mbox % 2 == 0)
+                writel_relaxed(0x1, ipc_base + IPCMxSEND(mbox));
+        else
+                writel_relaxed(0x2, ipc_base + IPCMxSEND(mbox));
+}
+</code></pre><p>&#x6536;&#x6D88;&#x606F;&#xFF0C;drivers/mailbox/pl320-ipc.c&#x4E2D;ipc_handler</p>
+<pre><code>        for (idx = 0; idx &lt; MBOX_CHAN_MAX; idx++)
+                if (irq_stat &amp; (1 &lt;&lt; idx))
+                        receive_flag |= channel_handler(mbox, idx);
+</code></pre><p>channel_handler&#x4E2D;&#x4F1A;&#x6E05;&#x4E2D;&#x65AD;</p>
+<h1 id="3-&#x6570;&#x636E;&#x7684;&#x8F6F;&#x4EF6;&#x534F;&#x8BAE;&#x683C;&#x5F0F;">3. &#x6570;&#x636E;&#x7684;&#x8F6F;&#x4EF6;&#x534F;&#x8BAE;&#x683C;&#x5F0F;</h1>
+<h2 id="31-scmi&#x534F;&#x8BAE;">3.1 SCMI&#x534F;&#x8BAE;</h2>
+<p>&#x6570;&#x636E;&#x7684;&#x534F;&#x8BAE;&#x683C;&#x5F0F;&#x662F;&#x5F88;&#x7075;&#x6D3B;&#x7684;&#xFF0C;&#x53C2;&#x8003;&#x6587;&#x7AE0;XXX&#x4E2D;&#x4F7F;&#x7528;&#x7684;SMT+SCMI&#x534F;&#x8BAE;&#x7684;&#x6A21;&#x5F0F;&#xFF1A;</p>
+<p>&#x5185;&#x5B58;&#x7BA1;&#x7406;&#x534F;&#x8BAE;
+<img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/333bfe7169544b45b8d002e48764ecf4~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=863&amp;h=995&amp;s=623787&amp;e=png&amp;b=fcfbfb" alt="image.png"></p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a280a1e4afd54a6cbe5429ced57e37d6~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=863&amp;h=338&amp;s=138146&amp;e=png&amp;b=fefdfd" alt="image.png"></p>
+<p>&#x4EE3;&#x7801;&#x53C2;&#x8003;&#xFF1A;<a href="https://github.com/torvalds/linux/blob/4a4be1ad3a6efea16c56615f31117590fd881358/drivers/firmware/arm_scmi/shmem.c#L22" target="_blank">https://github.com/torvalds/linux/blob/4a4be1ad3a6efea16c56615f31117590fd881358/drivers/firmware/arm_scmi/shmem.c#L22</a></p>
+<pre><code>struct scmi_shared_mem {
+    __le32 reserved;
+    __le32 channel_status;
+#define SCMI_SHMEM_CHAN_STAT_CHANNEL_ERROR    BIT(1)
+#define SCMI_SHMEM_CHAN_STAT_CHANNEL_FREE    BIT(0)
+    __le32 reserved1[2];
+    __le32 flags;
+#define SCMI_SHMEM_FLAG_INTR_ENABLED    BIT(0)
+    __le32 length;
+    __le32 msg_header;
+    u8 msg_payload[];
+};
+</code></pre><p>&#x5176;&#x4E2D;&#x91CC;&#x9762;&#x5305;&#x542B;&#x4E86;scmi&#x534F;&#x8BAE;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>__le32 msg_header;
+u8 msg_payload[];
+</code></pre><h2 id="32-rpmsg&#x901A;&#x4FE1;">3.2 RPMsg&#x901A;&#x4FE1;</h2>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/83de09f63abd4d17b2dcd96d0fa1d7ff~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=750&amp;h=662&amp;s=76068&amp;e=png&amp;a=1&amp;b=03224b" alt="image.png">
+Linux &#xAE; RPMsg&#x6846;&#x67B6;&#x662F;&#x5728; virtio &#x6846;&#x67B6;<a href="https://wiki.stmicroelectronics.cn/stm32mpu/wiki/Linux_RPMsg_framework_overview#cite_note-virtio1-1" target="_blank">[1] </a><a href="https://wiki.stmicroelectronics.cn/stm32mpu/wiki/Linux_RPMsg_framework_overview#cite_note-virtio2-2" target="_blank">[2]</a>&#x4E4B;&#x4E0A;&#x5B9E;&#x73B0;&#x7684;&#x6D88;&#x606F;&#x4F20;&#x9012;&#x673A;&#x5236;&#xFF0C;&#x7528;&#x4E8E;&#x4E0E;&#x8FDC;&#x7A0B;&#x5904;&#x7406;&#x5668;&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#x3002;&#x5B83;&#x57FA;&#x4E8E; virtio vring&#xFF0C;&#x901A;&#x8FC7;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x5411;&#x8FDC;&#x7A0B; CPU &#x53D1;&#x9001;&#x6D88;&#x606F;&#x6216;&#x4ECE;&#x8FDC;&#x7A0B;CPU&#x63A5;&#x6536;&#x6D88;&#x606F;&#x3002;</p>
+<p>vring &#x662F;&#x5355;&#x5411;&#x7684;&#xFF0C;&#x4E00;&#x4E2A; vring &#x4E13;&#x7528;&#x4E8E;&#x5411;&#x8FDC;&#x7A0B;&#x5904;&#x7406;&#x5668;&#x53D1;&#x9001;&#x6D88;&#x606F;&#xFF0C;&#x53E6;&#x4E00;&#x4E2A; vring &#x7528;&#x4E8E;&#x4ECE;&#x8FDC;&#x7A0B;&#x5904;&#x7406;&#x5668;&#x63A5;&#x6536;&#x6D88;&#x606F;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x5728;&#x4E24;&#x4E2A;&#x5904;&#x7406;&#x5668;&#x90FD;&#x53EF;&#x89C1;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x4E2D;&#x521B;&#x5EFA;&#x5171;&#x4EAB;&#x7F13;&#x51B2;&#x533A;&#x3002;</p>
+<ul>
+<li><strong>remoteproc</strong>&#xFF1A;remoteproc &#x6846;&#x67B6;&#x5141;&#x8BB8;&#x4E0D;&#x540C;&#x7684;&#x5E73;&#x53F0;/&#x67B6;&#x6784;&#x63A7;&#x5236;&#xFF08;&#x5F00;&#x673A;&#x3001;&#x52A0;&#x8F7D;&#x56FA;&#x4EF6;&#x3001;&#x5173;&#x673A;&#xFF09;&#x8FDC;&#x7A0B;&#x5904;&#x7406;&#x5668;&#x3002;&#x6B64;&#x6846;&#x67B6;&#x8FD8;&#x4E3A;&#x652F;&#x6301; RPMsg &#x534F;&#x8BAE;&#x7684;&#x8FDC;&#x7A0B;&#x5904;&#x7406;&#x5668;&#x6DFB;&#x52A0;&#x4E86; rpmsg virtio &#x8BBE;&#x5907;&#x3002;&#x6709;&#x5173;&#x6B64;&#x6846;&#x67B6;&#x7684;&#x66F4;&#x591A;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;<a href="https://wiki.stmicroelectronics.cn/stm32mpu/wiki/Linux_remoteproc_framework_overview" title="Linux remoteproc &#x6846;&#x67B6;&#x6982;&#x8FF0;" target="_blank">remote proc &#x6846;&#x67B6;</a>&#x9875;&#x9762;&#x3002;</li>
+</ul>
+<!---->
+<ul>
+<li><p><strong>virtio</strong>&#xFF1A;&#x652F;&#x6301;&#x865A;&#x62DF;&#x5316;&#x7684; VirtIO &#x6846;&#x67B6;&#x3002;&#x5B83;&#x57FA;&#x4E8E;&#x5171;&#x4EAB;&#x73AF;&#x5F62;&#x7F13;&#x51B2;&#x533A; (vring) &#x63D0;&#x4F9B;&#x9AD8;&#x6548;&#x7684;&#x4F20;&#x8F93;&#x5C42;&#x3002;&#x6709;&#x5173;&#x6B64;&#x6846;&#x67B6;&#x7684;&#x66F4;&#x591A;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF0C;&#x8BF7;&#x53C2;&#x9605;&#x4EE5;&#x4E0B;&#x94FE;&#x63A5;&#xFF1A;</p>
+<ul>
+<li>Virtio&#xFF1A; Linux &#x7684; I/O &#x865A;&#x62DF;&#x5316;&#x6846;&#x67B6;<a href="https://wiki.stmicroelectronics.cn/stm32mpu/wiki/Linux_RPMsg_framework_overview#cite_note-virtio1-1" target="_blank">[1]</a></li>
+<li>virtio &#x4ECB;&#x7ECD; - SlideShare <a href="https://wiki.stmicroelectronics.cn/stm32mpu/wiki/Linux_RPMsg_framework_overview#cite_note-virtio2-2" target="_blank">[2]</a></li>
+</ul>
+</li>
+</ul>
+<!---->
+<ul>
+<li><strong>rpmsg</strong>&#xFF1A;&#x57FA;&#x4E8E; virtio &#x7684;&#x6D88;&#x606F;&#x603B;&#x7EBF;&#xFF0C;&#x5141;&#x8BB8;&#x5185;&#x6838;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x4E0E;&#x7CFB;&#x7EDF;&#x4E0A;&#x53EF;&#x7528;&#x7684;&#x8FDC;&#x7A0B;&#x5904;&#x7406;&#x5668;&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#x3002;&#x5B83;&#x63D0;&#x4F9B;&#x6D88;&#x606F;&#x4F20;&#x9012;&#x57FA;&#x7840;&#x7ED3;&#x6784;&#xFF0C;&#x65B9;&#x4FBF;&#x5BA2;&#x6237;&#x7AEF;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x7F16;&#x5199;&#x6709;&#x7EBF;&#x534F;&#x8BAE;&#x6D88;&#x606F;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x9700;&#x8981;&#x516C;&#x5F00;&#x9002;&#x5F53;&#x7684;&#x7528;&#x6237;&#x7A7A;&#x95F4;&#x63A5;&#x53E3;&#x3002;</li>
+</ul>
+<!---->
+<ul>
+<li><strong>rpmsg_client_driver&#x662F;&#x5B9E;&#x73B0;&#x4E0E;&#x8FDC;&#x7A0B;&#x5904;&#x7406;&#x5668;&#x5173;&#x8054;&#x7684;&#x670D;&#x52A1;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x3002;&#x5F53;&#x8FDC;&#x7A0B;&#x5904;&#x7406;&#x5668;&#x4F7F;&#x7528;&#x201C;&#x65B0;&#x670D;&#x52A1;&#x516C;&#x544A;&#x201D;</strong> RPMsg&#x6D88;&#x606F;&#x8BF7;&#x6C42;&#x5173;&#x8054;&#x670D;&#x52A1;&#x65F6;&#xFF0C;RPMsg&#x6846;&#x67B6;&#x4F1A;&#x63A2;&#x6D4B;&#x6B64;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x3002;</li>
+</ul>
+<p>&#x53C2;&#x8003;&#xFF1A;<a href="https://wiki.stmicroelectronics.cn/stm32mpu/wiki/Linux_RPMsg_framework_overview" target="_blank">https://wiki.stmicroelectronics.cn/stm32mpu/wiki/Linux_RPMsg_framework_overview</a>
+&#x4E0A;&#x9762;&#x8BF4;&#x7684;&#x4E00;&#x4E9B;&#x6982;&#x5FF5;&#x53EF;&#x80FD;&#x6BD4;&#x8F83;&#x4E0D;&#x597D;&#x7406;&#x89E3;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x67E5;&#x9605;&#x4E0B;&#x76F8;&#x5173;&#x8D44;&#x6599;&#x3002;</p>
+<p>&#x5728;Linux&#x5185;&#x6838;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;RPMsg&#x7684;&#x4EE3;&#x7801;&#x4E3B;&#x8981;&#x4F4D;&#x4E8E;drivers/rpmsg/&#x4E0B;&#xFF0C;&#x6587;&#x4EF6;&#x4E4B;&#x95F4;&#x7684;&#x4E3B;&#x8981;&#x5173;&#x7CFB;&#x5982;&#x56FE;2-1&#x6240;&#x793A;&#x3002;&#x4E00;&#x5F00;&#x59CB;Linux&#x4E2D;&#x53EA;&#x4F7F;&#x7528;VirtIO&#x4F5C;&#x4E3A;&#x8BE5;&#x534F;&#x8BAE;&#x4F20;&#x8F93;&#x5C42;&#xFF0C;&#x540E;&#x6765;&#x53C8;&#x589E;&#x52A0;&#x4E86;Glink&#x3001;SMD&#x7B49;&#xFF0C;Glink&#x548C;SMD&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x9AD8;&#x901A;&#x5E73;&#x53F0;&#x3002;&#x7528;&#x6237;&#x4EE3;&#x7801;&#x901A;&#x8FC7;&#x64CD;&#x7EB5;rpmsg&#x9A71;&#x52A8;&#xFF0C;&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x7684;&#x6536;&#x53D1;&#x64CD;&#x4F5C;&#x3002;&#x6240;&#x6709;&#x6570;&#x636E;&#x90FD;&#x5728;RPMsg&#x603B;&#x7EBF;&#x4E0A;&#x4F20;&#x9012;&#x3002;</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9751be4e7dce4587a67fbf25c032a0da~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1022&amp;h=550&amp;s=100291&amp;e=png&amp;b=fefefe" alt="image.png"></p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9facfbd7eef9473eada21eb9a3a94b40~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=869&amp;h=436&amp;s=145446&amp;e=png&amp;b=fefcfc" alt="image.png">
+&#x5F53;&#x4E3B;&#x6838;&#x9700;&#x8981;&#x548C;&#x4ECE;&#x6838;&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#x7684;&#x65F6;&#x5019;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x56DB;&#x6B65;&#xFF0C;&#x5982;&#x4E0A;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p>
+<ol>
+<li>&#x4E3B;&#x6838;&#x5148;&#x4ECE;USED&#x4E2D;&#x53D6;&#x5F97;&#x4E00;&#x5757;&#x5185;&#x5B58;&#xFF1B;</li>
+<li>&#x5C06;&#x6D88;&#x606F;&#x6309;&#x7167;&#x6D88;&#x606F;&#x534F;&#x8BAE;&#x586B;&#x5145;&#xFF1B;</li>
+<li>&#x5C06;&#x8BE5;&#x5185;&#x5B58;&#x94FE;&#x63A5;&#x5230;AVAIL&#x6362;&#x4E2D;&#xFF1B;</li>
+<li>&#x89E6;&#x53D1;&#x4E2D;&#x65AD;&#xFF0C;&#x901A;&#x77E5;&#x4ECE;&#x6838;&#x6709;&#x6D88;&#x606F;&#x5904;&#x7406;&#x3002;</li>
+</ol>
+<p>RPMSG&#x7684;&#x62A5;&#x6587;&#x683C;&#x5F0F;&#xFF1A;</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8ee8574c49cc46eeb1d1d7eb4847fc5b~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=663&amp;h=387&amp;s=103833&amp;e=png&amp;b=dbe6c0" alt="image.png">
+&#x8BE5;&#x6D88;&#x606F;&#x683C;&#x5F0F;&#x7684;&#x5B9A;&#x4E49;&#x4F4D;&#x4E8E;<code>drivers/rpmsg/virtio_rpmsg_bus.c</code>&#x4E2D;&#xFF0C;&#x5177;&#x4F53;&#x5B9A;&#x4E49;&#x5982;&#x4E0B;&#x3002;</p>
+<pre><code>struct rpmsg_hdr {
+    u32 src;
+    u32 dst;
+    u32 reserved;
+    u16 len;
+    u16 flags;
+    u8 data[];
+} __packed;
+</code></pre><p>&#x53C2;&#x8003;&#xFF1A;<a href="https://www.jianshu.com/p/c7cdad8273ed" target="_blank">https://www.jianshu.com/p/c7cdad8273ed</a></p>
+<blockquote>
+<p>&#x540E;&#x8BB0;&#xFF1A;</p>
+<p>&#x4EBA;&#x7C7B;&#x521B;&#x9020;&#x7684;&#x6280;&#x672F;&#xFF0C;&#x6280;&#x672F;&#x7684;&#x601D;&#x8DEF;&#x5FC5;&#x7136;&#x4F1A;&#x53D7;&#x4EBA;&#x7684;&#x601D;&#x7EF4;&#x9650;&#x5236;&#xFF0C;&#x4EBA;&#x7684;&#x601D;&#x7EF4;&#x5176;&#x5B9E;&#x66F4;&#x591A;&#x7684;&#x8FD8;&#x662F;&#x5148;&#x5929;&#x57FA;&#x56E0;&#x5C31;&#x51B3;&#x5B9A;&#x7684;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x672C;&#x80FD;&#x3002;&#x6838;&#x95F4;&#x901A;&#x4FE1;&#xFF0C;&#x8BF4;&#x7B80;&#x5355;&#x70B9;&#x4F8B;&#x5982;&#x4F60;&#x60F3;&#x7ED9;&#x53E6;&#x4E00;&#x4E2A;&#x4EBA;&#x4F20;&#x9012;&#x4E00;&#x4E2A;&#x4FE1;&#x606F;&#xFF0C;&#x90A3;&#x4E0D;&#x5199;&#x4E00;&#x4E2A;&#x7EB8;&#x6761;&#x9012;&#x8FC7;&#x53BB;&#xFF0C;&#x7136;&#x540E;&#x6572;&#x4E00;&#x4E0B;&#x5BF9;&#x65B9;&#xFF0C;&#x5BF9;&#x65B9;&#x5C31;&#x77E5;&#x9053;&#x6253;&#x5F00;&#x770B;&#x4E86;&#x3002;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x89E3;&#x51B3;3&#x4E2A;&#x95EE;&#x9898;&#xFF1A;</p>
+<p>1.&#x7EB8;&#x6761;&#xFF08;&#x5171;&#x4EAB;&#x5185;&#x5B58;&#xFF09;</p>
+<p>2.&#x6572;&#x4E00;&#x4E0B;&#xFF08;&#x4E2D;&#x65AD;&#xFF09;</p>
+<p>3.&#x7EB8;&#x6761;&#x4E0A;&#x5199;&#x4EC0;&#x4E48;&#x6587;&#x5B57;&#xFF08;&#x8F6F;&#x4EF6;&#x534F;&#x8BAE;&#xFF09;</p>
+<p>&#x8FD9;&#x4E48;&#x8BF4;&#x4F60;&#x7406;&#x89E3;&#x4EC0;&#x4E48;&#x662F;&#x6838;&#x95F4;&#x901A;&#x4FE1;&#x4E86;&#x4E48;&#xFF1F;&#x7406;&#x89E3;&#x8BC4;&#x8BBA;&#x533A;&#x6263;1</p>
+</blockquote>
 
                                 
                                 </section>
@@ -2129,7 +2444,7 @@
 
             
                 
-                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Introduction">
+                <a href="自动驾驶芯片入门-基础概念和架构.html" class="navigation navigation-prev " aria-label="Previous page: 自动驾驶芯片入门-基础概念和架构">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -2145,7 +2460,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"芯片SoC","level":"1.2","depth":1,"next":{"title":"SoC入门-1芯片研究框架（上）","level":"1.2.1","depth":2,"path":"芯片SoC/SoC入门-1芯片研究框架（上）.md","ref":"芯片SoC/SoC入门-1芯片研究框架（上）.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters-small","livereload"],"pluginsConfig":{"expandable-chapters-small":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"芯片SoC/README.md","mtime":"2024-12-16T07:35:35.345Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-12-16T09:46:56.214Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"SoC软件技术--核间通信","level":"1.2.18","depth":2,"next":{"title":"SoC入门-1芯片研究框架（上）","level":"1.2.19","depth":2,"path":"芯片SoC/SoC入门-1芯片研究框架（上）.md","ref":"芯片SoC/SoC入门-1芯片研究框架（上）.md","articles":[]},"previous":{"title":"自动驾驶芯片入门-基础概念和架构","level":"1.2.17","depth":2,"path":"芯片SoC/自动驾驶芯片入门-基础概念和架构.md","ref":"芯片SoC/自动驾驶芯片入门-基础概念和架构.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters-small","livereload"],"pluginsConfig":{"expandable-chapters-small":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"芯片SoC/SoC软件技术--核间通信.md","mtime":"2024-12-16T06:34:37.126Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-12-16T09:46:56.214Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
