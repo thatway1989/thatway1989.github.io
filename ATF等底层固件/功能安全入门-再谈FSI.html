@@ -1,0 +1,2333 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>功能安全入门-再谈FSI · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="功能安全入门-SoC设计漫谈.html" />
+    
+    
+    <link rel="prev" href="功能安全入门-功能安全岛FSI.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../芯片SoC/">
+            
+                <a href="../芯片SoC/">
+            
+                    
+                    芯片SoC
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../芯片SoC/SoC入门-1芯片研究框架（上）.html">
+            
+                <a href="../芯片SoC/SoC入门-1芯片研究框架（上）.html">
+            
+                    
+                    SoC入门-1芯片研究框架（上）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../芯片SoC/SoC入门-2芯片研究框架（下）.html">
+            
+                <a href="../芯片SoC/SoC入门-2芯片研究框架（下）.html">
+            
+                    
+                    SoC入门-2芯片研究框架（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../芯片SoC/SoC入门-3自动驾驶AI芯片框架.html">
+            
+                <a href="../芯片SoC/SoC入门-3自动驾驶AI芯片框架.html">
+            
+                    
+                    SoC入门-3自动驾驶AI芯片框架
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../芯片SoC/SoC入门-4自动驾驶AI-SoC芯片趋势.html">
+            
+                <a href="../芯片SoC/SoC入门-4自动驾驶AI-SoC芯片趋势.html">
+            
+                    
+                    SoC入门-4自动驾驶AI SoC芯片趋势
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../芯片SoC/AI-SoC入门-5NoC总线.html">
+            
+                <a href="../芯片SoC/AI-SoC入门-5NoC总线.html">
+            
+                    
+                    AI SoC入门-5NoC总线
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../芯片SoC/AI-SoC入门-6CPU子系统.html">
+            
+                <a href="../芯片SoC/AI-SoC入门-6CPU子系统.html">
+            
+                    
+                    AI SoC入门-6CPU子系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../芯片SoC/AI-SoC入门-7低速外设.html">
+            
+                <a href="../芯片SoC/AI-SoC入门-7低速外设.html">
+            
+                    
+                    AI SoC入门-7低速外设
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../芯片SoC/AI-SoC入门-8高速外设USB、ETH.html">
+            
+                <a href="../芯片SoC/AI-SoC入门-8高速外设USB、ETH.html">
+            
+                    
+                    AI SoC入门-8高速外设USB、ETH
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../芯片SoC/AI-SoC入门-9访存接口.html">
+            
+                <a href="../芯片SoC/AI-SoC入门-9访存接口.html">
+            
+                    
+                    AI SoC入门-9访存接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="../芯片SoC/AI-SoC入门-10数据一致性.html">
+            
+                <a href="../芯片SoC/AI-SoC入门-10数据一致性.html">
+            
+                    
+                    AI SoC入门-10数据一致性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="../芯片SoC/AI-SoC入门-11HSM加解密子系统.html">
+            
+                <a href="../芯片SoC/AI-SoC入门-11HSM加解密子系统.html">
+            
+                    
+                    AI SoC入门-11HSM加解密子系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="../芯片SoC/AI-SoC入门-12FSI安全岛设计.html">
+            
+                <a href="../芯片SoC/AI-SoC入门-12FSI安全岛设计.html">
+            
+                    
+                    AI SoC入门-12FSI安全岛设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="../芯片SoC/AI-SoC入门-13PMU电源管理子系统.html">
+            
+                <a href="../芯片SoC/AI-SoC入门-13PMU电源管理子系统.html">
+            
+                    
+                    AI SoC入门-13PMU电源管理子系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.14" data-path="../芯片SoC/AI-SoC入门：14从Transformer大模型到端到端自动驾驶算法.html">
+            
+                <a href="../芯片SoC/AI-SoC入门：14从Transformer大模型到端到端自动驾驶算法.html">
+            
+                    
+                    AI SoC入门：14从Transformer大模型到端到端自动驾驶算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.15" data-path="../芯片SoC/芯片-设计流程入门.html">
+            
+                <a href="../芯片SoC/芯片-设计流程入门.html">
+            
+                    
+                    芯片-设计流程入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.16" data-path="../芯片SoC/自动驾驶芯片入门-国内外主流厂商介绍.html">
+            
+                <a href="../芯片SoC/自动驾驶芯片入门-国内外主流厂商介绍.html">
+            
+                    
+                    自动驾驶芯片入门-国内外主流厂商介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.17" data-path="../芯片SoC/自动驾驶芯片入门-基础概念和架构.html">
+            
+                <a href="../芯片SoC/自动驾驶芯片入门-基础概念和架构.html">
+            
+                    
+                    自动驾驶芯片入门-基础概念和架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.18" data-path="../芯片SoC/SoC软件技术--核间通信.html">
+            
+                <a href="../芯片SoC/SoC软件技术--核间通信.html">
+            
+                    
+                    SoC软件技术--核间通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.19" data-path="../芯片SoC/SoC入门-1芯片研究框架（上）.html">
+            
+                <a href="../芯片SoC/SoC入门-1芯片研究框架（上）.html">
+            
+                    
+                    SoC入门-1芯片研究框架（上）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.20" data-path="../芯片SoC/SoC入门-2芯片研究框架（下）.html">
+            
+                <a href="../芯片SoC/SoC入门-2芯片研究框架（下）.html">
+            
+                    
+                    SoC入门-2芯片研究框架（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../电源管理/">
+            
+                <a href="../电源管理/">
+            
+                    
+                    电源管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../电源管理/电源管理入门-开篇即巅峰.html">
+            
+                <a href="../电源管理/电源管理入门-开篇即巅峰.html">
+            
+                    
+                    电源管理入门-开篇即巅峰
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../电源管理/电源管理入门-1关机重启详解.html">
+            
+                <a href="../电源管理/电源管理入门-1关机重启详解.html">
+            
+                    
+                    电源管理入门-1关机重启详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../电源管理/电源管理入门-2开机详解.html">
+            
+                <a href="../电源管理/电源管理入门-2开机详解.html">
+            
+                    
+                    电源管理入门-2开机详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../电源管理/电源管理入门-3CPU热插拔hotplug.html">
+            
+                <a href="../电源管理/电源管理入门-3CPU热插拔hotplug.html">
+            
+                    
+                    电源管理入门-3CPU热插拔hotplug
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../电源管理/电源管理入门-4子系统reset.html">
+            
+                <a href="../电源管理/电源管理入门-4子系统reset.html">
+            
+                    
+                    电源管理入门-4子系统reset
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../电源管理/电源管理入门-5arm-scmi和mailbox核间通信.html">
+            
+                <a href="../电源管理/电源管理入门-5arm-scmi和mailbox核间通信.html">
+            
+                    
+                    电源管理入门-5 arm-scmi和mailbox核间通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../电源管理/电源管理入门-6CPUFreq.html">
+            
+                <a href="../电源管理/电源管理入门-6CPUFreq.html">
+            
+                    
+                    电源管理入门-6 CPUFreq
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="../电源管理/电源管理入门-7DevFreq.html">
+            
+                <a href="../电源管理/电源管理入门-7DevFreq.html">
+            
+                    
+                    电源管理入门-7 DevFreq
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" data-path="../电源管理/电源管理入门-8休眠唤醒.html">
+            
+                <a href="../电源管理/电源管理入门-8休眠唤醒.html">
+            
+                    
+                    电源管理入门-8 休眠唤醒
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10" data-path="../电源管理/电源管理入门-9CPU-Idle.html">
+            
+                <a href="../电源管理/电源管理入门-9CPU-Idle.html">
+            
+                    
+                    电源管理入门-9 CPU Idle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.11" data-path="../电源管理/电源管理入门-10OPP介绍.html">
+            
+                <a href="../电源管理/电源管理入门-10OPP介绍.html">
+            
+                    
+                    电源管理入门-10 OPP介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.12" data-path="../电源管理/电源管理入门-11Regulator驱动.html">
+            
+                <a href="../电源管理/电源管理入门-11Regulator驱动.html">
+            
+                    
+                    电源管理入门-11Regulator驱动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.13" data-path="../电源管理/电源管理入门-12clock驱动.html">
+            
+                <a href="../电源管理/电源管理入门-12clock驱动.html">
+            
+                    
+                    电源管理入门-12 clock驱动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.14" data-path="../电源管理/电源管理入门-13Thermal热管理.html">
+            
+                <a href="../电源管理/电源管理入门-13Thermal热管理.html">
+            
+                    
+                    电源管理入门-13Thermal 热管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.15" data-path="../电源管理/电源管理入门-14Watchdog.html">
+            
+                <a href="../电源管理/电源管理入门-14Watchdog.html">
+            
+                    
+                    电源管理入门-14 Watchdog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.16" data-path="../电源管理/电源管理入门-15PM-QoS.html">
+            
+                <a href="../电源管理/电源管理入门-15PM-QoS.html">
+            
+                    
+                    电源管理入门-15 PM QoS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.17" data-path="../电源管理/电源管理入门-16驱动Runtime-PM管理.html">
+            
+                <a href="../电源管理/电源管理入门-16驱动Runtime-PM管理.html">
+            
+                    
+                    电源管理入门-16 驱动Runtime PM管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.18" data-path="../电源管理/电源管理入门-17Power-supply子系统.html">
+            
+                <a href="../电源管理/电源管理入门-17Power-supply子系统.html">
+            
+                    
+                    电源管理入门-17 Power supply子系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.19" data-path="../电源管理/电源管理入门-18Power-Domain管理.html">
+            
+                <a href="../电源管理/电源管理入门-18Power-Domain管理.html">
+            
+                    
+                    电源管理入门-18 Power Domain管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.20" data-path="../电源管理/电源管理入门-19微内核中的电源管理.html">
+            
+                <a href="../电源管理/电源管理入门-19微内核中的电源管理.html">
+            
+                    
+                    电源管理入门-19 微内核中的电源管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.21" data-path="../电源管理/电源管理入门-20Hypervisor中的电源管理.html">
+            
+                <a href="../电源管理/电源管理入门-20Hypervisor中的电源管理.html">
+            
+                    
+                    电源管理入门-20 Hypervisor中的电源管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.22" data-path="../电源管理/电源管理入门-21芯片设计中的电源管理.html">
+            
+                <a href="../电源管理/电源管理入门-21芯片设计中的电源管理.html">
+            
+                    
+                    电源管理入门-21 芯片设计中的电源管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.23" data-path="../电源管理/电源管理入门-汇总篇.html">
+            
+                <a href="../电源管理/电源管理入门-汇总篇.html">
+            
+                    
+                    电源管理入门-汇总篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.24" data-path="../电源管理/英伟达系列芯片如何用于自动驾驶开发之（二）：硬件电源设计.html">
+            
+                <a href="../电源管理/英伟达系列芯片如何用于自动驾驶开发之（二）：硬件电源设计.html">
+            
+                    
+                    英伟达系列芯片如何用于自动驾驶开发之（二）：硬件电源设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    ATF等底层固件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="ARM-ATF入门-安全固件软件介绍和代码运行.html">
+            
+                <a href="ARM-ATF入门-安全固件软件介绍和代码运行.html">
+            
+                    
+                    ARM ATF入门-安全固件软件介绍和代码运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="ATF入门-1qmeu搭建ARM全套源码学习环境.html">
+            
+                <a href="ATF入门-1qmeu搭建ARM全套源码学习环境.html">
+            
+                    
+                    ATF入门-1qmeu搭建ARM全套源码学习环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="ATF入门-2大软件模型和代码编译运行探究.html">
+            
+                <a href="ATF入门-2大软件模型和代码编译运行探究.html">
+            
+                    
+                    ATF入门-2大软件模型和代码编译运行探究
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="ATF入门-3BL2启动流程分析.html">
+            
+                <a href="ATF入门-3BL2启动流程分析.html">
+            
+                    
+                    ATF入门-3BL2启动流程分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="ATF入门-4BL31启动流程分析.html">
+            
+                <a href="ATF入门-4BL31启动流程分析.html">
+            
+                    
+                    ATF入门-4BL31启动流程分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="Secure-boot入门-1基本概念和框架.html">
+            
+                <a href="Secure-boot入门-1基本概念和框架.html">
+            
+                    
+                    Secure boot入门-1基本概念和框架
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="Secure-boot入门-2fip包加载image流程.html">
+            
+                <a href="Secure-boot入门-2fip包加载image流程.html">
+            
+                    
+                    Secure boot入门-2fip包加载image流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="Secure-boot入门-3镜像验签基础及代码初探.html">
+            
+                <a href="Secure-boot入门-3镜像验签基础及代码初探.html">
+            
+                    
+                    Secure boot入门-3镜像验签基础及代码初探
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="Secure-boot入门-4镜像验签代码分析.html">
+            
+                <a href="Secure-boot入门-4镜像验签代码分析.html">
+            
+                    
+                    Secure boot入门-4镜像验签代码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="secureboot入门-5镜像加密-签名-打包.html">
+            
+                <a href="secureboot入门-5镜像加密-签名-打包.html">
+            
+                    
+                    secureboot入门-5镜像加密-签名-打包
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="secureboot入门-6安卓AVB安全启动基础.html">
+            
+                <a href="secureboot入门-6安卓AVB安全启动基础.html">
+            
+                    
+                    secureboot入门-6安卓AVB安全启动基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.12" data-path="secureboot入门-7安卓AVB校验代码分析.html">
+            
+                <a href="secureboot入门-7安卓AVB校验代码分析.html">
+            
+                    
+                    secureboot入门-7安卓AVB校验代码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.13" data-path="secureboot入门-8硬件杂谈和汇总.html">
+            
+                <a href="secureboot入门-8硬件杂谈和汇总.html">
+            
+                    
+                    secureboot入门-8硬件杂谈和汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.14" data-path="uboot入门-1简介和运行.html">
+            
+                <a href="uboot入门-1简介和运行.html">
+            
+                    
+                    uboot入门-1简介和运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.15" data-path="uboot入门-2Makefile和编译.html">
+            
+                <a href="uboot入门-2Makefile和编译.html">
+            
+                    
+                    uboot入门-2Makefile和编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.16" data-path="uboot-3链接脚本和第一阶段启动.html">
+            
+                <a href="uboot-3链接脚本和第一阶段启动.html">
+            
+                    
+                    uboot-3链接脚本和第一阶段启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.17" data-path="uboot入门-4命令行和驱动管理.html">
+            
+                <a href="uboot入门-4命令行和驱动管理.html">
+            
+                    
+                    uboot入门-4命令行和驱动管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.18" data-path="uboot入门-5linux启动前夜.html">
+            
+                <a href="uboot入门-5linux启动前夜.html">
+            
+                    
+                    uboot入门-5linux启动前夜
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.19" data-path="uboot入门-6移植要点.html">
+            
+                <a href="uboot入门-6移植要点.html">
+            
+                    
+                    uboot入门-6移植要点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.20" data-path="ARM-SCP入门-简介和代码下载编译.html">
+            
+                <a href="ARM-SCP入门-简介和代码下载编译.html">
+            
+                    
+                    ARM SCP入门-简介和代码下载编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.21" data-path="ARM-SCP入门-framework框架代码分析.html">
+            
+                <a href="ARM-SCP入门-framework框架代码分析.html">
+            
+                    
+                    ARM SCP入门-framework框架代码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.22" data-path="ARM-SCP入门-AP与SCP通信.html">
+            
+                <a href="ARM-SCP入门-AP与SCP通信.html">
+            
+                    
+                    ARM SCP入门-AP与SCP通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.23" data-path="功能安全入门-1内功心法ISO26262介绍.html">
+            
+                <a href="功能安全入门-1内功心法ISO26262介绍.html">
+            
+                    
+                    功能安全入门-1内功心法ISO26262介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.24" data-path="功能安全入门-2ISO26262说人话版本GB_T34590.html">
+            
+                <a href="功能安全入门-2ISO26262说人话版本GB_T34590.html">
+            
+                    
+                    功能安全入门-2 ISO26262说人话版本GB_T 34590
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.25" data-path="功能安全的架构设计（七）_芯片篇-上.html">
+            
+                <a href="功能安全的架构设计（七）_芯片篇-上.html">
+            
+                    
+                    功能安全的架构设计（七）_ 芯片篇-上
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.26" data-path="功能安全的架构设计（八）_芯片篇-下.html">
+            
+                <a href="功能安全的架构设计（八）_芯片篇-下.html">
+            
+                    
+                    功能安全的架构设计（八）_ 芯片篇-下
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.27" data-path="功能安全入门-功能安全岛FSI.html">
+            
+                <a href="功能安全入门-功能安全岛FSI.html">
+            
+                    
+                    功能安全入门-功能安全岛(FSI)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.28" data-path="功能安全入门-再谈FSI.html">
+            
+                <a href="功能安全入门-再谈FSI.html">
+            
+                    
+                    功能安全入门-再谈FSI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.29" data-path="功能安全入门-SoC设计漫谈.html">
+            
+                <a href="功能安全入门-SoC设计漫谈.html">
+            
+                    
+                    功能安全入门-SoC设计漫谈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.30" data-path="英伟达系列芯片如何用于自动驾驶研发之架构及安全设计（一）.html">
+            
+                <a href="英伟达系列芯片如何用于自动驾驶研发之架构及安全设计（一）.html">
+            
+                    
+                    英伟达系列芯片如何用于自动驾驶研发之架构及安全设计（一）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../操作系统OS/">
+            
+                <a href="../操作系统OS/">
+            
+                    
+                    操作系统OS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../操作系统OS/汽车操作系统-现状及演进.html">
+            
+                <a href="../操作系统OS/汽车操作系统-现状及演进.html">
+            
+                    
+                    汽车操作系统-现状及演进
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../操作系统OS/闲聊-小米首席架构师崔宝秋的开源故事.html">
+            
+                <a href="../操作系统OS/闲聊-小米首席架构师崔宝秋的开源故事.html">
+            
+                    
+                    闲聊-小米首席架构师崔宝秋的开源故事
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../操作系统OS/小米澎湃OS-白皮书介绍.html">
+            
+                <a href="../操作系统OS/小米澎湃OS-白皮书介绍.html">
+            
+                    
+                    小米澎湃OS-白皮书介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../操作系统OS/FreeRTOS入门-概念介绍.html">
+            
+                <a href="../操作系统OS/FreeRTOS入门-概念介绍.html">
+            
+                    
+                    FreeRTOS入门-概念介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../操作系统OS/FreeRTOS入门-qemu运行及资料.html">
+            
+                <a href="../操作系统OS/FreeRTOS入门-qemu运行及资料.html">
+            
+                    
+                    FreeRTOS入门-qemu运行及资料
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../操作系统OS/Fuchsia入门-简介和代码介绍.html">
+            
+                <a href="../操作系统OS/Fuchsia入门-简介和代码介绍.html">
+            
+                    
+                    Fuchsia入门-简介和代码介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../操作系统OS/Fuchsia入门-zircon微内核单独编译启动.html">
+            
+                <a href="../操作系统OS/Fuchsia入门-zircon微内核单独编译启动.html">
+            
+                    
+                    Fuchsia入门-zircon微内核单独编译启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../操作系统OS/Fuchsia入门-zircon微内核启动代码分析.html">
+            
+                <a href="../操作系统OS/Fuchsia入门-zircon微内核启动代码分析.html">
+            
+                    
+                    Fuchsia入门-zircon微内核启动代码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../操作系统OS/zCore入门-面向对象的Rust微内核.html">
+            
+                <a href="../操作系统OS/zCore入门-面向对象的Rust微内核.html">
+            
+                    
+                    zCore入门-面向对象的Rust微内核
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="../操作系统OS/HarmonyOS入门-简介和代码编译.html">
+            
+                <a href="../操作系统OS/HarmonyOS入门-简介和代码编译.html">
+            
+                    
+                    HarmonyOS入门-简介和代码编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="../操作系统OS/KataOS入门-简介和代码编译.html">
+            
+                <a href="../操作系统OS/KataOS入门-简介和代码编译.html">
+            
+                    
+                    KataOS入门-简介和代码编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" data-path="../操作系统OS/MINIX3入门-简介及代码编译运行.html">
+            
+                <a href="../操作系统OS/MINIX3入门-简介及代码编译运行.html">
+            
+                    
+                    MINIX3入门-简介及代码编译运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.13" data-path="../操作系统OS/Nuttx-RTOS入门-简介及开源代码运行.html">
+            
+                <a href="../操作系统OS/Nuttx-RTOS入门-简介及开源代码运行.html">
+            
+                    
+                    Nuttx RTOS入门-简介及开源代码运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.14" data-path="../操作系统OS/OS前沿-vivo-BlueOS技术分析.html">
+            
+                <a href="../操作系统OS/OS前沿-vivo-BlueOS技术分析.html">
+            
+                    
+                    OS前沿-vivo BlueOS技术分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15" data-path="../操作系统OS/QNX入门-简介、开源代码、框架文档.html">
+            
+                <a href="../操作系统OS/QNX入门-简介、开源代码、框架文档.html">
+            
+                    
+                    QNX入门-简介、开源代码、框架文档
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.16" data-path="../操作系统OS/rCore入门-来自清华的OS前沿教程.html">
+            
+                <a href="../操作系统OS/rCore入门-来自清华的OS前沿教程.html">
+            
+                    
+                    rCore入门-来自清华的OS前沿教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.17" data-path="../操作系统OS/seL4微内核入门-代码下载运行及资料.html">
+            
+                <a href="../操作系统OS/seL4微内核入门-代码下载运行及资料.html">
+            
+                    
+                    seL4微内核入门-代码下载运行及资料
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.18" data-path="../操作系统OS/seL4微内核入门-微内核介绍.html">
+            
+                <a href="../操作系统OS/seL4微内核入门-微内核介绍.html">
+            
+                    
+                    seL4微内核入门-微内核介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.19" data-path="../操作系统OS/Zephyr-RTOS入门-简介及代码下载编译运行.html">
+            
+                <a href="../操作系统OS/Zephyr-RTOS入门-简介及代码下载编译运行.html">
+            
+                    
+                    Zephyr RTOS入门-简介及代码下载编译运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.20" data-path="../操作系统OS/os内核入门-linux0.11编译介绍.html">
+            
+                <a href="../操作系统OS/os内核入门-linux0.11编译介绍.html">
+            
+                    
+                    os内核入门-linux0.11编译介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.21" data-path="../操作系统OS/os内核入门-linux0.11诞生的故事和源码初探.html">
+            
+                <a href="../操作系统OS/os内核入门-linux0.11诞生的故事和源码初探.html">
+            
+                    
+                    os内核入门-linux0.11诞生的故事和源码初探
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.22" data-path="../操作系统OS/os内核入门-linux0.11运行环境搭建.html">
+            
+                <a href="../操作系统OS/os内核入门-linux0.11运行环境搭建.html">
+            
+                    
+                    os内核入门-linux0.11运行环境搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../AUTOSAR入门/">
+            
+                <a href="../AUTOSAR入门/">
+            
+                    
+                    AUTOSAR入门
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../AUTOSAR入门/AUTOSAR入门-江湖.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-江湖.html">
+            
+                    
+                    AUTOSAR入门-江湖
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../AUTOSAR入门/AUTOSAR入门-AS开源代码运行环境搭建.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-AS开源代码运行环境搭建.html">
+            
+                    
+                    AUTOSAR入门-AS开源代码运行环境搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../AUTOSAR入门/AUTOSAR入门-AS开源代码编译过程详解.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-AS开源代码编译过程详解.html">
+            
+                    
+                    AUTOSAR入门-AS开源代码编译过程详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../AUTOSAR入门/AUTOSAR入门-AS平台工具命令和目录介绍.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-AS平台工具命令和目录介绍.html">
+            
+                    
+                    AUTOSAR入门-AS平台工具命令和目录介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../AUTOSAR入门/AUTOSAR入门-基于以太网诊断.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-基于以太网诊断.html">
+            
+                    
+                    AUTOSAR入门-基于以太网诊断
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../AUTOSAR入门/AUTOSAR入门-Dcm模块.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-Dcm模块.html">
+            
+                    
+                    AUTOSAR入门-Dcm模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../AUTOSAR入门/AUTOSAR入门-PduR模块.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-PduR模块.html">
+            
+                    
+                    AUTOSAR入门-PduR模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../AUTOSAR入门/AUTOSAR入门-DoIP模块.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-DoIP模块.html">
+            
+                    
+                    AUTOSAR入门-DoIP模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../AUTOSAR入门/AUTOSAR入门-AS代码运行补充知识1.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-AS代码运行补充知识1.html">
+            
+                    
+                    AUTOSAR入门-AS代码运行补充知识1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../AUTOSAR入门/AUTOSAR入门-AS代码运行补充知识2.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-AS代码运行补充知识2.html">
+            
+                    
+                    AUTOSAR入门-AS代码运行补充知识2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../AUTOSAR入门/AUTOSAR入门-SoAd模块和TcpIp模块.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-SoAd模块和TcpIp模块.html">
+            
+                    
+                    AUTOSAR入门-SoAd模块和TcpIp模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../AUTOSAR入门/AUTOSAR入门-EcuM模块与系统启动.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-EcuM模块与系统启动.html">
+            
+                    
+                    AUTOSAR入门-EcuM模块与系统启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="../AUTOSAR入门/AUTOSAR入门-工具链与方法论.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-工具链与方法论.html">
+            
+                    
+                    AUTOSAR入门-工具链与方法论
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="../AUTOSAR入门/AUTOSAR入门-前情回顾和仪表盘asone.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-前情回顾和仪表盘asone.html">
+            
+                    
+                    AUTOSAR入门-前情回顾和仪表盘asone
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="../AUTOSAR入门/AUTOSAR入门-汽车电子架构演进（一）ECU和域控制器.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-汽车电子架构演进（一）ECU和域控制器.html">
+            
+                    
+                    AUTOSAR入门-汽车电子架构演进（一）ECU和域控制器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.16" data-path="../AUTOSAR入门/汽车电子构架演进（二）AUTOSAR的组成和演进.html">
+            
+                <a href="../AUTOSAR入门/汽车电子构架演进（二）AUTOSAR的组成和演进.html">
+            
+                    
+                    汽车电子构架演进（二）AUTOSAR的组成和演进
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="../AUTOSAR入门/AUTOSAR入门-汽车电子构架演进（三）通向未来.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-汽车电子构架演进（三）通向未来.html">
+            
+                    
+                    AUTOSAR入门-汽车电子构架演进（三）通向未来
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../AUTOSAR入门/AUTOSAR入门-汽车电子构架演进四未来已来.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-汽车电子构架演进四未来已来.html">
+            
+                    
+                    AUTOSAR入门-汽车电子构架演进(四) 未来已来
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../工具使用技巧/">
+            
+                <a href="../工具使用技巧/">
+            
+                    
+                    工具使用技巧
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../工具使用技巧/编程技巧：怎样快速学习一门新编程语言.html">
+            
+                <a href="../工具使用技巧/编程技巧：怎样快速学习一门新编程语言.html">
+            
+                    
+                    编程技巧：怎样快速学习一门新编程语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../工具使用技巧/编程入门-Hello算法网站.html">
+            
+                <a href="../工具使用技巧/编程入门-Hello算法网站.html">
+            
+                    
+                    编程入门-Hello算法网站
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../工具使用技巧/编程杂谈-代码review.html">
+            
+                <a href="../工具使用技巧/编程杂谈-代码review.html">
+            
+                    
+                    编程杂谈-代码review
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../工具使用技巧/编程知识：GPL、BSD等开源协议简介.html">
+            
+                <a href="../工具使用技巧/编程知识：GPL、BSD等开源协议简介.html">
+            
+                    
+                    编程知识：GPL、BSD等开源协议简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../工具使用技巧/工具技巧-github上开源软件搜索技巧.html">
+            
+                <a href="../工具使用技巧/工具技巧-github上开源软件搜索技巧.html">
+            
+                    
+                    工具技巧-github上开源软件搜索技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../工具使用技巧/工具使用-Markdown入门.html">
+            
+                <a href="../工具使用技巧/工具使用-Markdown入门.html">
+            
+                    
+                    工具使用-Markdown入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../Linux技术/">
+            
+                <a href="../Linux技术/">
+            
+                    
+                    Linux技术
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../Linux技术/Linux驱动-IMX6ULL开发板qemu环境搭建.html">
+            
+                <a href="../Linux技术/Linux驱动-IMX6ULL开发板qemu环境搭建.html">
+            
+                    
+                    Linux驱动-IMX6ULL开发板qemu环境搭建.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../Linux技术/Linux驱动入门-设备树DTS.html">
+            
+                <a href="../Linux技术/Linux驱动入门-设备树DTS.html">
+            
+                    
+                    Linux驱动入门-设备树DTS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../杂谈/">
+            
+                <a href="../杂谈/">
+            
+                    
+                    杂谈
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../杂谈/闲聊-关于公众号改名《那路谈OS与SoC嵌入式软件》.html">
+            
+                <a href="../杂谈/闲聊-关于公众号改名《那路谈OS与SoC嵌入式软件》.html">
+            
+                    
+                    闲聊-关于公众号改名《那路谈OS与SoC嵌入式软件》
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../杂谈/闲聊-互联网“坏人多”？.html">
+            
+                <a href="../杂谈/闲聊-互联网“坏人多”？.html">
+            
+                    
+                    闲聊-互联网“坏人多”？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../杂谈/闲聊-互联网黑话.html">
+            
+                <a href="../杂谈/闲聊-互联网黑话.html">
+            
+                    
+                    闲聊-互联网黑话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../杂谈/闲聊-互联网职场PUA.html">
+            
+                <a href="../杂谈/闲聊-互联网职场PUA.html">
+            
+                    
+                    闲聊-互联网职场PUA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="../杂谈/闲聊-另类视角看岗位JD.html">
+            
+                <a href="../杂谈/闲聊-另类视角看岗位JD.html">
+            
+                    
+                    闲聊-另类视角看岗位JD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="../杂谈/闲聊-天涯神贴.html">
+            
+                <a href="../杂谈/闲聊-天涯神贴.html">
+            
+                    
+                    闲聊-天涯神贴
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7" data-path="../杂谈/闲聊-务虚和形式是种病？.html">
+            
+                <a href="../杂谈/闲聊-务虚和形式是种病？.html">
+            
+                    
+                    闲聊-务虚和形式是种病？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.8" data-path="../杂谈/闲聊-细思极恐的职场信息差.html">
+            
+                <a href="../杂谈/闲聊-细思极恐的职场信息差.html">
+            
+                    
+                    闲聊-细思极恐的职场信息差
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.9" data-path="../杂谈/职场向上管理（工作汇报）-程序员版.html">
+            
+                <a href="../杂谈/职场向上管理（工作汇报）-程序员版.html">
+            
+                    
+                    职场向上管理（工作汇报）-程序员版
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.10" data-path="../杂谈/闲聊-北上广地域差异和造车新势力底色.html">
+            
+                <a href="../杂谈/闲聊-北上广地域差异和造车新势力底色.html">
+            
+                    
+                    闲聊-北上广地域差异和造车新势力底色
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.11" data-path="../杂谈/通俗国学-克制“习惯性反驳”，才能赢得他人尊重.html">
+            
+                <a href="../杂谈/通俗国学-克制“习惯性反驳”，才能赢得他人尊重.html">
+            
+                    
+                    通俗国学-克制“习惯性反驳”，才能赢得他人尊重
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.12" data-path="../杂谈/通俗国学-静坐养生.html">
+            
+                <a href="../杂谈/通俗国学-静坐养生.html">
+            
+                    
+                    通俗国学-静坐养生
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.13" data-path="../杂谈/程序员内功之架构图.html">
+            
+                <a href="../杂谈/程序员内功之架构图.html">
+            
+                    
+                    程序员内功之架构图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.14" data-path="../杂谈/程序员内功-学术思维能力.html">
+            
+                <a href="../杂谈/程序员内功-学术思维能力.html">
+            
+                    
+                    程序员内功-学术思维能力
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.15" data-path="../杂谈/通俗国学-少年经不得顺境，中年经不得闲境，晚年经不得逆境.html">
+            
+                <a href="../杂谈/通俗国学-少年经不得顺境，中年经不得闲境，晚年经不得逆境.html">
+            
+                    
+                    通俗国学-少年经不得顺境，中年经不得闲境，晚年经不得逆境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.16" data-path="../杂谈/NO03制造大国的源泉.html">
+            
+                <a href="../杂谈/NO03制造大国的源泉.html">
+            
+                    
+                    NO03制造大国的源泉
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.17" data-path="../杂谈/NO2达到沟通目的才算有效沟通.html">
+            
+                <a href="../杂谈/NO2达到沟通目的才算有效沟通.html">
+            
+                    
+                    NO2达到沟通目的才算有效沟通
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.18" data-path="../杂谈/懒惰无聊是一种产业NO1.html">
+            
+                <a href="../杂谈/懒惰无聊是一种产业NO1.html">
+            
+                    
+                    懒惰无聊是一种产业 NO1
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >功能安全入门-再谈FSI</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1fc5af5fee2f46ceb1b52039bd9de4dc~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1031&amp;h=577&amp;s=131400&amp;e=png&amp;b=222226" alt="image.png"></p>
+<p>&#x65E2;&#x7136;&#x5927;&#x5BB6;&#x73A9;FSI&#x5B89;&#x5168;&#x5C9B;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x90A3;&#x4E48;&#x8DDF;&#x6C7D;&#x8F66;&#x6709;&#x5173;&#x7CFB;&#x7684;SoC&#x80AF;&#x5B9A;&#x4E5F;&#x8981;&#x6709;&#x8FD9;&#x4E1C;&#x897F;&#x3002;&#x4F8B;&#x5982;&#x56FD;&#x5185;&#x7684;&#x5730;&#x5E73;&#x7EBF;J5&#x4E0A;&#xFF0C;&#x5982;&#x4E0A;&#x56FE;&#x6240;&#x793A;&#x5C31;&#x6709;&#x5B89;&#x5168;&#x5C9B;&#xFF0C;&#x660E;&#x786E;&#x652F;&#x6301;&#x4E86;&#x53CC;&#x6838;&#x9501;&#x6B65;MCU&#x3002;</p>
+<p>&#x66F4;&#x52A0;&#x8BE6;&#x7EC6;&#x7684;&#x53EF;&#x4EE5;&#x770B;&#x82AF;&#x7247;&#x6846;&#x56FE;&#x5982;&#x4E0B;&#xFF1A;
+<img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ad055ec598324f32a518f11be2aaf839~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1176&amp;h=659&amp;s=379038&amp;e=png&amp;b=e0e6b6" alt="image.png"></p>
+<h1 id="1-&#x6574;&#x4F53;&#x4ECB;&#x7ECD;">1. &#x6574;&#x4F53;&#x4ECB;&#x7ECD;</h1>
+<p>&#x5730;&#x5E73;&#x7EBF;J5 SoC&#x7CFB;&#x5217;&#x662F;&#x6839;&#x636E;ISO26262&#x5F00;&#x53D1;&#x7684;&#xFF0C;&#x5E76;&#x4E14;&#x5177;&#x6709;&#x5168;&#x9762;&#x7684;&#x5B89;&#x5168;&#x65B9;&#x6848;&#xFF0C;&#x4EE5;&#x8FBE;&#x5230;&#x8F83;&#x9AD8;&#x7684;&#x6C7D;&#x8F66;&#x5B89;&#x5168;&#x5B8C;&#x6574;&#x6027;&#x6C34;&#x5E73;&#xFF08;ASIL&#xFF09;&#xFF0C;&#x8FD9;&#x5BF9;ADAS&#x548C;&#x81EA;&#x52A8;&#x9A7E;&#x9A76;&#x5E94;&#x7528;&#x81F3;&#x5173;&#x91CD;&#x8981;&#x3002;</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/929b0603ba574c0c9153c598f5206989~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=666&amp;h=485&amp;s=47835&amp;e=png&amp;b=171616" alt="image.png"></p>
+<p>&#x5B89;&#x5168;&#x5B50;&#x7CFB;&#x7EDF;&#x662F;&#x4E00;&#x4E2A;&#x4E2D;&#x592E;&#x9519;&#x8BEF;&#x6536;&#x96C6;&#x548C;&#x5904;&#x7406;&#x7CFB;&#x7EDF;&#x3002;&#x5B83;&#x7531;&#x53CC;&#x6838;&#x9501;&#x6B65;&#x76AE;&#x5C42;MStar&#x3001;FCHM&#x6A21;&#x5757;&#x548C;&#x4E30;&#x5BCC;&#x7684;&#x5916;&#x8BBE;&#x7EC4;&#x6210;&#xFF0C;&#x5305;&#x62EC;&#x4EE5;&#x592A;&#x7F51;&#x3001;CAN FD&#x3001;UART&#x3001;SPI&#x3001;PVT&#x3001;CMM&#x3001;&#x8BA1;&#x65F6;&#x5668;&#x3001;SPIN_LOCK&#x3001;WDT&#x3001;I2C&#x7B49;&#x3002;</p>
+<p>&#x53CC;&#x6838;&#x9501;&#x6B65;Cortex MStar&#x5904;&#x7406;&#x5668;&#x6709;&#x6307;&#x4EE4;TCM&#x548C;&#x6570;&#x636E;TCM&#xFF0C;&#x6BCF;&#x4E2A;&#x90FD;&#x6709;&#x53CC;&#x5B57;&#x6570;&#x636E;&#x5BBD;&#x5EA6;&#x3002;MStar&#x5904;&#x7406;&#x5668;&#x914D;&#x7F6E;&#x4E86;64KB ITCM&#x3001;32KB DTCM&#x3001;16KB ICACHE&#x548C;16KB DCACHE&#x3002;S-AHB&#x63A5;&#x53E3;&#x7528;&#x4E8E;&#x5BF9;&#x5185;&#x5B58;&#x6620;&#x5C04;&#x7684;SRAM&#x3001;&#x5916;&#x56F4;&#x7EC4;&#x4EF6;&#x548C;&#x5916;&#x90E8;&#x8BBE;&#x5907;&#x7684;&#x6307;&#x4EE4;&#x83B7;&#x53D6;&#x548C;&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x3002;&#x53CC;&#x6838;&#x9501;&#x6B65;DMAC&#x652F;&#x6301;4&#x4E2A;DMAC&#x901A;&#x9053;&#x548C;16&#x4E2A;&#x786C;&#x4EF6;&#x63E1;&#x624B;&#x3002;</p>
+<p><strong>FCHM&#x6A21;&#x5757;</strong>&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x7528;&#x4E8E;&#x6536;&#x96C6;&#x9519;&#x8BEF;&#x901A;&#x77E5;&#x5E76;&#x5F15;&#x5BFC;&#x8BBE;&#x5907;&#x8FDB;&#x5165;&#x5B89;&#x5168;&#x72B6;&#x6001;&#x7684;&#x786C;&#x4EF6;&#x673A;&#x5236;&#x3002;&#x5B83;&#x4E3B;&#x8981;&#x6536;&#x96C6;&#x4E09;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x9519;&#x8BEF;&#xFF1A;</p>
+<ol>
+<li>&#x8F6F;&#x4EF6;&#x9519;&#x8BEF;&#xFF1A;&#x7531;&#x8F6F;&#x4EF6;&#x89E6;&#x53D1;&#x5199;FCHM&#x914D;&#x7F6E;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x6700;&#x5927;64&#x9519;&#x8BEF;&#x6E90;&#xFF0C;&#x5FC5;&#x987B;&#x662F;&#x5173;&#x952E;&#x9519;&#x8BEF;&#xFF0C;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x662F;&#x5426;&#x91CD;&#x542F;&#xFF0C;&#x6709;&#x4F7F;&#x80FD;&#x4F4D;</li>
+<li>&#x786C;&#x4EF6;&#x9519;&#x8BEF;&#xFF1A;512&#x4E2A;&#x786C;&#x4EF6;&#x9519;&#x8BEF;&#x6E90;&#xFF0C;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x5173;&#x952E;&#x9519;&#x8BEF;&#x548C;&#x975E;&#x5173;&#x952E;&#xFF0C;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x662F;&#x5426;&#x91CD;&#x542F;&#xFF0C;&#x6709;&#x4F7F;&#x80FD;&#x4F4D;</li>
+<li>&#x5916;&#x90E8;&#x9519;&#x8BEF;&#xFF1A;SoC&#x5916;&#x90E8;&#x8BBE;&#x5907;&#x9519;&#x8BEF;&#xFF0C;32&#x4E2A;&#x9519;&#x8BEF;&#x6E90;&#xFF0C;&#x90FD;&#x662F;&#x975E;&#x5173;&#x952E;&#x9519;&#x8BEF;&#xFF0C;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;A&#x6838;&#x6216;&#x8005;MSTAR&#x5904;&#x7406;&#xFF0C;&#x8F6F;&#x4EF6;&#x51B3;&#x5B9A;&#x5904;&#x7406;&#x7B56;&#x7565;&#x3002;</li>
+</ol>
+<p>&#x6BCF;&#x4E2A;&#x786C;&#x4EF6;&#x9519;&#x8BEF;&#x90FD;&#x53EF;&#x4EE5;&#x914D;&#x7F6E;&#x4E3A;&#x4E25;&#x91CD;&#x9519;&#x8BEF;&#x6216;&#x975E;&#x4E25;&#x91CD;&#x9519;&#x8BEF;&#x3002;&#x5982;&#x679C;&#x65AD;&#x8A00;&#x4E00;&#x4E2A;&#x5173;&#x952E;&#x9519;&#x8BEF;&#x6216;&#x81EA;&#x68C0;BIST&#x9519;&#x8BEF;&#xFF0C;&#x4E24;&#x4E2A;&#x9519;&#x8BEF;pad&#x5C06;&#x4EE5;&#x91CD;&#x590D;&#x6216;&#x53CD;&#x5411;&#x6A21;&#x5F0F;&#x8F93;&#x51FA;&#x9519;&#x8BEF;&#xFF0C;&#x4EE5;&#x4FBF;&#x7CFB;&#x7EDF;&#x80FD;&#x591F;&#x611F;&#x77E5;&#x5230;SoC&#x7684;&#x9519;&#x8BEF;&#x3002;&#x6709;&#x5173;FCHM&#x7684;&#x66F4;&#x591A;&#x8BE6;&#x7EC6;&#x63CF;&#x8FF0;&#xFF0C;&#x8BF7;&#x53C2;&#x8003;&#x5B89;&#x5168;&#x624B;&#x518C;&#x3002;SPI/I2C&#x53EF;&#x4EE5;&#x4E0E;&#x5177;&#x6709;&#x5B89;&#x5168;&#x534F;&#x8BAE;&#x7684;&#x7CFB;&#x7EDF;&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#xFF0C;&#x8FD9;&#x53EF;&#x4EE5;&#x5728;&#x5B89;&#x5168;&#x624B;&#x518C;&#x4E2D;&#x627E;&#x5230;&#x3002;</p>
+<blockquote>
+<p>&#x529F;&#x80FD;&#x5B89;&#x5168;&#x7684;&#x8BBE;&#x8BA1;&#x662F;&#x5E94;&#x7528;&#x5728;SoC&#x7684;&#x5404;&#x4E2A;&#x6A21;&#x5757;&#xFF0C;FSI&#x53EA;&#x662F;&#x96C6;&#x4E2D;&#x5904;&#x7406;&#x9519;&#x8BEF;&#x7684;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#xFF0C;&#x5404;&#x4E2A;&#x6A21;&#x5757;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x7684;&#x9700;&#x6C42;&#x548C;&#x9884;&#x7B97;&#x9009;&#x62E9;&#x5408;&#x9002;&#x7684;ASIL&#x7B49;&#x7EA7;&#x8BBE;&#x8BA1;&#x3002;&#x7279;&#x522B;&#x662F;&#x4E00;&#x4E9B;&#x5173;&#x952E;&#x6A21;&#x5757;&#xFF0C;&#x4F8B;&#x5982;J5 A&#x6838;&#x4E0A;&#x7684;GIC 500&#x5C31;&#x8FDB;&#x884C;&#x4E86;&#x529F;&#x80FD;&#x5B89;&#x5168;&#x8BBE;&#x8BA1;&#xFF0C;&#x5176;&#x4ED6;&#x4F8B;&#x5982;ISP&#x3001;MIPI&#x7B49;&#x5173;&#x952E;&#x786C;&#x4EF6;&#x6A21;&#x5757;&#x3002;</p>
+</blockquote>
+<h1 id="2-mstar">2. MStar</h1>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ddfd046a5b024421b300183637571fd0~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=728&amp;h=555&amp;s=74801&amp;e=png&amp;b=ffffff" alt="image.png"></p>
+<p>MStar&#x5904;&#x7406;&#x5668;&#x662F;&#x4E00;&#x79CD;&#x9AD8;&#x6548;&#x8282;&#x80FD;&#x548C;&#x53EF;&#x914D;&#x7F6E;&#x7684;&#x5904;&#x7406;&#x5668;&#xFF0C;&#x65E8;&#x5728;&#x7528;&#x4E8E;&#x9700;&#x8981;&#x5FEB;&#x901F;&#x4E2D;&#x65AD;&#x54CD;&#x5E94;&#x7279;&#x6027;&#x7684;&#x5FAE;&#x63A7;&#x5236;&#x5668;&#x548C;&#x6DF1;&#x5EA6;&#x5D4C;&#x5165;&#x5F0F;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x3002;&#x8BE5;&#x5904;&#x7406;&#x5668;&#x57FA;&#x4E8E;ARMv8-M&#x67B6;&#x6784;&#xFF0C;&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x5B89;&#x5168;&#x6027;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x73AF;&#x5883;&#x4E2D;&#x3002;</p>
+<p align="center"><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/edf71eb75e514b97af7983f6bb5b0a65~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=686&amp;h=422&amp;s=30225&amp;e=png&amp;b=141414" alt="image.png" width="70%"></p>
+
+<p>&#x4E24;&#x4E2A;&#x5904;&#x7406;&#x5668;&#x5728;&#x7CFB;&#x7EDF;&#x542F;&#x52A8;&#x671F;&#x95F4;&#x521D;&#x59CB;&#x5316;&#x4E3A;&#x76F8;&#x540C;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x5B83;&#x4EEC;&#x63A5;&#x6536;&#x76F8;&#x540C;&#x7684;&#x8F93;&#x5165;&#xFF08;&#x4EE3;&#x7801;&#x3001;&#x603B;&#x7EBF;&#x64CD;&#x4F5C;&#x548C;&#x5F02;&#x6B65;&#x4E8B;&#x4EF6;&#xFF09;&#xFF0C;&#x56E0;&#x6B64;&#x5728;&#x6B63;&#x5E38;&#x64CD;&#x4F5C;&#x671F;&#x95F4;&#xFF0C;&#x4E24;&#x4E2A;&#x5904;&#x7406;&#x5668;&#x7684;&#x65F6;&#x949F;&#x72B6;&#x6001;&#x662F;&#x76F8;&#x540C;&#x7684;&#x3002;&#x636E;&#x8BF4;&#x4ED6;&#x4EEC;&#x662F;&#x540C;&#x6B65;&#x8FD0;&#x4F5C;&#x7684;&#x3002;&#x6B65;&#x8FDB;&#x6280;&#x672F;&#x5047;&#x8BBE;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x7684;&#x5904;&#x7406;&#x5668;&#x4F1A;&#x5BFC;&#x81F4;&#x4E0D;&#x540C;&#x4E24;&#x4E2A;&#x5904;&#x7406;&#x5668;&#x7684;&#x72B6;&#x6001;&#x4E0D;&#x540C;&#xFF0C;&#x6700;&#x7EC8;&#x5C06;&#x8868;&#x73B0;&#x4E3A;&#x4E0D;&#x540C;&#x7684;&#x8F93;&#x51FA;&#xFF0C;&#x6240;&#x4EE5;&#x6B65;&#x8FDB;&#x7CFB;&#x7EDF;&#x76D1;&#x63A7;&#x4E24;&#x4E2A;&#x5904;&#x7406;&#x5668;&#x7684;&#x8F93;&#x51FA;&#x548C;&#x6807;&#x5FD7;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x7684;&#x5DEE;&#x5F02;&#x3002;</p>
+<h1 id="3-&#x5176;&#x4ED6;&#x5916;&#x56F4;&#x5668;&#x4EF6;">3. &#x5176;&#x4ED6;&#x5916;&#x56F4;&#x5668;&#x4EF6;</h1>
+<h2 id="31-syscnt">3.1 SYSCNT</h2>
+<p>J5&#x6709;&#x4E00;&#x4E2A;&#x7CFB;&#x7EDF;&#x8BA1;&#x6570;&#x5668;&#xFF08;SYSCNT&#xFF09;&#xFF0C;&#x7528;&#x4E8E;&#x751F;&#x6210;64&#x4F4D;&#x6EDA;&#x52A8;&#x65F6;&#x95F4;&#xFF0C;&#x5E76;&#x5C06;&#x5176;&#x5206;&#x53D1;&#x5230;&#x7528;&#x4E8E;&#x5BF9;&#x9F50;&#x8DDF;&#x8E2A;&#x4FE1;&#x606F;&#x7684;&#x5176;&#x4ED6;&#x7CFB;&#x7EDF;&#x7EC4;&#x4EF6;&#x3002;&#x91C7;&#x7528;&#x9501;&#x5B9A;&#x6B65;&#x9AA4;&#xFF0C;&#x4EE5;&#x652F;&#x6301;&#x529F;&#x80FD;&#x5B89;&#x5168;&#x3002;</p>
+<p>SYSCNT&#x6709;&#x4E24;&#x4E2A;APB&#x63A5;&#x53E3;&#xFF1A;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x8BFB;&#x53D6;&#x8BA1;&#x6570;&#x5668;&#x503C;&#x548C;&#x7BA1;&#x7406;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x53EA;&#x8BFB;&#x63A5;&#x53E3;&#xFF0C;&#x4EE5;&#x53CA;&#x4E00;&#x4E2A;&#x7F16;&#x7A0B;&#x63A5;&#x53E3;&#x3002;</p>
+<p>&#x9501;&#x5B9A;&#x6B65;&#x9AA4;SYSCNT&#x7EC4;&#x4EF6;&#x5B9E;&#x73B0;&#x4E86;&#x4E00;&#x4E2A;&#x53EF;&#x7F16;&#x7A0B;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x4EE5;&#x751F;&#x6210;&#x4E00;&#x4E2A;64&#x4F4D;&#x7684;&#x6EDA;&#x52A8;&#x65F6;&#x95F4;&#xFF0C;&#x7528;&#x4E8E;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x7CFB;&#x7EDF;&#x7EC4;&#x4EF6;&#x5185;&#x7684;&#x65F6;&#x95F4;&#x6233;&#x5BF9;&#x9F50;&#x3002;SYSCNT&#x4F7F;&#x7528;&#x9884;&#x5148;&#x914D;&#x7F6E;&#x7684;&#x8BA1;&#x6570;&#x65F6;&#x949F;&#xFF0C;&#x7279;&#x5B9A;&#x9891;&#x7387;&#x5E94;&#x8BE5;&#x662F;&#x6BCF;&#x79D2;&#x3002;</p>
+<h2 id="32-pin">3.2 PIN</h2>
+<p>&#x8BE5;&#x8BBE;&#x5907;&#x6709;&#x5927;&#x91CF;&#x7684;&#x6570;&#x5B57;&#x76D8;&#x548C;&#x6A21;&#x62DF;&#x76D8;&#xFF0C;&#x4EE5;&#x6EE1;&#x8DB3;&#x4E0E;&#x5176;&#x4ED6;&#x5916;&#x90E8;&#x8BBE;&#x5907;&#x7684;&#x4EA4;&#x4E92;&#xFF0C;&#x5305;&#x62EC;&#x7535;&#x6E90;pads&#x548C;&#x4FE1;&#x53F7;pads&#x3002;&#x6240;&#x6709;&#x7684;&#x62A4;&#x57AB;&#x90FD;&#x5904;&#x4E8E;&#x8D85;&#x4F4E;&#x529F;&#x8017;&#x57DF;&#xFF0C;&#x4F7F;&#x6765;&#x81EA;&#x5916;&#x90E8;&#x8BBE;&#x5907;&#x7684;&#x5524;&#x9192;&#x4E8B;&#x4EF6;&#x80FD;&#x591F;&#x5524;&#x9192;&#x5F53;&#x524D;&#x7684;&#x8BBE;&#x5907;&#xFF0C;&#x5E76;&#x7B80;&#x5316;&#x8BBE;&#x8BA1;&#x3002;</p>
+<h2 id="33-gpio">3.3 GPIO</h2>
+<p>&#x901A;&#x7528;&#x8F93;&#x5165;/&#x8F93;&#x51FA;&#xFF08;GPIO&#xFF09;&#x5916;&#x8BBE;&#x63D0;&#x4F9B;&#x4E13;&#x7528;&#x7684;&#x901A;&#x7528;&#x5F15;&#x811A;&#xFF0C;&#x53EF;&#x4EE5;&#x914D;&#x7F6E;&#x4E3A;&#x8F93;&#x5165;&#x6216;&#x8F93;&#x51FA;&#x3002;&#x5F53;&#x914D;&#x7F6E;&#x4E3A;&#x8F93;&#x51FA;&#x65F6;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x5199;&#x5165;&#x5185;&#x90E8;&#x5BC4;&#x5B58;&#x5668;&#x6765;&#x63A7;&#x5236;&#x5728;&#x8F93;&#x51FA;&#x5F15;&#x811A;&#x4E0A;&#x9A71;&#x52A8;&#x7684;&#x72B6;&#x6001;&#x3002;&#x5F53;&#x914D;&#x7F6E;&#x4E3A;&#x8F93;&#x5165;&#x65F6;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BFB;&#x53D6;&#x5185;&#x90E8;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x72B6;&#x6001;&#x6765;&#x83B7;&#x5F97;&#x8F93;&#x5165;&#x7684;&#x72B6;&#x6001;&#x3002;</p>
+<h2 id="34-pvtc">3.4 PVTC</h2>
+<p>PVTC&#x7528;&#x4E8E;&#x63A7;&#x5236;&#x8FC7;&#x7A0B;&#x68C0;&#x6D4B;&#x5668;&#xFF08;PD&#xFF09;&#x3001;VM&#x548C;TS&#x4F20;&#x611F;&#x5668;&#x7684;&#x591A;&#x4E2A;&#x63A7;&#x5236;&#x5668;&#x7684;&#x884C;&#x4E3A;&#x3002;CPU&#x901A;&#x8FC7;NoC&#x548C;APB&#x603B;&#x7EBF;&#x8BBF;&#x95EE;PVTC&#x5BC4;&#x5B58;&#x5668;&#x3002;PVTC&#x4F7F;&#x7528;&#x4E32;&#x884C;&#x63A5;&#x53E3;&#x6765;&#x63A7;&#x5236;&#x4F20;&#x611F;&#x5668;&#xFF0C;&#x5F53;&#x4F20;&#x611F;&#x5668;&#x76F8;&#x5BF9;&#x4E8E;PVTC&#x8FDB;&#x884C;&#x8FDC;&#x7A0B;&#x653E;&#x7F6E;&#x65F6;&#xFF0C;&#x4E32;&#x884C;&#x63A5;&#x53E3;&#x5927;&#x5927;&#x51CF;&#x5C11;&#x4E86;&#x9700;&#x8981;&#x8DEF;&#x7531;&#x7684;&#x4FE1;&#x53F7;&#x6570;&#x91CF;&#x3002;&#x5728;&#x5B89;&#x5168;&#x5B50;&#x7CFB;&#x7EDF;&#x4E2D;&#x5B9E;&#x4F8B;&#x5316;&#x4E86;&#x4E24;&#x4E2A;PVTC&#xFF0C;&#x6BCF;&#x4E2A;&#x90FD;&#x6709;8&#x4E2A;&#x6E29;&#x5EA6;&#x4F20;&#x611F;&#x5668;&#xFF08;TS&#xFF09;&#x3001;1&#x4E2A;&#x7535;&#x538B;&#x76D1;&#x89C6;&#x5668;&#xFF08;VM&#xFF09;&#x548C;4&#x4E2A;PD&#x3002;</p>
+<p>PVTC&#x6709;&#x4EE5;&#x4E0B;&#x5173;&#x952E;&#x529F;&#x80FD;&#xFF1A;</p>
+<ul>
+<li>&#x5199;&#x9501;&#x529F;&#x80FD;&#x63D0;&#x4F9B;&#x4FDD;&#x62A4;&#x9632;&#x6B62;&#x65E0;&#x610F;&#x91CD;&#x65B0;&#x914D;&#x7F6E;</li>
+<li>&#x81EA;&#x52A8;&#x8F6E;&#x8BE2;&#x7535;&#x538B;&#x76D1;&#x6D4B;&#x6D4B;&#x91CF;&#x901A;&#x9053;&#xFF08;&#x901A;&#x5E38;16&#x5C0F;&#x65F6;&#xFF09;</li>
+<li>&#x6700;&#x5C0F;&#x5316;&#x4FE1;&#x53F7;&#x8DEF;&#x7531;&#xFF0C;&#x5D4C;&#x5165;&#x5F0F;&#x6A21;&#x5757;&#x4E32;&#x884C;&#x8FDE;&#x63A5;&#x4F7F;&#x7528;&#x661F;&#x5F62;&#x62D3;&#x6251;</li>
+<li>&#x65F6;&#x949F;&#x5408;&#x6210;&#x5668;&#x751F;&#x6210;&#x4E32;&#x884C;&#x65F6;&#x949F;&#x548C;&#x5B9A;&#x65F6;&#x63A7;&#x5236;&#x7684;&#x5D4C;&#x5165;&#x5F0F;&#x6A21;&#x5757;</li>
+<li>&#x4E32;&#x884C;&#x63A5;&#x53E3;&#x5305;&#x62EC;&#x8FDC;&#x7A0B;&#x6570;&#x636E;&#x56DE;&#x8DEF;&#x652F;&#x6301;&#x7CFB;&#x7EDF;&#x96C6;&#x6210;&#x6D4B;&#x8BD5;</li>
+<li>&#x5D4C;&#x5165;&#x5F0F;&#x6A21;&#x5757;&#x53EF;&#x4EE5;&#x5355;&#x72EC;&#x7981;&#x7528;&#xFF08;&#x65F6;&#x949F;&#x95E8;&#x5173;&#x95ED;&#xFF09;</li>
+<li>&#x6570;&#x636E;&#x6062;&#x590D;&#x53EF;&#x80FD;&#x662F;&#x4E2D;&#x65AD;&#x9A71;&#x52A8;&#xFF0C;&#x8F6E;&#x8BE2;&#x6216;&#x7EAF;&#x7CB9;&#x57FA;&#x4E8E;&#x8B66;&#x62A5;&#x4E8B;&#x4EF6;</li>
+<li>&#x4E3A;&#x4E86;&#x652F;&#x6301;&#x4EE3;&#x7801;&#x5F00;&#x53D1;&#xFF0C;&#x53EF;&#x4EE5;&#x4E3A;&#x6D4B;&#x8BD5;&#x76EE;&#x7684;&#x5F3A;&#x5236;&#x4E2D;&#x65AD;</li>
+<li>&#x5728;&#x8FC7;&#x6E21;&#x671F;&#x95F4;&#x4E3A;&#x7A7A;&#x767D;&#x6062;&#x590D;&#x7684;&#x6570;&#x636E;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x6837;&#x672C;&#x4E22;&#x5F03;&#x529F;&#x80FD;&#x3002;&#x4E24;&#x4E2A;&#x53EF;&#x7F16;&#x7A0B;&#xFF08;&#x4E0A;&#x5347;&#x6216;&#x4E0B;&#x964D;&#xFF09;&#x786C;&#x4EF6;&#x8B66;&#x62A5;&#x5305;&#x542B;&#x6BCF;&#x4E2A;TS&#x548C;PD&#x8BBE;&#x5907;</li>
+<li>&#x4E24;&#x4E2A;&#x53EF;&#x7F16;&#x7A0B;&#xFF08;&#x4E0A;&#x5347;&#x6216;&#x4E0B;&#x964D;&#xFF09;&#x786C;&#x4EF6;&#x8B66;&#x62A5;&#x5305;&#x542B;&#x6BCF;&#x4E2A;VM CH</li>
+<li>&#x72B6;&#x6001;&#x5BC4;&#x5B58;&#x5668;&#x8BB0;&#x5F55;&#x6BCF;&#x4E2A;TS&#xFF0C;PD&#x548C;VM CH&#x63A5;&#x6536;&#x7684;&#x6700;&#x5C0F;&#x548C;&#x6700;&#x5927;&#x6570;&#x636E;&#x503C;</li>
+<li>&#x6837;&#x672C;&#x8BA1;&#x6570;&#x5668;&#x63D0;&#x4F9B;TS&#xFF0C;VM&#x548C;PD&#x8BBE;&#x5907;&#xF09F;&#x63D0;&#x4F9B;IRQ&#x901A;&#x7535;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x4EE5;&#x652F;&#x6301;TS&#x3001;PD&#x548C;VM&#x8BBE;&#x5907;</li>
+<li>&#x6D4B;&#x8BD5;&#x8BBF;&#x95EE;&#x6A21;&#x5F0F;&#xFF0C;&#x5141;&#x8BB8;&#x63A7;&#x5236;&#x5668;&#x7684;&#x4E32;&#x884C;&#x6D4B;&#x8BD5;&#x8BBF;&#x95EE;&#x6570;&#x636E;&#x5BC4;&#x5B58;&#x5668;&#x8FDE;&#x63A5;&#x5230;IJTAG&#xFF08;IEEE-1687&#xFF09;&#x98CE;&#x683C;&#x7684;&#x5D4C;&#x5165;&#x5F0F;&#x6D4B;&#x8BD5;&#x7F51;&#x7EDC;</li>
+</ul>
+<h2 id="35-uart">3.5 UART</h2>
+<p>&#x901A;&#x7528;&#x5F02;&#x6B65;&#x63A5;&#x6536;&#x5668;/&#x53D1;&#x5C04;&#x5668;&#xFF08;UART&#xFF09;&#x662F;&#x4E00;&#x79CD;&#x7B26;&#x5408;AMBA3.0&#x6807;&#x51C6;&#x7684;&#x9AD8;&#x7EA7;&#x5916;&#x56F4;&#x8BBE;&#x5907;&#x603B;&#x7EBF;&#xFF08;APB&#xFF09;&#x4ECE;&#x5C5E;&#x8BBE;&#x5907;&#x3002;UART&#x6839;&#x636E;&#x884C;&#x4E1A;&#x6807;&#x51C6;16550&#x8FDB;&#x884C;&#x5EFA;&#x6A21;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5BC4;&#x5B58;&#x5668;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#x88AB;&#x91CD;&#x65B0;&#x5B9A;&#x4F4D;&#x5230;32&#x4F4D;&#x6570;&#x636E;&#x8FB9;&#x754C;&#x3002;UART&#x53EF;&#x4EE5;&#x4F7F;&#x7528;GUI&#x8FDB;&#x884C;&#x914D;&#x7F6E;&#x3001;&#x5408;&#x6210;&#x548C;&#x9A8C;&#x8BC1;&#x3002;UART&#x7528;&#x4E8E;&#x4E0E;&#xFF1A;</p>
+<ul>
+<li>&#x5916;&#x8BBE;</li>
+<li>&#x8C03;&#x5236;&#x89E3;&#x8C03;&#x5668;&#xFF08;&#x6570;&#x636E;&#x8F7D;&#x4F53;&#x8BBE;&#x5907;&#xFF0C;DCE&#xFF09;</li>
+<li>&#x6570;&#x636E;&#x96C6;&#x8FDB;&#x884C;&#x4E32;&#x884C;&#x901A;&#x4FE1;<h2 id="36-spinlock">3.6 SPINLOCK</h2>
+&#x65CB;&#x9501;&#x6A21;&#x5757;&#x6700;&#x591A;&#x5B9E;&#x73B0;128&#x4E2A;&#x65CB;&#x9501;&#x952E;&#x5BF9;&#xFF0C;&#x6BCF;&#x4E2A;&#x65CB;&#x9501;&#x952E;&#x5BF9;&#x7531;8&#x4F4D;Get_key&#x548C;8&#x4F4D;Call_key&#x7EC4;&#x5408;&#x3002;Get_key&#x548C;Call_key&#x4F7F;&#x7528;&#x5947;&#x5076;&#x6821;&#x9A8C;&#x65B9;&#x6848;&#x6765;&#x5B9E;&#x73B0;&#x529F;&#x80FD;&#x5B89;&#x5168;&#x3002;&#x5947;&#x5076;&#x6821;&#x9A8C;&#x65B9;&#x6848;&#x662F;&#x6BCF;8&#x4E2A;&#x6570;&#x636E;&#x4F4D;&#x6709;1&#x4E2A;&#x5947;&#x5076;&#x6821;&#x9A8C;&#x4F4D;&#x3002;&#x6BCF;&#x4E2A;&#x65CB;&#x8F6C;&#x9501;&#x952E;&#x5BF9;&#x90FD;&#x652F;&#x6301;&#x9519;&#x8BEF;&#x6CE8;&#x5165;&#x529F;&#x80FD;&#x3002;</li>
+</ul>
+<p>&#x65CB;&#x9501;&#x6709;&#x4EE5;&#x4E0B;&#x5173;&#x952E;&#x529F;&#x80FD;&#xFF1A;</p>
+<ul>
+<li>&#x7B26;&#x5408;APB 3.0&#x89C4;&#x8303;</li>
+<li>&#x6BCF;&#x4E2A;Get_key&#x548C;Call_key&#x7ED3;&#x5408;&#x4E00;&#x4E2A;&#x65CB;&#x9501;&#x952E;&#x5BF9;</li>
+<li>Get_key&#x548C;Call_key&#x6709;8&#x4F4D;&#x7269;&#x7406;&#x914D;&#x7F6E;&#x5BC4;&#x5B58;&#x5668;</li>
+<li>&#x6700;&#x5927;&#x65CB;&#x9501;&#x952E;&#x5BF9;128&#xF09F;&#x5947;&#x5076;&#x6821;&#x9A8C;CSR&#x5BC4;&#x5B58;&#x5668;&#xFF0C;1&#x5947;&#x5076;&#x6821;&#x9A8C;&#x4F4D;&#x6BCF;8&#x6570;&#x636E;&#x4F4D;</li>
+<li>&#x652F;&#x6301;&#x6545;&#x969C;&#x6CE8;&#x5165;&#x68C0;&#x67E5;&#x5947;&#x5076;&#x6821;&#x9A8C;&#x751F;&#x6210;&#x5668;</li>
+</ul>
+<h2 id="37-timer">3.7 Timer</h2>
+<p>&#x8BBE;&#x5907;&#x4E2D;&#x6709;2&#x4E2A;&#x9501;&#x6B65;&#x5B9A;&#x65F6;&#x5668;&#x6A21;&#x5757;&#xFF0C;&#x5B83;&#x4EEC;&#x90FD;&#x5728;&#x5B89;&#x5168;&#x5B50;&#x7CFB;&#x7EDF;&#x4E2D;&#x3002;&#x6240;&#x6709;&#x8BA1;&#x65F6;&#x5668;&#x90FD;&#x5305;&#x62EC;&#x7279;&#x5B9A;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4EE5;&#x4EA7;&#x751F;&#x51C6;&#x786E;&#x7684;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E2D;&#x65AD;&#x7684;&#x63D0;&#x793A;&#x3002;</p>
+<p>&#x6BCF;&#x4E2A;&#x8BA1;&#x65F6;&#x5668;&#x90FD;&#x53EF;&#x4EE5;&#x4ECE;&#x51E0;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x72EC;&#x7ACB;&#x65F6;&#x949F;&#x4E0A;&#x8FDB;&#x884C;&#x65F6;&#x949F;&#x3002;&#x65F6;&#x949F;&#x6E90;&#x7684;&#x9009;&#x62E9;&#x6765;&#x81EA;&#x4E8E;CGM_TIMER0_SEL/CGM_TIMER1_SEL&#x4E2D;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x3002;
+&#x9501;&#x6B65;&#x8BA1;&#x65F6;&#x5668;&#x6709;&#x4EE5;&#x4E0B;&#x529F;&#x80FD;&#xFF1A;</p>
+<ul>
+<li>APB2&#x63A5;&#x53E3;&#x652F;&#x6301;-</li>
+<li>&#x6700;&#x591A;8&#x4E2A;&#x53EF;&#x7F16;&#x7A0B;&#x8BA1;&#x65F6;&#x5668;&#x4E3A;1&#x8BA1;&#x65F6;&#x5668;&#x5B9E;&#x4F8B;</li>
+<li>32-&#x4F4D;&#x8BA1;&#x65F6;&#x5668;&#x8BA1;&#x6570;&#x5668;&#x5BBD;&#x5EA6;&#xF09F;&#x652F;&#x6301;&#x4E24;&#x79CD;&#x64CD;&#x4F5C;&#x6A21;&#x5F0F;&#xFF1A;&#x81EA;&#x7531;&#x8FD0;&#x884C;&#x548C;&#x7528;&#x6237;&#x5B9A;&#x4E49;&#x7684;&#x8BA1;&#x6570;&#xF09F;&#x652F;&#x6301;&#x72EC;&#x7ACB;&#x65F6;&#x949F;&#x7684;&#x8BA1;&#x65F6;&#x5668;</li>
+<li>&#x4E3B;&#x52A8;&#x9AD8;&#x4E2D;&#x65AD;</li>
+<li>&#x7EC4;&#x4EF6;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x4E2D;&#x65AD;&#x7ED3;&#x5408;&#x6240;&#x6709;&#x8BA1;&#x65F6;&#x5668;&#x4E2D;&#x65AD;</li>
+<li>&#x5B9E;&#x4F8B;&#x5316;2&#x9501;&#x6B65;&#x8BA1;&#x65F6;&#x5668;&#xFF0C;&#x6BCF;&#x4E2A;&#x6709;8&#x4E2A;&#x8BA1;&#x65F6;&#x5668;</li>
+<li>&#x4E0D;&#x652F;&#x6301;PWM&#x6A21;&#x5F0F;</li>
+</ul>
+<h2 id="38-wdt">3.8 WDT</h2>
+<p>J5&#x4E2D;&#x6709;11&#x4E2A;Window WDT&#xFF08;WWDT&#xFF09;&#x6A21;&#x5757;&#xFF0C;&#x5B83;&#x4EEC;&#x90FD;&#x5728;SafetySYS&#x4E2D;&#x3002;WWDT&#x80FD;&#x591F;&#x6839;&#x636E;&#x914D;&#x7F6E;&#x4EA7;&#x751F;&#x8D85;&#x65F6;&#x4E2D;&#x65AD;/&#x91CD;&#x4F4D;&#x3002;&#x6240;&#x6709;&#x7684;WWDT&#x6A21;&#x5757;&#x90FD;&#x88AB;&#x6620;&#x5C04;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x6838;&#x5FC3;&#xFF0C;&#x6BCF;&#x4E2A;WWDT&#x90FD;&#x5C5E;&#x4E8E;&#x4E00;&#x4E2A;&#x6838;&#x5FC3;&#x3002;WWDT&#x53EF;&#x4EE5;&#x4ECE;&#x51E0;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x72EC;&#x7ACB;&#x65F6;&#x949F;&#x4E0A;&#x8FDB;&#x884C;&#x65F6;&#x949F;&#x3002;&#x65F6;&#x949F;&#x6E90;&#x53EF;&#x4EE5;&#x4ECE;CGM_WDT_SEL&#x4E2D;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x9009;&#x62E9;&#x3002;</p>
+<h2 id="39-vic">3.9 VIC</h2>
+<p>VIC&#x662F;&#x4F4D;&#x4E8E;Acore&#x3001;Mcore&#x548C;&#x4E24;&#x4E2A;vdsp&#x4E4B;&#x95F4;&#x7684;&#x865A;&#x62DF;&#x4E2D;&#x65AD;&#x3002;&#x4E00;&#x4E2A;&#x6838;&#x5FC3;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x914D;&#x7F6E;&#x51E0;&#x4E2A;&#x5BC4;&#x5B58;&#x5668;&#x6765;&#x5411;&#x53E6;&#x4E00;&#x4E2A;&#x6838;&#x5FC3;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x865A;&#x62DF;&#x4E2D;&#x65AD;&#x3002;</p>
+<p>VIC&#x5177;&#x6709;&#x4EE5;&#x4E0B;&#x5173;&#x952E;&#x529F;&#x80FD;&#xFF1A;</p>
+<ul>
+<li>A55&#x5411;A55 MStar&#x53D1;&#x9001;&#x865A;&#x62DF;&#x4E2D;&#x65AD;&#x3001;VDSP0&#x548C;VDSP1</li>
+<li>MStar&#x5411;A55&#x3001;MStar&#x3001;VDSP0&#x548C;VDSP1</li>
+<li>VDSP0&#x5411;A55&#x3001;MStar&#x3001;VDSP0&#x548C;VDSP1</li>
+<li>VDSP1&#x5411;A55&#x3001;MStar&#x3001;VDSP0&#x548C;VDSP1&#x53D1;&#x9001;&#x865A;&#x62DF;&#x4E2D;&#x65AD;</li>
+</ul>
+<h1 id="4-j5&#x5B89;&#x5168;&#x673A;&#x5236;">4. J5&#x5B89;&#x5168;&#x673A;&#x5236;</h1>
+<h2 id="41-&#x9519;&#x8BEF;&#x7BA1;&#x7406;">4.1 &#x9519;&#x8BEF;&#x7BA1;&#x7406;</h2>
+<p>&#x6309;&#x9519;&#x8BEF;&#x68C0;&#x6D4B;&#x7684;&#x65F6;&#x673A;&#xFF0C;&#x9519;&#x8BEF;&#x5206;&#x4E3A;&#x4E24;&#x7C7B;&#xFF1A;</p>
+<ol>
+<li>&#x7CFB;&#x7EDF;&#x542F;&#x52A8;&#x9636;&#x6BB5;&#xFF1A;Logic BIST&#x3001;Memory BIST&#x3001;Self-Test&#x3002;</li>
+<li>&#x7CFB;&#x7EDF;&#x8FD0;&#x884C;&#x9636;&#x6BB5;&#xFF1A;&#x8F6F;&#x4EF6;STL&#x6216;&#x8005;&#x786C;&#x4EF6;IP&#x5185;&#x96C6;&#x6210;&#x7684;&#x65B9;&#x6CD5;</li>
+</ol>
+<p>&#x5BF9;&#x4E8E;&#x9519;&#x8BEF;&#x9700;&#x8981;&#x5B9A;&#x7EA7;&#x522B;&#xFF0C;&#x5E76;&#x4E14;&#x9700;&#x8981;&#x8003;&#x8651;&#x6545;&#x969C;&#x7684;&#x5904;&#x7406;&#x7B56;&#x7565;&#x65B9;&#x6CD5;&#x3001;&#x53CD;&#x5E94;&#x65F6;&#x95F4;&#x3001;&#x76D1;&#x6D4B;&#x65F6;&#x95F4;&#x7B49;</p>
+<h2 id="42-&#x5B89;&#x5168;&#x76D1;&#x6D4B;">4.2 &#x5B89;&#x5168;&#x76D1;&#x6D4B;</h2>
+<p>J5 SoC&#x6709;53&#x4E2A;&#x529F;&#x80FD;IP&#x5E38;&#x7528;&#x7684;&#x68C0;&#x67E5;&#x673A;&#x5236;&#xFF0C;&#x5BF9;IP&#x8FDB;&#x884C;&#x529F;&#x80FD;&#x5931;&#x6548;&#x5206;&#x6790;&#x53CA;&#x5F71;&#x54CD;&#x8BC4;&#x4F30;&#xFF0C;&#x8FDB;&#x800C;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;&#x5E38;&#x7528;&#x7684;&#x529F;&#x80FD;&#x5B89;&#x5168;&#x76D1;&#x6D4B;&#x548C;&#x5904;&#x7406;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ol>
+<li>&#x5BC4;&#x5B58;&#x5668;parity&#x6821;&#x9A8C;</li>
+<li>&#x5B58;&#x50A8;&#x7684;CRC&#x6821;&#x9A8C;</li>
+<li>&#x5B58;&#x50A8;&#x7684;ECC&#x6821;&#x9A8C;</li>
+<li>&#x529F;&#x80FD;IP&#x7684;&#x9501;&#x6B65;</li>
+<li>APB&#x603B;&#x7EBF;&#x8D85;&#x65F6;&#x68C0;&#x6D4B;</li>
+<li>&#x8BBE;&#x5907;&#x5185;&#x5B58;&#x548C;&#x5BC4;&#x5B58;&#x5668;&#x5199;&#x540E;&#x8BFB;&#x56DE;&#x68C0;&#x67E5;</li>
+<li>&#x4E2D;&#x65AD;&#x89E6;&#x53D1;&#x540E;&#x8BFB;&#x5BC4;&#x5B58;&#x5668;&#x786E;&#x8BA4;</li>
+<li>&#x63A5;&#x53E3;&#x8BFB;&#x68C0;&#x6D4B;</li>
+<li>IP&#x786C;&#x4EF6;&#x81EA;&#x68C0;</li>
+<li>watchdog&#x8D85;&#x65F6;&#x68C0;&#x67E5;</li>
+<li>CPU STL</li>
+</ol>
+<blockquote>
+<p>&#x540E;&#x8BB0;&#xFF1A;</p>
+<p>&#x529F;&#x80FD;&#x5B89;&#x5168;&#x6709;&#x5F88;&#x591A;&#x7B56;&#x7565;&#xFF0C;&#x5185;&#x529F;&#x5FC3;&#x6CD5;ISO26262&#x4E2D;&#x4E5F;&#x6CA1;&#x660E;&#x786E;&#x8BF4;&#x6211;&#x4EEC;&#x8981;&#x7528;&#x4EC0;&#x4E48;&#x6280;&#x672F;&#x53BB;&#x5B9E;&#x73B0;&#xFF0C;&#x4E3B;&#x8981;&#x8FD8;&#x662F;&#x9700;&#x8981;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x7684;&#x4E1A;&#x52A1;&#x6216;&#x8005;&#x91CD;&#x8981;&#x529F;&#x80FD;&#x53BB;&#x505A;&#x529F;&#x80FD;&#x5B89;&#x5168;&#x6BD4;&#x8F83;&#x597D;&#x3002;&#x4F8B;&#x5982;&#x667A;&#x80FD;&#x9A7E;&#x9A76;SoC&#x4E2D;&#x4E3B;&#x8981;&#x4FDD;&#x8BC1;&#x6444;&#x50CF;&#x5934;&#x96F7;&#x8FBE;&#x7684;&#x6570;&#x636E;&#x5904;&#x7406;&#xFF0C;&#x6574;&#x4E2A;&#x6570;&#x636E;&#x5904;&#x7406;&#x94FE;&#x6761;&#x4E0A;&#x7684;&#x8F6F;&#x786C;&#x4EF6;&#x5C31;&#x5FC5;&#x987B;&#x90FD;&#x8981;&#x52A0;&#x5F3A;&#x529F;&#x80FD;&#x5B89;&#x5168;&#x8BBE;&#x8BA1;&#xFF0C;&#x8FD9;&#x6837;&#x81EA;&#x52A8;&#x9A7E;&#x9A76;&#x7684;&#x65F6;&#x5019;&#x624D;&#x80FD;&#x4FDD;&#x8BC1;&#x4EBA;&#x7684;&#x751F;&#x547D;&#x5B89;&#x5168;&#x3002;</p>
+<p>&#x529F;&#x80FD;&#x5B89;&#x5168;&#x653E;&#x5728;&#x786C;&#x4EF6;&#x4E0A;&#x7684;&#x6210;&#x672C;&#x662F;&#x6BD4;&#x8F83;&#x8D35;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x6BD4;&#x8F6F;&#x4EF6;&#x53EF;&#x9760;&#xFF0C;&#x653E;&#x8F6F;&#x4EF6;&#x4E5F;&#x4F1A;&#x964D;&#x4F4E;&#x6267;&#x884C;&#x6548;&#x7387;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x662F;&#x4EC0;&#x4E48;&#x4E1C;&#x897F;&#x90FD;&#x9700;&#x8981;&#x529F;&#x80FD;&#x5B89;&#x5168;&#xFF0C;&#x6839;&#x636E;&#x6211;&#x4EEC;&#x7684;&#x4E1A;&#x52A1;&#x9700;&#x6C42;&#x53BB;&#x6743;&#x8861;&#x3002;</p>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="功能安全入门-功能安全岛FSI.html" class="navigation navigation-prev " aria-label="Previous page: 功能安全入门-功能安全岛(FSI)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="功能安全入门-SoC设计漫谈.html" class="navigation navigation-next " aria-label="Next page: 功能安全入门-SoC设计漫谈">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"功能安全入门-再谈FSI","level":"1.4.28","depth":2,"next":{"title":"功能安全入门-SoC设计漫谈","level":"1.4.29","depth":2,"path":"ATF等底层固件/功能安全入门-SoC设计漫谈.md","ref":"ATF等底层固件/功能安全入门-SoC设计漫谈.md","articles":[]},"previous":{"title":"功能安全入门-功能安全岛(FSI)","level":"1.4.27","depth":2,"path":"ATF等底层固件/功能安全入门-功能安全岛FSI.md","ref":"ATF等底层固件/功能安全入门-功能安全岛FSI.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters-small","livereload"],"pluginsConfig":{"expandable-chapters-small":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ATF等底层固件/功能安全入门-再谈FSI.md","mtime":"2024-12-16T06:33:10.260Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-12-16T11:38:32.505Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

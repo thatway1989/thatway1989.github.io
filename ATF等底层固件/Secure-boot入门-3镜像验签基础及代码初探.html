@@ -1,0 +1,2679 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Secure boot入门-3镜像验签基础及代码初探 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Secure-boot入门-4镜像验签代码分析.html" />
+    
+    
+    <link rel="prev" href="Secure-boot入门-2fip包加载image流程.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../芯片SoC/">
+            
+                <a href="../芯片SoC/">
+            
+                    
+                    芯片SoC
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../芯片SoC/SoC入门-1芯片研究框架（上）.html">
+            
+                <a href="../芯片SoC/SoC入门-1芯片研究框架（上）.html">
+            
+                    
+                    SoC入门-1芯片研究框架（上）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../芯片SoC/SoC入门-2芯片研究框架（下）.html">
+            
+                <a href="../芯片SoC/SoC入门-2芯片研究框架（下）.html">
+            
+                    
+                    SoC入门-2芯片研究框架（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../芯片SoC/SoC入门-3自动驾驶AI芯片框架.html">
+            
+                <a href="../芯片SoC/SoC入门-3自动驾驶AI芯片框架.html">
+            
+                    
+                    SoC入门-3自动驾驶AI芯片框架
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../芯片SoC/SoC入门-4自动驾驶AI-SoC芯片趋势.html">
+            
+                <a href="../芯片SoC/SoC入门-4自动驾驶AI-SoC芯片趋势.html">
+            
+                    
+                    SoC入门-4自动驾驶AI SoC芯片趋势
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../芯片SoC/AI-SoC入门-5NoC总线.html">
+            
+                <a href="../芯片SoC/AI-SoC入门-5NoC总线.html">
+            
+                    
+                    AI SoC入门-5NoC总线
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../芯片SoC/AI-SoC入门-6CPU子系统.html">
+            
+                <a href="../芯片SoC/AI-SoC入门-6CPU子系统.html">
+            
+                    
+                    AI SoC入门-6CPU子系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../芯片SoC/AI-SoC入门-7低速外设.html">
+            
+                <a href="../芯片SoC/AI-SoC入门-7低速外设.html">
+            
+                    
+                    AI SoC入门-7低速外设
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../芯片SoC/AI-SoC入门-8高速外设USB、ETH.html">
+            
+                <a href="../芯片SoC/AI-SoC入门-8高速外设USB、ETH.html">
+            
+                    
+                    AI SoC入门-8高速外设USB、ETH
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../芯片SoC/AI-SoC入门-9访存接口.html">
+            
+                <a href="../芯片SoC/AI-SoC入门-9访存接口.html">
+            
+                    
+                    AI SoC入门-9访存接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="../芯片SoC/AI-SoC入门-10数据一致性.html">
+            
+                <a href="../芯片SoC/AI-SoC入门-10数据一致性.html">
+            
+                    
+                    AI SoC入门-10数据一致性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="../芯片SoC/AI-SoC入门-11HSM加解密子系统.html">
+            
+                <a href="../芯片SoC/AI-SoC入门-11HSM加解密子系统.html">
+            
+                    
+                    AI SoC入门-11HSM加解密子系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="../芯片SoC/AI-SoC入门-12FSI安全岛设计.html">
+            
+                <a href="../芯片SoC/AI-SoC入门-12FSI安全岛设计.html">
+            
+                    
+                    AI SoC入门-12FSI安全岛设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="../芯片SoC/AI-SoC入门-13PMU电源管理子系统.html">
+            
+                <a href="../芯片SoC/AI-SoC入门-13PMU电源管理子系统.html">
+            
+                    
+                    AI SoC入门-13PMU电源管理子系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.14" data-path="../芯片SoC/AI-SoC入门：14从Transformer大模型到端到端自动驾驶算法.html">
+            
+                <a href="../芯片SoC/AI-SoC入门：14从Transformer大模型到端到端自动驾驶算法.html">
+            
+                    
+                    AI SoC入门：14从Transformer大模型到端到端自动驾驶算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.15" data-path="../芯片SoC/芯片-设计流程入门.html">
+            
+                <a href="../芯片SoC/芯片-设计流程入门.html">
+            
+                    
+                    芯片-设计流程入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.16" data-path="../芯片SoC/自动驾驶芯片入门-国内外主流厂商介绍.html">
+            
+                <a href="../芯片SoC/自动驾驶芯片入门-国内外主流厂商介绍.html">
+            
+                    
+                    自动驾驶芯片入门-国内外主流厂商介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.17" data-path="../芯片SoC/自动驾驶芯片入门-基础概念和架构.html">
+            
+                <a href="../芯片SoC/自动驾驶芯片入门-基础概念和架构.html">
+            
+                    
+                    自动驾驶芯片入门-基础概念和架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.18" data-path="../芯片SoC/SoC软件技术--核间通信.html">
+            
+                <a href="../芯片SoC/SoC软件技术--核间通信.html">
+            
+                    
+                    SoC软件技术--核间通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.19" data-path="../芯片SoC/SoC入门-1芯片研究框架（上）.html">
+            
+                <a href="../芯片SoC/SoC入门-1芯片研究框架（上）.html">
+            
+                    
+                    SoC入门-1芯片研究框架（上）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.20" data-path="../芯片SoC/SoC入门-2芯片研究框架（下）.html">
+            
+                <a href="../芯片SoC/SoC入门-2芯片研究框架（下）.html">
+            
+                    
+                    SoC入门-2芯片研究框架（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../电源管理/">
+            
+                <a href="../电源管理/">
+            
+                    
+                    电源管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../电源管理/电源管理入门-开篇即巅峰.html">
+            
+                <a href="../电源管理/电源管理入门-开篇即巅峰.html">
+            
+                    
+                    电源管理入门-开篇即巅峰
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../电源管理/电源管理入门-1关机重启详解.html">
+            
+                <a href="../电源管理/电源管理入门-1关机重启详解.html">
+            
+                    
+                    电源管理入门-1关机重启详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../电源管理/电源管理入门-2开机详解.html">
+            
+                <a href="../电源管理/电源管理入门-2开机详解.html">
+            
+                    
+                    电源管理入门-2开机详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../电源管理/电源管理入门-3CPU热插拔hotplug.html">
+            
+                <a href="../电源管理/电源管理入门-3CPU热插拔hotplug.html">
+            
+                    
+                    电源管理入门-3CPU热插拔hotplug
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../电源管理/电源管理入门-4子系统reset.html">
+            
+                <a href="../电源管理/电源管理入门-4子系统reset.html">
+            
+                    
+                    电源管理入门-4子系统reset
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../电源管理/电源管理入门-5arm-scmi和mailbox核间通信.html">
+            
+                <a href="../电源管理/电源管理入门-5arm-scmi和mailbox核间通信.html">
+            
+                    
+                    电源管理入门-5 arm-scmi和mailbox核间通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="../电源管理/电源管理入门-6CPUFreq.html">
+            
+                <a href="../电源管理/电源管理入门-6CPUFreq.html">
+            
+                    
+                    电源管理入门-6 CPUFreq
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="../电源管理/电源管理入门-7DevFreq.html">
+            
+                <a href="../电源管理/电源管理入门-7DevFreq.html">
+            
+                    
+                    电源管理入门-7 DevFreq
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" data-path="../电源管理/电源管理入门-8休眠唤醒.html">
+            
+                <a href="../电源管理/电源管理入门-8休眠唤醒.html">
+            
+                    
+                    电源管理入门-8 休眠唤醒
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10" data-path="../电源管理/电源管理入门-9CPU-Idle.html">
+            
+                <a href="../电源管理/电源管理入门-9CPU-Idle.html">
+            
+                    
+                    电源管理入门-9 CPU Idle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.11" data-path="../电源管理/电源管理入门-10OPP介绍.html">
+            
+                <a href="../电源管理/电源管理入门-10OPP介绍.html">
+            
+                    
+                    电源管理入门-10 OPP介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.12" data-path="../电源管理/电源管理入门-11Regulator驱动.html">
+            
+                <a href="../电源管理/电源管理入门-11Regulator驱动.html">
+            
+                    
+                    电源管理入门-11Regulator驱动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.13" data-path="../电源管理/电源管理入门-12clock驱动.html">
+            
+                <a href="../电源管理/电源管理入门-12clock驱动.html">
+            
+                    
+                    电源管理入门-12 clock驱动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.14" data-path="../电源管理/电源管理入门-13Thermal热管理.html">
+            
+                <a href="../电源管理/电源管理入门-13Thermal热管理.html">
+            
+                    
+                    电源管理入门-13Thermal 热管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.15" data-path="../电源管理/电源管理入门-14Watchdog.html">
+            
+                <a href="../电源管理/电源管理入门-14Watchdog.html">
+            
+                    
+                    电源管理入门-14 Watchdog
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.16" data-path="../电源管理/电源管理入门-15PM-QoS.html">
+            
+                <a href="../电源管理/电源管理入门-15PM-QoS.html">
+            
+                    
+                    电源管理入门-15 PM QoS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.17" data-path="../电源管理/电源管理入门-16驱动Runtime-PM管理.html">
+            
+                <a href="../电源管理/电源管理入门-16驱动Runtime-PM管理.html">
+            
+                    
+                    电源管理入门-16 驱动Runtime PM管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.18" data-path="../电源管理/电源管理入门-17Power-supply子系统.html">
+            
+                <a href="../电源管理/电源管理入门-17Power-supply子系统.html">
+            
+                    
+                    电源管理入门-17 Power supply子系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.19" data-path="../电源管理/电源管理入门-18Power-Domain管理.html">
+            
+                <a href="../电源管理/电源管理入门-18Power-Domain管理.html">
+            
+                    
+                    电源管理入门-18 Power Domain管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.20" data-path="../电源管理/电源管理入门-19微内核中的电源管理.html">
+            
+                <a href="../电源管理/电源管理入门-19微内核中的电源管理.html">
+            
+                    
+                    电源管理入门-19 微内核中的电源管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.21" data-path="../电源管理/电源管理入门-20Hypervisor中的电源管理.html">
+            
+                <a href="../电源管理/电源管理入门-20Hypervisor中的电源管理.html">
+            
+                    
+                    电源管理入门-20 Hypervisor中的电源管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.22" data-path="../电源管理/电源管理入门-21芯片设计中的电源管理.html">
+            
+                <a href="../电源管理/电源管理入门-21芯片设计中的电源管理.html">
+            
+                    
+                    电源管理入门-21 芯片设计中的电源管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.23" data-path="../电源管理/电源管理入门-汇总篇.html">
+            
+                <a href="../电源管理/电源管理入门-汇总篇.html">
+            
+                    
+                    电源管理入门-汇总篇
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.24" data-path="../电源管理/英伟达系列芯片如何用于自动驾驶开发之（二）：硬件电源设计.html">
+            
+                <a href="../电源管理/英伟达系列芯片如何用于自动驾驶开发之（二）：硬件电源设计.html">
+            
+                    
+                    英伟达系列芯片如何用于自动驾驶开发之（二）：硬件电源设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    ATF等底层固件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="ARM-ATF入门-安全固件软件介绍和代码运行.html">
+            
+                <a href="ARM-ATF入门-安全固件软件介绍和代码运行.html">
+            
+                    
+                    ARM ATF入门-安全固件软件介绍和代码运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="ATF入门-1qmeu搭建ARM全套源码学习环境.html">
+            
+                <a href="ATF入门-1qmeu搭建ARM全套源码学习环境.html">
+            
+                    
+                    ATF入门-1qmeu搭建ARM全套源码学习环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="ATF入门-2大软件模型和代码编译运行探究.html">
+            
+                <a href="ATF入门-2大软件模型和代码编译运行探究.html">
+            
+                    
+                    ATF入门-2大软件模型和代码编译运行探究
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="ATF入门-3BL2启动流程分析.html">
+            
+                <a href="ATF入门-3BL2启动流程分析.html">
+            
+                    
+                    ATF入门-3BL2启动流程分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="ATF入门-4BL31启动流程分析.html">
+            
+                <a href="ATF入门-4BL31启动流程分析.html">
+            
+                    
+                    ATF入门-4BL31启动流程分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="Secure-boot入门-1基本概念和框架.html">
+            
+                <a href="Secure-boot入门-1基本概念和框架.html">
+            
+                    
+                    Secure boot入门-1基本概念和框架
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="Secure-boot入门-2fip包加载image流程.html">
+            
+                <a href="Secure-boot入门-2fip包加载image流程.html">
+            
+                    
+                    Secure boot入门-2fip包加载image流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.8" data-path="Secure-boot入门-3镜像验签基础及代码初探.html">
+            
+                <a href="Secure-boot入门-3镜像验签基础及代码初探.html">
+            
+                    
+                    Secure boot入门-3镜像验签基础及代码初探
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="Secure-boot入门-4镜像验签代码分析.html">
+            
+                <a href="Secure-boot入门-4镜像验签代码分析.html">
+            
+                    
+                    Secure boot入门-4镜像验签代码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="secureboot入门-5镜像加密-签名-打包.html">
+            
+                <a href="secureboot入门-5镜像加密-签名-打包.html">
+            
+                    
+                    secureboot入门-5镜像加密-签名-打包
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="secureboot入门-6安卓AVB安全启动基础.html">
+            
+                <a href="secureboot入门-6安卓AVB安全启动基础.html">
+            
+                    
+                    secureboot入门-6安卓AVB安全启动基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.12" data-path="secureboot入门-7安卓AVB校验代码分析.html">
+            
+                <a href="secureboot入门-7安卓AVB校验代码分析.html">
+            
+                    
+                    secureboot入门-7安卓AVB校验代码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.13" data-path="secureboot入门-8硬件杂谈和汇总.html">
+            
+                <a href="secureboot入门-8硬件杂谈和汇总.html">
+            
+                    
+                    secureboot入门-8硬件杂谈和汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.14" data-path="uboot入门-1简介和运行.html">
+            
+                <a href="uboot入门-1简介和运行.html">
+            
+                    
+                    uboot入门-1简介和运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.15" data-path="uboot入门-2Makefile和编译.html">
+            
+                <a href="uboot入门-2Makefile和编译.html">
+            
+                    
+                    uboot入门-2Makefile和编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.16" data-path="uboot-3链接脚本和第一阶段启动.html">
+            
+                <a href="uboot-3链接脚本和第一阶段启动.html">
+            
+                    
+                    uboot-3链接脚本和第一阶段启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.17" data-path="uboot入门-4命令行和驱动管理.html">
+            
+                <a href="uboot入门-4命令行和驱动管理.html">
+            
+                    
+                    uboot入门-4命令行和驱动管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.18" data-path="uboot入门-5linux启动前夜.html">
+            
+                <a href="uboot入门-5linux启动前夜.html">
+            
+                    
+                    uboot入门-5linux启动前夜
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.19" data-path="uboot入门-6移植要点.html">
+            
+                <a href="uboot入门-6移植要点.html">
+            
+                    
+                    uboot入门-6移植要点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.20" data-path="ARM-SCP入门-简介和代码下载编译.html">
+            
+                <a href="ARM-SCP入门-简介和代码下载编译.html">
+            
+                    
+                    ARM SCP入门-简介和代码下载编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.21" data-path="ARM-SCP入门-framework框架代码分析.html">
+            
+                <a href="ARM-SCP入门-framework框架代码分析.html">
+            
+                    
+                    ARM SCP入门-framework框架代码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.22" data-path="ARM-SCP入门-AP与SCP通信.html">
+            
+                <a href="ARM-SCP入门-AP与SCP通信.html">
+            
+                    
+                    ARM SCP入门-AP与SCP通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.23" data-path="功能安全入门-1内功心法ISO26262介绍.html">
+            
+                <a href="功能安全入门-1内功心法ISO26262介绍.html">
+            
+                    
+                    功能安全入门-1内功心法ISO26262介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.24" data-path="功能安全入门-2ISO26262说人话版本GB_T34590.html">
+            
+                <a href="功能安全入门-2ISO26262说人话版本GB_T34590.html">
+            
+                    
+                    功能安全入门-2 ISO26262说人话版本GB_T 34590
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.25" data-path="功能安全的架构设计（七）_芯片篇-上.html">
+            
+                <a href="功能安全的架构设计（七）_芯片篇-上.html">
+            
+                    
+                    功能安全的架构设计（七）_ 芯片篇-上
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.26" data-path="功能安全的架构设计（八）_芯片篇-下.html">
+            
+                <a href="功能安全的架构设计（八）_芯片篇-下.html">
+            
+                    
+                    功能安全的架构设计（八）_ 芯片篇-下
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.27" data-path="功能安全入门-功能安全岛FSI.html">
+            
+                <a href="功能安全入门-功能安全岛FSI.html">
+            
+                    
+                    功能安全入门-功能安全岛(FSI)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.28" data-path="功能安全入门-再谈FSI.html">
+            
+                <a href="功能安全入门-再谈FSI.html">
+            
+                    
+                    功能安全入门-再谈FSI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.29" data-path="功能安全入门-SoC设计漫谈.html">
+            
+                <a href="功能安全入门-SoC设计漫谈.html">
+            
+                    
+                    功能安全入门-SoC设计漫谈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.30" data-path="英伟达系列芯片如何用于自动驾驶研发之架构及安全设计（一）.html">
+            
+                <a href="英伟达系列芯片如何用于自动驾驶研发之架构及安全设计（一）.html">
+            
+                    
+                    英伟达系列芯片如何用于自动驾驶研发之架构及安全设计（一）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../操作系统OS/">
+            
+                <a href="../操作系统OS/">
+            
+                    
+                    操作系统OS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../操作系统OS/汽车操作系统-现状及演进.html">
+            
+                <a href="../操作系统OS/汽车操作系统-现状及演进.html">
+            
+                    
+                    汽车操作系统-现状及演进
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../操作系统OS/闲聊-小米首席架构师崔宝秋的开源故事.html">
+            
+                <a href="../操作系统OS/闲聊-小米首席架构师崔宝秋的开源故事.html">
+            
+                    
+                    闲聊-小米首席架构师崔宝秋的开源故事
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../操作系统OS/小米澎湃OS-白皮书介绍.html">
+            
+                <a href="../操作系统OS/小米澎湃OS-白皮书介绍.html">
+            
+                    
+                    小米澎湃OS-白皮书介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../操作系统OS/FreeRTOS入门-概念介绍.html">
+            
+                <a href="../操作系统OS/FreeRTOS入门-概念介绍.html">
+            
+                    
+                    FreeRTOS入门-概念介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../操作系统OS/FreeRTOS入门-qemu运行及资料.html">
+            
+                <a href="../操作系统OS/FreeRTOS入门-qemu运行及资料.html">
+            
+                    
+                    FreeRTOS入门-qemu运行及资料
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../操作系统OS/Fuchsia入门-简介和代码介绍.html">
+            
+                <a href="../操作系统OS/Fuchsia入门-简介和代码介绍.html">
+            
+                    
+                    Fuchsia入门-简介和代码介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../操作系统OS/Fuchsia入门-zircon微内核单独编译启动.html">
+            
+                <a href="../操作系统OS/Fuchsia入门-zircon微内核单独编译启动.html">
+            
+                    
+                    Fuchsia入门-zircon微内核单独编译启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../操作系统OS/Fuchsia入门-zircon微内核启动代码分析.html">
+            
+                <a href="../操作系统OS/Fuchsia入门-zircon微内核启动代码分析.html">
+            
+                    
+                    Fuchsia入门-zircon微内核启动代码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../操作系统OS/zCore入门-面向对象的Rust微内核.html">
+            
+                <a href="../操作系统OS/zCore入门-面向对象的Rust微内核.html">
+            
+                    
+                    zCore入门-面向对象的Rust微内核
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="../操作系统OS/HarmonyOS入门-简介和代码编译.html">
+            
+                <a href="../操作系统OS/HarmonyOS入门-简介和代码编译.html">
+            
+                    
+                    HarmonyOS入门-简介和代码编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="../操作系统OS/KataOS入门-简介和代码编译.html">
+            
+                <a href="../操作系统OS/KataOS入门-简介和代码编译.html">
+            
+                    
+                    KataOS入门-简介和代码编译
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" data-path="../操作系统OS/MINIX3入门-简介及代码编译运行.html">
+            
+                <a href="../操作系统OS/MINIX3入门-简介及代码编译运行.html">
+            
+                    
+                    MINIX3入门-简介及代码编译运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.13" data-path="../操作系统OS/Nuttx-RTOS入门-简介及开源代码运行.html">
+            
+                <a href="../操作系统OS/Nuttx-RTOS入门-简介及开源代码运行.html">
+            
+                    
+                    Nuttx RTOS入门-简介及开源代码运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.14" data-path="../操作系统OS/OS前沿-vivo-BlueOS技术分析.html">
+            
+                <a href="../操作系统OS/OS前沿-vivo-BlueOS技术分析.html">
+            
+                    
+                    OS前沿-vivo BlueOS技术分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.15" data-path="../操作系统OS/QNX入门-简介、开源代码、框架文档.html">
+            
+                <a href="../操作系统OS/QNX入门-简介、开源代码、框架文档.html">
+            
+                    
+                    QNX入门-简介、开源代码、框架文档
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.16" data-path="../操作系统OS/rCore入门-来自清华的OS前沿教程.html">
+            
+                <a href="../操作系统OS/rCore入门-来自清华的OS前沿教程.html">
+            
+                    
+                    rCore入门-来自清华的OS前沿教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.17" data-path="../操作系统OS/seL4微内核入门-代码下载运行及资料.html">
+            
+                <a href="../操作系统OS/seL4微内核入门-代码下载运行及资料.html">
+            
+                    
+                    seL4微内核入门-代码下载运行及资料
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.18" data-path="../操作系统OS/seL4微内核入门-微内核介绍.html">
+            
+                <a href="../操作系统OS/seL4微内核入门-微内核介绍.html">
+            
+                    
+                    seL4微内核入门-微内核介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.19" data-path="../操作系统OS/Zephyr-RTOS入门-简介及代码下载编译运行.html">
+            
+                <a href="../操作系统OS/Zephyr-RTOS入门-简介及代码下载编译运行.html">
+            
+                    
+                    Zephyr RTOS入门-简介及代码下载编译运行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.20" data-path="../操作系统OS/os内核入门-linux0.11编译介绍.html">
+            
+                <a href="../操作系统OS/os内核入门-linux0.11编译介绍.html">
+            
+                    
+                    os内核入门-linux0.11编译介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.21" data-path="../操作系统OS/os内核入门-linux0.11诞生的故事和源码初探.html">
+            
+                <a href="../操作系统OS/os内核入门-linux0.11诞生的故事和源码初探.html">
+            
+                    
+                    os内核入门-linux0.11诞生的故事和源码初探
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.22" data-path="../操作系统OS/os内核入门-linux0.11运行环境搭建.html">
+            
+                <a href="../操作系统OS/os内核入门-linux0.11运行环境搭建.html">
+            
+                    
+                    os内核入门-linux0.11运行环境搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../AUTOSAR入门/">
+            
+                <a href="../AUTOSAR入门/">
+            
+                    
+                    AUTOSAR入门
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../AUTOSAR入门/AUTOSAR入门-江湖.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-江湖.html">
+            
+                    
+                    AUTOSAR入门-江湖
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../AUTOSAR入门/AUTOSAR入门-AS开源代码运行环境搭建.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-AS开源代码运行环境搭建.html">
+            
+                    
+                    AUTOSAR入门-AS开源代码运行环境搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../AUTOSAR入门/AUTOSAR入门-AS开源代码编译过程详解.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-AS开源代码编译过程详解.html">
+            
+                    
+                    AUTOSAR入门-AS开源代码编译过程详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../AUTOSAR入门/AUTOSAR入门-AS平台工具命令和目录介绍.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-AS平台工具命令和目录介绍.html">
+            
+                    
+                    AUTOSAR入门-AS平台工具命令和目录介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../AUTOSAR入门/AUTOSAR入门-基于以太网诊断.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-基于以太网诊断.html">
+            
+                    
+                    AUTOSAR入门-基于以太网诊断
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../AUTOSAR入门/AUTOSAR入门-Dcm模块.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-Dcm模块.html">
+            
+                    
+                    AUTOSAR入门-Dcm模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../AUTOSAR入门/AUTOSAR入门-PduR模块.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-PduR模块.html">
+            
+                    
+                    AUTOSAR入门-PduR模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../AUTOSAR入门/AUTOSAR入门-DoIP模块.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-DoIP模块.html">
+            
+                    
+                    AUTOSAR入门-DoIP模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../AUTOSAR入门/AUTOSAR入门-AS代码运行补充知识1.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-AS代码运行补充知识1.html">
+            
+                    
+                    AUTOSAR入门-AS代码运行补充知识1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../AUTOSAR入门/AUTOSAR入门-AS代码运行补充知识2.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-AS代码运行补充知识2.html">
+            
+                    
+                    AUTOSAR入门-AS代码运行补充知识2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../AUTOSAR入门/AUTOSAR入门-SoAd模块和TcpIp模块.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-SoAd模块和TcpIp模块.html">
+            
+                    
+                    AUTOSAR入门-SoAd模块和TcpIp模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../AUTOSAR入门/AUTOSAR入门-EcuM模块与系统启动.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-EcuM模块与系统启动.html">
+            
+                    
+                    AUTOSAR入门-EcuM模块与系统启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="../AUTOSAR入门/AUTOSAR入门-工具链与方法论.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-工具链与方法论.html">
+            
+                    
+                    AUTOSAR入门-工具链与方法论
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="../AUTOSAR入门/AUTOSAR入门-前情回顾和仪表盘asone.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-前情回顾和仪表盘asone.html">
+            
+                    
+                    AUTOSAR入门-前情回顾和仪表盘asone
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="../AUTOSAR入门/AUTOSAR入门-汽车电子架构演进（一）ECU和域控制器.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-汽车电子架构演进（一）ECU和域控制器.html">
+            
+                    
+                    AUTOSAR入门-汽车电子架构演进（一）ECU和域控制器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.16" data-path="../AUTOSAR入门/汽车电子构架演进（二）AUTOSAR的组成和演进.html">
+            
+                <a href="../AUTOSAR入门/汽车电子构架演进（二）AUTOSAR的组成和演进.html">
+            
+                    
+                    汽车电子构架演进（二）AUTOSAR的组成和演进
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="../AUTOSAR入门/AUTOSAR入门-汽车电子构架演进（三）通向未来.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-汽车电子构架演进（三）通向未来.html">
+            
+                    
+                    AUTOSAR入门-汽车电子构架演进（三）通向未来
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../AUTOSAR入门/AUTOSAR入门-汽车电子构架演进四未来已来.html">
+            
+                <a href="../AUTOSAR入门/AUTOSAR入门-汽车电子构架演进四未来已来.html">
+            
+                    
+                    AUTOSAR入门-汽车电子构架演进(四) 未来已来
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../工具使用技巧/">
+            
+                <a href="../工具使用技巧/">
+            
+                    
+                    工具使用技巧
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../工具使用技巧/编程技巧：怎样快速学习一门新编程语言.html">
+            
+                <a href="../工具使用技巧/编程技巧：怎样快速学习一门新编程语言.html">
+            
+                    
+                    编程技巧：怎样快速学习一门新编程语言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../工具使用技巧/编程入门-Hello算法网站.html">
+            
+                <a href="../工具使用技巧/编程入门-Hello算法网站.html">
+            
+                    
+                    编程入门-Hello算法网站
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../工具使用技巧/编程杂谈-代码review.html">
+            
+                <a href="../工具使用技巧/编程杂谈-代码review.html">
+            
+                    
+                    编程杂谈-代码review
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../工具使用技巧/编程知识：GPL、BSD等开源协议简介.html">
+            
+                <a href="../工具使用技巧/编程知识：GPL、BSD等开源协议简介.html">
+            
+                    
+                    编程知识：GPL、BSD等开源协议简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../工具使用技巧/工具技巧-github上开源软件搜索技巧.html">
+            
+                <a href="../工具使用技巧/工具技巧-github上开源软件搜索技巧.html">
+            
+                    
+                    工具技巧-github上开源软件搜索技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../工具使用技巧/工具使用-Markdown入门.html">
+            
+                <a href="../工具使用技巧/工具使用-Markdown入门.html">
+            
+                    
+                    工具使用-Markdown入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../Linux技术/">
+            
+                <a href="../Linux技术/">
+            
+                    
+                    Linux技术
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../Linux技术/Linux驱动-IMX6ULL开发板qemu环境搭建.html">
+            
+                <a href="../Linux技术/Linux驱动-IMX6ULL开发板qemu环境搭建.html">
+            
+                    
+                    Linux驱动-IMX6ULL开发板qemu环境搭建.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../Linux技术/Linux驱动入门-设备树DTS.html">
+            
+                <a href="../Linux技术/Linux驱动入门-设备树DTS.html">
+            
+                    
+                    Linux驱动入门-设备树DTS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../杂谈/">
+            
+                <a href="../杂谈/">
+            
+                    
+                    杂谈
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../杂谈/闲聊-关于公众号改名《那路谈OS与SoC嵌入式软件》.html">
+            
+                <a href="../杂谈/闲聊-关于公众号改名《那路谈OS与SoC嵌入式软件》.html">
+            
+                    
+                    闲聊-关于公众号改名《那路谈OS与SoC嵌入式软件》
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../杂谈/闲聊-互联网“坏人多”？.html">
+            
+                <a href="../杂谈/闲聊-互联网“坏人多”？.html">
+            
+                    
+                    闲聊-互联网“坏人多”？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../杂谈/闲聊-互联网黑话.html">
+            
+                <a href="../杂谈/闲聊-互联网黑话.html">
+            
+                    
+                    闲聊-互联网黑话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../杂谈/闲聊-互联网职场PUA.html">
+            
+                <a href="../杂谈/闲聊-互联网职场PUA.html">
+            
+                    
+                    闲聊-互联网职场PUA
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="../杂谈/闲聊-另类视角看岗位JD.html">
+            
+                <a href="../杂谈/闲聊-另类视角看岗位JD.html">
+            
+                    
+                    闲聊-另类视角看岗位JD
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="../杂谈/闲聊-天涯神贴.html">
+            
+                <a href="../杂谈/闲聊-天涯神贴.html">
+            
+                    
+                    闲聊-天涯神贴
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7" data-path="../杂谈/闲聊-务虚和形式是种病？.html">
+            
+                <a href="../杂谈/闲聊-务虚和形式是种病？.html">
+            
+                    
+                    闲聊-务虚和形式是种病？
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.8" data-path="../杂谈/闲聊-细思极恐的职场信息差.html">
+            
+                <a href="../杂谈/闲聊-细思极恐的职场信息差.html">
+            
+                    
+                    闲聊-细思极恐的职场信息差
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.9" data-path="../杂谈/职场向上管理（工作汇报）-程序员版.html">
+            
+                <a href="../杂谈/职场向上管理（工作汇报）-程序员版.html">
+            
+                    
+                    职场向上管理（工作汇报）-程序员版
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.10" data-path="../杂谈/闲聊-北上广地域差异和造车新势力底色.html">
+            
+                <a href="../杂谈/闲聊-北上广地域差异和造车新势力底色.html">
+            
+                    
+                    闲聊-北上广地域差异和造车新势力底色
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.11" data-path="../杂谈/通俗国学-克制“习惯性反驳”，才能赢得他人尊重.html">
+            
+                <a href="../杂谈/通俗国学-克制“习惯性反驳”，才能赢得他人尊重.html">
+            
+                    
+                    通俗国学-克制“习惯性反驳”，才能赢得他人尊重
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.12" data-path="../杂谈/通俗国学-静坐养生.html">
+            
+                <a href="../杂谈/通俗国学-静坐养生.html">
+            
+                    
+                    通俗国学-静坐养生
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.13" data-path="../杂谈/程序员内功之架构图.html">
+            
+                <a href="../杂谈/程序员内功之架构图.html">
+            
+                    
+                    程序员内功之架构图
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.14" data-path="../杂谈/程序员内功-学术思维能力.html">
+            
+                <a href="../杂谈/程序员内功-学术思维能力.html">
+            
+                    
+                    程序员内功-学术思维能力
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.15" data-path="../杂谈/通俗国学-少年经不得顺境，中年经不得闲境，晚年经不得逆境.html">
+            
+                <a href="../杂谈/通俗国学-少年经不得顺境，中年经不得闲境，晚年经不得逆境.html">
+            
+                    
+                    通俗国学-少年经不得顺境，中年经不得闲境，晚年经不得逆境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.16" data-path="../杂谈/NO03制造大国的源泉.html">
+            
+                <a href="../杂谈/NO03制造大国的源泉.html">
+            
+                    
+                    NO03制造大国的源泉
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.17" data-path="../杂谈/NO2达到沟通目的才算有效沟通.html">
+            
+                <a href="../杂谈/NO2达到沟通目的才算有效沟通.html">
+            
+                    
+                    NO2达到沟通目的才算有效沟通
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.18" data-path="../杂谈/懒惰无聊是一种产业NO1.html">
+            
+                <a href="../杂谈/懒惰无聊是一种产业NO1.html">
+            
+                    
+                    懒惰无聊是一种产业 NO1
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Secure boot入门-3镜像验签基础及代码初探</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/1940e59e8e4f46e0b4714a91dee74a48~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936041&amp;x-orig-sign=OWByg%2FFRWLK948kCwMOoz5QEFNw%3D" alt="image.png"></p>
+<p>&#x6CA1;&#x642D;&#x5EFA;qemu&#x8FD0;&#x884C;ATF+Linux&#x8FD0;&#x884C;&#x73AF;&#x5883;&#x7684;&#xFF0C;&#x8D76;&#x7D27;&#x641E;&#x8D77;&#x6765;&#xFF1A;XXX</p>
+<p>&#x4E0A;&#x4E00;&#x7BC7;&#x4ECB;&#x7ECD;&#x4E86;fip&#x5305;&#x7684;&#x52A0;&#x8F7D;&#x6D41;&#x7A0B;&#xFF0C;&#x8BF4;&#x660E;&#x4E86;&#x56FA;&#x4EF6;&#x4FE1;&#x4EFB;&#x94FE;&#xFF0C;&#x52A0;&#x89E3;&#x5BC6;&#x9A8C;&#x7B7E;&#x7684;&#x6D41;&#x7A0B;&#x672C;&#x7BC7;&#x5F00;&#x59CB;&#x5C55;&#x5F00;&#xFF0C;&#x6709;&#x4EE3;&#x7801;&#xFF0C;&#x53EF;&#x64CD;&#x4F5C;&#xFF0C;&#x4E0D;&#x53EA;&#x8BF4;&#x7A7A;&#x8BDD;&#x7FFB;&#x8BD1;&#x5916;&#x6587;&#x6587;&#x6863;&#xFF0C;&#x771F;&#x6B63;&#x89E6;&#x6478;&#x5230;&#x4EE3;&#x7801;&#x624D;&#x662F;&#x771F;&#x5B9E;&#xFF0C;&#x5B9E;&#x529B;&#x6D3E;&#x625B;&#x628A;&#x5B50;&#x3002;</p>
+<h1 id="1-&#x9A8C;&#x7B7E;&#x57FA;&#x7840;&#x77E5;&#x8BC6;">1. &#x9A8C;&#x7B7E;&#x57FA;&#x7840;&#x77E5;&#x8BC6;</h1>
+<h2 id="11-&#x6574;&#x4F53;&#x6D41;&#x7A0B;">1.1 &#x6574;&#x4F53;&#x6D41;&#x7A0B;</h2>
+<p><strong>&#x5B89;&#x5168;&#x5F15;&#x5BFC;&#xFF08;Secure Boot&#xFF09;&#x529F;&#x80FD;&#x662F;&#x6307;&#x5728;&#x7CFB;&#x7EDF;&#x7684;&#x6574;&#x4E2A;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;&#x4E2D;</strong>&#xFF0C;&#x4F7F;&#x7528;<strong>&#x94FE;&#x5F0F;&#x9A8C;&#x8BC1;&#x7535;&#x5B50;&#x7B7E;&#x540D;&#x7684;&#x65B9;&#x5F0F;</strong>&#x6765;&#x9A8C;&#x8BC1;&#x7CFB;&#x7EDF;&#x4E2D;&#x91CD;&#x8981;&#x955C;&#x50CF;&#x6587;&#x4EF6;&#x7684;&#x53EF;&#x9760;&#x6027;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x52A0;&#x8F7D;&#x955C;&#x50CF;&#x6587;&#x4EF6;&#x7684;&#x5F15;&#x5BFC;&#x8FC7;&#x7A0B;&#x3002;</p>
+<p><strong>Bootloader&#x3001;Linux&#x5185;&#x6838;&#x3001;TEE OS&#x7684;&#x542F;&#x52A8;&#x90FD;&#x7531;ATF&#x6765;&#x52A0;&#x8F7D;&#x548C;&#x5F15;&#x5BFC;</strong>&#x3002;&#x5BF9;&#x4E8E;ARMv8, Bootloader&#x3001;Linux&#x5185;&#x6838;&#x548C;TEE OS&#x955C;&#x50CF;&#x6587;&#x4EF6;<strong>&#x7684;&#x9A8C;&#x7B7E;&#x5DE5;&#x4F5C;&#x90FD;&#x662F;&#x5728;ATF&#x4E2D;&#x5B8C;&#x6210;</strong>&#x7684;&#x3002;</p>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/01fe9a924fb146c7a5e5d84183c7abe5~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936041&amp;x-orig-sign=KwkCQFFR8duhIRNVmMQUGc5AEfw%3D" alt="image.png"></p>
+<p>ATF&#x51B7;&#x542F;&#x52A8;&#x5B9E;&#x73B0;&#x5206;&#x4E3A;5&#x4E2A;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<ul>
+<li>BL1 - AP Trusted ROM&#xFF0C;&#x4E00;&#x822C;&#x4E3A;BootRom&#x3002;</li>
+<li>BL2 - Trusted Boot Firmware&#xFF0C;&#x4E00;&#x822C;&#x4E3A;Trusted Bootloader&#x3002;</li>
+<li>BL31 - EL3 Runtime Firmware&#xFF0C;&#x4E00;&#x822C;&#x4E3A;SML&#xFF0C;&#x7BA1;&#x7406;SMC&#x6267;&#x884C;&#x5904;&#x7406;&#x548C;&#x4E2D;&#x65AD;&#xFF0C;&#x8FD0;&#x884C;&#x5728;secure monitor&#x4E2D;&#x3002;</li>
+<li>BL32 - Secure-EL1 Payload&#xFF0C;&#x4E00;&#x822C;&#x4E3A;TEE OS Image&#x3002;</li>
+<li>BL33 - Non-Trusted Firmware&#xFF0C;&#x4E00;&#x822C;&#x4E3A;uboot&#x3001;linux kernel&#x3002;</li>
+</ul>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/8f00a51b9ddb4d42b736d1f20f261a34~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936041&amp;x-orig-sign=MaCr0BxSXb36O0n7I0UDZDqVaKw%3D" alt="image.png"></p>
+<ol>
+<li>&#x7CFB;&#x7EDF;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x7B2C;&#x4E00;&#x7EA7;&#x9A8C;&#x7B7E;&#x64CD;&#x4F5C;&#x662F;&#x7531;ChipRom&#x6765;&#x5B8C;&#x6210;&#x7684;&#xFF0C;&#x53EA;&#x8981;&#x82AF;&#x7247;&#x4E00;&#x51FA;&#x5382;&#xFF0C;&#x7528;&#x6237;&#x5C31;&#x65E0;&#x6CD5;&#x4FEE;&#x6539;&#x56FA;&#x5316;&#x5728;&#x82AF;&#x7247;&#x4E2D;&#x7684;&#x8FD9;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x3002;</li>
+<li>&#x9A8C;&#x7B7E;&#x64CD;&#x4F5C;&#x4F7F;&#x7528;&#x7684;RSA&#x516C;&#x94A5;&#x6216;&#x8005;&#x54C8;&#x5E0C;&#x503C;&#x5C06;&#x4F1A;&#x88AB;&#x4FDD;&#x5B58;&#x5728;OTP/efuse&#x4E2D;&#xFF0C;&#x8BE5;&#x533A;&#x57DF;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x4E00;&#x822C;&#x53EA;&#x6709;ChipRom&#x548C;TEE&#x80FD;&#x591F;&#x8BFB;&#x53D6;&#x4E14;&#x65E0;&#x6CD5;&#x88AB;&#x4FEE;&#x6539;&#x3002;RSA&#x516C;&#x94A5;&#x6216;&#x8005;&#x54C8;&#x5E0C;&#x503C;&#x5C06;&#x4F1A;&#x5728;&#x4EA7;&#x54C1;&#x51FA;&#x5382;&#x4E4B;&#x524D;&#x88AB;&#x5199;&#x5165;&#x5230;OTP/efuse&#x4E2D;&#xFF0C;&#x800C;&#x4E14;&#x4E0D;&#x540C;&#x5382;&#x5546;&#x4F7F;&#x7528;&#x7684;&#x5BC6;&#x94A5;&#x4F1A;&#x4E0D;&#x4E00;&#x6837;&#x3002;</li>
+<li>RSA&#x516C;&#x94A5;&#x6216;&#x8005;&#x54C8;&#x5E0C;&#x503C;&#xFF0C;&#x9700;&#x8981;&#x4FDD;&#x5B58;&#x5728;&#x7535;&#x5B50;&#x8BC1;&#x4E66;&#x4E2D;&#xFF0C;&#x7CFB;&#x7EDF;&#x542F;&#x52A8;&#x5148;&#x5BF9;&#x7535;&#x5B50;&#x8BC1;&#x4E66;&#x8FDB;&#x884C;&#x9A8C;&#x8BC1;&#xFF0C;&#x9A8C;&#x8BC1;&#x8BC1;&#x4E66;&#x901A;&#x8FC7;&#x540E;&#x518D;&#x53BB;&#x9A8C;&#x8BC1;&#x955C;&#x50CF;&#x6587;&#x4EF6;&#x7684;&#x5408;&#x6CD5;&#x6027;&#x3002;&#x4F46;&#x662F;&#x4E00;&#x822C;&#x82AF;&#x7247;&#x5382;&#x5546;&#x76F4;&#x63A5;&#x628A;&#x5176;&#x653E;&#x5165;&#x5230;&#x4E86;fip&#x5305;&#x4E2D;&#x3002;</li>
+<li>ARMv8&#x67B6;&#x6784;&#x4E4B;&#x540E;ARM&#x63D0;&#x4F9B;&#x4E86;ATF, BootLoader&#x3001;TEE&#x955C;&#x50CF;&#x6587;&#x4EF6;&#x3001;Linux&#x5185;&#x6838;&#x955C;&#x50CF;&#x6587;&#x4EF6;&#x3001;recovery&#x955C;&#x50CF;&#x6587;&#x4EF6;&#x90FD;&#x662F;&#x7531;ATF&#x6765;&#x8FDB;&#x884C;&#x5F15;&#x5BFC;&#x548C;&#x52A0;&#x8F7D;&#x800C;&#x4E0D;&#x662F;&#x7531;ChipRom&#x6765;&#x5B8C;&#x6210;&#x7684;&#x3002;&#x5F53;&#x7136;&#x5F00;&#x53D1;&#x8005;&#x4E5F;&#x53EF;&#x4EE5;&#x5BF9;ATF&#x8FDB;&#x884C;&#x5B9A;&#x5236;&#x5316;&#xFF0C;&#x4FEE;&#x6539;ATF&#x4E2D;&#x7684;&#x9A8C;&#x7B7E;&#x8FC7;&#x7A0B;&#xFF0C;&#x4F46;&#x662F;&#x4FEE;&#x6539;&#x540E;&#x7684;&#x9A8C;&#x7B7E;&#x65B9;&#x6848;&#x9700;&#x8981;&#x7B26;&#x5408;TBBR&#x89C4;&#x8303;&#xFF08;<a href="https://developer.arm.com/documentation/den0006/d/&#xFF09;&#x3002;" target="_blank">https://developer.arm.com/documentation/den0006/d/&#xFF09;&#x3002;</a></li>
+<li>ChipRom&#x53EA;&#x4F1A;&#x53BB;&#x9A8C;&#x8BC1;ATF&#x4E2D;bl1&#x7684;&#x5408;&#x6CD5;&#x6027;&#xFF0C;&#x540E;&#x7EED;&#x5F15;&#x5BFC;&#x8FC7;&#x7A0B;&#x540C;&#x6837;&#x4E5F;&#x662F;&#x6309;&#x7167;&#x94FE;&#x5F0F;&#x9A8C;&#x7B7E;&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#xFF0C;&#x7B26;&#x5408;TBBR&#x89C4;&#x8303;&#x3002;&#x7CFB;&#x7EDF;&#x542F;&#x52A8;&#x7684;&#x5730;&#x5740;&#x53EA;&#x80FD;&#x662F;ChipRom&#xFF0C;&#x8C03;&#x8BD5;&#x9636;&#x6BB5;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;xip&#x542F;&#x52A8;&#x6A21;&#x5F0F;&#xFF0C;&#x6B63;&#x5F0F;&#x4EA7;&#x54C1;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;OTP&#x6216;EFUSE&#x4E2D;&#x7279;&#x5B9A;bit&#x5B9E;&#x73B0;&#x5173;xip&#x542F;&#x52A8;&#x6A21;&#x5F0F;&#xFF0C;&#x53EA;&#x80FD;&#x4ECE;Rom&#x542F;&#x52A8;&#x3002;</li>
+</ol>
+<blockquote>
+<p>OTP&#x548C;efuse&#x662F;&#x4EC0;&#x4E48;&#xFF1F;</p>
+<ol>
+<li>&#x4E00;&#x6B21;&#x6027;&#x53EF;&#x7F16;&#x7A0B;&#x5B58;&#x50A8;&#x5668; (One-Time Programmable Memory)&#xFF1A;OTP &#x662F;&#x4E00;&#x79CD;&#x53EA;&#x80FD;&#x5199;&#x5165;&#x6570;&#x636E;&#x4E00;&#x6B21;&#x7684;&#x5B58;&#x50A8;&#x5668;&#x7C7B;&#x578B;&#x3002;&#x4E00;&#x65E6;&#x5199;&#x5165;&#x6570;&#x636E;&#xFF0C;&#x5C31;&#x4E0D;&#x80FD;&#x66F4;&#x6539;&#x6216;&#x64E6;&#x9664;&#x3002;&#x8FD9;&#x4F7F;&#x5F97;&#x5B83;&#x975E;&#x5E38;&#x9002;&#x5408;&#x5B58;&#x50A8;&#x50CF;&#x5B89;&#x5168;&#x5BC6;&#x94A5;&#x3001;&#x8BBE;&#x5907;&#x914D;&#x7F6E;&#x6216;&#x542F;&#x52A8;&#x6A21;&#x5F0F;&#x9009;&#x62E9;&#x7B49;&#x654F;&#x611F;&#x4FE1;&#x606F;&#x3002;</li>
+<li>&#x7535;&#x5B50;&#x7194;&#x4E1D; (Electronic Fuse)&#xFF1A;eFuse &#x662F;&#x4E00;&#x79CD;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x7F16;&#x7A0B;&#x65B9;&#x5F0F; &#x201C;&#x70E7;&#x65AD;&#x201D; &#x7684;&#x7535;&#x5B50;&#x5143;&#x4EF6;&#x3002;&#x70E7;&#x65AD; eFuse &#x540E;&#xFF0C;&#x5176;&#x72B6;&#x6001;&#x5C06;&#x6C38;&#x4E45;&#x6539;&#x53D8;&#xFF0C;&#x65E0;&#x6CD5;&#x6062;&#x590D;&#x3002;</li>
+</ol>
+</blockquote>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/f4dc7717f33a45e9a9d75f047951b5d1~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936041&amp;x-orig-sign=GPDL8rl6GenJ2OxB6XqxgG57D5g%3D" alt="image.png"></p>
+<blockquote>
+<p>TBBR&#x89C4;&#x8303;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;</p>
+<p>ARM&#x5B98;&#x65B9;&#x7684;secure boot&#x5B9E;&#x73B0;&#x89C4;&#x8303;TBB&#xFF08;Trusted Board Boot&#xFF09;&#x7684;&#x89C4;&#x683C;&#x8BF4;&#x660E;&#x4E66;TBBR&#xFF08;TBB Requirements&#xFF09;&#xFF1A;<a href="https://developer.arm.com/documentation/den0006/d/&#x3002;&#x5176;&#x4ED6;&#x5382;&#x5546;&#x53EF;&#x4EE5;&#x53BB;&#x53C2;&#x8003;&#x3002;" target="_blank">https://developer.arm.com/documentation/den0006/d/&#x3002;&#x5176;&#x4ED6;&#x5382;&#x5546;&#x53EF;&#x4EE5;&#x53BB;&#x53C2;&#x8003;&#x3002;</a></p>
+</blockquote>
+<h2 id="12-&#x7B97;&#x6CD5;&#x4ECB;&#x7ECD;">1.2 &#x7B97;&#x6CD5;&#x4ECB;&#x7ECD;</h2>
+<p><strong>&#x6D88;&#x606F;&#x6458;&#x8981;&#x7B97;&#x6CD5;</strong>&#x662F;&#x901A;&#x8FC7;&#x5355;&#x5411;&#x6563;&#x5217;&#x51FD;&#x6570;&#xFF0C;&#x5C06;&#x4E00;&#x6BB5;&#x6D88;&#x606F;&#x7684;&#x5185;&#x5BB9;&#x8F6C;&#x6362;&#x4E3A;&#x53E6;&#x4E00;&#x6BB5;&#x56FA;&#x5B9A;&#x957F;&#x5EA6;&#x6D88;&#x606F;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x800C;&#x88AB;&#x5176;&#x8BA1;&#x7B97;&#x540E;&#x751F;&#x6210;&#x7684;&#x6D88;&#x606F;&#x79F0;&#x4E3A;hash&#x503C;&#xFF0C;&#x5B83;&#x5177;&#x6709;&#x4EE5;&#x4E0B;&#x7279;&#x5F81;&#xFF1A;</p>
+<ol>
+<li>&#x4EFB;&#x610F;&#x957F;&#x5EA6;&#x7684;&#x8F93;&#x5165;&#x6D88;&#x606F;&#x90FD;&#x4F1A;&#x8F93;&#x51FA;&#x56FA;&#x5B9A;&#x957F;&#x5EA6;&#x7684;hash&#x503C;</li>
+<li>hash&#x51FD;&#x6570;&#x5FC5;&#x987B;&#x5177;&#x5907;&#x5355;&#x5411;&#x6027;&#xFF0C;&#x800C;&#x65E0;&#x6CD5;&#x901A;&#x8FC7;hash&#x503C;&#x53CD;&#x5411;&#x7B97;&#x51FA;&#x5176;&#x6D88;&#x606F;&#x539F;&#x6587;</li>
+<li>&#x4E0D;&#x540C;&#x7684;&#x8F93;&#x5165;&#x6D88;&#x606F;&#x5176;&#x8F93;&#x51FA;&#x6D88;&#x606F;&#x4E5F;&#x4E0D;&#x540C;&#xFF0C;&#x5373;&#x5176;&#x5177;&#x6709;&#x5F3A;&#x6297;&#x78B0;&#x649E;&#x6027;</li>
+<li>hash&#x503C;&#x7684;&#x8BA1;&#x7B97;&#x901F;&#x5EA6;&#x8981;&#x5FEB;</li>
+</ol>
+<p>&#x5728;&#x5BC6;&#x7801;&#x5B66;&#x4E2D;&#x6709;&#x591A;&#x79CD;&#x6D88;&#x606F;&#x6458;&#x8981;&#x7B97;&#x6CD5;&#xFF0C;&#x5982;md5&#x3001;sha1&#x3001;sha256&#x3001;sha512&#x3001;sha3&#x7B49;&#x3002;&#x968F;&#x7740;&#x8BA1;&#x7B97;&#x673A;&#x6280;&#x672F;&#x7684;&#x53D1;&#x5C55;&#xFF0C;&#x6709;&#x4E9B;&#x539F;&#x5148;&#x8BA4;&#x4E3A;&#x5177;&#x6709;&#x5F3A;&#x78B0;&#x649E;&#x6027;&#x7684;&#x7B97;&#x6CD5;&#xFF08;&#x5982;md5&#x3001;sha1&#xFF09;&#xFF0C;&#x5728;&#x5F53;&#x524D;&#x5DF2;&#x7ECF;&#x88AB;&#x8BA4;&#x4E3A;&#x5E76;&#x4E0D;&#x5B89;&#x5168;&#xFF0C;&#x56E0;&#x6B64;secureboot&#x4E2D;&#x4E00;&#x822C;&#x4F7F;&#x7528;sha256&#x3001;sha512&#x7B49;&#x7B97;&#x6CD5;&#x4F5C;&#x4E3A;&#x5B8C;&#x6574;&#x6027;&#x7B97;&#x6CD5;</p>
+<p>&#x975E;&#x5BF9;&#x79F0;&#x5BC6;&#x7801;&#x7B97;&#x6CD5;&#x662F;&#x76F8;&#x5BF9;&#x4E8E;&#x5BF9;&#x79F0;&#x6027;&#x5BC6;&#x7801;&#x7B97;&#x6CD5;&#x800C;&#x8A00;&#x7684;&#xFF0C;&#x5728;&#x5BF9;&#x79F0;&#x5BC6;&#x7801;&#x7B97;&#x6CD5;&#x4E2D;&#x52A0;&#x5BC6;&#x548C;&#x89E3;&#x5BC6;&#x65F6;&#x4F7F;&#x7528;&#x7684;&#x5BC6;&#x94A5;&#x76F8;&#x540C;&#x3002;&#x800C;&#x975E;&#x5BF9;&#x79F0;&#x7B97;&#x6CD5;&#x52A0;&#x5BC6;&#x548C;&#x89E3;&#x5BC6;&#x65F6;&#x4F7F;&#x7528;&#x7684;&#x5BC6;&#x94A5;&#x4E0D;&#x540C;&#xFF0C;&#x5176;&#x4E2D;&#x79C1;&#x94A5;&#x7531;&#x5BC6;&#x94A5;&#x5C5E;&#x4E3B;&#x4FDD;&#x7BA1;&#xFF0C;&#x4E14;&#x4E0D;&#x80FD;&#x6CC4;&#x9732;&#xFF0C;&#x800C;&#x516C;&#x94A5;&#x53EF;&#x4EE5;&#x5206;&#x53D1;&#x7ED9;&#x5176;&#x5B83;&#x4EBA;&#x3002;&#x901A;&#x8FC7;&#x79C1;&#x94A5;&#x7B7E;&#x540D;&#x7684;&#x6570;&#x636E;&#x53EA;&#x80FD;&#x7531;&#x516C;&#x94A5;&#x9A8C;&#x7B7E;&#x3002;</p>
+<p>&#x955C;&#x50CF;&#x7B7E;&#x540D;&#x6D41;&#x7A0B;&#xFF1A;</p>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/df8f05126dec4b3b869fa4925945e267~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936041&amp;x-orig-sign=nABZ%2BQjG77272iGPxAxBhGicslM%3D" alt="image.png"></p>
+<ol>
+<li>&#x4F7F;&#x7528;hash&#x7B97;&#x6CD5;&#x751F;&#x6210;&#x955C;&#x50CF;&#x7684;hash&#x503C;hash(image)</li>
+<li>&#x901A;&#x8FC7;&#x955C;&#x50CF;&#x53D1;&#x5E03;&#x8005;&#x7684;&#x79C1;&#x94A5;&#xFF0C;&#x4F7F;&#x7528;&#x975E;&#x5BF9;&#x79F0;&#x7B97;&#x6CD5;&#x5BF9;&#x955C;&#x50CF;&#x7684;hash&#x503C;&#x6267;&#x884C;&#x7B7E;&#x540D;&#x6D41;&#x7A0B;&#xFF0C;&#x5E76;&#x751F;&#x6210;&#x5176;&#x7B7E;&#x540D;&#x503C;sig(hash)</li>
+</ol>
+<p>&#x955C;&#x50CF;&#x9A8C;&#x7B7E;&#x6D41;&#x7A0B;&#xFF1A;</p>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/5051aff3e91c46a5afd19af5227a7655~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936041&amp;x-orig-sign=8lVGWvqC4HUR%2Bstl2ujHYVKMjrE%3D" alt="image.png"></p>
+<ol>
+<li>&#x4F7F;&#x7528;&#x975E;&#x5BF9;&#x79F0;&#x7B97;&#x6CD5;&#x7684;&#x516C;&#x94A5;&#x548C;&#x7B7E;&#x540D;&#x503C;&#xFF0C;&#x5BF9;&#x955C;&#x50CF;&#x7684;hash&#x503C;&#x8FDB;&#x884C;&#x9A8C;&#x7B7E;&#x3002;&#x82E5;&#x9A8C;&#x7B7E;&#x901A;&#x8FC7;&#x5219;&#x53EF;&#x8FDB;&#x4E00;&#x6B65;&#x6821;&#x9A8C;&#x955C;&#x50CF;&#x5B8C;&#x6574;&#x6027;&#x3002;&#x5426;&#x5219;&#xFF0C;&#x542F;&#x52A8;&#x5931;&#x8D25;</li>
+<li>&#x82E5;&#x9A8C;&#x7B7E;&#x901A;&#x8FC7;&#xFF0C;&#x5219;&#x91CD;&#x65B0;&#x8BA1;&#x7B97;&#x955C;&#x50CF;&#x7684;hash&#x503C;hash(image)&#xFF0C;&#x5E76;&#x5C06;&#x5176;&#x4E0E;&#x539F;&#x59CB;hash&#x503C;hash(image)&#x6BD4;&#x8F83;&#xFF0C;&#x82E5;&#x5176;&#x76F8;&#x7B49;&#x5219;&#x8868;&#x660E;&#x955C;&#x50CF;&#x7684;&#x5B8C;&#x6574;&#x6027;&#x9A8C;&#x8BC1;&#x901A;&#x8FC7;&#x3002;&#x5426;&#x5219;&#x542F;&#x52A8;&#x5931;&#x8D25;</li>
+</ol>
+<blockquote>
+<p>&#x516C;&#x94A5;&#x4FDD;&#x62A4;</p>
+<p>&#x5982;&#x679C;&#x9ED1;&#x5BA2;&#x81EA;&#x5DF1;&#x9020;&#x4E86;&#x4E00;&#x5806;&#x516C;&#x94A5;&#x548C;&#x79C1;&#x94A5;&#xFF0C;&#x82AF;&#x7247;&#x542F;&#x52A8;&#x516C;&#x94A5;&#x7684;&#x88AB;&#x66FF;&#x6362;&#x6210;&#x9ED1;&#x5BA2;&#x81EA;&#x5DF1;&#x7684;&#x516C;&#x94A5;&#xFF0C;&#x9ED1;&#x5BA2;&#x7528;&#x81EA;&#x5DF1;&#x7684;&#x79C1;&#x94A5;&#x52A0;&#x5BC6;&#x81EA;&#x5DF1;&#x7684;&#x955C;&#x50CF;&#x8FDB;&#x884C;&#x9A8C;&#x7B7E;&#xFF0C;&#x90A3;&#x5C31;&#x53EF;&#x4EE5;&#x7ED5;&#x8FC7;&#x53BB;&#x4E86;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x516C;&#x94A5;&#x4E0D;&#x80FD;&#x88AB;&#x66FF;&#x6362;&#xFF0C;&#x8FD9;&#x91CC;&#x53C8;&#x8981;&#x8BF7;OTP/efuse&#x51FA;&#x5C71;&#x5E2E;&#x5FD9;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x4E00;&#x822C;&#x516C;&#x94A5;&#x6BD4;&#x8F83;&#x957F;&#xFF0C;&#x4F8B;&#x5982;RSA&#x7684;2048bit&#xFF0C;&#x4E00;&#x822C;&#x628A;&#x516C;&#x94A5;&#x7684;hash&#x503C;&#x653E;&#x5165;OTP/efuse&#xFF0C;&#x800C;&#x516C;&#x94A5;&#x8FD8;&#x653E;&#x5165;&#x955C;&#x50CF;&#x4E2D;&#x3002;&#x8FD9;&#x6837;&#x542F;&#x52A8;&#x65F6;&#x5148;&#x9A8C;&#x8BC1;&#x516C;&#x94A5;&#x518D;&#x8FDB;&#x884C;&#x9A8C;&#x7B7E;&#x3002;</p>
+</blockquote>
+<h2 id="13-&#x6570;&#x5B57;&#x8BC1;&#x4E66;">1.3 &#x6570;&#x5B57;&#x8BC1;&#x4E66;</h2>
+<p>&#x7F51;&#x7EDC;&#x4E0A;&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x516C;&#x94A5;&#x88AB;&#x67D0;&#x4E2A;&#x8282;&#x70B9;&#x66FF;&#x6362;&#xFF0C;&#x4F7F;&#x7528;&#x6570;&#x5B57;&#x8BC1;&#x4E66;&#x5BF9;&#x53D1;&#x9001;&#x8005;&#x7684;&#x516C;&#x94A5;&#x505A;&#x8BA4;&#x8BC1;&#x3002;&#x6570;&#x5B57;&#x8BC1;&#x4E66;&#x683C;&#x5F0F;&#x9075;&#x5FAA;ITUTX.509&#x6807;&#x51C6;&#xFF0C;&#x5176;&#x57FA;&#x4E8E;ASN.1&#x7F16;&#x7801;&#xFF0C;X509&#x8BC1;&#x4E66;&#x5305;&#x542B;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#xFF1A;</p>
+<p>&#xFF08;1&#xFF09;&#x8BC1;&#x4E66;&#x7248;&#x672C;<br>&#xFF08;2&#xFF09;&#x8BC1;&#x4E66;&#x5E8F;&#x5217;&#x53F7;<br>&#xFF08;3&#xFF09;&#x8BC1;&#x4E66;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x7B7E;&#x540D;&#x7B97;&#x6CD5;<br>&#xFF08;4&#xFF09;&#x8BC1;&#x4E66;&#x7684;&#x53D1;&#x884C;&#x673A;&#x6784;&#x540D;&#x79F0;&#xFF0C;&#x4E00;&#x822C;&#x91C7;&#x7528;X500&#x683C;&#x5F0F;<br>&#xFF08;5&#xFF09;&#x8BC1;&#x4E66;&#x7684;&#x6709;&#x6548;&#x671F;&#xFF0C;&#x901A;&#x5E38;&#x91C7;&#x7528;UTC&#x65F6;&#x95F4;<br>&#xFF08;6&#xFF09;&#x8BC1;&#x4E66;&#x6240;&#x6709;&#x4EBA;&#x540D;&#x79F0;&#xFF0C;&#x4E00;&#x822C;&#x91C7;&#x7528;X500&#x683C;&#x5F0F;<br>&#xFF08;7&#xFF09;&#x8BC1;&#x4E66;&#x6240;&#x6709;&#x4EBA;&#x7684;&#x516C;&#x94A5;<br>&#xFF08;8&#xFF09;&#x8BC1;&#x4E66;&#x53D1;&#x884C;&#x8005;&#x5BF9;&#x8BC1;&#x4E66;&#x7684;&#x7B7E;&#x540D;</p>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/35df45a064b744629147c089fe992d35~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936041&amp;x-orig-sign=Uq56miGRSVe%2F0YOEO4AgP3JDuok%3D" alt="image.png"></p>
+<p>&#x6570;&#x5B57;&#x8BC1;&#x4E66;&#x662F;&#x7531;&#x6570;&#x5B57;&#x8BC1;&#x4E66;&#x8BA4;&#x8BC1;&#x4E2D;&#x5FC3;&#xFF08;CA&#xFF09;&#x9881;&#x53D1;&#xFF0C;&#x7528;&#x4E8E;&#x8BA4;&#x8BC1;&#x8BC1;&#x4E66;&#x6301;&#x6709;&#x8005;&#x8EAB;&#x4EFD;&#x7684;&#xFF0C;&#x5176;&#x6838;&#x5FC3;&#x662F;&#x4F7F;&#x7528;&#x8BA4;&#x8BC1;&#x4E2D;&#x5FC3;&#x7684;&#x79C1;&#x94A5;&#x5BF9;&#x8BC1;&#x4E66;&#x7533;&#x8BF7;&#x4EBA;&#x8EAB;&#x4EFD;&#xFF08;&#x4E3B;&#x8981;&#x662F;&#x516C;&#x94A5;&#xFF09;&#x8FDB;&#x884C;&#x7B7E;&#x540D;&#x8BA4;&#x8BC1;&#x3002;&#x8BA4;&#x8BC1;&#x4E2D;&#x5FC3;&#x53EF;&#x4EE5;&#x5F62;&#x6210;&#x4EE5;&#x4E0B;&#x7684;&#x5C42;&#x7EA7;&#x7ED3;&#x6784;&#xFF0C;&#x5373;&#x6839;&#x8BC1;&#x4E66;&#x8BA4;&#x8BC1;&#x673A;&#x6784;&#x53EF;&#x4E3A;&#x4E8C;&#x7EA7;&#x8BA4;&#x8BC1;&#x673A;&#x6784;&#x9881;&#x53D1;&#x8BC1;&#x4E66;&#xFF0C;&#x4E8C;&#x7EA7;&#x8BA4;&#x8BC1;&#x673A;&#x6784;&#x53EF;&#x4E3A;&#x4E09;&#x7EA7;&#x8BA4;&#x8BC1;&#x673A;&#x6784;&#x9881;&#x53D1;&#x8BC1;&#x4E66;&#xFF0C;&#x540C;&#x65F6;&#x4ED6;&#x4EEC;&#x90FD;&#x53EF;&#x4EE5;&#x4E3A;&#x7528;&#x6237;&#x9881;&#x53D1;&#x8BC1;&#x4E66;&#x3002;</p>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/82c78a7c8a9a4f85ba671f16e1123261~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936041&amp;x-orig-sign=FLRIZA%2F58smypEGJUAw6RXBOJaQ%3D" alt="image.png"></p>
+<p>&#x672C;&#x8D28;&#x4E0A;&#xFF0C;&#x6570;&#x5B57;&#x8BC1;&#x4E66;&#x662F;&#x6570;&#x5B57;&#x8BC1;&#x4E66;&#x8BA4;&#x8BC1;&#x4E2D;&#x5FC3;&#x5BF9;&#x8BC1;&#x4E66;&#x7533;&#x8BF7;&#x8005;&#x7684;&#x4FE1;&#x606F;&#x548C;&#x516C;&#x94A5;&#x505A;&#x7B7E;&#x540D;&#xFF0C;&#x4EE5;&#x81EA;&#x8EAB;&#x7684;&#x6743;&#x5A01;&#x6027;&#x4E3A;&#x5176;&#x8EAB;&#x4EFD;&#x505A;&#x80CC;&#x4E66;&#x3002;
+&#x4EE5;&#x4E0A;&#x6570;&#x5B57;&#x8BC1;&#x4E66;&#x7684;&#x5C42;&#x7EA7;&#x7ED3;&#x6784;&#x53EB;&#x505A;&#x6570;&#x5B57;&#x8BC1;&#x4E66;&#x94FE;&#xFF0C;&#x5176;&#x4E2D;&#x9876;&#x5C42;&#x7684;&#x8BC1;&#x4E66;&#x88AB;&#x79F0;&#x4E3A;&#x6839;&#x8BC1;&#x4E66;&#xFF0C;&#x5B83;&#x662F;&#x7531;&#x6839;&#x8BC1;&#x4E66;&#x4E2D;&#x5FC3;&#x81EA;&#x7B7E;&#x540D;&#x7684;&#x3002;&#x5728;&#x9A8C;&#x8BC1;&#x6570;&#x5B57;&#x8BC1;&#x4E66;&#x65F6;&#x53EF;&#x6309;&#x7167;&#x8BE5;&#x8BC1;&#x4E66;&#x94FE;&#x9010;&#x7EA7;&#x9A8C;&#x8BC1;&#x8BC1;&#x4E66;&#x7684;&#x5408;&#x6CD5;&#x6027;&#x3002;&#x6839;&#x8BC1;&#x4E66;&#x7684;&#x5408;&#x6CD5;&#x6027;&#x662F;&#x7531;&#x5176;&#x81EA;&#x8EAB;&#x4FDD;&#x8BC1;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x4E00;&#x822C;&#x4F1A;&#x88AB;&#x9884;&#x5148;&#x5B89;&#x88C5;&#x5230;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x6216;&#x6D4F;&#x89C8;&#x5668;&#x7B49;&#x8F6F;&#x4EF6;&#x4E2D;&#x3002;</p>
+<p>&#x6240;&#x6709;&#x516C;&#x53F8;&#x90FD;&#x53EF;&#x4EE5;&#x9881;&#x53D1;&#x6570;&#x5B57;&#x8BC1;&#x4E66;&#xFF0C;&#x516C;&#x53F8;&#x9881;&#x53D1;&#x7684;&#x8BC1;&#x4E66;&#x4E0D;&#x4E00;&#x5B9A;&#x80FD;&#x5728;&#x56FD;&#x9645;&#x4E0A;&#x5F97;&#x5230;&#x5E7F;&#x6CDB;&#x8BA4;&#x53EF;&#x3002;&#x4F46;&#x82E5;&#x5728;&#x81EA;&#x5DF1;&#x751F;&#x4EA7;&#x7684;&#x7EC8;&#x7AEF;&#x4E2D;&#x5B89;&#x88C5;&#x81EA;&#x5DF1;&#x5EFA;&#x7ACB;&#x7684;CA&#x6839;&#x8BC1;&#x4E66;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x5EFA;&#x7ACB;&#x81EA;&#x8EAB;&#x7684;CA&#x4FE1;&#x4EFB;&#x94FE;&#x3002;</p>
+<h1 id="2-atf&#x4E2D;&#x7684;&#x9A8C;&#x7B7E;&#x57FA;&#x7840;">2. ATF&#x4E2D;&#x7684;&#x9A8C;&#x7B7E;&#x57FA;&#x7840;</h1>
+<h2 id="21-&#x57FA;&#x672C;&#x6982;&#x5FF5;&#x53CA;&#x7F29;&#x5199;">2.1 &#x57FA;&#x672C;&#x6982;&#x5FF5;&#x53CA;&#x7F29;&#x5199;</h2>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/cfb4f686c7b54dbebe2b13a3ab29062c~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936041&amp;x-orig-sign=aerGoFvpTIt5iYwl9ED0hRPhP1I%3D" alt="image.png"></p>
+<ul>
+<li>&#x52A0;&#x5BC6;&#x6A21;&#x5757;CM&#xFF08;Crypto Module&#xFF09;&#xFF1A;&#x63D0;&#x4F9B;&#x6570;&#x5B57;&#x7B7E;&#x540D;&#x9A8C;&#x8BC1;&#x548C;hash&#x9A8C;&#x8BC1;&#x7684;&#x63A5;&#x53E3;&#x3002;</li>
+<li>&#x52A0;&#x5BC6;&#x5E93;CL&#xFF08;Cryptographic Libraies&#xFF09;&#xFF1A;&#x7B97;&#x6CD5;&#x90E8;&#x5206;&#x3002;</li>
+<li>&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x6A21;&#x5757;AM&#xFF08;Auth Module&#xFF09;&#xFF1A;&#x63CF;&#x8FF0;&#x548C;&#x5B9A;&#x4E49;CoT&#xFF0C;&#x5185;&#x5B58;&#x5206;&#x914D;&#xFF0C;&#x8BB0;&#x5F55;&#xFF0C;&#x63D0;&#x4F9B;&#x5E73;&#x53F0;&#x4F9D;&#x8D56;&#x63A5;&#x53E3;</li>
+<li>&#x955C;&#x50CF;&#x89E3;&#x6790;&#x6A21;&#x5757;IPM&#xFF08;Image Parser Module&#xFF09;&#xFF1A;&#x68C0;&#x67E5;&#x955C;&#x50CF;&#x7684;&#x5B8C;&#x6574;&#x6027;&#xFF0C;&#x63D0;&#x53D6;CoT&#x53C2;&#x6570;&#x3002;</li>
+<li>&#x955C;&#x50CF;&#x89E3;&#x6790;&#x5E93;IPL&#xFF08;Image Parser Libraries&#xFF09;&#xFF1A;&#x5BF9;&#x5E94;&#x4E0D;&#x540C;&#x7684;&#x955C;&#x50CF;&#x7C7B;&#x578B;</li>
+<li>&#x89E3;&#x7801;&#x5E93;ASN.1:</li>
+</ul>
+<p>&#x4FE1;&#x4EFB;&#x94FE;CoT&#xFF08;Chain of Trust&#xFF09;&#xFF1A;&#x4E00;&#x7CFB;&#x5217;&#x6709;&#x8054;&#x7CFB;&#x955C;&#x50CF;&#x7684;&#x96C6;&#x5408;&#xFF0C;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x90FD;&#x662F;&#x56F4;&#x7ED5;CoT&#x6765;&#x5B9E;&#x73B0;&#x7684;&#x3002;
+&#x4FE1;&#x4EFB;&#x6839;&#x516C;&#x94A5;ROTPK&#xFF08;Root Public Key&#xFF09;:&#x4E00;&#x822C;&#x628A;&#x5176;SHA-256&#x54C8;&#x5E0C;&#x503C;&#x5B58;&#x50A8;&#x5728;OTP&#x6216;&#x8005;efuse&#x4E00;&#x6B21;&#x6027;&#x7F16;&#x7A0B;&#x5B58;&#x50A8;&#x5668;&#x4E2D;&#x3002;&#x5728;&#x5F00;&#x53D1;&#x9636;&#x6BB5;&#xFF0C;ROTPK&#x53EF;&#x4EE5;&#x5D4C;&#x5165;&#x5230;bin&#x6587;&#x4EF6;&#x4E2D;&#x3002;</p>
+<p>&#x4EE5;BL31&#x4E3A;&#x4F8B;&#xFF0C;&#x5176;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x6D41;&#x7A0B;&#x4E3A;&#xFF1A;</p>
+<ol>
+<li>&#x4F7F;&#x7528;ROTPK&#x516C;&#x94A5;&#x6216;&#x8005;ROTPK Hash&#x5BF9;Trusted Key Certificate&#x8FDB;&#x884C;&#x9A8C;&#x8BC1;&#xFF0C;&#x83B7;&#x53D6;Trusted World Public Key</li>
+<li>&#x4F7F;&#x7528;Trusted World Public Key&#x5BF9;BL31 Key Certificate&#x8FDB;&#x884C;&#x9A8C;&#x8BC1;&#xFF0C;&#x83B7;&#x53D6;BL31 Key Certificate PK</li>
+<li>&#x4F7F;&#x7528;BL31 Key Certificate PK&#x5BF9;BL31 Contend Certificate&#x8FDB;&#x884C;&#x9A8C;&#x8BC1;&#x83B7;&#x53D6;BL31&#x7684;hash&#x503C;</li>
+<li>&#x4F7F;&#x7528;BL31&#x7684;hash&#x5BF9;BL31&#x955C;&#x50CF;&#x8FDB;&#x884C;&#x6821;&#x9A8C;</li>
+</ol>
+<h2 id="22-cot&#x955C;&#x50CF;&#x8EAB;&#x4EFD;&#x63CF;&#x8FF0;&#x7B26;">2.2 CoT&#x955C;&#x50CF;&#x8EAB;&#x4EFD;&#x63CF;&#x8FF0;&#x7B26;</h2>
+<p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/6d8de2e478494171ae3839ca4d746db3~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936041&amp;x-orig-sign=r%2F95Whev%2B41mfYz454pcBFj9qo0%3D" alt="image.png"></p>
+<p>CoT&#x662F;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x6570;&#x7EC4;&#xFF0C;&#x5143;&#x7D20;&#x4E3A;auth_img_desc_t&#xFF0C;&#x5728;include/drivers/auth/auth_mod.h&#x4E2D;&#x5B9A;&#x4E49;&#xFF1A;</p>
+<pre><code>    typedef struct auth_img_desc_s {
+        unsigned int img_id;
+        const struct auth_img_desc_s *parent;
+        img_type_t img_type;
+        const auth_method_desc_t *const img_auth_methods;
+        const auth_param_desc_t *const authenticated_data;
+    } auth_img_desc_t;
+</code></pre><ul>
+<li>img_id:&#x7531;&#x5E73;&#x53F0;&#x6307;&#x5B9A;&#x7684;&#x552F;&#x4E00;&#x6807;&#x8BC6;&#x7B26;&#xFF0C;&#x5B83;&#x5141;&#x8BB8;IO&#x6846;&#x67B6;&#x5728;FIP&#x4E2D;&#x5B9A;&#x4F4D;&#x56FE;&#x50CF;&#x5E76;&#x5C06;&#x5176;&#x52A0;&#x8F7D;&#x5230;&#x4E3A;&#x6570;&#x636E;&#x4FDD;&#x7559;&#x7684;&#x5185;&#x5B58;&#x4E2D;
+&#x5728;CoT&#x4E2D;&#x7684;&#x955C;&#x50CF;&#x3002;</li>
+<li>parent:&#x7236;&#x955C;&#x50CF;&#x7684;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x63CF;&#x8FF0;&#x7B26;&#x6307;&#x9488;&#xFF0C;&#x7236;&#x955C;&#x50CF;&#x4E2D;&#x6709;&#x9A8C;&#x8BC1;&#x5F53;&#x524D;&#x955C;&#x50CF;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x4E3A;NULL&#xFF0C;&#x5219;&#x4ECE;&#x5E73;&#x53F0;&#x6216;&#x8005;ROPTK&#x83B7;&#x53D6;&#xFF0C;&#x5E76;&#x4E14;&#x5176;&#x4E3A;&#x4FE1;&#x4EFB;&#x94FE;&#x6839;&#x3002;
+-img_type&#xFF1A;AM&#x7528;&#x6765;&#x627E;&#x5230;&#x9002;&#x5F53;&#x7684;IPM&#x7684;&#x89E3;&#x6790;&#x65B9;&#x6CD5;&#xFF0C;&#x4F8B;&#x5982;IMG_RAW/IMG_PLAT/IMG_CERT3&#x3002;
+-img_auth_methods&#xFF1A;&#x9A8C;&#x8BC1;&#x65B9;&#x6CD5;&#x53CA;&#x5176;&#x53C2;&#x6570;&#x5982;&#x524D;&#x4E00;&#x8282;&#x6240;&#x8FF0;&#x3002;&#x8FD9;&#x4E9B;&#x7528;&#x4E8E;&#x9A8C;&#x8BC1;&#x5F53;&#x524D;&#x955C;&#x50CF;&#x3002;</li>
+<li>authenticated_data&#xFF1A;&#x53C2;&#x6570;&#xFF0C;&#x7528;&#x4E8E;&#x9A8C;&#x8BC1;&#x5F53;&#x524D;CoT&#x4E2D;&#x7684;&#x4E0B;&#x4E00;&#x4E2A;&#x955C;&#x50CF;&#x3002;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x53EA;&#x80FD;&#x7531;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x955C;&#x50CF;&#x6307;&#x5B9A;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x5728;&#x9A8C;&#x8BC1;&#x540E;&#x4ECE;&#x5F53;&#x524D;&#x955C;&#x50CF;&#x4E2D;&#x63D0;&#x53D6;&#x3002;</li>
+</ul>
+<pre><code>typedef struct auth_method_desc_s {
+    auth_method_type_t type;
+    union {
+        auth_method_param_hash_t hash;
+        auth_method_param_sig_t sig;
+        auth_method_param_nv_ctr_t nv_ctr;
+    } param;
+} auth_method_desc_t;
+</code></pre><p>&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;CoT&#xFF1A;</p>
+<pre><code>/* Macro to register a CoT defined as an array of auth_img_desc_t pointers */
+#define REGISTER_COT(_cot) \
+    const auth_img_desc_t *const *const cot_desc_ptr = (_cot); \
+    const size_t cot_desc_size = ARRAY_SIZE(_cot);           \
+    unsigned int auth_img_flags[MAX_NUMBER_IDS]
+</code></pre><h2 id="23-&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x65B9;&#x6CD5;">2.3 &#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x65B9;&#x6CD5;</h2>
+<p>include/drivers/auth/auth_common.h&#x4E2D;&#x5B9A;&#x4E49;auth_method_type_t</p>
+<pre><code>typedef struct auth_method_desc_s {
+    auth_method_type_t type;
+    union {
+        auth_method_param_hash_t hash;
+        auth_method_param_sig_t sig;
+        auth_method_param_nv_ctr_t nv_ctr;
+    } param;
+} auth_method_desc_t;
+
+/*
+ * The method type defines how an image is authenticated
+ */
+typedef enum auth_method_type_enum {
+    AUTH_METHOD_NONE = 0,
+    AUTH_METHOD_HASH,    /* Authenticate by hash matching */
+    AUTH_METHOD_SIG,    /* Authenticate by PK operation */
+    AUTH_METHOD_NV_CTR,    /* Authenticate by Non-Volatile Counter */
+    AUTH_METHOD_NUM     /* Number of methods */
+} auth_method_type_t;
+</code></pre><p>&#x7528;&#x4E8E;IPM&#x4ECE;&#x955C;&#x50CF;&#x4E2D;&#x63D0;&#x53D6;&#x8FD9;&#x4E9B;&#x9A8C;&#x8BC1;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x5728;CM&#x4E2D;&#x4F1A;&#x7528;&#x5230;&#x3002;</p>
+<p>AUTH_METHOD_HASH&#xFF1A;</p>
+<pre><code>typedef struct auth_method_param_hash_s {
+    auth_param_type_desc_t *data;    /* Data to hash */
+    auth_param_type_desc_t *hash;    /* Hash to match with */
+} auth_method_param_hash_t;
+
+typedef struct auth_param_type_desc_s {
+    auth_param_type_t type;
+    void *cookie;
+} auth_param_type_desc_t;
+
+typedef struct auth_param_type_desc_s {
+    auth_param_type_t type;
+    void *cookie;
+} auth_param_type_desc_t;
+
+typedef enum auth_param_type_enum {
+    AUTH_PARAM_NONE,
+    AUTH_PARAM_RAW_DATA,        /* Raw image data */
+    AUTH_PARAM_SIG,            /* The image signature */
+    AUTH_PARAM_SIG_ALG,        /* The image signature algorithm */
+    AUTH_PARAM_HASH,        /* A hash (including the algorithm) */
+    AUTH_PARAM_PUB_KEY,        /* A public key */
+    AUTH_PARAM_NV_CTR,        /* A non-volatile counter */
+} auth_param_type_t;
+</code></pre><p>AUTH_METHOD_SIG:</p>
+<pre><code>typedef struct auth_method_param_sig_s {
+    auth_param_type_desc_t *pk;    /* Public key */
+    auth_param_type_desc_t *sig;    /* Signature to check */
+    auth_param_type_desc_t *alg;    /* Signature algorithm */
+    auth_param_type_desc_t *data;    /* Data signed */
+} auth_method_param_sig_t;
+</code></pre><p>AUTH_METHOD_NV_CTR(&#x9632;&#x6B62;&#x56DE;&#x6EDA;&#x7684;&#x9A8C;&#x8BC1;&#xFF0C;non-volatile&#x8BA1;&#x6570;&#x5668;&#xFF0C;&#x53EA;&#x589E;&#x52A0;):</p>
+<pre><code>typedef struct auth_method_param_nv_ctr_s {
+    auth_param_type_desc_t *cert_nv_ctr;    /* NV counter in certificate */
+    auth_param_type_desc_t *plat_nv_ctr;    /* NV counter in platform */
+} auth_method_param_nv_ctr_t;
+</code></pre><h2 id="24-&#x9A8C;&#x8BC1;&#x53C2;&#x6570;&#x5B58;&#x50A8;">2.4 &#x9A8C;&#x8BC1;&#x53C2;&#x6570;&#x5B58;&#x50A8;</h2>
+<p>&#x4ECE;&#x7236;&#x955C;&#x50CF;&#x63D0;&#x53D6;&#x7684;&#x5B50;&#x955C;&#x50CF;&#x9A8C;&#x8BC1;&#x53C2;&#x6570;&#xFF0C;&#x9700;&#x8981;&#x5355;&#x72EC;&#x5B58;&#x50A8;&#xFF0C;&#x56E0;&#x4E3A;&#x5F53;&#x52A0;&#x8F7D;&#x5B50;&#x955C;&#x50CF;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x51B2;&#x6389;&#x7236;&#x955C;&#x50CF;&#x5360;&#x7528;&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;auth_param_data_desc_t&#x4E2D;ptr&#x6307;&#x9488;&#x5B58;&#x50A8;&#x3002;</p>
+<pre><code>/*
+ * Store a pointer to the authentication parameter and its length
+ */
+typedef struct auth_param_data_desc_s {
+    void *ptr;
+    unsigned int len;
+} auth_param_data_desc_t;
+
+/*
+ * Authentication parameter descriptor, including type and value
+ */
+typedef struct auth_param_desc_s {
+    auth_param_type_desc_t *type_desc;
+    auth_param_data_desc_t data;
+} auth_param_desc_t;
+</code></pre><p>IPM&#x83B7;&#x53D6;&#x955C;&#x50CF;&#x9A8C;&#x8BC1;&#x53C2;&#x6570;&#x7684;&#x65F6;&#x5019;&#x586B;&#x5145;ptr&#x548C;len&#x3002;auth_param_desc_t&#x4E2D;&#x4FDD;&#x62A4;&#x4E86;&#x8FD9;&#x4E2A;data&#x3002;</p>
+<h2 id="25-&#x955C;&#x50CF;&#x89E3;&#x6790;&#x5E93;ipl">2.5 &#x955C;&#x50CF;&#x89E3;&#x6790;&#x5E93;IPL</h2>
+<p>AM&#x6309;&#x7167;CoT&#x7684;&#x5B9A;&#x4E49;&#x5BF9;&#x955C;&#x50CF;&#x8FDB;&#x884C;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x3002;&#x5F53;&#x5E73;&#x53F0;&#x5C42;&#x5C06;&#x955C;&#x50CF;&#x4ECE;&#x5B58;&#x50A8;&#x4ECB;&#x8D28;&#x52A0;&#x8F7D;&#x5230;&#x6307;&#x5B9A;&#x5185;&#x5B58;&#x540E;&#xFF0C;AM&#x6A21;&#x5757;&#x9996;&#x5148;&#x8C03;&#x7528;IPM&#x4E2D;&#x7684;IPL&#x5BF9;&#x955C;&#x50CF;&#x8FDB;&#x884C;&#x5B8C;&#x6574;&#x6027;&#x68C0;&#x67E5;&#xFF0C;&#x9A8C;&#x8BC1;&#x901A;&#x8FC7;&#x540E;&#x63D0;&#x53D6;&#x5B50;&#x955C;&#x50CF;&#x7684;&#x53C2;&#x6570;&#x3002;</p>
+<p>&#x6240;&#x4EE5;IPL&#x7684;&#x529F;&#x80FD;&#xFF1A;&#x68C0;&#x67E5;&#x955C;&#x50CF;&#x5B8C;&#x6574;&#x6027;&#xFF0C;&#x63D0;&#x53D6;&#x9A8C;&#x8BC1;&#x53C2;&#x6570;&#x3002;</p>
+<pre><code>/*
+ * Image types. A parser should be instantiated and registered for each type
+ */
+typedef enum img_type_enum {
+    IMG_RAW,            /* Binary image */
+    IMG_PLAT,            /* Platform specific format */
+    IMG_CERT,            /* X509v3 certificate */
+    IMG_MAX_TYPES,
+} img_type_t;
+</code></pre><ul>
+<li>IMG_RAW&#xFF1A;&#x539F;&#x59CB;&#x4E8C;&#x8FDB;&#x5236;</li>
+<li>IMG_PLAT&#xFF1A;&#x5E73;&#x53F0;&#x7279;&#x5B9A;&#x683C;&#x5F0F;</li>
+<li>IMG_CERT&#xFF1A;x.509&#x884C;&#x4E1A;&#x6807;&#x51C6;&#x7684;PKI&#x8BC1;&#x4E66;&#x955C;&#x50CF;</li>
+</ul>
+<p>IPL&#x7684;&#x63CF;&#x8FF0;&#x548C;&#x5B9A;&#x4E49;&#xFF1A;</p>
+<pre><code>/* Image parser library structure */
+typedef struct img_parser_lib_desc_s {
+    img_type_t img_type;
+    const char *name;
+
+    void (*init)(void);
+    int (*check_integrity)(void *img, unsigned int img_len);//&#x955C;&#x50CF;&#x5B8C;&#x6574;&#x6027;&#x68C0;&#x67E5;
+    int (*get_auth_param)(const auth_param_type_desc_t *type_desc,
+            void *img, unsigned int img_len,
+            void **param, unsigned int *param_len);//&#x63D0;&#x53D6;&#x955C;&#x50CF;&#x9A8C;&#x8BC1;&#x51FD;&#x6570;&#x7684;&#x6307;&#x9488;
+} img_parser_lib_desc_t;
+
+/* Macro to register an image parser library */
+#define REGISTER_IMG_PARSER_LIB(_type, _name, _init, _check_int, _get_param) \
+    static const img_parser_lib_desc_t __img_parser_lib_desc_##_type \
+    __section(&quot;.img_parser_lib_descs&quot;) __used = { \
+        .img_type = _type, \
+        .name = _name, \
+        .init = _init, \
+        .check_integrity = _check_int, \ //&#x955C;&#x50CF;&#x5B8C;&#x6574;&#x6027;&#x68C0;&#x67E5;
+        .get_auth_param = _get_param \ //&#x63D0;&#x53D6;&#x955C;&#x50CF;&#x9A8C;&#x8BC1;&#x51FD;&#x6570;&#x7684;&#x6307;&#x9488;
+    }
+</code></pre><p>IMG_RAW&#x4E0D;&#x9700;&#x8981;IPL&#xFF0C;IMG_CERT&#x955C;&#x50CF;&#x6CE8;&#x518C;&#x4E86;IPL&#xFF08;X509v3&#x5E93;&#xFF09;&#xFF0C;&#x4F7F;&#x7528;&#x4E86;mbedTLS&#x5F00;&#x6E90;&#x5BC6;&#x7801;&#x5E93;&#x3002;</p>
+<p>drivers/auth/mbedtls/mbedtls_x509_parser.c&#x4E2D;</p>
+<pre><code>REGISTER_IMG_PARSER_LIB(IMG_CERT, LIB_NAME, init,
+               check_integrity, get_auth_param);
+</code></pre><h2 id="26-&#x52A0;&#x5BC6;&#x5E93;cl&#x6570;&#x636E;&#x7ED3;&#x6784;">2.6 &#x52A0;&#x5BC6;&#x5E93;CL&#x6570;&#x636E;&#x7ED3;&#x6784;</h2>
+<p>AM&#x4F7F;&#x7528;IPM&#x5BF9;&#x955C;&#x50CF;&#x5B8C;&#x6574;&#x6027;&#x8FDB;&#x884C;&#x68C0;&#x67E5;&#x901A;&#x8FC7;&#x540E;&#xFF0C;&#x8C03;&#x7528;CM&#x7684;&#x63A5;&#x53E3;&#x8FDB;&#x884C;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#xFF0C;CM&#x8C03;&#x7528;CL&#x4E2D;&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x5B9E;&#x73B0;</p>
+<pre><code>/*
+ * Cryptographic library descriptor
+ */
+typedef struct crypto_lib_desc_s {
+    const char *name;//&#x52A0;&#x5BC6;&#x5E93;&#x540D;&#x5B57;
+
+    /* Initialize library. This function is not expected to fail. All errors
+     * must be handled inside the function, asserting or panicking in case of
+     * a non-recoverable error */
+    void (*init)(void);//&#x521D;&#x59CB;&#x5316;&#x6307;&#x9488;
+
+    /* Verify a digital signature. Return one of the
+     * &apos;enum crypto_ret_value&apos; options */
+    int (*verify_signature)(void *data_ptr, unsigned int data_len,
+                void *sig_ptr, unsigned int sig_len,
+                void *sig_alg, unsigned int sig_alg_len,
+                void *pk_ptr, unsigned int pk_len);//&#x7B7E;&#x540D;&#x9A8C;&#x8BC1;&#x6307;&#x9488;
+
+    /* Verify a hash. Return one of the &apos;enum crypto_ret_value&apos; options */
+    int (*verify_hash)(void *data_ptr, unsigned int data_len,
+               void *digest_info_ptr, unsigned int digest_info_len);//hash&#x51FD;&#x6570;&#x9A8C;&#x8BC1;&#x6307;&#x9488;
+
+    /* Calculate a hash. Return hash value */
+    int (*calc_hash)(enum crypto_md_algo md_alg, void *data_ptr,
+             unsigned int data_len,
+             unsigned char output[CRYPTO_MD_MAX_SIZE]);//&#x6280;&#x672F;hash&#x503C;&#x51FD;&#x6570;&#x6307;&#x9488;
+
+    /* Convert Public key (optional) */
+    int (*convert_pk)(void *full_pk_ptr, unsigned int full_pk_len,
+              void **hashed_pk_ptr, unsigned int *hashed_pk_len);
+
+    /*
+     * Authenticated decryption. Return one of the
+     * &apos;enum crypto_ret_value&apos; options.
+     */
+    int (*auth_decrypt)(enum crypto_dec_algo dec_algo, void *data_ptr,
+                size_t len, const void *key, unsigned int key_len,
+                unsigned int key_flags, const void *iv,
+                unsigned int iv_len, const void *tag,
+                unsigned int tag_len);//&#x89E3;&#x5BC6;&#x51FD;&#x6570;&#x6307;&#x9488;
+} crypto_lib_desc_t;
+</code></pre><p>&#x6CE8;&#x518C;&#xFF1A;</p>
+<pre><code>/* Macro to register a cryptographic library */
+#define REGISTER_CRYPTO_LIB(_name, _init, _verify_signature, _verify_hash, \
+                _calc_hash, _auth_decrypt, _convert_pk) \
+    const crypto_lib_desc_t crypto_lib_desc = { \
+        .name = _name, \
+        .init = _init, \
+        .verify_signature = _verify_signature, \ //&#x7B7E;&#x540D;&#x9A8C;&#x8BC1;
+        .verify_hash = _verify_hash, \ //hash&#x9A8C;&#x8BC1;
+        .calc_hash = _calc_hash, \
+        .auth_decrypt = _auth_decrypt, \
+        .convert_pk = _convert_pk \
+    }
+</code></pre><p>&#x52A0;&#x5BC6;&#x5E93;mbedTLS&#x7684;&#x6CE8;&#x518C;&#xFF0C;&#x5728;drivers/auth/mbedtls/mbedtls_crypto.c&#x4E2D;</p>
+<pre><code>#define LIB_NAME        &quot;mbed TLS&quot;
+
+REGISTER_CRYPTO_LIB(LIB_NAME, init, verify_signature, verify_hash, NULL,
+            NULL, NULL);
+</code></pre><h1 id="3-&#x7F16;&#x8BD1;&#x5B9E;&#x64CD;">3. &#x7F16;&#x8BD1;&#x5B9E;&#x64CD;</h1>
+<h2 id="31-&#x6253;&#x5F00;&#x955C;&#x50CF;&#x9A8C;&#x7B7E;&#x5B8F;">3.1 &#x6253;&#x5F00;&#x955C;&#x50CF;&#x9A8C;&#x7B7E;&#x5B8F;</h2>
+<p>optee/build/qemu_v8.mk&#x4E2D;&#xFF1A;</p>
+<pre><code> 11 ################################################################################
+ 12 # If you change this, you MUST run `make arm-tf-clean` first before rebuilding
+ 13 ################################################################################
+ 14 TF_A_TRUSTED_BOARD_BOOT ?= n
+</code></pre><p>&#x4FEE;&#x6539;TF_A_TRUSTED_BOARD_BOOT ?= y&#xFF0C;&#x6216;&#x8005;&#x901A;&#x8FC7;&#x7F16;&#x8BD1;&#x53C2;&#x6570;&#x4F20;&#x5165;&#x90FD;&#x53EF;&#x4EE5;&#xFF0C;&#x8FDB;&#x884C;&#x91CD;&#x65B0;&#x7F16;&#x8BD1;&#xFF1A;</p>
+<pre><code>make arm-tf-clean
+make arm-tf DEBUG=1 &amp;&amp; make -f qemu_v8.mk run-only
+</code></pre><p><img src="https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/8809eb68eafb4128a745d9a8a84e89ca~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAgdGhhdHdheTE5ODk=:q75.awebp?policy=eyJ2bSI6MywidWlkIjoiMjA1MjExMTIyNzY5NzMzNiJ9&amp;rk3s=f64ab15b&amp;x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&amp;x-orig-expires=1734936041&amp;x-orig-sign=EPBnp%2FYCDvjzJvXO73yVTPQNkzo%3D" alt="image.png"></p>
+<ul>
+<li>nt_fw_content.crt&#xFF1A;BL31&#x5185;&#x5BB9;&#x8BC1;&#x4E66;</li>
+<li>nt_fw_key.crt&#xFF1A;BL31&#x5BC6;&#x94A5;&#x8BC1;&#x4E66;</li>
+<li>soc_fw_content.crt&#xFF1A;BL31&#x5185;&#x5BB9;&#x8BC1;&#x4E66;</li>
+<li>soc_fw_key.crt&#xFF1A;BL31&#x5BC6;&#x94A5;&#x8BC1;&#x4E66;</li>
+<li>tb_fw.crt&#xFF1A;BL2&#x5185;&#x5BB9;&#x8BC1;&#x4E66;</li>
+<li>trusted_key.crt&#xFF1A;Trusted&#x5BC6;&#x94A5;&#x8BC1;&#x4E66;</li>
+<li>rot_key.pem&#xFF1A;Root of Trust Key</li>
+<li>rotpk_sha256.bin&#xFF1A;ROTPK&#x7684;sha256&#x503C;</li>
+<li>&#x5176;&#x4ED6;&#xFF1A;nt_fw_key.crt tos_fw_content.crt tos_fw_key.crt</li>
+</ul>
+<h2 id="32-bl2&#x7684;&#x4FE1;&#x4EFB;&#x94FE;">3.2 BL2&#x7684;&#x4FE1;&#x4EFB;&#x94FE;</h2>
+<p>&#x9996;&#x5148;&#x5C31;&#x662F;BL2&#x7684;CoT&#xFF0C;&#x5728;drivers/auth/tbbr/tbbr_cot_bl1.c&#x4E2D;&#x5B9A;&#x4E49;&#xFF1A;</p>
+<pre><code>/*
+ * TBBR Chain of trust definition
+ */
+static const auth_img_desc_t * const cot_desc[] = {
+    [TRUSTED_BOOT_FW_CERT_ID]        =    &amp;trusted_boot_fw_cert,
+    [BL2_IMAGE_ID]                =    &amp;bl2_image,
+    [HW_CONFIG_ID]                =    &amp;hw_config,
+    [TB_FW_CONFIG_ID]            =    &amp;tb_fw_config,
+    [FW_CONFIG_ID]                =    &amp;fw_config,
+    [FWU_CERT_ID]                =    &amp;fwu_cert,
+    [SCP_BL2U_IMAGE_ID]            =    &amp;scp_bl2u_image,
+    [BL2U_IMAGE_ID]                =    &amp;bl2u_image,
+    [NS_BL2U_IMAGE_ID]            =    &amp;ns_bl2u_image
+};
+
+/* Register the CoT in the authentication module */
+REGISTER_COT(cot_desc);
+</code></pre><p>trusted_boot_fw_cert&#x662F;&#x4E00;&#x4E2A;&#x8BC1;&#x4E66;&#x955C;&#x50CF;&#xFF0C;&#x662F;BL2&#x7684;&#x7236;&#x955C;&#x50CF;&#xFF0C;&#x53EF;&#x4EE5;&#x5BF9;BL2&#x8FDB;&#x884C;&#x8EAB;&#x4EFD;&#x9A8C;&#x8BC1;&#x3002;</p>
+<blockquote>
+<p>fwu&#x7684;u&#x662F;&#x4EC0;&#x4E48;&#xFF1F;</p>
+<p>fw&#x5C31;&#x662F;firmware&#xFF0C;u&#x662F;update&#x7684;&#x610F;&#x601D;&#xFF0C;&#x662F;&#x56FA;&#x4EF6;&#x5347;&#x7EA7;&#x7528;&#x7684;&#x955C;&#x50CF;&#x3002;</p>
+</blockquote>
+<p>include/export/common/tbbr/tbbr_img_def_exp.h&#x4E2D;&#x5B9A;&#x4E49;&#x4E86;&#x8FD9;&#x4E9B;&#x955C;&#x50CF;ID&#x662F;&#x552F;&#x4E00;&#x7684;</p>
+<pre><code>/* Firmware Image Package */
+#define FIP_IMAGE_ID            U(0)
+
+/* Trusted Boot Firmware BL2 */
+#define BL2_IMAGE_ID            U(1)
+
+/* SCP Firmware SCP_BL2 */
+#define SCP_BL2_IMAGE_ID        U(2)
+
+/* EL3 Runtime Firmware BL31 */
+#define BL31_IMAGE_ID            U(3)
+
+/* Secure Payload BL32 (Trusted OS) */
+#define BL32_IMAGE_ID            U(4)
+
+/* Non-Trusted Firmware BL33 */
+#define BL33_IMAGE_ID            U(5)
+
+/* Certificates */
+#define TRUSTED_BOOT_FW_CERT_ID        U(6)
+#define TRUSTED_KEY_CERT_ID        U(7)
+
+#define SCP_FW_KEY_CERT_ID        U(8)
+#define SOC_FW_KEY_CERT_ID        U(9)
+#define TRUSTED_OS_FW_KEY_CERT_ID    U(10)
+#define NON_TRUSTED_FW_KEY_CERT_ID    U(11)
+...........
+</code></pre><ul>
+<li>ROTPK&#x8BA4;&#x8BC1;trusted_boot_fw_cert</li>
+<li>trusted_boot_fw_cert&#x83B7;&#x53D6;BL2 Hash&#x5E76;&#x4F7F;&#x7528;&#x5176;CoT&#x9A8C;&#x7B7E;BL2 img</li>
+</ul>
+<p>drivers/auth/tbbr/tbbr_cot_common.c&#x4E2D;&#x5B9A;&#x4E49;&#x4E86;trusted_boot_fw_cert</p>
+<pre><code>/* trusted_boot_fw_cert */
+const auth_img_desc_t trusted_boot_fw_cert = {
+    .img_id = TRUSTED_BOOT_FW_CERT_ID,//&#x503C;&#x662F;6
+    .img_type = IMG_CERT,//&#x955C;&#x50CF;&#x7C7B;&#x578B;&#x662F;&#x8BC1;&#x4E66;&#x955C;&#x50CF;
+    .parent = NULL, //NULL&#x8868;&#x793A;&#x662F;&#x4FE1;&#x4EFB;&#x94FE;&#x6839;
+    .img_auth_methods = (const auth_method_desc_t[AUTH_METHOD_NUM]) {//&#x5B9A;&#x4E49;&#x4E86;&#x4E24;&#x79CD;&#x8EAB;&#x4EFD;&#x8BA4;&#x8BC1;&#x65B9;&#x5F0F;sig&#xFF08;&#x955C;&#x50CF;&#x7B7E;&#x540D;&#xFF09;&#x548C;nv_ctr&#xFF08;&#x975E;&#x6613;&#x5931;&#x6027;&#x8BA1;&#x6570;&#x5668;&#xFF09;
+        [0] = {
+            .type = AUTH_METHOD_SIG,
+            .param.sig = {
+                .pk = &amp;subject_pk,
+                .sig = &amp;sig,
+                .alg = &amp;sig_alg,
+                .data = &amp;raw_data
+            }
+        },
+        [1] = {
+            .type = AUTH_METHOD_NV_CTR,
+            .param.nv_ctr = {
+                .cert_nv_ctr = &amp;trusted_nv_ctr,
+                .plat_nv_ctr = &amp;trusted_nv_ctr
+            }
+        }
+    },
+    .authenticated_data = (const auth_param_desc_t[COT_MAX_VERIFIED_PARAMS]) {//&#x5B9A;&#x4E49;&#x4E86;&#x56DB;&#x4E2A;&#x9A8C;&#x8BC1;&#x5B50;&#x955C;&#x50CF;&#x7684;&#x9A8C;&#x8BC1;&#x53C2;&#x6570;
+        [0] = {
+            .type_desc = &amp;tb_fw_hash,
+            .data = {
+                .ptr = (void *)tb_fw_hash_buf,//&#x5B50;&#x955C;&#x50CF;&#x53C2;&#x6570;&#x4F4D;&#x7F6E;&#xFF0C;&#x5C5E;&#x4E8E;&#x9759;&#x6001;&#x7F13;&#x5B58;
+                .len = (unsigned int)HASH_DER_LEN
+            }
+        },
+        [1] = {
+            .type_desc = &amp;tb_fw_config_hash,
+            .data = {
+                .ptr = (void *)tb_fw_config_hash_buf,
+                .len = (unsigned int)HASH_DER_LEN
+            }
+        },
+        [2] = {
+            .type_desc = &amp;hw_config_hash,
+            .data = {
+                .ptr = (void *)hw_config_hash_buf,
+                .len = (unsigned int)HASH_DER_LEN
+            }
+        },
+        [3] = {
+            .type_desc = &amp;fw_config_hash,
+            .data = {
+                .ptr = (void *)fw_config_hash_buf,
+                .len = (unsigned int)HASH_DER_LEN
+            }
+        }
+    }
+};
+</code></pre><p>BL2&#x7684;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>static const auth_img_desc_t bl2_image = {
+    .img_id = BL2_IMAGE_ID,//&#x503C;&#x662F;1
+    .img_type = IMG_RAW,//&#x539F;&#x59CB;&#x4E8C;&#x8FDB;&#x5236;&#x955C;&#x50CF;&#xFF0C;&#x4E0D;&#x9700;&#x8981;IPL
+    .parent = &amp;trusted_boot_fw_cert,
+    .img_auth_methods = (const auth_method_desc_t[AUTH_METHOD_NUM]) {
+        [0] = {
+            .type = AUTH_METHOD_HASH,//hash&#x9A8C;&#x8BC1;
+            .param.hash = {
+                .data = &amp;raw_data,//&#x9A8C;&#x8BC1;&#x5BF9;&#x8C61;&#x5C31;&#x662F;&#x81EA;&#x5DF1;&#x7684;&#x6570;&#x636E;&#x672C;&#x8EAB;
+                .hash = &amp;tb_fw_hash//&#x83B7;&#x53D6;hash&#x7684;&#x53C2;&#x8003;&#x503C;
+            }
+        }
+    }
+};
+</code></pre><p>&#x7BC7;&#x5E45;&#x6709;&#x9650;&#xFF0C;&#x672C;&#x7BC7;&#x4E3B;&#x8981;&#x4ECE;&#x6982;&#x5FF5;&#x548C;&#x9759;&#x6001;&#x914D;&#x7F6E;&#x4EE3;&#x7801;&#x89D2;&#x5EA6;&#x8FDB;&#x884C;&#x8BF4;&#x660E;&#xFF0C;&#x4E0B;&#x4E00;&#x7BC7;&#x4ECE;&#x4EE3;&#x7801;&#x8FD0;&#x884C;&#x65F6;&#x5E8F;&#x89D2;&#x5EA6;&#x8FDB;&#x884C;&#x6DF1;&#x5EA6;&#x89E3;&#x6790;&#xFF0C;&#x656C;&#x8BF7;&#x671F;&#x5F85;&#x3002;</p>
+<p>&#x53C2;&#x8003;&#xFF1A;</p>
+<ol>
+<li>&#x4E07;&#x5B57;&#x957F;&#x6587;&#xFF1A;&#x5B89;&#x5168;&#x542F;&#x52A8;&#x4E4B;SecureBoot&#x542F;&#x52A8;&#x5427;&#xFF08;&#x5C0F;&#x767D;&#x4E5F;&#x80FD;&#x770B;&#x61C2;&#xFF01;&#xFF09;&#xFF1A;<a href="https://juejin.cn/post/7267839163502739511#heading-7" target="_blank">https://juejin.cn/post/7267839163502739511#heading-7</a></li>
+<li>&#x82AF;&#x7247;&#x4FE1;&#x606F;&#x5B89;&#x5168;&#xFF08;&#x4E00;&#xFF09;&#x5B89;&#x5168;&#x542F;&#x52A8;&#xFF1A;<a href="https://zhuanlan.zhihu.com/p/536007837" target="_blank">https://zhuanlan.zhihu.com/p/536007837</a></li>
+<li>&#x5927;&#x8BDD;&#x5BC6;&#x7801;&#x6280;&#x672F;&#xFF08;&#x4E94;&#xFF09;&#x6570;&#x5B57;&#x7B7E;&#x540D;&#x4E0E;&#x6570;&#x5B57;&#x8BC1;&#x4E66;&#x539F;&#x7406;&#xFF1A;<a href="https://zhuanlan.zhihu.com/p/524010855" target="_blank">https://zhuanlan.zhihu.com/p/524010855</a></li>
+</ol>
+<blockquote>
+<p>&#x540E;&#x8BB0;&#xFF1A;</p>
+<p>&#x7814;&#x7A76;&#x8F6F;&#x4EF6;&#x6280;&#x672F;&#x672C;&#x8D28;&#x4E0A;&#x7684;&#x5E72;&#x8D27;&#x8FD8;&#x662F;&#x4EE3;&#x7801;&#x5206;&#x6790;&#xFF0C;&#x4F46;&#x662F;&#x53EA;&#x5206;&#x6790;&#x4EE3;&#x7801;&#xFF0C;&#x5F88;&#x591A;&#x770B;&#x7684;&#x8BFB;&#x8005;&#x4F30;&#x8BA1;&#x4E00;&#x6253;&#x5F00;&#x5C31;&#x9000;&#x51FA;&#x4E86;&#xFF0C;&#x53EA;&#x9002;&#x5408;&#x5C0F;&#x90E8;&#x5206;&#x5728;&#x7535;&#x8111;&#x4E0A;&#x8BE6;&#x7EC6;&#x9A8C;&#x8BC1;&#x6280;&#x672F;&#x7684;&#x4ECE;&#x4E1A;&#x8005;&#xFF0C;&#x8FD9;&#x53EA;&#x5360;&#x4E00;&#x5C0F;&#x90E8;&#x5206;&#x3002;&#x5927;&#x90E8;&#x5206;&#x7684;&#x8BFB;&#x8005;&#x8981;&#x4E48;&#x77E5;&#x8BC6;&#x626B;&#x76F2;&#x79D1;&#x666E;&#xFF0C;&#x8981;&#x4E48;&#x5C31;&#x662F;&#x4E0D;&#x662F;&#x4E13;&#x4E1A;&#x5E72;&#x8FD9;&#x4E2A;&#x7684;&#x3002;&#x6240;&#x4EE5;&#x5C3D;&#x91CF;&#x5728;&#x7B2C;&#x4E00;&#x7AE0;&#x8282;&#x6765;&#x6BB5;&#x6587;&#x5B57;&#x63CF;&#x8FF0;&#xFF0C;&#x540E;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x5206;&#x6790;&#x5C31;&#x9002;&#x5408;&#x8BE6;&#x7EC6;&#x7684;&#x4EBA;&#x770B;&#x4E86;&#x3002;</p>
+<p>&#x53C8;&#x662F;&#x5E72;&#x8D27;&#x6EE1;&#x6EE1;&#x7684;&#x4E00;&#x7BC7;&#xFF0C;&#x611F;&#x89C9;&#x5B66;&#x4E60;secure boot&#x8FD8;&#x633A;&#x6709;&#x6210;&#x5C31;&#x611F;&#xFF0C;&#x65B0;&#x77E5;&#x8BC6;&#x5F88;&#x591A;&#xFF0C;&#x5927;&#x5BB6;&#x591A;&#x591A;&#x652F;&#x6301;&#xFF0C;&#x5206;&#x4EAB;&#x7ED9;&#x4F60;&#x7684;&#x597D;&#x670B;&#x53CB;&#x3002;</p>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Secure-boot入门-2fip包加载image流程.html" class="navigation navigation-prev " aria-label="Previous page: Secure boot入门-2fip包加载image流程">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Secure-boot入门-4镜像验签代码分析.html" class="navigation navigation-next " aria-label="Next page: Secure boot入门-4镜像验签代码分析">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"theme":"fancy","title":"Secure boot入门-3镜像验签基础及代码初探","level":"1.4.8","depth":2,"next":{"title":"Secure boot入门-4镜像验签代码分析","level":"1.4.9","depth":2,"path":"ATF等底层固件/Secure-boot入门-4镜像验签代码分析.md","ref":"ATF等底层固件/Secure-boot入门-4镜像验签代码分析.md","articles":[]},"previous":{"title":"Secure boot入门-2fip包加载image流程","level":"1.4.7","depth":2,"path":"ATF等底层固件/Secure-boot入门-2fip包加载image流程.md","ref":"ATF等底层固件/Secure-boot入门-2fip包加载image流程.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters-small","livereload"],"pluginsConfig":{"expandable-chapters-small":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ATF等底层固件/Secure-boot入门-3镜像验签基础及代码初探.md","mtime":"2024-12-16T06:40:46.967Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-12-16T11:38:32.505Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
