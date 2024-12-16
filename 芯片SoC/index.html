@@ -1,0 +1,602 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>芯片SoC · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="SoC入门-1芯片研究框架（上）.html" />
+    
+    
+    <link rel="prev" href="../" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    芯片SoC
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="SoC入门-1芯片研究框架（上）.html">
+            
+                <a href="SoC入门-1芯片研究框架（上）.html">
+            
+                    
+                    SoC入门-1芯片研究框架（上）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="SoC入门-2芯片研究框架（下）.html">
+            
+                <a href="SoC入门-2芯片研究框架（下）.html">
+            
+                    
+                    SoC入门-2芯片研究框架（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="SoC入门-3自动驾驶AI芯片框架.html">
+            
+                <a href="SoC入门-3自动驾驶AI芯片框架.html">
+            
+                    
+                    SoC入门-3自动驾驶AI芯片框架
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="SoC入门-4自动驾驶AI-SoC芯片趋势.html">
+            
+                <a href="SoC入门-4自动驾驶AI-SoC芯片趋势.html">
+            
+                    
+                    SoC入门-4自动驾驶AI SoC芯片趋势
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="AI-SoC入门-5NoC总线.html">
+            
+                <a href="AI-SoC入门-5NoC总线.html">
+            
+                    
+                    AI SoC入门-5NoC总线
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="AI-SoC入门-6CPU子系统.html">
+            
+                <a href="AI-SoC入门-6CPU子系统.html">
+            
+                    
+                    AI SoC入门-6CPU子系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="AI-SoC入门-7低速外设.html">
+            
+                <a href="AI-SoC入门-7低速外设.html">
+            
+                    
+                    AI SoC入门-7低速外设
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="AI-SoC入门-8高速外设USB、ETH.html">
+            
+                <a href="AI-SoC入门-8高速外设USB、ETH.html">
+            
+                    
+                    AI SoC入门-8高速外设USB、ETH
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="AI-SoC入门-9访存接口.html">
+            
+                <a href="AI-SoC入门-9访存接口.html">
+            
+                    
+                    AI SoC入门-9访存接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.10" data-path="AI-SoC入门-10数据一致性.html">
+            
+                <a href="AI-SoC入门-10数据一致性.html">
+            
+                    
+                    AI SoC入门-10数据一致性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.11" data-path="AI-SoC入门-11HSM加解密子系统.html">
+            
+                <a href="AI-SoC入门-11HSM加解密子系统.html">
+            
+                    
+                    AI SoC入门-11HSM加解密子系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.12" data-path="AI-SoC入门-12FSI安全岛设计.html">
+            
+                <a href="AI-SoC入门-12FSI安全岛设计.html">
+            
+                    
+                    AI SoC入门-12FSI安全岛设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.13" data-path="AI-SoC入门-13PMU电源管理子系统.html">
+            
+                <a href="AI-SoC入门-13PMU电源管理子系统.html">
+            
+                    
+                    AI SoC入门-13PMU电源管理子系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.14" data-path="AI-SoC入门：14从Transformer大模型到端到端自动驾驶算法.html">
+            
+                <a href="AI-SoC入门：14从Transformer大模型到端到端自动驾驶算法.html">
+            
+                    
+                    AI SoC入门：14从Transformer大模型到端到端自动驾驶算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.15" data-path="芯片-设计流程入门.html">
+            
+                <a href="芯片-设计流程入门.html">
+            
+                    
+                    芯片-设计流程入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.16" data-path="自动驾驶芯片入门-国内外主流厂商介绍.html">
+            
+                <a href="自动驾驶芯片入门-国内外主流厂商介绍.html">
+            
+                    
+                    自动驾驶芯片入门-国内外主流厂商介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.17" data-path="自动驾驶芯片入门-基础概念和架构.html">
+            
+                <a href="自动驾驶芯片入门-基础概念和架构.html">
+            
+                    
+                    自动驾驶芯片入门-基础概念和架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.18" data-path="SoC软件技术--核间通信.html">
+            
+                <a href="SoC软件技术--核间通信.html">
+            
+                    
+                    SoC软件技术--核间通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.19" data-path="SoC入门-1芯片研究框架（上）.html">
+            
+                <a href="SoC入门-1芯片研究框架（上）.html">
+            
+                    
+                    SoC入门-1芯片研究框架（上）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.20" data-path="SoC入门-2芯片研究框架（下）.html">
+            
+                <a href="SoC入门-2芯片研究框架（下）.html">
+            
+                    
+                    SoC入门-2芯片研究框架（下）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.21" data-path="test-urljuejin.html">
+            
+                <a href="test-urljuejin.html">
+            
+                    
+                    test-urljuejin
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.22" data-path="test-urlweixin.html">
+            
+                <a href="test-urlweixin.html">
+            
+                    
+                    test-urlweixin
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../操作系统OS/">
+            
+                <a href="../操作系统OS/">
+            
+                    
+                    操作系统OS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../操作系统OS/汽车操作系统-现状及演进.html">
+            
+                <a href="../操作系统OS/汽车操作系统-现状及演进.html">
+            
+                    
+                    汽车操作系统-现状及演进
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >芯片SoC</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x82AF;&#x7247;soc">&#x82AF;&#x7247;SoC</h1>
+<p>&#x76EE;&#x5F55;&#xFF1A;</p>
+<ol>
+<li><a href="&#x82AF;&#x7247;SoC/SoC&#x5165;&#x95E8;-1&#x82AF;&#x7247;&#x7814;&#x7A76;&#x6846;&#x67B6;&#xFF08;&#x4E0A;&#xFF09;.html">SoC&#x5165;&#x95E8;-1&#x82AF;&#x7247;&#x7814;&#x7A76;&#x6846;&#x67B6;&#xFF08;&#x4E0A;&#xFF09;</a></li>
+<li><a href="&#x82AF;&#x7247;SoC/SoC&#x5165;&#x95E8;-2&#x82AF;&#x7247;&#x7814;&#x7A76;&#x6846;&#x67B6;&#xFF08;&#x4E0B;&#xFF09;.html">SoC&#x5165;&#x95E8;-2&#x82AF;&#x7247;&#x7814;&#x7A76;&#x6846;&#x67B6;&#xFF08;&#x4E0B;&#xFF09;</a></li>
+<li><a href="&#x82AF;&#x7247;SoC/SoC&#x5165;&#x95E8;-3&#x81EA;&#x52A8;&#x9A7E;&#x9A76;AI&#x82AF;&#x7247;&#x6846;&#x67B6;.html">SoC&#x5165;&#x95E8;-3&#x81EA;&#x52A8;&#x9A7E;&#x9A76;AI&#x82AF;&#x7247;&#x6846;&#x67B6;</a></li>
+<li><a href="&#x82AF;&#x7247;SoC/SoC&#x5165;&#x95E8;-4&#x81EA;&#x52A8;&#x9A7E;&#x9A76;AI-SoC&#x82AF;&#x7247;&#x8D8B;&#x52BF;.html">SoC&#x5165;&#x95E8;-4&#x81EA;&#x52A8;&#x9A7E;&#x9A76;AI SoC&#x82AF;&#x7247;&#x8D8B;&#x52BF;</a></li>
+<li><a href="&#x82AF;&#x7247;SoC/AI-SoC&#x5165;&#x95E8;-5NoC&#x603B;&#x7EBF;.html">AI SoC&#x5165;&#x95E8;-5NoC&#x603B;&#x7EBF;</a></li>
+<li><a href="&#x82AF;&#x7247;SoC/AI-SoC&#x5165;&#x95E8;-6CPU&#x5B50;&#x7CFB;&#x7EDF;.html">AI SoC&#x5165;&#x95E8;-6CPU&#x5B50;&#x7CFB;&#x7EDF;</a></li>
+<li><a href="&#x82AF;&#x7247;SoC/AI-SoC&#x5165;&#x95E8;-7&#x4F4E;&#x901F;&#x5916;&#x8BBE;.html">AI SoC&#x5165;&#x95E8;-7&#x4F4E;&#x901F;&#x5916;&#x8BBE;</a></li>
+<li><a href="&#x82AF;&#x7247;SoC/AI-SoC&#x5165;&#x95E8;-8&#x9AD8;&#x901F;&#x5916;&#x8BBE;USB&#x3001;ETH.html">AI SoC&#x5165;&#x95E8;-8&#x9AD8;&#x901F;&#x5916;&#x8BBE;USB&#x3001;ETH</a></li>
+<li><a href="&#x82AF;&#x7247;SoC/AI-SoC&#x5165;&#x95E8;-9&#x8BBF;&#x5B58;&#x63A5;&#x53E3;.html">AI SoC&#x5165;&#x95E8;-9&#x8BBF;&#x5B58;&#x63A5;&#x53E3;</a></li>
+<li><a href="&#x82AF;&#x7247;SoC/AI-SoC&#x5165;&#x95E8;-10&#x6570;&#x636E;&#x4E00;&#x81F4;&#x6027;.html">AI SoC&#x5165;&#x95E8;-10&#x6570;&#x636E;&#x4E00;&#x81F4;&#x6027;</a></li>
+<li><a href="&#x82AF;&#x7247;SoC/AI-SoC&#x5165;&#x95E8;-11HSM&#x52A0;&#x89E3;&#x5BC6;&#x5B50;&#x7CFB;&#x7EDF;.html">AI SoC&#x5165;&#x95E8;-11HSM&#x52A0;&#x89E3;&#x5BC6;&#x5B50;&#x7CFB;&#x7EDF;</a></li>
+<li><a href="&#x82AF;&#x7247;SoC/AI-SoC&#x5165;&#x95E8;-12FSI&#x5B89;&#x5168;&#x5C9B;&#x8BBE;&#x8BA1;.html">AI SoC&#x5165;&#x95E8;-12FSI&#x5B89;&#x5168;&#x5C9B;&#x8BBE;&#x8BA1;</a></li>
+<li><a href="&#x82AF;&#x7247;SoC/AI-SoC&#x5165;&#x95E8;-13PMU&#x7535;&#x6E90;&#x7BA1;&#x7406;&#x5B50;&#x7CFB;&#x7EDF;.html">AI SoC&#x5165;&#x95E8;-13PMU&#x7535;&#x6E90;&#x7BA1;&#x7406;&#x5B50;&#x7CFB;&#x7EDF;</a></li>
+<li><a href="&#x82AF;&#x7247;SoC/AI-SoC&#x5165;&#x95E8;&#xFF1A;14&#x4ECE;Transformer&#x5927;&#x6A21;&#x578B;&#x5230;&#x7AEF;&#x5230;&#x7AEF;&#x81EA;&#x52A8;&#x9A7E;&#x9A76;&#x7B97;&#x6CD5;.html">AI SoC&#x5165;&#x95E8;&#xFF1A;14&#x4ECE;Transformer&#x5927;&#x6A21;&#x578B;&#x5230;&#x7AEF;&#x5230;&#x7AEF;&#x81EA;&#x52A8;&#x9A7E;&#x9A76;&#x7B97;&#x6CD5;</a></li>
+<li><a href="&#x82AF;&#x7247;SoC/&#x82AF;&#x7247;-&#x8BBE;&#x8BA1;&#x6D41;&#x7A0B;&#x5165;&#x95E8;.html">&#x82AF;&#x7247;-&#x8BBE;&#x8BA1;&#x6D41;&#x7A0B;&#x5165;&#x95E8;</a></li>
+<li><a href="&#x82AF;&#x7247;SoC/&#x81EA;&#x52A8;&#x9A7E;&#x9A76;&#x82AF;&#x7247;&#x5165;&#x95E8;-&#x56FD;&#x5185;&#x5916;&#x4E3B;&#x6D41;&#x5382;&#x5546;&#x4ECB;&#x7ECD;.html">&#x81EA;&#x52A8;&#x9A7E;&#x9A76;&#x82AF;&#x7247;&#x5165;&#x95E8;-&#x56FD;&#x5185;&#x5916;&#x4E3B;&#x6D41;&#x5382;&#x5546;&#x4ECB;&#x7ECD;</a></li>
+<li><a href="&#x82AF;&#x7247;SoC/&#x81EA;&#x52A8;&#x9A7E;&#x9A76;&#x82AF;&#x7247;&#x5165;&#x95E8;-&#x57FA;&#x7840;&#x6982;&#x5FF5;&#x548C;&#x67B6;&#x6784;.html">&#x81EA;&#x52A8;&#x9A7E;&#x9A76;&#x82AF;&#x7247;&#x5165;&#x95E8;-&#x57FA;&#x7840;&#x6982;&#x5FF5;&#x548C;&#x67B6;&#x6784;</a></li>
+<li><a href="&#x82AF;&#x7247;SoC/SoC&#x8F6F;&#x4EF6;&#x6280;&#x672F;--&#x6838;&#x95F4;&#x901A;&#x4FE1;.html">SoC&#x8F6F;&#x4EF6;&#x6280;&#x672F;--&#x6838;&#x95F4;&#x901A;&#x4FE1;</a></li>
+<li><a href="&#x82AF;&#x7247;SoC/SoC&#x5165;&#x95E8;-1&#x82AF;&#x7247;&#x7814;&#x7A76;&#x6846;&#x67B6;&#xFF08;&#x4E0A;&#xFF09;.html">SoC&#x5165;&#x95E8;-1&#x82AF;&#x7247;&#x7814;&#x7A76;&#x6846;&#x67B6;&#xFF08;&#x4E0A;&#xFF09;</a></li>
+<li><a href="&#x82AF;&#x7247;SoC/SoC&#x5165;&#x95E8;-2&#x82AF;&#x7247;&#x7814;&#x7A76;&#x6846;&#x67B6;&#xFF08;&#x4E0B;&#xFF09;.html">SoC&#x5165;&#x95E8;-2&#x82AF;&#x7247;&#x7814;&#x7A76;&#x6846;&#x67B6;&#xFF08;&#x4E0B;&#xFF09;</a></li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../" class="navigation navigation-prev " aria-label="Previous page: Introduction">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="SoC入门-1芯片研究框架（上）.html" class="navigation navigation-next " aria-label="Next page: SoC入门-1芯片研究框架（上）">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"芯片SoC","level":"1.2","depth":1,"next":{"title":"SoC入门-1芯片研究框架（上）","level":"1.2.1","depth":2,"path":"芯片SoC/SoC入门-1芯片研究框架（上）.md","ref":"芯片SoC/SoC入门-1芯片研究框架（上）.md","articles":[]},"previous":{"title":"Introduction","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters-small","livereload"],"pluginsConfig":{"expandable-chapters-small":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"芯片SoC/README.md","mtime":"2024-12-15T13:20:12.473Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-12-16T02:54:38.467Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
