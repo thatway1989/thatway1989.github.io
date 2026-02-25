@@ -1,0 +1,400 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>ATF等底层固件 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="os.html" />
+    
+    
+    <link rel="prev" href="power.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    个人简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    微信公众号
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="chip.html">
+            
+                <a href="chip.html">
+            
+                    
+                    AI芯片
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="power.html">
+            
+                <a href="power.html">
+            
+                    
+                    电源管理入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.3" data-path="atf.html">
+            
+                <a href="atf.html">
+            
+                    
+                    ATF等底层固件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="os.html">
+            
+                <a href="os.html">
+            
+                    
+                    操作系统OS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="autosar.html">
+            
+                <a href="autosar.html">
+            
+                    
+                    AUTOSAR及汽车电子
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="tools.html">
+            
+                <a href="tools.html">
+            
+                    
+                    工具使用技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="linux.html">
+            
+                <a href="linux.html">
+            
+                    
+                    Linux技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="zatan.html">
+            
+                <a href="zatan.html">
+            
+                    
+                    杂谈
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../others/other_media.html">
+            
+                <a href="../others/other_media.html">
+            
+                    
+                    其他媒体
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >ATF等底层固件</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p>&#x76EE;&#x5F55;&#xFF1A;</p>
+<h1 id="atf&#x5165;&#x95E8;">ATF&#x5165;&#x95E8;:</h1>
+<p><a href="https://mp.weixin.qq.com/s/0k--WB_XCEtfA-kM9fGXBQ" target="_blank">ARM ATF&#x5165;&#x95E8;-&#x5B89;&#x5168;&#x56FA;&#x4EF6;&#x8F6F;&#x4EF6;&#x4ECB;&#x7ECD;&#x548C;&#x4EE3;&#x7801;&#x8FD0;&#x884C;</a></p>
+<p><a href="https://mp.weixin.qq.com/s/nVnVEuoAOtS_UC1vbu5rVA" target="_blank">ATF&#x5165;&#x95E8;-1qmeu&#x642D;&#x5EFA;ARM&#x5168;&#x5957;&#x6E90;&#x7801;&#x5B66;&#x4E60;&#x73AF;&#x5883;</a></p>
+<p><a href="https://mp.weixin.qq.com/s/829CGe5MV4VzWPku5la89w" target="_blank">ATF&#x5165;&#x95E8;-2&#x5927;&#x8F6F;&#x4EF6;&#x6A21;&#x578B;&#x548C;&#x4EE3;&#x7801;&#x7F16;&#x8BD1;&#x8FD0;&#x884C;&#x63A2;&#x7A76;</a></p>
+<p><a href="https://mp.weixin.qq.com/s/HlVJpm1wqNbTJwUmEXW_Cg" target="_blank">ATF&#x5165;&#x95E8;-3BL1&#x542F;&#x52A8;&#x6D41;&#x7A0B;&#x5206;&#x6790;</a></p>
+<p><a href="https://mp.weixin.qq.com/s/9xdSwTTVQHPXvYQ79-Cq6A" target="_blank">ATF&#x5165;&#x95E8;-3BL2&#x542F;&#x52A8;&#x6D41;&#x7A0B;&#x5206;&#x6790;</a></p>
+<p><a href="https://mp.weixin.qq.com/s/gORAZVd_awhrjc-LQxINvg" target="_blank">ATF&#x5165;&#x95E8;-4BL31&#x542F;&#x52A8;&#x6D41;&#x7A0B;&#x5206;&#x6790;</a></p>
+<p><a href="https://mp.weixin.qq.com/s/kS8SyPwRzoHtquSu-Cx1fA" target="_blank">uboot&#x5165;&#x95E8;-1&#x7B80;&#x4ECB;&#x548C;&#x8FD0;&#x884C;</a></p>
+<p><a href="https://mp.weixin.qq.com/s/A1W5pO6RWeyAxc9KAkySCw" target="_blank">uboot&#x5165;&#x95E8;-2Makefile&#x548C;&#x7F16;&#x8BD1;</a></p>
+<p><a href="https://mp.weixin.qq.com/s/-tPpaYcMA-ezi8wemg6TlA" target="_blank">uboot-3&#x94FE;&#x63A5;&#x811A;&#x672C;&#x548C;&#x7B2C;&#x4E00;&#x9636;&#x6BB5;&#x542F;&#x52A8;</a></p>
+<p><a href="https://mp.weixin.qq.com/s/IyLABxfD8F79ysBOPk5osQ" target="_blank">uboot&#x5165;&#x95E8;-4&#x547D;&#x4EE4;&#x884C;&#x548C;&#x9A71;&#x52A8;&#x7BA1;&#x7406;</a></p>
+<p><a href="https://mp.weixin.qq.com/s/4rU13XW7Kc00h4kEHBL1vA" target="_blank">uboot&#x5165;&#x95E8;-5linux&#x542F;&#x52A8;&#x524D;&#x591C;</a></p>
+<p><a href="https://mp.weixin.qq.com/s/W4pyiwaMmpQnqtRIQ9KGYQ" target="_blank">uboot&#x5165;&#x95E8;-6&#x79FB;&#x690D;&#x8981;&#x70B9;</a></p>
+<h1 id="secure-boot&#x5165;&#x95E8;">Secure boot&#x5165;&#x95E8;:</h1>
+<p><a href="https://mp.weixin.qq.com/s/xInpKk21vHiyIXNzjv592w" target="_blank">Secure boot&#x5165;&#x95E8;-1&#x57FA;&#x672C;&#x6982;&#x5FF5;&#x548C;&#x6846;&#x67B6;</a></p>
+<p><a href="https://mp.weixin.qq.com/s/IkTOzQqKUUcsiq5NcImPgg" target="_blank">Secure boot&#x5165;&#x95E8;-2fip&#x5305;&#x52A0;&#x8F7D;image&#x6D41;&#x7A0B;</a></p>
+<p><a href="https://mp.weixin.qq.com/s/r5TIU76B2xUJ7DS386F1Dg" target="_blank">Secure boot&#x5165;&#x95E8;-3&#x955C;&#x50CF;&#x9A8C;&#x7B7E;&#x57FA;&#x7840;&#x53CA;&#x4EE3;&#x7801;&#x521D;&#x63A2;</a></p>
+<p><a href="https://mp.weixin.qq.com/s/UeKo2p7tmT6jOtFNSb9FAQ" target="_blank">Secure boot&#x5165;&#x95E8;-4&#x955C;&#x50CF;&#x9A8C;&#x7B7E;&#x4EE3;&#x7801;&#x5206;&#x6790;</a></p>
+<p><a href="https://mp.weixin.qq.com/s/8Y7A-dJYD53PJrrXJfBkKw" target="_blank">secureboot&#x5165;&#x95E8;-5&#x955C;&#x50CF;&#x52A0;&#x5BC6;-&#x7B7E;&#x540D;-&#x6253;&#x5305;</a></p>
+<p><a href="https://mp.weixin.qq.com/s/dp3jQexcRYvG2zIywt-iiw" target="_blank">secureboot&#x5165;&#x95E8;-6&#x5B89;&#x5353;AVB&#x5B89;&#x5168;&#x542F;&#x52A8;&#x57FA;&#x7840;</a></p>
+<p><a href="https://mp.weixin.qq.com/s/InGH7kPldHArpwOXFz7DKA" target="_blank">secureboot&#x5165;&#x95E8;-7&#x5B89;&#x5353;AVB&#x6821;&#x9A8C;&#x4EE3;&#x7801;&#x5206;&#x6790;</a></p>
+<p><a href="https://mp.weixin.qq.com/s/0iOpyuMHKwGQ8iKsrcpsUA" target="_blank">secureboot&#x5165;&#x95E8;-8&#x786C;&#x4EF6;&#x6742;&#x8C08;&#x548C;&#x6C47;&#x603B;</a></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="power.html" class="navigation navigation-prev " aria-label="Previous page: 电源管理入门">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="os.html" class="navigation navigation-next " aria-label="Next page: 操作系统OS">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"ATF等底层固件","level":"1.2.3","depth":2,"next":{"title":"操作系统OS","level":"1.2.4","depth":2,"path":"wechat/os.md","ref":"wechat/os.md","articles":[]},"previous":{"title":"电源管理入门","level":"1.2.2","depth":2,"path":"wechat/power.md","ref":"wechat/power.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["chapter-fold","livereload"],"pluginsConfig":{"chapter-fold":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"}},"file":{"path":"wechat/atf.md","mtime":"2026-02-25T09:54:24.828Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-02-25T09:54:37.380Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
