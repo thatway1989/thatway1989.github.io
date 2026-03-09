@@ -1,4 +1,8 @@
 # 那路谈OS与SoC嵌入式软件 
+
+欢迎微信扫码关注公众号： 
+![logo](./images/logo-gongzhonghao.png)
+
 > 本在线图书主要对公众号博客文章进行汇总，方便读者进行系统的阅读学习。
 
 ![back_street_boys](./images/back_street_boys.png)
@@ -54,12 +58,9 @@
 <center>纯干货持续更新，欢迎**分享**给朋友、点赞、收藏、在看、划线和评论交流！
 </center>
 
-欢迎微信扫码关注公众号： 
-![logo](./images/logo-gongzhonghao.png)
-
-博主微信号: thatway1989
-
 **其他经历：**
 
 - [【思享会】第16期 | 汽车多核硬件架构下Hypervisor的应用](https://mp.weixin.qq.com/s/4HUKNJzLZSlMx6CuXy6xnw)
 - [大SoC芯片+域融合趋势下的Hypervisor应用](https://mp.weixin.qq.com/s/Cpvzwajg_Pi5RARbfLmcRA)
+
+博主微信号: thatway1989，加时备注自己敢兴趣的技术方向，一块学习聊聊。
